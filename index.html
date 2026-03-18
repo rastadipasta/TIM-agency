@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="hr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIM | Agencija za Web Dizajn, Graficki Dizajn i Digitalne Proizvode</title>
+    <meta name="description" content="TIM je premium agencija specijalizirana za UI/UX dizajn, web razvoj, vizualni identitet i digitalne proizvode. Pomazemo vizionarskim brendovima ostvariti opipljive rezultate.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://tim-agencija.hr/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tim-agencija.hr/">
+    <meta property="og:title" content="TIM | Agencija za Web Dizajn, Graficki Dizajn i Digitalne Proizvode">
+    <meta property="og:description" content="TIM je premium agencija specijalizirana za UI/UX dizajn, web razvoj, vizualni identitet i digitalne proizvode. Pomazemo vizionarskim brendovima ostvariti opipljive rezultate.">
+    <meta property="og:image" content="https://tim-agencija.hr/resources/Logo/LOGO.png">
+    <meta property="og:locale" content="hr_HR">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="TIM | Agencija za Web Dizajn, Graficki Dizajn i Digitalne Proizvode">
+    <meta name="twitter:description" content="TIM je premium agencija specijalizirana za UI/UX dizajn, web razvoj, vizualni identitet i digitalne proizvode. Pomazemo vizionarskim brendovima ostvariti opipljive rezultate.">
+    <meta name="twitter:image" content="https://tim-agencija.hr/resources/Logo/LOGO.png">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "TIM Agencija za digitalni dizajn",
+      "description": "Premium agencija specijalizirana za UI/UX dizajn, web razvoj, vizualni identitet i digitalne proizvode.",
+      "url": "https://tim-agencija.hr",
+      "logo": "https://tim-agencija.hr/resources/Logo/LOGO.png",
+      "sameAs": [],
+      "serviceType": ["Web dizajn", "Graficki dizajn", "UI/UX dizajn", "Digitalni proizvodi"],
+      "areaServed": {
+        "@type": "Country",
+        "name": "Hrvatska"
+      }
+    }
+    </script>
+
+    <!-- Google Fonts: Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+
+<body class="home-body">
+    <!-- Navbar (Secondary Color Background / Glassmorphism) -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo nav-home-icon" aria-label="Home"><i data-feather="home"></i></a>
+            <ul class="nav-links">
+                <li><a href="usluga-web-dizajn.html" class="nav-link">Web Dizajn</a></li>
+                <li><a href="usluga-graficki-dizajn.html" class="nav-link">Grafički Dizajn</a></li>
+                <li><a href="usluga-digitalni-proizvodi.html" class="nav-link">Digitalni Proizvodi</a></li>
+                <li><a href="Galerija.html" class="nav-link">Galerija</a></li>
+
+
+
+                <li class="mobile-only-link"><a href="kontakt.html" class="nav-link">Kontakt</a></li>
+            </ul>
+            <div class="nav-right">
+                <a href="kontakt.html" class="btn btn-primary nav-cta">Kontakt</a>
+                <div class="mobile-menu-btn">
+                    <i data-feather="menu"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SECTION 1: Canvas Hero -->
+    <header class="hero" id="top">
+        <!-- The Interactive 3D Wave Canvas -->
+        <canvas id="hero-canvas"></canvas>
+
+        <!-- Left Side Decoration -->
+        <div class="hero-side-left fade-in">
+            <div class="vertical-text">Kreativa & Kod</div>
+            <div class="side-line"></div>
+        </div>
+
+        <div class="hero-content fade-in-up" style="position: relative; z-index: 2;">
+            <!-- Logo centered -->
+            <div class="hero-logo-wrapper">
+                <img src="resources/Logo/LOGO.png" alt="TIM Logo" class="hero-logo floating">
+            </div>
+
+            <div class="badge" style="margin-top: 20px;">Vrhunski Digitalni Dizajn</div>
+            <h1>Opipljivi <span class="highlight">Rezultati</span>.</h1>
+            <p>Pomažemo vizionarskim brendovima ostvariti potencijal kroz premijum UI/UX dizajn, besprijekoran razvoj i
+                dojmljiv vizualni identitet.</p>
+            <div class="hero-actions">
+                <a href="kontakt.html" class="btn btn-primary btn-large magnetic" style="margin-right: 15px;">Započnimo
+                    projekt</a>
+                <a href="Galerija.html" class="btn btn-outline btn-large">Vidi radove</a>
+            </div>
+        </div>
+
+        <!-- Right Side Decoration -->
+        <div class="hero-side-right fade-in">
+            <div class="social-links">
+                <a href="#"><i data-feather="instagram"></i></a>
+                <a href="#"><i data-feather="linkedin"></i></a>
+                <a href="#"><i data-feather="facebook"></i></a>
+            </div>
+            <div class="side-line"></div>
+        </div>
+
+    </header>
+
+    <!-- SECTION 2: Teaser Usluge -->
+    <section class="teaser-section" style="background-color: var(--bg-secondary);">
+        <div class="section-header fade-in">
+            <h2>Naša Ekspertiza</h2>
+            <p>Od vizije do savršene digitalne stvarnosti.</p>
+        </div>
+        <div class="services-grid fade-in-up delay-1">
+            <a href="usluga-web-dizajn.html" class="service-card lift-effect">
+                <div class="service-icon"><i data-feather="layout"></i></div>
+                <h3>Web Dizajn (UI/UX)</h3>
+                <p>Otkrijte kako kreiramo arhitekturu za vrhunsko korisničko iskustvo.</p>
+            </a>
+            <a href="usluga-graficki-dizajn.html" class="service-card lift-effect">
+                <div class="service-icon"><i data-feather="pen-tool"></i></div>
+                <h3>Grafički Dizajn</h3>
+                <p>Ostavite neizbrisiv trag pomoću snažnog vizualnog identiteta.</p>
+            </a>
+            <a href="usluga-digitalni-proizvodi.html" class="service-card lift-effect"
+                style="grid-column: 1 / -1; text-align: center;">
+                <div class="service-icon" style="margin: 0 auto 24px auto;"><i data-feather="smartphone"></i></div>
+                <h3>Digitalni Proizvodi</h3>
+                <p>Kompleksni sustavi pretvoreni u jednostavno i ugodno iskustvo.</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- SECTION 3: Teaser Galerija -->
+    <section class="teaser-section">
+        <div class="section-header fade-in">
+            <h2>Odabrani Radovi</h2>
+            <p>Najbolji primjeri iz naše prakse.</p>
+        </div>
+        <div class="portfolio-grid fade-in-up delay-1">
+            <a href="Galerija.html" class="portfolio-item tilt-card">
+                <div class="portfolio-image placeholder-img-1"></div>
+                <div class="portfolio-info">
+                    <h3>Fintech Aplikacija</h3>
+                    <span>UI/UX Dizajn</span>
+                </div>
+            </a>
+            <a href="Galerija.html" class="portfolio-item tilt-card"
+                style="display:flex; align-items:center; justify-content:center; background-color: var(--bg-tertiary);">
+                <span class="highlight"
+                    style="display:inline-flex; align-items:center; gap:8px; font-size: 1.25rem; font-weight:500;">Galerija
+                    <i data-feather="arrow-right"></i></span>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+
+            <p>&copy; 2026 TIM Agencija za digitalni dizajn. Sva prava pridržana.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="canvas-particles.js"></script>
+    <script>
+        feather.replace();
+    </script>
+</body>
+
+</html>

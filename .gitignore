@@ -1,0 +1,11 @@
+# Environment & secrets
+.env
+credentials.json
+token.json
+
+# Temporary / intermediate files
+.tmp/
+
+# Python
+__pycache__/
+*.pyc
