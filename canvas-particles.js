@@ -106,27 +106,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             }
 
-            // Logo Repulsion (Keep particles away from the center logo)
-            const isMobile = window.innerWidth <= 768;
-            if (!isMobile) {
-                const centerX = width / 2;
-                const centerY = (height / 2) - 180; 
-                const logoRadius = 260; // Repel radius around the large logo
-                
-                let dxLogo = centerX - this.x;
-                let dyLogo = centerY - this.y;
-                let distanceLogo = Math.sqrt(dxLogo * dxLogo + dyLogo * dyLogo);
-                
-                if (distanceLogo < logoRadius) {
-                    let forceDirectionX = dxLogo / distanceLogo;
-                    let forceDirectionY = dyLogo / distanceLogo;
-                    let forceLogo = (logoRadius - distanceLogo) / logoRadius;
-                    
-                    // Push particles OUTWARDS from the center
-                    this.x -= forceDirectionX * forceLogo * 4;
-                    this.y -= forceDirectionY * forceLogo * 4;
-                }
-            }
 
             this.draw();
         }
