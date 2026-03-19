@@ -84,6 +84,7 @@ a {
 /* 9% Accent Color Area */
 .btn-primary {
   background-color: var(--accent-color);
+    color: #000;
   color: #fff;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
   position: relative;
@@ -217,6 +218,7 @@ a {
   width: 0;
   height: 2px;
   background-color: var(--accent-color);
+    color: #000;
   transition: width var(--transition-normal);
 }
 
@@ -550,7 +552,7 @@ section {
 }
 
 /* Animated top glowing line for the premium tech look */
-.service-card::before, .detail-box::before, .portfolio-item::before, .contact-container::before {
+.service-card::before, .detail-box::before, .portfolio-item::before, .contact-container::before, .feature-card::before {
   content: '';
   position: absolute;
   top: 0;
@@ -564,7 +566,7 @@ section {
   z-index: 10;
 }
 
-.service-card:hover::before, .detail-box:hover::before, .portfolio-item:hover::before, .contact-container:hover::before {
+.service-card:hover::before, .detail-box:hover::before, .portfolio-item:hover::before, .contact-container:hover::before, .feature-card:hover::before {
   transform: translateX(100%);
 }
 
@@ -599,8 +601,9 @@ section {
   box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 20px var(--accent-glow);
 }
 
-.lift-effect:hover .service-icon {
+.lift-effect:hover .service-icon, .feature-card:hover .feature-icon {
   background-color: var(--accent-color);
+    color: #000;
   color: #000;
   transform: scale(1.1) rotate(5deg);
   box-shadow: 0 0 15px var(--accent-glow);
@@ -958,6 +961,7 @@ footer .logo {
   height: 80%;
   width: 4px;
   background-color: var(--accent-color);
+    color: #000;
   border-radius: 4px;
 }
 
@@ -988,8 +992,9 @@ footer .logo {
 
 .feature-card:hover {
   transform: translateY(-8px);
+  background: rgba(20, 20, 20, 0.6);
   border-color: rgba(243, 178, 66, 0.2);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(243, 178, 66, 0.1);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 20px var(--accent-glow);
 }
 
 .feature-icon {
@@ -1105,4 +1110,30 @@ footer .logo {
   .features-grid, .process-mini { grid-template-columns: 1fr; }
   .process-mini::before { display: none; }
   .modern-cta { padding: 40px 5%; }
+}
+
+/* =======================================
+   MOBILE LANDSCAPE FIX (FIT-TO-PAGE)
+   ======================================= */
+@media screen and (max-width: 950px) and (orientation: landscape) {
+  .hero {
+    min-height: 100vh;
+    padding-top: 80px;
+    padding-bottom: 40px;
+    display: flex;
+    align-items: center;
+  }
+  .hero-content {
+    margin-top: 0;
+  }
+  .subpage-hero {
+    padding-top: 100px;
+    padding-bottom: 40px;
+  }
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .process-mini {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
 }
