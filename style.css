@@ -1189,12 +1189,15 @@ html, body {
     display: flex !important;
     flex-direction: row !important;
     align-items: center !important;
-    gap: 30px;
+    justify-content: center !important;
+    gap: 24px;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
   }
 
   .hero-logo-wrapper {
-    width: 160px !important;
-    height: 160px !important;
+    width: 130px !important;
+    height: 130px !important;
     margin: 0 !important;
     flex-shrink: 0;
   }
@@ -1202,31 +1205,34 @@ html, body {
   .hero-content {
     text-align: left !important;
     margin-top: 0;
+    max-width: 60% !important;
+    flex: 1;
   }
 
   .hero h1 {
-    font-size: 2rem !important;
+    font-size: 1.75rem !important;
   }
 
   .hero p {
-    font-size: 0.9rem !important;
-    margin-bottom: 16px !important;
+    font-size: 0.85rem !important;
+    margin-bottom: 12px !important;
   }
 
   .hero-actions {
     flex-direction: row !important;
     justify-content: flex-start !important;
-    gap: 10px !important;
+    gap: 8px !important;
   }
 
   .hero-actions .btn-large {
-    padding: 10px 20px !important;
-    font-size: 0.9rem !important;
+    padding: 8px 16px !important;
+    font-size: 0.8rem !important;
   }
 
   .badge {
-    font-size: 0.75rem !important;
-    margin-bottom: 12px !important;
+    font-size: 0.7rem !important;
+    margin-bottom: 8px !important;
+    padding: 4px 10px !important;
   }
 
   .subpage-hero {
@@ -1240,5 +1246,35 @@ html, body {
 
   .process-mini {
     grid-template-columns: repeat(3, 1fr) !important;
+  }
+
+  /* Gallery landscape */
+  .portfolio-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 16px !important;
+  }
+  .portfolio-image {
+    height: 200px !important;
+  }
+}
+
+/* =======================================
+   GALLERY MOBILE FIXES
+   ======================================= */
+@media screen and (max-width: 768px) {
+  .portfolio-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+  .portfolio-image {
+    height: 220px !important;
+  }
+  .portfolio-info {
+    transform: translateY(0) !important;
+    opacity: 1 !important;
+    padding: 20px !important;
+  }
+  .portfolio-info h3 {
+    font-size: 1.15rem !important;
   }
 }
