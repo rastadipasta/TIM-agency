@@ -1117,11 +1117,11 @@ footer .logo {
    ======================================= */
 @media screen and (max-width: 950px) and (orientation: landscape) {
   .hero {
-    min-height: 100vh;
-    padding-top: 80px;
-    padding-bottom: 40px;
-    display: flex;
-    align-items: center;
+    min-height: auto !important;
+    height: auto !important;
+    padding-top: 120px;
+    padding-bottom: 60px;
+    display: block !important;
   }
   .hero-content {
     margin-top: 0;

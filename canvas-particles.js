@@ -35,9 +35,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Initialize Canvas Size
     resizeCanvas();
+    let lastWidth = window.innerWidth;
     window.addEventListener("resize", () => {
-        resizeCanvas();
-        initParticles();
+        // Only recreate particles if the width changes (orientation change)
+        // This prevents the animation from jumping when scrolling on mobile (address bar collapse)
+        if (window.innerWidth !== lastWidth) {
+            lastWidth = window.innerWidth;
+            resizeCanvas();
+            initParticles();
+        }
     });
 
     // Track Mouse
