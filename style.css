@@ -1157,3 +1157,16 @@ html, body {
     position: relative;
     z-index: 10 !important;
 }
+
+/* =======================================
+   MOBILE PORTRAIT & LANDSCAPE OVERFLOW FIX
+   ======================================= */
+@media screen and (max-width: 768px) {
+  .hero {
+    min-height: auto !important;
+    height: auto !important;
+    padding-top: 140px !important;
+    padding-bottom: 80px !important;
+    display: block !important;
+  }
+}
