@@ -43,6 +43,36 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     /* =========================================================
+       1b. MOBILE SCROLL-TRIGGERED CARD EFFECTS
+       On touch devices, simulate hover effects when cards
+       scroll into view since there's no mouse hover.
+       ========================================================= */
+    const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+
+    if (isTouchDevice) {
+        const cardObserverOptions = {
+            root: null,
+            rootMargin: "0px",
+            threshold: 0.5
+        };
+
+        const cardObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('touch-active');
+                } else {
+                    entry.target.classList.remove('touch-active');
+                }
+            });
+        }, cardObserverOptions);
+
+        const interactiveCards = document.querySelectorAll(
+            '.service-card, .feature-card, .portfolio-item, .step-mini'
+        );
+        interactiveCards.forEach(card => cardObserver.observe(card));
+    }
+
+    /* =========================================================
        2. NAVBAR GLASSMORPHISM ON SCROLL
        ========================================================= */
     // navbar is already defined at top of file
