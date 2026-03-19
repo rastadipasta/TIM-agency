@@ -1193,9 +1193,9 @@ html, body {
   }
 
   .hero-logo-wrapper {
-    width: 100px !important;
-    height: 100px !important;
-    margin: 0 0 8px 0 !important;
+    width: 200px !important;
+    height: 200px !important;
+    margin: 0 auto 8px auto !important;
   }
 
   .hero-content {
