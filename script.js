@@ -127,4 +127,21 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+    /* =========================================================
+       6. PARALLAX EFFECT (Subpage Hero)
+       ========================================================= */
+    const subpageHero = document.querySelector('.subpage-hero');
+    if (subpageHero) {
+        window.addEventListener('scroll', () => {
+            const scroll = window.scrollY;
+            // Only logic when near top
+            if (scroll < 800) {
+                const h1 = subpageHero.querySelector('h1');
+                const p = subpageHero.querySelector('p');
+                if (h1) h1.style.transform = `translateY(${scroll * 0.25}px)`;
+                if (p) p.style.transform = `translateY(${scroll * 0.15}px)`;
+            }
+        });
+    }
+
 });
