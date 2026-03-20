@@ -4,72 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Kontaktirajte Nas | TIM Agencija za Digitalni Dizajn</title>
-    <meta name="description" content="Kontaktirajte TIM agenciju za web dizajn, graficki dizajn i digitalne proizvode. Ispunite obrazac ili nas kontaktirajte direktno za besplatnu konzultaciju.">
+    <meta name="description" content="Kontaktirajte TIM agenciju za web dizajn, grafički dizajn i digitalne proizvode. Ispunite obrazac ili nas kontaktirajte direktno za besplatnu konzultaciju.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://tim-agencija.hr/kontakt.html">
-
-    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://tim-agencija.hr/kontakt.html">
     <meta property="og:title" content="Kontaktirajte Nas | TIM Agencija za Digitalni Dizajn">
-    <meta property="og:description" content="Kontaktirajte TIM agenciju za web dizajn, graficki dizajn i digitalne proizvode. Ispunite obrazac ili nas kontaktirajte direktno za besplatnu konzultaciju.">
+    <meta property="og:description" content="Kontaktirajte TIM agenciju za web dizajn, grafički dizajn i digitalne proizvode.">
     <meta property="og:image" content="https://tim-agencija.hr/resources/Logo/LOGO.png">
-    <meta property="og:locale" content="hr_HR">
-
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Kontaktirajte Nas | TIM Agencija za Digitalni Dizajn">
-    <meta name="twitter:description" content="Kontaktirajte TIM agenciju za web dizajn, graficki dizajn i digitalne proizvode. Ispunite obrazac ili nas kontaktirajte direktno za besplatnu konzultaciju.">
-    <meta name="twitter:image" content="https://tim-agencija.hr/resources/Logo/LOGO.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <script src="https://unpkg.com/feather-icons"></script>
     <link rel="icon" type="image/png" href="resources/Logo/LOGO.png">
 </head>
-<body class="page-body">
-    <!-- Navbar -->
+<body>
     <nav class="navbar scrolled-always">
         <div class="nav-container">
-            <a href="index.html" class="logo nav-home-icon" aria-label="Home"><i data-feather="home"></i></a>
+            <a href="index.html" class="nav-logo">TIM<sup>®</sup></a>
             <ul class="nav-links">
+                <li><a href="galerija.html" class="nav-link">Portfolio</a></li>
                 <li><a href="usluga-web-dizajn.html" class="nav-link">Web Dizajn</a></li>
                 <li><a href="usluga-graficki-dizajn.html" class="nav-link">Grafički Dizajn</a></li>
                 <li><a href="usluga-digitalni-proizvodi.html" class="nav-link">Digitalni Proizvodi</a></li>
-                <li><a href="galerija.html" class="nav-link">Galerija</a></li>
-                
-                
-                
-                <li class="mobile-only-link"><a href="kontakt.html" class="nav-link">Kontakt</a></li>
+                <li class="mobile-only-link"><a href="kontakt.html" class="nav-link active">Kontakt</a></li>
             </ul>
             <div class="nav-right">
-                <a href="kontakt.html" class="btn btn-primary nav-cta">Kontakt</a>
-                <div class="mobile-menu-btn">
-                    <i data-feather="menu"></i>
-                </div>
+                <a href="kontakt.html" class="btn btn-pill" style="background: var(--white); color: var(--black);">Kontakt →</a>
+                <div class="mobile-menu-btn" aria-label="Menu">☰</div>
             </div>
         </div>
     </nav>
 
-    <!-- CONTENT -->
-    <main class="page-content" style="display:flex; align-items:center; min-height:90vh; padding-top:100px;">
-        <section class="contact-section" style="width:100%;">
-            <div class="contact-container secondary-bg fade-in-up">
+    <main>
+        <div class="subpage-hero reveal">
+            <h1>Započnimo <span class="highlight">Razgovor</span></h1>
+            <p>Spremni za podizanje vašeg brenda na višu razinu? Ispunite formu i javit ćemo se unutar 24 sata.</p>
+        </div>
+
+        <section class="contact-section">
+            <div class="contact-grid reveal">
                 <div class="contact-info">
-                    <h2>Započnimo <span class="highlight">Razgovor</span></h2>
-                    <p>Spremni za podizanje vašeg brenda na višu razinu? Ispunite formu i javit ćemo se unutar 24 sata.</p>
                     <div class="contact-details">
                         <div class="detail-item">
-                            <i data-feather="mail"></i>
+                            <span style="color: var(--accent);">✉</span>
                             <span>hello@tim-dizajn.hr</span>
                         </div>
                         <div class="detail-item">
-                            <i data-feather="map-pin"></i>
+                            <span style="color: var(--accent);">◉</span>
                             <span>Zagreb, Hrvatska</span>
                         </div>
                         <div class="detail-item">
-                            <i data-feather="phone"></i>
+                            <span style="color: var(--accent);">☏</span>
                             <span>+385 1 234 5678</span>
                         </div>
                     </div>
@@ -88,21 +74,17 @@
                             <label for="message">Ideja za Projekt</label>
                             <textarea id="message" rows="4" placeholder="Recite nam nešto o vašim vizijama..." required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-full magnetic">Pošalji Upit</button>
+                        <button type="submit" class="btn btn-pill-filled" style="width: 100%;">Pošalji Upit →</button>
                     </form>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer>
-        <div class="footer-content">
-
-            <p>&copy; 2026 TIM Agencija za digitalni dizajn. Sva prava pridržana.</p>
-        </div>
+    <footer style="margin-top: 120px;">
+        <p>&copy; 2026 TIM Agencija za digitalni dizajn. Sva prava pridržana.</p>
     </footer>
 
     <script src="script.js"></script>
-    <script>feather.replace();</script>
 </body>
 </html>

@@ -1,62 +1,97 @@
 /**
- * script.js - TIM Agency
- * Micro-interactions & Core Logic
+ * script.js - TIM Agency — Award-Winning Redesign
+ * Word Rotator, Scroll Reveals, Mobile Menu, Service Accordion
  */
 
 document.addEventListener("DOMContentLoaded", () => {
-    
+
     /* =========================================================
-       0. MOBILE MENU TOGGLE
+       0. MOBILE MENU
        ========================================================= */
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const navLinks = document.querySelector('.nav-links');
-    const navbar = document.querySelector('.navbar');
 
     if (mobileMenuBtn && navLinks) {
         mobileMenuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            if(navbar) navbar.classList.toggle('menu-open');
+            const isOpen = navLinks.classList.toggle('active');
+            mobileMenuBtn.textContent = isOpen ? '✕' : '☰';
         });
     }
 
     /* =========================================================
-       1. INTERSECTION OBSERVER (Fade-In & Slide-Up on Scroll)
+       1. NAVBAR SCROLL STATE
        ========================================================= */
-    const observerOptions = {
-        root: null,
-        rootMargin: "0px",
-        threshold: 0.15 // Triggers when 15% of the element is visible
-    };
+    const navbar = document.querySelector('.navbar');
 
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add("appear");
-                observer.unobserve(entry.target); // Run animation only once
+    if (navbar && !navbar.classList.contains('scrolled-always')) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
             }
         });
-    }, observerOptions);
+    }
 
-    const faders = document.querySelectorAll('.fade-in, .fade-in-up');
-    faders.forEach(fader => {
-        observer.observe(fader);
+    /* =========================================================
+       2. SCROLL REVEAL (IntersectionObserver)
+       ========================================================= */
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.15
+    });
+
+    document.querySelectorAll('.reveal, .stagger-children').forEach(el => {
+        revealObserver.observe(el);
     });
 
     /* =========================================================
-       1b. MOBILE SCROLL-TRIGGERED CARD EFFECTS
-       On touch devices, simulate hover effects when cards
-       scroll into view since there's no mouse hover.
+       3. WORD ROTATOR (Hero)
+       ========================================================= */
+    const rotator = document.getElementById('wordRotator');
+    if (rotator) {
+        const words = ['branding', 'web', 'identitet', 'strategiju', 'uspjeh'];
+        let currentIndex = 0;
+
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % words.length;
+            const wordEl = rotator.querySelector('.word');
+            
+            // Animate out
+            wordEl.style.transform = 'translateY(-100%)';
+            wordEl.style.opacity = '0';
+            
+            setTimeout(() => {
+                wordEl.textContent = words[currentIndex];
+                wordEl.style.transform = 'translateY(100%)';
+                
+                // Force reflow
+                wordEl.offsetHeight;
+                
+                // Animate in
+                requestAnimationFrame(() => {
+                    wordEl.style.transform = 'translateY(0)';
+                    wordEl.style.opacity = '1';
+                });
+            }, 400);
+        }, 2500);
+    }
+
+    /* =========================================================
+       4. TOUCH SCROLL EFFECTS (Mobile)
        ========================================================= */
     const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
 
     if (isTouchDevice) {
-        const cardObserverOptions = {
-            root: null,
-            rootMargin: "0px",
-            threshold: 0.5
-        };
-
-        const cardObserver = new IntersectionObserver((entries) => {
+        const touchObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('touch-active');
@@ -64,72 +99,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     entry.target.classList.remove('touch-active');
                 }
             });
-        }, cardObserverOptions);
+        }, { threshold: 0.5 });
 
-        const interactiveCards = document.querySelectorAll(
-            '.service-card, .feature-card, .portfolio-item, .step-mini'
-        );
-        interactiveCards.forEach(card => cardObserver.observe(card));
+        document.querySelectorAll('.service-strip, .portfolio-item').forEach(el => {
+            touchObserver.observe(el);
+        });
     }
 
-    /* =========================================================
-       2. NAVBAR GLASSMORPHISM ON SCROLL
-       ========================================================= */
-    // navbar is already defined at top of file
-    
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    });
-
-    /* =========================================================
-       3. MAGNETIC BUTTONS (Micro-interaction)
-       ========================================================= */
-    const magneticElements = document.querySelectorAll('.magnetic');
-    
-    magneticElements.forEach((el) => {
-        el.addEventListener('mousemove', (e) => {
-            const position = el.getBoundingClientRect();
-            // Calculate mouse position relative to center of element
-            const x = e.clientX - position.left - position.width / 2;
-            const y = e.clientY - position.top - position.height / 2;
-            
-            // Moderate the magnetic pull (divisor controls strength)
-            el.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
-        });
-
-        el.addEventListener('mouseout', () => {
-            // Reset to default smoothly via CSS transition
-            el.style.transform = 'translate(0px, 0px)';
-        });
-    });
-
-    /* =========================================================
-       4. 3D TILT EFFECT ON PORTFOLIO CARDS
-       ========================================================= */
-    const tiltCards = document.querySelectorAll('.tilt-card');
-    
-    tiltCards.forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            
-            // Calculate tilt angle (-5 to 5 degrees max)
-            const rotateX = ((y - centerY) / centerY) * -5;
-            const rotateY = ((x - centerX) / centerX) * 5;
-            
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
-        });
-        
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)`;
-        });
-    });
 });

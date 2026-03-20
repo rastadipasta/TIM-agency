@@ -1,0 +1,149 @@
+# Redizajn TIM Agencije — Nagrađivani Moderni Stil
+
+Kompletni redizajn web stranice inspiriran [Studio Size](https://studio-size.com/) i [Size Assets](https://size-assets.com/) estetikom. Cilj: čist, editorijalski, ultra-premijum dizajn bez glass efekata.
+
+## Dizajn Filozofija
+
+| Sadašnji stil | Novi stil |
+|---|---|
+| Glassmorphism (blur/transparency) | **Čvrste boje** (solid black/white) |
+| Zlatni glow/shadow efekti | **Zlatna samo za mikro-detalje** (strelice, hover) |
+| Kartice s borderima i sjenama | **Bez kartica** — sadržaj lebdi na pozadini |
+| Particle canvas animacija | **Bold tipografija s rotirajućim riječima** |
+| Zaobljeni gumbi s gradijentima | **Minimalni pill gumbi** ili tekst-linkovi sa strelicom |
+| Feather icons u boxevima | **Veliki brojevi** (01, 02, 03) kao vizualni elementi |
+
+---
+
+## Mockup Pregled
+
+### 1. Hero Sekcija — Masivna Tipografija
+![Hero sekcija s masivnim naslovom na crnoj pozadini](C:/Users/Marko/.gemini/antigravity/brain/0d364532-3575-4a83-b1af-7b4a1e30e0e6/redesign_hero_mockup_1774037740866.png)
+
+> Ogroman naslov koji dominira ekranom. Riječi se rotiraju (branding → web → identitet). Logo TIM® u gornjem lijevom kutu. Minimalna navigacija. Bez particle animacije.
+
+---
+
+### 2. Usluge — Editorijalske Trake
+![Usluge prikazane kao horizontalne trake s brojevima](C:/Users/Marko/.gemini/antigravity/brain/0d364532-3575-4a83-b1af-7b4a1e30e0e6/redesign_services_mockup_1774037783843.png)
+
+> Umjesto kartica/boxeva — **horizontalne trake** razdvojene tankim linijama. Svaka usluga ima veliki broj (01, 02, 03), naziv, i strelicu za navigaciju. Na hover se red proširi i pokaže kratki opis.
+
+---
+
+### 3. Portfolio — Edge-to-Edge Fotografije
+![Portfolio grid s velikim fotografijama](C:/Users/Marko/.gemini/antigravity/brain/0d364532-3575-4a83-b1af-7b4a1e30e0e6/redesign_portfolio_mockup_1774037755415.png)
+
+> Velike, kvalitetne fotografije bez okvira. Asimetrični grid (veći + manji). Tekst se pojavljuje na hover ili ispod slike u minimalnom fontu.
+
+---
+
+### 4. Filozofija / Manifesto
+![Manifesto sekcija s citatom i klijent logotipima](C:/Users/Marko/.gemini/antigravity/brain/0d364532-3575-4a83-b1af-7b4a1e30e0e6/redesign_philosophy_mockup_1774037768979.png)
+
+> Lijevo: veliki citat u bold fontu. Desno: organski raspored klijent logotipa (kružni oblici). Ispod citata: "Kontakt" link sa strelicom.
+
+---
+
+### 5. Podstranica Primjer
+![Podstranica za web dizajn uslugu](C:/Users/Marko/.gemini/antigravity/brain/0d364532-3575-4a83-b1af-7b4a1e30e0e6/redesign_subpage_mockup_1774037815379.png)
+
+> Velika cinematic slika na vrhu. Ispod: naziv usluge u masivnom fontu. Pa 2-kolonski layout: lijevo koraci procesa, desno opis. CTA na dnu kao tanka traka.
+
+---
+
+## Referentni Screenshots (Studio Size)
+
+````carousel
+![Studio Size Hero — masivna tipografija s rotirajućim riječima](C:/Users/Marko/.gemini/antigravity/brain/0d364532-3575-4a83-b1af-7b4a1e30e0e6/studio_size_hero_1774037593736.png)
+<!-- slide -->
+![Studio Size Portfolio — edge-to-edge fotografije](C:/Users/Marko/.gemini/antigravity/brain/0d364532-3575-4a83-b1af-7b4a1e30e0e6/studio_size_portfolio_1774037606297.png)
+<!-- slide -->
+![Studio Size Filozofija — citat s klijent logotipima](C:/Users/Marko/.gemini/antigravity/brain/0d364532-3575-4a83-b1af-7b4a1e30e0e6/studio_size_quote_1774037624126.png)
+````
+
+---
+
+## Predložene Promjene po Datoteci
+
+### Navigacija (sve stranice)
+#### [MODIFY] [index.html](file:///c:/Users/Marko/.antigravity/WEB/index.html)
+- Zamjena home ikone s tekstualnim "TIM®" logom
+- Nav linkovi: samo "Portfolio", "Usluge", "O nama"
+- CTA gumb: bijeli outlined pill "Kontakt →"
+- Ukloniti hamburger animacije, koristiti clean "✕" za mobile
+
+---
+
+### Hero Sekcija (index.html)
+#### [MODIFY] [index.html](file:///c:/Users/Marko/.antigravity/WEB/index.html)
+- **Ukloniti**: particle canvas, floating logo animation, badge, side decorations
+- **Dodati**: masivni naslov (6-8rem) s JS rotirajućim riječima
+- **Dodati**: suptilan "Zagreb, Hrvatska" tekst ispod naslova
+- **Dodati**: scroll-down indikator (tanka linija koja se animira)
+
+---
+
+### Usluge Sekcija (index.html)
+#### [MODIFY] [index.html](file:///c:/Users/Marko/.antigravity/WEB/index.html)
+- Zamjena 3 service kartica s **horizontalnim accordion trakama**
+- Svaka traka: `01 — Web Dizajn →`
+- Na hover/klik: traka se proširi, pokaže kratki opis
+- Animacija: glatko expand/collapse
+
+---
+
+### Portfolio Sekcija (index.html + galerija.html)
+#### [MODIFY] [galerija.html](file:///c:/Users/Marko/.antigravity/WEB/galerija.html)
+- Edge-to-edge slike bez border-radius
+- Asimetrični grid (70/30 ili 60/40 split)
+- Info overlay na hover (ime + kategorija)
+- Cursor promjena na hover (custom kružni cursor)
+
+---
+
+### Podstranice (Web/Grafički/Digitalni)
+#### [MODIFY] [usluga-web-dizajn.html](file:///c:/Users/Marko/.antigravity/WEB/usluga-web-dizajn.html)
+#### [MODIFY] [usluga-graficki-dizajn.html](file:///c:/Users/Marko/.antigravity/WEB/usluga-graficki-dizajn.html)
+#### [MODIFY] [usluga-digitalni-proizvodi.html](file:///c:/Users/Marko/.antigravity/WEB/usluga-digitalni-proizvodi.html)
+- Velika cinematic slika na vrhu (full-width)
+- Masivni naslov usluge
+- 2-kolonski layout: koraci (01, 02, 03) | opis
+- Ukloniti feature kartice, zamijeniti s čistim tekstualnim listama
+- CTA kao tanka full-width traka
+
+---
+
+### CSS Kompletni Rewrite
+#### [MODIFY] [style.css](file:///c:/Users/Marko/.antigravity/WEB/style.css)
+- **Tipografija**: Prebaciti na "Inter Tight" ili "Space Grotesk" (Google Fonts)
+- **Ukloniti**: sve `backdrop-filter`, `box-shadow`, `border-radius > 4px`, `glassmorphism`
+- **Dodati**: masivne font-size varijable (display: 8rem, h1: 5rem)
+- **Boje**: samo `#000`, `#fff`, `#666` (muted), `#f3b242` (akcent, minimalno)
+- **Layout**: max-width 1400px, mnogo whitespace/padding
+- **Hover efekti**: suptilni (opacity change, underline reveal, scale 1.02)
+
+---
+
+### JavaScript
+#### [MODIFY] [script.js](file:///c:/Users/Marko/.antigravity/WEB/script.js)
+- **Dodati**: Word rotator za hero naslov
+- **Dodati**: Smooth scroll reveal animacije (clip-path reveal)
+- **Dodati**: Service accordion expand/collapse
+- **Ukloniti**: tilt-card efekte, magnetic button efekte
+#### [DELETE] [canvas-particles.js](file:///c:/Users/Marko/.antigravity/WEB/canvas-particles.js)
+- Particle animacija se potpuno uklanja
+
+---
+
+## Verification Plan
+
+### Automated
+- Provjera sve HTML/CSS validnosti
+- Lighthouse performance test
+- Mobile responsive test (portrait + landscape)
+
+### Manual
+- Vizualna usporedba sa Studio Size referentnim screenshots
+- Cross-browser test (Chrome, Firefox, Safari)
+- Provjera svih interaktivnih elemenata (accordion, word rotator, hover)

@@ -4,109 +4,86 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Galerija Radova i Projekata | TIM Agencija</title>
-    <meta name="description" content="Pregledajte nase najnovije dizajn projekte i studije slucaja. Spoj estetike i funkcionalnosti u svakom pixelu - web dizajn, UI/UX i graficki dizajn.">
+    <meta name="description" content="Pregledajte naše najnovije dizajn projekte i studije slučaja. Spoj estetike i funkcionalnosti u svakom pixelu.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://tim-agencija.hr/galerija.html">
-
-    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://tim-agencija.hr/galerija.html">
     <meta property="og:title" content="Galerija Radova i Projekata | TIM Agencija">
-    <meta property="og:description" content="Pregledajte nase najnovije dizajn projekte i studije slucaja. Spoj estetike i funkcionalnosti u svakom pixelu - web dizajn, UI/UX i graficki dizajn.">
+    <meta property="og:description" content="Pregledajte naše najnovije dizajn projekte i studije slučaja.">
     <meta property="og:image" content="https://tim-agencija.hr/resources/Logo/LOGO.png">
-    <meta property="og:locale" content="hr_HR">
-
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Galerija Radova i Projekata | TIM Agencija">
-    <meta name="twitter:description" content="Pregledajte nase najnovije dizajn projekte i studije slucaja. Spoj estetike i funkcionalnosti u svakom pixelu - web dizajn, UI/UX i graficki dizajn.">
-    <meta name="twitter:image" content="https://tim-agencija.hr/resources/Logo/LOGO.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <script src="https://unpkg.com/feather-icons"></script>
     <link rel="icon" type="image/png" href="resources/Logo/LOGO.png">
 </head>
-<body class="page-body">
-    <!-- Navbar -->
+<body>
     <nav class="navbar scrolled-always">
         <div class="nav-container">
-            <a href="index.html" class="logo nav-home-icon" aria-label="Home"><i data-feather="home"></i></a>
+            <a href="index.html" class="nav-logo">TIM<sup>®</sup></a>
             <ul class="nav-links">
+                <li><a href="galerija.html" class="nav-link active">Portfolio</a></li>
                 <li><a href="usluga-web-dizajn.html" class="nav-link">Web Dizajn</a></li>
                 <li><a href="usluga-graficki-dizajn.html" class="nav-link">Grafički Dizajn</a></li>
                 <li><a href="usluga-digitalni-proizvodi.html" class="nav-link">Digitalni Proizvodi</a></li>
-                <li><a href="galerija.html" class="nav-link highlight">Galerija</a></li>
-                
-                
-                
                 <li class="mobile-only-link"><a href="kontakt.html" class="nav-link">Kontakt</a></li>
             </ul>
             <div class="nav-right">
-                <a href="kontakt.html" class="btn btn-primary nav-cta">Kontakt</a>
-                <div class="mobile-menu-btn">
-                    <i data-feather="menu"></i>
-                </div>
+                <a href="kontakt.html" class="btn btn-pill">Kontakt →</a>
+                <div class="mobile-menu-btn" aria-label="Menu">☰</div>
             </div>
         </div>
     </nav>
 
-    <!-- CONTENT -->
-    <main class="page-content">
-        <section class="portfolio-section" style="padding-top: 100px;">
-            <div class="section-header fade-in-up">
-                <h2>Naši Radovi</h2>
-                <p>Spoj estetike i funkcionalnosti u svakom pixelu. Pogledajte neke od naših ponajboljih vizualnih rješenja.</p>
-            </div>
-            
-            <div class="portfolio-grid fade-in-up delay-1">
-                <div class="portfolio-item tilt-card">
+    <main>
+        <div class="subpage-hero reveal">
+            <h1>Naši Radovi</h1>
+            <p>Spoj estetike i funkcionalnosti u svakom pixelu. Pogledajte neke od naših ponajboljih vizualnih rješenja.</p>
+        </div>
+
+        <section class="section" style="padding-top: 40px;">
+            <div class="portfolio-grid gallery-grid stagger-children">
+                <div class="portfolio-item">
                     <div class="portfolio-image placeholder-img-1"></div>
                     <div class="portfolio-info">
                         <h3>Fintech Aplikacija</h3>
                         <span>UI/UX Dizajn & Web Aplikacija</span>
                     </div>
                 </div>
-                <div class="portfolio-item tilt-card">
+                <div class="portfolio-item">
                     <div class="portfolio-image placeholder-img-2"></div>
                     <div class="portfolio-info">
                         <h3>E-Commerce Platforma</h3>
                         <span>Redizajn Stranica</span>
                     </div>
                 </div>
-                <div class="portfolio-item tilt-card">
+                <div class="portfolio-item">
                     <div class="portfolio-image placeholder-img-3"></div>
                     <div class="portfolio-info">
                         <h3>SaaS Dashboard</h3>
                         <span>Dizajn Digitalnih Proizvoda</span>
                     </div>
                 </div>
-                <div class="portfolio-item tilt-card">
+                <div class="portfolio-item">
                     <div class="portfolio-image placeholder-img-4"></div>
                     <div class="portfolio-info">
                         <h3>Rebranding Vodeće Tvrtke</h3>
                         <span>Grafički Dizajn & Identitet</span>
                     </div>
                 </div>
+            </div>
 
-
+            <div style="text-align: center; margin-top: 80px;" class="reveal">
+                <a href="kontakt.html" class="btn btn-arrow">Vaš projekt bi mogao biti sljedeći</a>
             </div>
         </section>
-        
-        <div style="text-align: center; margin-bottom: 80px;" class="fade-in">
-            <a href="kontakt.html" class="btn btn-outline btn-large">Vaš projekt bi mogao biti sljedeći</a>
-        </div>
     </main>
 
     <footer>
-        <div class="footer-content">
-
-            <p>&copy; 2026 TIM Agencija za digitalni dizajn. Sva prava pridržana.</p>
-        </div>
+        <p>&copy; 2026 TIM Agencija za digitalni dizajn. Sva prava pridržana.</p>
     </footer>
 
     <script src="script.js"></script>
-    <script>feather.replace();</script>
 </body>
 </html>
