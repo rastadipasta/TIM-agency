@@ -261,7 +261,7 @@ img {
 .hero-title .word-rotator {
   display: inline-block;
   position: relative;
-  color: var(--accent);
+  color: #f3b242; /* Restored orange/gold color specifically for hero text */
   overflow: hidden;
   vertical-align: bottom;
 }
