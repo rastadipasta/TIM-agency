@@ -15,8 +15,8 @@
   --gray-500: #666666;
   --gray-700: #333333;
   --gray-900: #111111;
-  --accent: #f3b242;
-  --accent-dim: rgba(243, 178, 66, 0.15);
+  --accent: #ffffff;
+  --accent-dim: rgba(255, 255, 255, 0.1);
 
   --font-main: 'Inter Tight', 'Outfit', sans-serif;
   --font-display: 'Inter Tight', 'Outfit', sans-serif;
