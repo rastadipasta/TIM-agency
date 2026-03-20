@@ -106,4 +106,25 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    /* =========================================================
+       5. MAGNETIC BUTTON EFFECT (Interactive Content)
+       ========================================================= */
+    const magneticBtns = document.querySelectorAll('.btn');
+    magneticBtns.forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            // Calculate mouse position relative to center of button
+            const x = (e.clientX - rect.left) - rect.width / 2;
+            const y = (e.clientY - rect.top) - rect.height / 2;
+            
+            // Apply slight translation based on mouse movement
+            btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+        });
+        
+        btn.addEventListener('mouseleave', () => {
+            // Reset to natural position
+            btn.style.transform = `translate(0px, 0px)`;
+        });
+    });
+
 });

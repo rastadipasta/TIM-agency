@@ -164,19 +164,19 @@ img {
   top: 0;
   width: 100%;
   z-index: 1000;
-  padding: 24px 0;
+  padding: 32px 0; /* Povećan padding */
   transition: all var(--transition-normal);
   background: transparent;
 }
 
 .navbar.scrolled {
   background: rgba(0, 0, 0, 0.95);
-  padding: 16px 0;
+  padding: 20px 0; /* Povećan scrolled padding */
 }
 
 .navbar.scrolled-always {
   background: rgba(0, 0, 0, 0.95);
-  padding: 16px 0;
+  padding: 20px 0;
 }
 
 .nav-container {
@@ -190,7 +190,7 @@ img {
 }
 
 .nav-logo {
-  font-size: 1.3rem;
+  font-size: 1.6rem; /* Veći logo font */
   font-weight: 800;
   letter-spacing: -0.02em;
   color: var(--white);
@@ -209,11 +209,32 @@ img {
 }
 
 .nav-link {
-  font-weight: 400;
-  font-size: 0.9rem;
+  font-weight: 500;
+  font-size: 1.1rem; /* Veći font linkova */
   color: var(--gray-400);
   position: relative;
   transition: color var(--transition-fast);
+  padding-bottom: 4px;
+}
+
+/* Interaktivni efekt linije ispod teksta */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--white);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s var(--ease-smooth);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
 .nav-link:hover,
