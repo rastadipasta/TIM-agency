@@ -263,6 +263,8 @@ img {
   position: relative;
   color: #f3b242; /* Restored orange/gold color specifically for hero text */
   overflow: hidden;
+  padding-bottom: 0.2em; /* Prevents descender clipping */
+  margin-bottom: -0.2em; /* Visually aligns with the rest of the text */
   vertical-align: bottom;
 }
 
