@@ -200,8 +200,8 @@ document.addEventListener("DOMContentLoaded", () => {
         themeTriggers.forEach(trigger => {
             ScrollTrigger.create({
                 trigger: trigger,
-                start: 'top 80%',
-                end: 'bottom 20%',
+                start: 'top top',
+                end: 'bottom top',
                 onEnter: () => document.body.classList.add('theme-light'),
                 onLeave: () => document.body.classList.remove('theme-light'),
                 onEnterBack: () => document.body.classList.add('theme-light'),
