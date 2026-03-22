@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
     /* =========================================================
        5. MAGNETIC BUTTON EFFECT & i-DOT
        ========================================================= */
-    const magneticBtns = document.querySelectorAll('.btn');
+    const magneticBtns = document.querySelectorAll('.btn:not(.no-magnetic)');
     magneticBtns.forEach(btn => {
         btn.addEventListener('mousemove', (e) => {
             const rect = btn.getBoundingClientRect();
