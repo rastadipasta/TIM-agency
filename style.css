@@ -369,14 +369,10 @@ img {
 }
 
 .subpage-hero {
-  min-height: 90vh; /* Balancing between 100vh and 80vh */
+  min-height: 70vh; /* Reduced from 90vh to focus more on marquee and bring content closer */
   display: flex;
-  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  align-items: flex-start;
-  text-align: left;
-  padding: 0;
-  overflow: hidden;
   position: relative;
   background: var(--black);
 }
@@ -422,9 +418,6 @@ img {
 }
 
 .subpage-hero-subtitle {
-  position: absolute;
-  bottom: 60px;
-  left: max(var(--gap), calc((100vw - var(--container)) / 2 + var(--gap)));
   font-size: clamp(1.1rem, 1.6vw, 1.3rem);
   font-weight: 300;
   color: var(--gray-300);
