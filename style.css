@@ -409,6 +409,32 @@ img {
   margin-bottom: 40px;
 }
 
+/* Interactive 'i' dot */
+.i-wrapper {
+  position: relative;
+  display: inline-block;
+  line-height: inherit;
+}
+
+.i-dot {
+  position: absolute;
+  width: 0.16em;
+  height: 0.16em;
+  background: currentColor;
+  border-radius: 50%;
+  top: 0.18em;
+  left: 54%;
+  transform: translateX(-50%);
+  transition: transform 0.1s ease-out;
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* Ensure the dotless i doesn't have its own dot or weird spacing */
+.i-wrapper {
+  margin-right: -0.02em;
+}
+
 .hero-title .word-rotator {
   display: inline-block;
   position: relative;
