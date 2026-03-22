@@ -879,7 +879,7 @@ body.theme-light .process-step:hover p {
 }
 
 body.theme-light .subpage-hero-subtitle {
-  color: var(--black);
+  color: var(--black) !important;
 }
 
 body.theme-light .section-header h2 {
