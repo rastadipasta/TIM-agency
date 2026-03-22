@@ -875,8 +875,10 @@ body.theme-light .subpage-description ul li {
   border-bottom-color: var(--gray-200);
 }
 
-body.theme-light .process-step p {
-  color: var(--gray-800) !important;
+body.theme-light .process-step p,
+body.theme-light .process-step h4,
+body.theme-light .process-step .step-num {
+  color: var(--black) !important;
 }
 
 body.theme-light .process-step:hover p {
@@ -884,7 +886,7 @@ body.theme-light .process-step:hover p {
 }
 
 body.theme-light .subpage-hero-subtitle {
-  color: var(--gray-800);
+  color: var(--black);
 }
 
 body.theme-light .section-header h2 {
