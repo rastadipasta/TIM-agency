@@ -755,11 +755,11 @@ body.theme-light .cta-strip {
 
 body.theme-light .subpage-description p,
 body.theme-light .subpage-description ul li {
-  color: var(--gray-800);
+  color: var(--black);
 }
 
 body.theme-light .subpage-description ul li {
-  border-bottom-color: var(--gray-200);
+  border-bottom-color: var(--gray-300);
 }
 
 body.theme-light .cta-strip h3 {
@@ -767,11 +767,20 @@ body.theme-light .cta-strip h3 {
 }
 
 body.theme-light .subpage-hero-subtitle {
-  color: var(--gray-700);
+  color: var(--gray-800);
 }
 
 body.theme-light .section-header h2 {
     color: var(--black);
+}
+
+body.theme-light .btn-arrow {
+  color: var(--black);
+  border-color: var(--black);
+}
+
+body.theme-light .btn-arrow::after {
+  background: var(--black);
 }
 
 .subpage-description {
