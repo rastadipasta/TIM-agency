@@ -63,17 +63,16 @@ body.theme-light {
   background-color: var(--white);
   color: var(--black);
 }
-body.theme-light .navbar.scrolled {
-  background: rgba(255, 255, 255, 0.95);
-}
+body.theme-light .navbar.scrolled,
 body.theme-light .navbar.scrolled-always {
   background: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid var(--gray-100);
 }
 body.theme-light .nav-logo {
   color: var(--black);
 }
 body.theme-light .nav-link {
-  color: var(--gray-700);
+  color: var(--black);
 }
 body.theme-light .nav-link:hover,
 body.theme-light .nav-link.active {
@@ -81,6 +80,18 @@ body.theme-light .nav-link.active {
 }
 body.theme-light .nav-link::after {
   background-color: var(--black);
+}
+body.theme-light .navbar .btn-pill {
+  color: var(--black);
+  border-color: var(--black);
+  background: transparent;
+}
+body.theme-light .navbar .btn-pill:hover {
+  background: var(--black);
+  color: var(--white);
+}
+body.theme-light .mobile-menu-btn {
+  color: var(--black);
 }
 body.theme-light .btn-arrow {
   color: var(--black);
@@ -256,7 +267,7 @@ img {
 .navbar.scrolled-always .btn-pill {
   background: transparent;
   color: var(--white);
-  border-color: var(--gray-700);
+  border-color: var(--white); /* Brighter white border for dark theme */
 }
 
 .navbar.scrolled-always .btn-pill:hover {
