@@ -228,6 +228,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     const moveY = e.clientY - rect.top - centerY;
                     
                     gsap.to(bubble, {
+                        xPercent: -50,
+                        yPercent: -50,
                         x: moveX * 0.6,
                         y: moveY * 0.6,
                         duration: 1.5,
@@ -238,8 +240,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Return to center when mouse leaves
                 subHero.addEventListener('mouseleave', () => {
                     gsap.to(bubble, {
-                        x: '-50%',
-                        y: '-50%',
+                        xPercent: -50,
+                        yPercent: -50,
+                        x: 0,
+                        y: 0,
                         duration: 2,
                         ease: "power2.out"
                     });
@@ -248,6 +252,8 @@ document.addEventListener("DOMContentLoaded", () => {
             
             // Ambient breathing animation
             gsap.to(bubble, {
+                xPercent: -50,
+                yPercent: -50,
                 scale: 1.1,
                 opacity: 0.5,
                 duration: 4,
