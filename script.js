@@ -208,45 +208,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 onLeaveBack: () => document.body.classList.remove('theme-light')
             });
         });
-
-        // D. Marquee Cursor Image Interaction (Subpages)
-        const marqueeTrack = document.querySelector('.marquee-track');
-        const marqueeHero = document.querySelector('.subpage-hero');
-        
-        if (marqueeTrack && marqueeHero) {
-            const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
-            
-            if (!isTouch) {
-                const cursorImgUrl = marqueeTrack.getAttribute('data-cursor-img');
-                
-                if (cursorImgUrl) {
-                    const floatingImg = document.createElement('div');
-                    floatingImg.className = 'marquee-cursor-img';
-                    floatingImg.style.backgroundImage = `url('${cursorImgUrl}')`;
-                    
-                    // We need xPercent and yPercent to center the image on the cursor without jumping
-                    gsap.set(floatingImg, { xPercent: -50, yPercent: -50 });
-                    document.body.appendChild(floatingImg);
-                    
-                    marqueeHero.addEventListener('mouseenter', () => {
-                        gsap.to(floatingImg, { opacity: 1, scale: 1, duration: 0.4, ease: "power2.out" });
-                    });
-                    
-                    marqueeHero.addEventListener('mousemove', (e) => {
-                        gsap.to(floatingImg, { 
-                            x: e.clientX, 
-                            y: e.clientY, 
-                            duration: 0.8, 
-                            ease: "power3.out" 
-                        });
-                    });
-                    
-                    marqueeHero.addEventListener('mouseleave', () => {
-                        gsap.to(floatingImg, { opacity: 0, scale: 0.5, duration: 0.3 });
-                    });
-                }
-            }
-        }
     }
 
 });

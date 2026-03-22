@@ -336,13 +336,13 @@ img {
 }
 
 .subpage-hero {
-  min-height: 80vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 180px 0 80px 0; /* 0 horizontal padding to touch edges */
+  align-items: flex-start;
+  text-align: left;
+  padding: 0;
   overflow: hidden;
   position: relative;
 }
@@ -352,14 +352,12 @@ img {
   overflow: hidden;
   position: relative;
   display: flex;
-  margin-bottom: 40px;
 }
 
 .marquee-track {
   display: flex;
   white-space: nowrap;
   animation: scrollMarquee 20s linear infinite;
-  cursor: crosshair;
 }
 
 .marquee-text {
@@ -389,26 +387,16 @@ img {
 }
 
 .subpage-hero-subtitle {
-  font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+  position: absolute;
+  bottom: 80px;
+  left: max(var(--gap), calc((100vw - var(--container)) / 2 + var(--gap)));
+  font-size: clamp(1.2rem, 1.8vw, 1.6rem);
+  font-weight: 400;
   color: var(--gray-400);
-  max-width: 600px;
-  line-height: 1.6;
-  margin: 0 auto;
-  padding: 0 var(--gap);
-}
-
-.marquee-cursor-img {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 320px;
-  height: 450px;
-  background-size: cover;
-  background-position: center;
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0;
-  transform: scale(0.5);
+  max-width: 750px;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
 }
 
 .hero-title {
