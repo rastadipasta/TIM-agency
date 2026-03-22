@@ -357,7 +357,7 @@ img {
 .marquee-track {
   display: flex;
   white-space: nowrap;
-  animation: scrollMarquee 20s linear infinite;
+  animation: scrollMarquee 22s linear infinite;
 }
 
 .marquee-text {
@@ -382,8 +382,8 @@ img {
 }
 
 @keyframes scrollMarquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); } 
+  0% { transform: translateX(-15%); }
+  100% { transform: translateX(-65%); } 
 }
 
 .subpage-hero-subtitle {
