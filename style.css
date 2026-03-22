@@ -746,6 +746,34 @@ body.theme-light .process-step:hover .step-num {
   color: var(--black);
 }
 
+/* Broad Light Theme Overrides */
+body.theme-light .subpage-2col,
+body.theme-light .subpage-description,
+body.theme-light .cta-strip {
+  color: var(--black);
+}
+
+body.theme-light .subpage-description p,
+body.theme-light .subpage-description ul li {
+  color: var(--gray-800);
+}
+
+body.theme-light .subpage-description ul li {
+  border-bottom-color: var(--gray-200);
+}
+
+body.theme-light .cta-strip h3 {
+  color: var(--black);
+}
+
+body.theme-light .subpage-hero-subtitle {
+  color: var(--gray-700);
+}
+
+body.theme-light .section-header h2 {
+    color: var(--black);
+}
+
 .subpage-description {
   padding-top: 28px;
 }
