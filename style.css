@@ -1001,6 +1001,19 @@ body.theme-light .btn-arrow::after {
   color: var(--black) !important;
 }
 
+/* Contact GIF Icon Styles */
+.contact-icon {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  margin-bottom: 8px;
+  transition: filter 0.3s ease;
+}
+
+.theme-light .contact-icon {
+  filter: invert(1);
+}
+
 .theme-light .form-group label {
   color: var(--gray-600);
 }
