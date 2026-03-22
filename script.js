@@ -208,6 +208,25 @@ document.addEventListener("DOMContentLoaded", () => {
                 onLeaveBack: () => document.body.classList.remove('theme-light')
             });
         });
+
+        // E. Horizontal Scroll (Portfolio Page)
+        const gallery = document.querySelector('.horizontal-gallery');
+        const track = document.querySelector('.gallery-track');
+        
+        if (gallery && track) {
+            gsap.to(track, {
+                x: () => -(track.scrollWidth - window.innerWidth),
+                ease: "none",
+                scrollTrigger: {
+                    trigger: gallery,
+                    start: "top top",
+                    end: () => `+=${track.scrollWidth}`,
+                    pin: true,
+                    scrub: 1,
+                    invalidateOnRefresh: true,
+                }
+            });
+        }
     }
 
 });
