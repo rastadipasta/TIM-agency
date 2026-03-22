@@ -795,8 +795,12 @@ body.theme-light .btn-arrow {
   border-color: var(--black);
 }
 
+body.theme-light .btn-arrow:hover {
+  color: var(--gray-500); /* Slightly fade on hover instead of turning white */
+}
+
 body.theme-light .btn-arrow::after {
-  background: var(--black);
+  background: transparent;
 }
 
 .subpage-description {
