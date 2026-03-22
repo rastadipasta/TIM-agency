@@ -145,7 +145,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 const power = (1 - distance / radius); // 0 to 1
                 
                 const moveX = (dx / distance) * strength * power;
-                const moveY = (dy / distance) * strength * power;
+                let moveY = (dy / distance) * strength * power;
+                
+                // Restrict movement: only left, right, up (no down)
+                moveY = Math.min(0, moveY); 
                 
                 iDot.style.transform = `translate(calc(-50% + ${moveX}px), ${moveY}px)`;
             } else {
