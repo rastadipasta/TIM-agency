@@ -423,8 +423,8 @@ img {
   height: 0.16em;
   background: currentColor;
   border-radius: 50%;
-  top: 0.18em;
-  left: 54%;
+  top: 0.12em; /* Slightly higher for more natural gap */
+  left: 50%;   /* Perfect center */
   animation: i-dot-bounce 3s ease-in-out infinite;
   pointer-events: none;
   z-index: 100;
