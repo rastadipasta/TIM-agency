@@ -388,13 +388,14 @@ img {
 
 .subpage-hero-subtitle {
   position: absolute;
-  bottom: 80px;
+  bottom: 60px;
   left: max(var(--gap), calc((100vw - var(--container)) / 2 + var(--gap)));
-  font-size: clamp(1.2rem, 1.8vw, 1.6rem);
-  font-weight: 400;
-  color: var(--gray-400);
-  max-width: 750px;
+  font-size: clamp(1.2rem, 1.8vw, 1.5rem);
+  font-weight: 300;
+  color: var(--gray-300);
+  max-width: 650px;
   line-height: 1.5;
+  letter-spacing: -0.01em;
   margin: 0;
   padding: 0;
 }
