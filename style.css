@@ -1001,17 +1001,17 @@ body.theme-light .btn-arrow::after {
   color: var(--black) !important;
 }
 
-/* Contact Geometric SVG Icon Styles */
+/* Contact PNG Icon Styles */
 .contact-icon {
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
   flex-shrink: 0;
-  color: var(--white);
-  transition: color 0.3s ease;
+  transition: filter 0.3s ease;
 }
 
 .theme-light .contact-icon {
-  color: var(--black);
+  filter: invert(1);
 }
 
 .theme-light .form-group label {
