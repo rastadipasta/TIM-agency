@@ -352,6 +352,7 @@ img {
   overflow: hidden;
   position: relative;
   display: flex;
+  padding: 40px 0; /* Dodano prostora da kvačice ne budu odrezane */
 }
 
 .marquee-track {
@@ -363,7 +364,7 @@ img {
 .marquee-text {
   font-size: clamp(5rem, 16vw, 15rem);
   font-weight: 800;
-  line-height: 0.9;
+  line-height: 1.1; /* Povećano s 0.9 radi kvačica (Č, Š...) */
   letter-spacing: -0.04em;
   text-transform: uppercase;
   display: flex;
