@@ -227,7 +227,7 @@ img {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 1000;
+  z-index: 9999;
   padding: 32px 0; /* Povećan padding */
   transition: all var(--transition-normal);
   background: transparent;
