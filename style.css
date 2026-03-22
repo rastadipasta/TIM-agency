@@ -1005,7 +1005,7 @@ body.theme-light .btn-arrow::after {
 .contact-icon {
   width: 32px;
   height: 32px;
-  margin-bottom: 12px;
+  flex-shrink: 0;
   color: var(--white);
   transition: color 0.3s ease;
 }
