@@ -918,7 +918,7 @@ footer {
     padding: 140px var(--gap) 80px;
   }
 
-  .hero-title { font-size: clamp(2.2rem, 10vw, 3.5rem); }
+  .hero-title { font-size: clamp(2.8rem, 13vw, 4.5rem); }
   .hero-scroll-indicator { display: none; }
 
   .service-strip {
@@ -961,7 +961,7 @@ footer {
     padding: 140px var(--gap) 60px;
   }
 
-  .subpage-hero h1 { font-size: 2.2rem; }
+  .subpage-hero h1 { font-size: 2.8rem; }
 }
 
 /* =======================================
@@ -973,7 +973,7 @@ footer {
     padding: 100px var(--gap) 40px;
   }
 
-  .hero-title { font-size: 2rem; }
+  .hero-title { font-size: 2.5rem; }
   .hero-scroll-indicator { display: none; }
 
   .portfolio-grid { grid-template-columns: 1fr 1fr; }
