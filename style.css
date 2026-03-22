@@ -109,6 +109,15 @@ body.theme-light .strip-title {
 body.theme-light footer {
   color: var(--gray-700);
 }
+body.theme-light .btn-pill {
+  border-color: var(--gray-700);
+  color: var(--black);
+}
+body.theme-light .btn-pill:hover {
+  background: var(--black);
+  color: var(--white);
+  border-color: var(--black);
+}
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
@@ -825,7 +834,7 @@ footer {
    ======================================= */
 .gsap-mask {
   overflow: hidden;
-  display: block; /* Ili inline-block ovisno o primjeni */
+  display: inline-block;
 }
 .gsap-mask span {
   display: inline-block;
@@ -833,11 +842,13 @@ footer {
 }
 .gsap-img-wrapper {
   overflow: hidden;
+  height: 500px;
 }
 .gsap-img-parallax {
-  height: 125%;
+  height: 120%;
   width: 100%;
-  object-fit: cover;
+  background-size: cover;
+  background-position: center;
 }
 
 /* Staggered children */
