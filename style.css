@@ -69,29 +69,29 @@ body.theme-light .navbar.scrolled-always {
   border-bottom: 1px solid var(--gray-100);
 }
 body.theme-light .nav-logo {
-  color: var(--black);
+  color: var(--black) !important;
 }
 body.theme-light .nav-link {
-  color: var(--black);
+  color: var(--black) !important;
 }
 body.theme-light .nav-link:hover,
 body.theme-light .nav-link.active {
-  color: var(--black);
+  color: var(--black) !important;
 }
 body.theme-light .nav-link::after {
-  background-color: var(--black);
+  background-color: var(--black) !important;
 }
 body.theme-light .navbar .btn-pill {
-  color: var(--black);
-  border-color: var(--black);
+  color: var(--black) !important;
+  border-color: var(--black) !important;
   background: transparent;
 }
 body.theme-light .navbar .btn-pill:hover {
-  background: var(--black);
-  color: var(--white);
+  background: var(--black) !important;
+  color: var(--white) !important;
 }
 body.theme-light .mobile-menu-btn {
-  color: var(--black);
+  color: var(--black) !important;
 }
 body.theme-light .btn-arrow {
   color: var(--black);
