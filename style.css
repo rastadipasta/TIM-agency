@@ -563,25 +563,20 @@ img {
 /* PORTFOLIO — TEASER (Homepage) */
 .portfolio-grid {
   display: flex;
-  align-items: flex-start;
+  align-items: center; /* Centrirano vodoravno */
   gap: 8vw;
   padding: 40px 0;
 }
 
 .portfolio-grid .portfolio-item {
   flex: 1;
-  height: 600px;
+  height: 550px; /* Jednaka visina za obje slike */
   border-radius: 60px;
   position: relative;
   overflow: hidden;
   cursor: pointer;
   background: var(--gray-900);
   transition: transform 0.8s var(--ease-smooth);
-}
-
-.portfolio-grid .portfolio-item:nth-child(even) {
-  height: 480px;
-  margin-top: 120px;
 }
 
 /* PORTFOLIO — HORIZONTAL SCROLL (Gallery Page) */
@@ -1059,7 +1054,6 @@ footer {
   .subpage-2col { grid-template-columns: 1fr; gap: 40px; }
   .portfolio-grid { gap: 40px; }
   .portfolio-grid .portfolio-item { height: 450px; border-radius: 40px; }
-  .portfolio-grid .portfolio-item:nth-child(even) { margin-top: 40px; height: 380px; }
   .portfolio-image { height: 100%; }
 }
 
