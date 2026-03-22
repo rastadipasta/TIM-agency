@@ -207,7 +207,7 @@ img {
 }
 
 .btn-arrow::after {
-  content: '→';
+  content: '\2192';
   display: inline-block;
   transition: transform var(--transition-normal);
 }
@@ -401,11 +401,11 @@ img {
 }
 
 .hero-title {
-  font-size: clamp(3.5rem, 12vw, 11rem);
+  font-size: clamp(4.5rem, 15vw, 13rem);
   font-weight: 800;
-  line-height: 1.0;
-  letter-spacing: -0.04em;
-  margin-bottom: 32px;
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+  margin-bottom: 40px;
 }
 
 .hero-title .word-rotator {
@@ -486,7 +486,7 @@ img {
 }
 
 .section-header {
-  margin-bottom: 80px;
+  margin-bottom: 110px; /* Povećano da se H2 spusti niže */
 }
 
 .section-header h2 {
