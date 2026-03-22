@@ -208,60 +208,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 onLeaveBack: () => document.body.classList.remove('theme-light')
             });
         });
-
-        // D. Glass Bubble Interaction (Subpages)
-        const bubble = document.querySelector('.glass-bubble');
-        const subHero = document.querySelector('.subpage-hero');
-
-        if (bubble && subHero) {
-            const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
-            
-            if (!isTouch) {
-                // Fluid mouse tracking for desktop
-                subHero.addEventListener('mousemove', (e) => {
-                    const rect = subHero.getBoundingClientRect();
-                    const centerX = rect.width / 2;
-                    const centerY = rect.height / 2;
-                    
-                    // Distance from center
-                    const moveX = e.clientX - rect.left - centerX;
-                    const moveY = e.clientY - rect.top - centerY;
-                    
-                    gsap.to(bubble, {
-                        xPercent: -50,
-                        yPercent: -50,
-                        x: moveX * 0.6,
-                        y: moveY * 0.6,
-                        duration: 1.5,
-                        ease: "power2.out"
-                    });
-                });
-                
-                // Return to center when mouse leaves
-                subHero.addEventListener('mouseleave', () => {
-                    gsap.to(bubble, {
-                        xPercent: -50,
-                        yPercent: -50,
-                        x: 0,
-                        y: 0,
-                        duration: 2,
-                        ease: "power2.out"
-                    });
-                });
-            }
-            
-            // Ambient breathing animation
-            gsap.to(bubble, {
-                xPercent: -50,
-                yPercent: -50,
-                scale: 1.1,
-                opacity: 0.5,
-                duration: 4,
-                yoyo: true,
-                repeat: -1,
-                ease: "sine.inOut"
-            });
-        }
     }
 
 });

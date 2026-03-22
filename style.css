@@ -336,50 +336,43 @@ img {
 }
 
 .subpage-hero {
-  min-height: 80vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  min-height: 90vh;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 80px;
+  align-items: center;
   padding: 160px var(--gap) 80px;
   max-width: var(--container);
   margin: 0 auto;
-  position: relative;
-  overflow: hidden;
 }
 
-.glass-bubble {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle at 35% 35%, rgba(135, 175, 255, 0.9) 0%, rgba(45, 65, 130, 0.95) 50%, rgba(15, 20, 40, 1) 100%);
-  border-radius: 50%;
-  box-shadow: 
-    inset -30px -30px 60px rgba(0, 0, 0, 0.8),
-    inset 20px 20px 40px rgba(255, 255, 255, 0.3),
-    0 0 60px rgba(70, 100, 200, 0.3);
-  z-index: 1;
-  pointer-events: none;
-  opacity: 1;
-  will-change: transform;
+.subpage-hero-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.subpage-hero h1,
-.subpage-hero p,
-.subpage-hero .gsap-reveal-text {
-  position: relative;
-  z-index: 2;
-}
-
-.subpage-hero h1 {
-  font-size: clamp(2.5rem, 5vw, 4.5rem);
+.subpage-hero-text h1 {
+  font-size: clamp(3rem, 6vw, 6rem);
   font-weight: 800;
-  line-height: 1.05;
-  letter-spacing: -0.03em;
-  margin-bottom: 24px;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  margin-bottom: 32px;
   color: var(--white);
+  text-transform: uppercase;
+}
+
+.subpage-hero-text p {
+  font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+  color: var(--gray-400);
+  max-width: 500px;
+  line-height: 1.6;
+}
+
+.editorial-img-wrapper {
+  overflow: hidden;
+  height: 65vh;
+  width: 100%;
 }
 
 .hero-title {
@@ -985,10 +978,17 @@ footer {
   .section-header { margin-bottom: 48px; }
 
   .subpage-hero {
+    grid-template-columns: 1fr;
+    gap: 40px;
     padding: 140px var(--gap) 60px;
+    min-height: auto;
   }
 
-  .subpage-hero h1 { font-size: 2.8rem; }
+  .editorial-img-wrapper {
+    height: 400px;
+  }
+
+  .subpage-hero-text h1 { font-size: clamp(2.5rem, 10vw, 4rem); }
 }
 
 /* =======================================
