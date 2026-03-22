@@ -424,7 +424,7 @@ img {
   background: currentColor;
   border-radius: 50%;
   top: 0.12em; /* Slightly higher for more natural gap */
-  left: 50%;   /* Perfect center */
+  left: 51%;   /* Nudged for perfect visual center */
   animation: i-dot-bounce 3s ease-in-out infinite;
   pointer-events: none;
   z-index: 100;
