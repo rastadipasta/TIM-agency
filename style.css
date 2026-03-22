@@ -53,6 +53,61 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.8s var(--ease-smooth), color 0.8s var(--ease-smooth);
+}
+
+/* =======================================
+   LIGHT THEME (SCROLL INVERSION)
+   ======================================= */
+body.theme-light {
+  background-color: var(--white);
+  color: var(--black);
+}
+body.theme-light .navbar.scrolled {
+  background: rgba(255, 255, 255, 0.95);
+}
+body.theme-light .navbar.scrolled-always {
+  background: rgba(255, 255, 255, 0.95);
+}
+body.theme-light .nav-logo {
+  color: var(--black);
+}
+body.theme-light .nav-link {
+  color: var(--gray-700);
+}
+body.theme-light .nav-link:hover,
+body.theme-light .nav-link.active {
+  color: var(--black);
+}
+body.theme-light .nav-link::after {
+  background-color: var(--black);
+}
+body.theme-light .btn-arrow {
+  color: var(--black);
+}
+body.theme-light .manifesto-text p {
+  color: var(--gray-700);
+}
+body.theme-light .section-header p {
+  color: var(--gray-700);
+}
+body.theme-light .section-divider,
+body.theme-light .services-accordion,
+body.theme-light .service-strip,
+body.theme-light footer {
+  border-color: var(--gray-100);
+}
+body.theme-light .service-strip {
+  color: var(--black);
+}
+body.theme-light .service-strip:hover {
+  background: var(--gray-100);
+}
+body.theme-light .strip-title {
+  color: var(--black);
+}
+body.theme-light footer {
+  color: var(--gray-700);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -764,6 +819,26 @@ footer {
 .reveal-delay-1 { transition-delay: 0.1s; }
 .reveal-delay-2 { transition-delay: 0.2s; }
 .reveal-delay-3 { transition-delay: 0.3s; }
+
+/* =======================================
+   GSAP CUSTOM UTILITIES
+   ======================================= */
+.gsap-mask {
+  overflow: hidden;
+  display: block; /* Ili inline-block ovisno o primjeni */
+}
+.gsap-mask span {
+  display: inline-block;
+  transform: translateY(110%);
+}
+.gsap-img-wrapper {
+  overflow: hidden;
+}
+.gsap-img-parallax {
+  height: 125%;
+  width: 100%;
+  object-fit: cover;
+}
 
 /* Staggered children */
 .stagger-children > * {

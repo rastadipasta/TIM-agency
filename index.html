@@ -91,9 +91,9 @@
 
     <!-- SERVICES — ACCORDION STRIPS -->
     <section class="section-full" style="padding-top: 0;">
-        <div class="section-header container reveal">
-            <h2>Naša Ekspertiza</h2>
-            <p>Od vizije do savršene digitalne stvarnosti.</p>
+        <div class="section-header container">
+            <h2 class="gsap-reveal-text">Naša Ekspertiza</h2>
+            <p class="reveal">Od vizije do savršene digitalne stvarnosti.</p>
         </div>
         <div class="services-accordion stagger-children">
             <a href="usluga-web-dizajn.html" class="service-strip">
@@ -116,20 +116,24 @@
 
     <!-- PORTFOLIO TEASER -->
     <section class="section">
-        <div class="section-header reveal">
-            <h2>Odabrani Radovi</h2>
-            <p>Najbolji primjeri iz naše prakse.</p>
+        <div class="section-header">
+            <h2 class="gsap-reveal-text">Odabrani Radovi</h2>
+            <p class="reveal">Najbolji primjeri iz naše prakse.</p>
         </div>
-        <div class="portfolio-grid reveal">
-            <div class="portfolio-item">
-                <div class="portfolio-image placeholder-img-1"></div>
+        <div class="portfolio-grid">
+            <div class="portfolio-item reveal">
+                <div class="gsap-img-wrapper">
+                    <div class="portfolio-image gsap-img-parallax placeholder-img-1"></div>
+                </div>
                 <div class="portfolio-info">
                     <h3>Fintech Aplikacija</h3>
                     <span>UI/UX Dizajn</span>
                 </div>
             </div>
-            <div class="portfolio-item">
-                <div class="portfolio-image placeholder-img-2"></div>
+            <div class="portfolio-item reveal">
+                <div class="gsap-img-wrapper">
+                    <div class="portfolio-image gsap-img-parallax placeholder-img-2"></div>
+                </div>
                 <div class="portfolio-info">
                     <h3>E-Commerce Platforma</h3>
                     <span>Redizajn Stranica</span>
@@ -142,10 +146,10 @@
     </section>
 
     <!-- MANIFESTO -->
-    <section class="manifesto reveal">
+    <section class="manifesto theme-trigger">
         <div class="manifesto-text">
-            <h2>Kada se Umjetnost i Funkcija Spoje, Dizajn Postaje Vječan.</h2>
-            <p>Naša kreativna sloboda omogućuje nam da se fokusiramo na manje projekata i umjetničke aspekte poslovanja,
+            <h2 class="gsap-reveal-text">Kada se Umjetnost i Funkcija Spoje, Dizajn Postaje Vječan.</h2>
+            <p class="reveal">Naša kreativna sloboda omogućuje nam da se fokusiramo na manje projekata i umjetničke aspekte poslovanja,
                 stvarajući duboke ideje i ljepotu u životu.</p>
             <a href="kontakt.html" class="btn btn-arrow">Kontaktirajte nas</a>
         </div>
@@ -157,6 +161,10 @@
         <p>&copy; 2026 TIM Agencija za digitalni dizajn. Sva prava pridržana.</p>
     </footer>
 
+    <!-- GSAP / ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
     <script src="script.js"></script>
 </body>
 

@@ -143,5 +143,71 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
+    /* =========================================================
+       7. GSAP & SCROLLTRIGGER
+       ========================================================= */
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+
+        // A. Staggered Text Mask Reveal
+        const revealTexts = document.querySelectorAll('.gsap-reveal-text');
+        revealTexts.forEach(text => {
+            // Split text superficially by words for staggering
+            const words = text.innerText.split(' ');
+            text.innerHTML = '';
+            words.forEach(word => {
+                const mask = document.createElement('span');
+                mask.className = 'gsap-mask';
+                mask.style.marginRight = '0.25em';
+                const span = document.createElement('span');
+                span.innerText = word;
+                mask.appendChild(span);
+                text.appendChild(mask);
+            });
+
+            gsap.to(text.querySelectorAll('.gsap-mask span'), {
+                scrollTrigger: {
+                    trigger: text,
+                    start: 'top 85%',
+                },
+                y: 0,
+                duration: 0.8,
+                stagger: 0.1,
+                ease: "power3.out"
+            });
+        });
+
+        // B. Image Parallax Effects
+        const parallaxImages = document.querySelectorAll('.gsap-img-parallax');
+        parallaxImages.forEach(img => {
+            gsap.fromTo(img, 
+                { y: '-10%' },
+                {
+                    y: '10%',
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: img.parentElement,
+                        start: 'top bottom',
+                        end: 'bottom top',
+                        scrub: true
+                    }
+                }
+            );
+        });
+
+        // C. Theme Color Inversion (Light/Dark Toggle)
+        const themeTriggers = document.querySelectorAll('.theme-trigger');
+        themeTriggers.forEach(trigger => {
+            ScrollTrigger.create({
+                trigger: trigger,
+                start: 'top 50%',
+                end: 'bottom 50%',
+                onEnter: () => document.body.classList.add('theme-light'),
+                onLeave: () => document.body.classList.remove('theme-light'),
+                onEnterBack: () => document.body.classList.add('theme-light'),
+                onLeaveBack: () => document.body.classList.remove('theme-light')
+            });
+        });
+    }
 
 });
