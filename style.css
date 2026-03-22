@@ -845,6 +845,27 @@ img {
   color: var(--gray-700);
 }
 
+/* Theme Light Overrides for Forms */
+.theme-light .form-group label {
+  color: var(--gray-600);
+}
+
+.theme-light .form-group input,
+.theme-light .form-group textarea {
+  color: var(--black);
+  border-bottom-color: var(--gray-300);
+}
+
+.theme-light .form-group input:focus,
+.theme-light .form-group textarea:focus {
+  border-bottom-color: var(--accent);
+}
+
+.theme-light .form-group input::placeholder,
+.theme-light .form-group textarea::placeholder {
+  color: var(--gray-400);
+}
+
 /* =======================================
    FOOTER
    ======================================= */
