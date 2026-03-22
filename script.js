@@ -123,40 +123,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // i-Dot Interaction
-    const iDot = document.querySelector('.i-dot');
-    const iWrapper = document.querySelector('.i-wrapper');
-    if (iDot && iWrapper) {
-        window.addEventListener('mousemove', (e) => {
-            const rect = iWrapper.getBoundingClientRect();
-            const centerX = rect.left + rect.width / 2;
-            const centerY = rect.top + rect.height / 1.5; // Slightly lower for better "feel"
-            
-            const mouseX = e.clientX;
-            const mouseY = e.clientY;
-            
-            const dx = mouseX - centerX;
-            const dy = mouseY - centerY;
-            const distance = Math.sqrt(dx * dx + dy * dy);
-            
-            const radius = 300; // Trigger radius
-            if (distance < radius) {
-                const strength = 15; // Max movement in px
-                const power = (1 - distance / radius); // 0 to 1
-                
-                const moveX = (dx / distance) * strength * power;
-                let moveY = (dy / distance) * strength * power;
-                
-                // Restrict movement: only left, right, up (no down)
-                moveY = Math.min(0, moveY); 
-                
-                iDot.style.transform = `translate(calc(-50% + ${moveX}px), ${moveY}px)`;
-            } else {
-                iDot.style.transform = `translate(-50%, 0px)`;
-            }
-        });
-    }
-
     /* Parallax effect removed per user request for static subpages */
 
     /* =========================================================

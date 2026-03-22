@@ -425,11 +425,15 @@ img {
   border-radius: 50%;
   top: 0.18em;
   left: 54%;
-  transform: translateX(-50%);
-  transition: transform 0.1s ease-out;
+  animation: i-dot-bounce 3s ease-in-out infinite;
   pointer-events: none;
   z-index: 100;
   will-change: transform;
+}
+
+@keyframes i-dot-bounce {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, -0.25em); }
 }
 
 /* Ensure the dotless i doesn't have its own dot or weird spacing */
