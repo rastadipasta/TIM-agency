@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
        ========================================================= */
     const rotator = document.getElementById('wordRotator');
     if (rotator) {
-        const words = ['dizajn', 'brand', 'identitet', 'strategiju', 'web'];
+        const words = ['web', 'dizajn', 'brand', 'identitet', 'strategiju'];
         let currentIndex = 0;
 
         setInterval(() => {
