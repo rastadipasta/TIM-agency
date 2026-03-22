@@ -354,12 +354,15 @@ img {
   transform: translate(-50%, -50%);
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, rgba(90, 100, 255, 0.25) 0%, rgba(200, 100, 50, 0.2) 60%, transparent 100%);
+  background: radial-gradient(circle at 35% 35%, rgba(135, 175, 255, 0.9) 0%, rgba(45, 65, 130, 0.95) 50%, rgba(15, 20, 40, 1) 100%);
   border-radius: 50%;
-  filter: blur(80px);
+  box-shadow: 
+    inset -30px -30px 60px rgba(0, 0, 0, 0.8),
+    inset 20px 20px 40px rgba(255, 255, 255, 0.3),
+    0 0 60px rgba(70, 100, 200, 0.3);
   z-index: 1;
   pointer-events: none;
-  opacity: 0.8;
+  opacity: 1;
   will-change: transform;
 }
 
