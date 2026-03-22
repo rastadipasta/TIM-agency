@@ -418,6 +418,7 @@ img {
 
 .i-dot {
   position: absolute;
+  display: block;
   width: 0.16em;
   height: 0.16em;
   background: currentColor;
@@ -427,6 +428,7 @@ img {
   transform: translateX(-50%);
   transition: transform 0.1s ease-out;
   pointer-events: none;
+  z-index: 100;
   will-change: transform;
 }
 
@@ -988,11 +990,11 @@ body.theme-light .btn-arrow::after {
 
 /* Theme Light Overrides for Forms & Contacts */
 .theme-light .detail-item {
-  color: var(--black); /* Potpuno crno za ikone i tekst */
+  color: var(--black) !important;
 }
 
-.theme-light .detail-item span:first-child {
-  color: var(--black);
+.theme-light .detail-item span {
+  color: var(--black) !important;
 }
 
 .theme-light .form-group label {
