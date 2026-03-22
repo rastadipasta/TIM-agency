@@ -986,7 +986,16 @@ body.theme-light .btn-arrow::after {
   color: var(--gray-700);
 }
 
-/* Theme Light Overrides for Forms */
+/* Theme Light Overrides for Forms & Contacts */
+.theme-light .detail-item {
+  color: var(--gray-700);
+}
+
+.theme-light .detail-item i,
+.theme-light .detail-item svg {
+  color: var(--black);
+}
+
 .theme-light .form-group label {
   color: var(--gray-600);
 }
