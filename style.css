@@ -1011,7 +1011,7 @@ body.theme-light .btn-arrow::after {
 }
 
 .theme-light .contact-icon {
-  filter: invert(1);
+  filter: brightness(0);
 }
 
 .theme-light .form-group label {
