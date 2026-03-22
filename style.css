@@ -424,7 +424,7 @@ img {
   background: currentColor;
   border-radius: 50%;
   top: 0.12em; /* Slightly higher for more natural gap */
-  left: 51%;   /* Nudged for perfect visual center */
+  left: 48.5%; /* Optički centar za Inter Tight 800 */
   animation: i-dot-bounce 3s ease-in-out infinite;
   pointer-events: none;
   z-index: 100;
