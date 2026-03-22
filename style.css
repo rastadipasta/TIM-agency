@@ -1057,9 +1057,10 @@ footer {
   .hero-title { font-size: clamp(2.5rem, 7vw, 5rem); }
   .manifesto { grid-template-columns: 1fr; gap: 40px; }
   .subpage-2col { grid-template-columns: 1fr; gap: 40px; }
-  .portfolio-grid { grid-template-columns: 1fr 1fr; }
-  .portfolio-item:nth-child(even) { margin-top: 0; }
-  .portfolio-image { height: 350px; }
+  .portfolio-grid { gap: 40px; }
+  .portfolio-grid .portfolio-item { height: 450px; border-radius: 40px; }
+  .portfolio-grid .portfolio-item:nth-child(even) { margin-top: 40px; height: 380px; }
+  .portfolio-image { height: 100%; }
 }
 
 /* =======================================
@@ -1115,11 +1116,19 @@ footer {
 
   .portfolio-grid,
   .portfolio-grid.gallery-grid {
-    grid-template-columns: 1fr;
+    flex-direction: column;
     gap: 32px;
   }
 
-  .portfolio-image { height: 250px; }
+  .portfolio-grid .portfolio-item,
+  .portfolio-grid .portfolio-item:nth-child(even) {
+    width: 100%;
+    height: 350px;
+    margin-top: 0;
+    border-radius: 30px;
+  }
+
+  .portfolio-image { height: 100%; }
 
   .portfolio-info {
     opacity: 1;
@@ -1165,6 +1174,7 @@ footer {
   .hero-title { font-size: 2.5rem; }
   .hero-scroll-indicator { display: none; }
 
-  .portfolio-grid { grid-template-columns: 1fr 1fr; }
-  .portfolio-image { height: 200px; }
+  .portfolio-grid { flex-direction: row; gap: 20px; }
+  .portfolio-grid .portfolio-item { height: 250px; }
+  .portfolio-image { height: 100%; }
 }
