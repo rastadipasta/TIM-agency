@@ -569,6 +569,7 @@ img {
   height: 100vh;
   overflow: hidden;
   background: var(--black);
+  padding-top: 100px; /* Space for navbar */
 }
 
 .gallery-track {
