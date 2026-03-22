@@ -135,6 +135,24 @@ document.addEventListener("DOMContentLoaded", () => {
     if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
         gsap.registerPlugin(ScrollTrigger);
 
+        // Subpage Hero Entry Animation
+        if (document.querySelector('.subpage-hero')) {
+            gsap.from(".subpage-hero .marquee-track", {
+                y: 150,
+                opacity: 0,
+                duration: 2,
+                ease: "expo.out",
+                delay: 0.2
+            });
+            gsap.from(".subpage-hero-subtitle", {
+                y: 30,
+                opacity: 0,
+                duration: 1.5,
+                ease: "power3.out",
+                delay: 0.8
+            });
+        }
+
         // A. Staggered Text Mask Reveal
         const revealTexts = document.querySelectorAll('.gsap-reveal-text');
         revealTexts.forEach(text => {
