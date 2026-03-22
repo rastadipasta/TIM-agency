@@ -988,11 +988,10 @@ body.theme-light .btn-arrow::after {
 
 /* Theme Light Overrides for Forms & Contacts */
 .theme-light .detail-item {
-  color: var(--gray-700);
+  color: var(--black); /* Potpuno crno za ikone i tekst */
 }
 
-.theme-light .detail-item i,
-.theme-light .detail-item svg {
+.theme-light .detail-item span:first-child {
   color: var(--black);
 }
 
