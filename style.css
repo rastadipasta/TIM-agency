@@ -335,6 +335,50 @@ img {
   position: relative;
 }
 
+.subpage-hero {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 160px var(--gap) 80px;
+  max-width: var(--container);
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-bubble {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(90, 100, 255, 0.25) 0%, rgba(200, 100, 50, 0.2) 60%, transparent 100%);
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.8;
+  will-change: transform;
+}
+
+.subpage-hero h1,
+.subpage-hero p,
+.subpage-hero .gsap-reveal-text {
+  position: relative;
+  z-index: 2;
+}
+
+.subpage-hero h1 {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin-bottom: 24px;
+  color: var(--white);
+}
+
 .hero-title {
   font-size: clamp(3.5rem, 12vw, 11rem);
   font-weight: 800;
@@ -580,26 +624,6 @@ img {
   line-height: 1.8;
   margin-bottom: 40px;
   max-width: 480px;
-}
-
-/* =======================================
-   SUBPAGE HERO
-   ======================================= */
-.subpage-hero {
-  padding: 200px var(--gap) 80px var(--gap);
-  max-width: var(--container);
-  margin: 0 auto;
-}
-
-.subpage-hero h1 {
-  font-size: clamp(2.5rem, 5vw, 4.5rem);
-  margin-bottom: 20px;
-}
-
-.subpage-hero p {
-  font-size: 1.15rem;
-  color: var(--gray-500);
-  max-width: 600px;
 }
 
 /* =======================================
