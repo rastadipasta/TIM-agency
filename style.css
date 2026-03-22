@@ -286,6 +286,8 @@ img {
   overflow: hidden;
   padding-bottom: 0.2em; /* Prevents descender clipping */
   margin-bottom: -0.2em; /* Visually aligns with the rest of the text */
+  padding-right: 0.1em; /* Prevents horizontal clipping of 'b' or overhangs */
+  margin-right: -0.1em;
   vertical-align: bottom;
 }
 
