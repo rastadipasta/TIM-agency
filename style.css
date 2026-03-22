@@ -835,24 +835,41 @@ body.theme-light .process-step:hover p {
   color: var(--black);
 }
 
-/* Broad Light Theme Overrides */
+/* Broad Light Theme Overrides — High Contrast Polish */
+body.theme-light {
+  background-color: var(--white) !important;
+  color: var(--black) !important;
+}
+
 body.theme-light .subpage-2col,
 body.theme-light .subpage-description,
-body.theme-light .cta-strip {
-  color: var(--black);
-}
-
+body.theme-light .cta-strip,
 body.theme-light .subpage-description p,
-body.theme-light .subpage-description ul li {
-  color: var(--black);
+body.theme-light .subpage-description ul li,
+body.theme-light .cta-strip h3,
+body.theme-light .manifesto-text p,
+body.theme-light .section-header p {
+  color: var(--black) !important;
+}
+
+body.theme-light .detail-item {
+  color: var(--black) !important;
+}
+
+body.theme-light .detail-item span {
+  color: var(--black) !important;
 }
 
 body.theme-light .subpage-description ul li {
-  border-bottom-color: var(--gray-300);
+  border-bottom-color: var(--gray-200);
 }
 
-body.theme-light .cta-strip h3 {
-  color: var(--black);
+body.theme-light .process-step p {
+  color: var(--gray-800) !important;
+}
+
+body.theme-light .process-step:hover p {
+  color: var(--black) !important;
 }
 
 body.theme-light .subpage-hero-subtitle {
