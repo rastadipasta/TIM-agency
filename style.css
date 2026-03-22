@@ -757,11 +757,8 @@ body.theme-light .process-step:hover {
 }
 
 body.theme-light .process-step:hover .step-num,
-body.theme-light .process-step:hover h4 {
-  color: var(--accent);
-}
-
-body.theme-light .process-step:hover .step-num {
+body.theme-light .process-step:hover h4,
+body.theme-light .process-step:hover p {
   color: var(--black);
 }
 
