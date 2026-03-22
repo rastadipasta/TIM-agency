@@ -706,6 +706,46 @@ img {
   font-size: 0.9rem;
 }
 
+/* Theme Light Overrides for Layout Text */
+body.theme-light h2,
+body.theme-light h3,
+body.theme-light h4 {
+  color: var(--black);
+}
+
+body.theme-light .process-steps {
+  border-top-color: var(--gray-300);
+}
+
+body.theme-light .process-step {
+  border-bottom-color: var(--gray-300);
+}
+
+body.theme-light .process-step .step-num {
+  color: var(--gray-600);
+}
+
+body.theme-light .process-step h4 {
+  color: var(--black);
+}
+
+body.theme-light .process-step p {
+  color: var(--gray-800);
+}
+
+body.theme-light .process-step:hover {
+  background: var(--gray-100);
+}
+
+body.theme-light .process-step:hover .step-num,
+body.theme-light .process-step:hover h4 {
+  color: var(--accent);
+}
+
+body.theme-light .process-step:hover .step-num {
+  color: var(--black);
+}
+
 .subpage-description {
   padding-top: 28px;
 }
