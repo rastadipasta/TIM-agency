@@ -885,6 +885,23 @@ body.theme-light {
   color: var(--black) !important;
 }
 
+body.theme-light .subpage-hero,
+body.theme-light .marquee-container {
+  background-color: transparent !important;
+}
+
+body.theme-light .marquee-text {
+  color: var(--black) !important;
+}
+
+body.theme-light .outline-text {
+  -webkit-text-stroke: 2px rgba(0, 0, 0, 0.4) !important;
+}
+
+body.theme-light .outline-text:hover {
+  -webkit-text-stroke: 2px var(--black) !important;
+}
+
 body.theme-light .subpage-2col,
 body.theme-light .subpage-description,
 body.theme-light .cta-strip,
