@@ -40,18 +40,18 @@
   padding: 0;
 }
 
-html, body {
-  overscroll-behavior-y: none; /* iOS Safari bounce glitch killer */
-}
-
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
 }
 
-.mobile-break { display: none; }
+@media (pointer: coarse) {
+  body {
+    overscroll-behavior-y: none; /* iOS Safari bounce glitch killer only on touch devices */
+  }
+}
 
-html, body { overscroll-behavior-y: none; }
+.mobile-break { display: none; }
 
 body {
   font-family: var(--font-main);
