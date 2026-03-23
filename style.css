@@ -1254,7 +1254,7 @@ body.theme-light footer {
     justify-content: center;
   }
 
-  .hero-title { font-size: clamp(3.2rem, 16vw, 4.6rem); }
+  .hero-title { font-size: clamp(2.2rem, 12vw, 4.2rem); }
   .hero-scroll-indicator { display: none; }
 
   .service-strip {
@@ -1315,13 +1315,13 @@ body.theme-light footer {
 /* =======================================
    MOBILE LANDSCAPE
    ======================================= */
-@media screen and (max-width: 950px) and (orientation: landscape) {
+@media screen and (max-width: 1024px) and (orientation: landscape) {
   .hero {
     min-height: auto;
     padding: 160px var(--gap) 40px; /* Povećan padding kako ne bi išao ispod izbornika */
   }
 
-  .hero-title { font-size: 2.5rem; }
+  .hero-title { font-size: clamp(2.5rem, 5vw, 4rem); }
   .hero-scroll-indicator { display: none; }
 
   .portfolio-grid { flex-direction: row; gap: 20px; }
