@@ -47,6 +47,8 @@ html {
 
 .mobile-break { display: none; }
 
+html, body { overscroll-behavior-y: none; }
+
 body {
   font-family: var(--font-main);
   background-color: var(--black);
