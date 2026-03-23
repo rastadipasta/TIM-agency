@@ -446,21 +446,21 @@ img {
 .i-dot {
   position: absolute;
   display: block;
-  width: 0.16em;
-  height: 0.16em;
+  width: 0.15em;
+  height: 0.15em;
   background: currentColor;
   border-radius: 50%;
-  top: 0.25em; /* Lowered significantly to stay far below navbar */
-  left: 48.5%; /* Optical center for Inter Tight */
-  animation: i-dot-bounce 3s ease-in-out infinite;
+  top: 0.12em; /* Savršena bazna pozicija, tik iznad štapića slova */
+  left: 48.5%; /* Optički centar */
+  animation: i-dot-light-bounce 3.5s cubic-bezier(0.42, 0, 0.58, 1) infinite;
   pointer-events: none;
   z-index: 100;
   will-change: transform;
 }
 
-@keyframes i-dot-bounce {
-  0%, 100% { transform: translate(-50%, 0); }
-  50% { transform: translate(-50%, -0.06em); } /* Minimal bounce height */
+@keyframes i-dot-light-bounce {
+  0%, 100% { transform: translate(-50%, 0); } /* Baza (bez padanja na slovo) */
+  50% { transform: translate(-50%, -0.07em); } /* Vrlo blagi i kratki skok gore */
 }
 
 /* Ensure the dotless i doesn't have its own dot or weird spacing */
