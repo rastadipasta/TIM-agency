@@ -1208,6 +1208,7 @@ body.theme-light footer {
    RESPONSIVE — MOBILE
    ======================================= */
 @media (max-width: 768px) {
+  .section-full { padding-top: 20vh !important; }
   .nav-container {
     display: flex;
     justify-content: space-between;
