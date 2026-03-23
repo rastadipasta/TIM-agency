@@ -361,7 +361,7 @@ img {
    HERO — MASSIVE TYPOGRAPHY
    ======================================= */
 .hero {
-  min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -373,7 +373,7 @@ img {
 }
 
 .subpage-hero {
-  min-height: 100vh; /* Osigurava da je ekran pun prije skrolanja */
+  min-height: 100svh; /* Osigurava da je ekran pun prije skrolanja */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -383,7 +383,7 @@ img {
 }
 
 .marquee-container {
-  width: 100vw;
+  width: 100%;
   overflow: hidden;
   position: relative;
   display: flex;
@@ -685,7 +685,7 @@ body.theme-light .step-icon {
 .horizontal-gallery {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 100svh;
   overflow: hidden;
   background: var(--black);
   padding-top: 100px; /* Space for navbar */
@@ -1250,7 +1250,7 @@ body.theme-light footer {
   .mobile-break { display: block; }
 
   .hero {
-    min-height: 100vh; min-height: 100dvh;
+    min-height: 100svh; min-height: 100svh;
     padding: 100px var(--gap) 40px;
     align-items: flex-start;
     text-align: left;
