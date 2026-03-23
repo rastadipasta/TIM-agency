@@ -4,6 +4,10 @@
  */
 
 document.addEventListener("DOMContentLoaded", () => {
+    // Sprečava GSAP "glitch" trzavice na dnu kad se URL-traka mobitela pojavi/sakrije
+    if (typeof ScrollTrigger !== "undefined") {
+        ScrollTrigger.config({ ignoreMobileResize: true });
+    }
 
     /* =========================================================
        0. MOBILE MENU

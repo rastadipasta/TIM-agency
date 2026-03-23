@@ -1321,10 +1321,10 @@ body.theme-light footer {
 @media screen and (max-width: 1024px) and (orientation: landscape) {
   .hero {
     min-height: auto;
-    padding: 160px var(--gap) 40px; /* Povećan padding kako ne bi išao ispod izbornika */
+    padding: 120px var(--gap) 30px; /* Optimiziran padding za horizontalni prikaz */
   }
 
-  .hero-title { font-size: clamp(2.5rem, 5vw, 4rem); }
+  .hero-title { font-size: clamp(2rem, 4vw, 3rem); } /* Značajno smanjen naslov za landscape */
   .hero-scroll-indicator { display: none; }
 
   .portfolio-grid { flex-direction: row; gap: 20px; }
