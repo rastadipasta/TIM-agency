@@ -603,17 +603,22 @@ body.theme-light .subpage-hero-subtitle {
 }
 
 .strip-icon {
-  width: 32px;
-  height: 32px;
-  object-fit: contain;
-  filter: brightness(0) invert(1);
-  opacity: 0.5;
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  mix-blend-mode: screen; /* Keep only white lines on dark bg */
+  opacity: 0.8;
   transition: all var(--transition-normal);
 }
 
 .service-strip:hover .strip-icon {
   opacity: 1;
   transform: scale(1.1);
+}
+
+body.theme-light .strip-icon {
+  mix-blend-mode: multiply; /* Keep only black lines on light bg */
+  filter: invert(1);
 }
 
 .step-icon {
