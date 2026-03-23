@@ -598,6 +598,33 @@ img {
   color: var(--accent);
 }
 
+.strip-icon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: 0.5;
+  transition: all var(--transition-normal);
+}
+
+.service-strip:hover .strip-icon {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.step-icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 20px;
+  object-fit: contain;
+  transition: filter 0.5s ease;
+  filter: brightness(0) invert(1); /* Bijelo po defaultu (crna pozadina) */
+}
+
+body.theme-light .step-icon {
+  filter: brightness(0); /* Crno kad je aktivna svijetla tema */
+}
+
 .service-strip:hover .strip-num {
   color: var(--accent);
 }
