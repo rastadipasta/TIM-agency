@@ -1247,8 +1247,8 @@ body.theme-light footer {
   .mobile-break { display: block; }
 
   .hero {
-    min-height: 85vh;
-    padding: 140px var(--gap) 80px;
+    min-height: 100vh; min-height: 100dvh;
+    padding: 100px var(--gap) 40px;
     align-items: flex-start;
     text-align: left;
     justify-content: center;
