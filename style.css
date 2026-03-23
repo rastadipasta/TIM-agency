@@ -962,7 +962,7 @@ body.theme-light .subpage-description ul li {
 }
 
 body.theme-light .subpage-description ul li::before {
-  color: var(--accent) !important;
+  color: var(--black) !important;
 }
 
 body.theme-light .process-step p,
@@ -1412,7 +1412,7 @@ body.theme-light footer {
 
 
 body.theme-light .subpage-description ul li::before {
-  color: var(--accent) !important;
+  color: var(--black) !important;
 }
 
 footer {
