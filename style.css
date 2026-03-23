@@ -371,6 +371,7 @@ img {
 .subpage-hero {
   min-height: 100vh; /* Osigurava da je ekran pun prije skrolanja */
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
