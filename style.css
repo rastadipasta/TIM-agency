@@ -436,7 +436,7 @@ body.theme-light .subpage-hero-subtitle {
 }
 
 .hero-title {
-  font-size: clamp(4.5rem, 9vw, 8rem);
+  font-size: clamp(4.5rem, 12vw, 10.5rem);
   font-weight: 800;
   line-height: 0.95;
   letter-spacing: -0.05em;
@@ -1342,7 +1342,7 @@ body.theme-light footer {
     min-height: auto !important;
   }
   .hero-title {
-    font-size: clamp(2.5rem, 6vw, 4.5rem) !important;
+    font-size: clamp(4rem, 12vw, 10.5rem) !important;
   }
 }
 
