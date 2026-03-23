@@ -1195,6 +1195,7 @@ body.theme-light footer {
    RESPONSIVE — TABLET
    ======================================= */
 @media (max-width: 1024px) {
+  .hero { padding-top: 180px; } /* Osigurava da masivni tekst pobjegne daleko ispod izbornika na svakom tabletu */
   .hero-title { font-size: clamp(2.5rem, 7vw, 5rem); }
   .manifesto { grid-template-columns: 1fr; gap: 40px; }
   .subpage-2col { grid-template-columns: 1fr; gap: 40px; }
@@ -1291,6 +1292,8 @@ body.theme-light footer {
   }
 
   .contact-info h2 { font-size: 2rem; }
+
+  .manifesto { min-height: auto; padding: 120px var(--gap) 80px; } /* Neutralizira "100vh" glitch na mobitelu */
 
   .cta-strip {
     flex-direction: column;
