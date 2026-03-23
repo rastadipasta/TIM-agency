@@ -596,12 +596,21 @@ body.theme-light .subpage-hero-subtitle {
 
 .service-strip:hover {
   background: var(--gray-900);
-  padding-left: calc(var(--gap) + 12px);
+  padding-left: calc(var(--gap) + 40px); /* Masivni pomak čitavog bloka udesno */
 }
 
 .service-strip:hover .strip-arrow {
-  transform: translateX(4px);
+  transform: translateX(20px); /* Veliki pomak strijelice */
   color: var(--accent);
+}
+
+.strip-title {
+  transition: all var(--transition-normal);
+}
+
+.service-strip:hover .strip-title {
+  color: var(--accent);
+  transform: translateX(10px); /* Dodatni pomak samog teksta \+ paljenje narančaste boje */
 }
 
 .strip-icon-svg {
@@ -611,16 +620,43 @@ body.theme-light .subpage-hero-subtitle {
   transition: all var(--transition-normal);
 }
 
-.service-strip:hover .strip-icon-svg {
-  color: var(--accent);
-  transform: scale(1.1);
+.service-strip:hover .strip-title {
+  transition: all var(--transition-normal);
 }
 
-body.theme-light .strip-icon-svg {
+.service-strip:hover .strip-title {
+  color: var(--accent);
+  transform: translateX(10px); /* Dodatni pomak samog teksta \+ paljenje narančaste boje */
+}
+
+.strip-icon-svg {
+  color: var(--accent);
+  transform: scale(1.5) rotate(10deg); /* Skok i rotacija ikone */
+}
+
+body.theme-light .strip-title {
+  transition: all var(--transition-normal);
+}
+
+.service-strip:hover .strip-title {
+  color: var(--accent);
+  transform: translateX(10px); /* Dodatni pomak samog teksta \+ paljenje narančaste boje */
+}
+
+.strip-icon-svg {
   color: var(--black);
 }
 
-body.theme-light .service-strip:hover .strip-icon-svg {
+body.theme-light .service-strip:hover .strip-title {
+  transition: all var(--transition-normal);
+}
+
+.service-strip:hover .strip-title {
+  color: var(--accent);
+  transform: translateX(10px); /* Dodatni pomak samog teksta \+ paljenje narančaste boje */
+}
+
+.strip-icon-svg {
   color: var(--accent);
 }
 
