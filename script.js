@@ -202,12 +202,19 @@ document.addEventListener("DOMContentLoaded", () => {
         // C. Theme Color Inversion (Light/Dark Toggle)
         const themeTriggers = document.querySelectorAll('.theme-trigger');
         themeTriggers.forEach(trigger => {
+            // Trigger za kretanje prema dolje (LATER: Top 40% umjesto 60%)
             ScrollTrigger.create({
                 trigger: trigger,
-                start: 'top 60%',
+                start: 'top 40%',
                 end: 'bottom top',
                 onEnter: () => document.body.classList.add('theme-light'),
-                onLeave: () => document.body.classList.remove('theme-light'),
+                onLeave: () => document.body.classList.remove('theme-light')
+            });
+            // Trigger za kretanje prema gore (LATER: Top 80% umjesto 60%)
+            ScrollTrigger.create({
+                trigger: trigger,
+                start: 'top 80%',
+                end: 'bottom -20%',
                 onEnterBack: () => document.body.classList.add('theme-light'),
                 onLeaveBack: () => document.body.classList.remove('theme-light')
             });
