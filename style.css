@@ -663,14 +663,16 @@ body.theme-light .step-icon {
 /* PORTFOLIO â€” TEASER (Homepage) */
 .portfolio-grid {
   display: flex;
-  align-items: center; /* Centrirano vodoravno */
-  gap: 8vw;
+  flex-direction: column; /* Široki prikaz (jedan ispod drugog) */
+  align-items: center;
+  gap: 80px;
   padding: 40px 0;
 }
 
 .portfolio-grid .portfolio-item {
-  flex: 1;
-  height: 550px; /* Jednaka visina za obje slike */
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9; /* Prilagodeno DALL-E premium slikama */
   border-radius: 60px;
   position: relative;
   overflow: hidden;
