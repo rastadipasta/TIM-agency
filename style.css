@@ -1331,3 +1331,18 @@ body.theme-light footer {
   .portfolio-grid .portfolio-item { height: 250px; }
   .portfolio-image { height: 100%; }
 }
+
+/* =======================================
+   SHORT SCREEN (LANDSCAPE FIX)
+   ======================================= */
+@media screen and (max-height: 700px) {
+  .hero {
+    justify-content: flex-start !important;
+    padding-top: 140px !important;
+    min-height: auto !important;
+  }
+  .hero-title {
+    font-size: clamp(2.5rem, 5vw, 4rem) !important;
+  }
+}
+
