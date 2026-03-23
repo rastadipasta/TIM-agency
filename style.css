@@ -55,7 +55,7 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: background-color var(--transition-normal), color var(--transition-normal);
+  /* transition izbrisan za instant/oštru promjenu tama-svjetlo */
 }
 
 /* =======================================
