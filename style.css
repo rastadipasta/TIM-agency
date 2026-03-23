@@ -391,7 +391,7 @@ img {
 .marquee-track {
   display: flex;
   white-space: nowrap;
-  animation: scrollMarquee 22s linear infinite;
+  animation: scrollMarquee 15s linear infinite;
 }
 
 .marquee-text {
