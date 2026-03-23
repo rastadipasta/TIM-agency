@@ -751,9 +751,9 @@ body.theme-light .step-icon {
 }
 
 /* Placeholder backgrounds */
-.placeholder-img-1 { background: url('resources/Portfolio/img1.png') no-repeat center center; background-size: cover; }
-.placeholder-img-2 { background: url('resources/Portfolio/img2.png') no-repeat center center; background-size: cover; }
-.placeholder-img-3 { background: url('resources/Portfolio/img3.png') no-repeat center center; background-size: cover; }
+.placeholder-img-1 { background: url('resources/Portfolio/premium_macbook_web.png') no-repeat center center; background-size: cover; }
+.placeholder-img-2 { background: url('resources/Portfolio/premium_brand_identity.png') no-repeat center center; background-size: cover; }
+.placeholder-img-3 { background: url('resources/Portfolio/premium_iphone_ui.png') no-repeat center center; background-size: cover; }
 .placeholder-img-4 { background: url('resources/Portfolio/img4.png') no-repeat center center; background-size: cover; }
 
 /* =======================================
