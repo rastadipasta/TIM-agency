@@ -602,23 +602,24 @@ body.theme-light .subpage-hero-subtitle {
   color: var(--accent);
 }
 
-.strip-icon {
-  width: 48px;
-  height: 48px;
-  object-fit: cover;
-  mix-blend-mode: screen; /* Keep only white lines on dark bg */
-  opacity: 0.8;
+.strip-icon-svg {
+  width: 36px;
+  height: 36px;
+  color: var(--gray-400);
   transition: all var(--transition-normal);
 }
 
-.service-strip:hover .strip-icon {
-  opacity: 1;
+.service-strip:hover .strip-icon-svg {
+  color: var(--accent);
   transform: scale(1.1);
 }
 
-body.theme-light .strip-icon {
-  mix-blend-mode: multiply; /* Keep only black lines on light bg */
-  filter: invert(1);
+body.theme-light .strip-icon-svg {
+  color: var(--black);
+}
+
+body.theme-light .service-strip:hover .strip-icon-svg {
+  color: var(--accent);
 }
 
 .step-icon {
