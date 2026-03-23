@@ -1,5 +1,5 @@
 ﻿/* =======================================
-   TIM Agency â€” Award-Winning Editorial Redesign
+   TIM Agency — Award-Winning Editorial Redesign
    Inspired by Studio Size aesthetic
    No glass effects. Bold typography. Pure black & white.
    ======================================= */
@@ -356,7 +356,7 @@ img {
 }
 
 /* =======================================
-   HERO â€” MASSIVE TYPOGRAPHY
+   HERO — MASSIVE TYPOGRAPHY
    ======================================= */
 .hero {
   min-height: 100svh;
@@ -574,7 +574,7 @@ body.theme-light .subpage-hero-subtitle {
 }
 
 /* =======================================
-   SERVICES â€” ACCORDION STRIPS
+   SERVICES — ACCORDION STRIPS
    ======================================= */
 .services-accordion {
   max-width: var(--container);
@@ -660,7 +660,7 @@ body.theme-light .step-icon {
   transition: all var(--transition-normal);
 }
 
-/* PORTFOLIO â€” TEASER (Homepage) */
+/* PORTFOLIO — TEASER (Homepage) */
 .portfolio-grid {
   display: flex;
   align-items: center; /* Centrirano vodoravno */
@@ -679,7 +679,7 @@ body.theme-light .step-icon {
   transition: transform 0.8s var(--ease-smooth);
 }
 
-/* PORTFOLIO â€” HORIZONTAL SCROLL (Gallery Page) */
+/* PORTFOLIO — HORIZONTAL SCROLL (Gallery Page) */
 .horizontal-gallery {
   position: relative;
   width: 100%;
@@ -784,7 +784,7 @@ body.theme-light .step-icon {
 }
 
 /* =======================================
-   SUBPAGE CONTENT â€” 2 COL LAYOUT
+   SUBPAGE CONTENT — 2 COL LAYOUT
    ======================================= */
 .subpage-2col {
   display: grid;
@@ -879,7 +879,7 @@ body.theme-light .process-step:hover p {
   color: var(--black);
 }
 
-/* Broad Light Theme Overrides â€” High Contrast Polish */
+/* Broad Light Theme Overrides — High Contrast Polish */
 body.theme-light {
   background-color: var(--white) !important;
   color: var(--black) !important;
@@ -966,7 +966,7 @@ body.theme-light .btn-arrow::after {
 }
 
 .subpage-description ul li::before {
-  content: 'â€”';
+  content: '—';
   color: var(--accent);
   font-weight: 700;
 }
@@ -1138,7 +1138,7 @@ body.theme-light footer {
 }
 
 /* =======================================
-   ANIMATIONS â€” SCROLL REVEAL
+   ANIMATIONS — SCROLL REVEAL
    ======================================= */
 .reveal {
   opacity: 0;
@@ -1192,7 +1192,7 @@ body.theme-light footer {
 .stagger-children.visible > *:nth-child(6) { transition-delay: 0.5s; opacity: 1; transform: none; }
 
 /* =======================================
-   RESPONSIVE â€” TABLET
+   RESPONSIVE — TABLET
    ======================================= */
 @media (max-width: 1024px) {
   .hero { padding-top: 180px; } /* Osigurava da masivni tekst pobjegne daleko ispod izbornika na svakom tabletu */
@@ -1205,7 +1205,7 @@ body.theme-light footer {
 }
 
 /* =======================================
-   RESPONSIVE â€” MOBILE
+   RESPONSIVE — MOBILE
    ======================================= */
 @media (max-width: 768px) {
   .section-full { padding-top: 20vh !important; }
