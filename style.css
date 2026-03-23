@@ -450,8 +450,8 @@ img {
   height: 0.15em;
   background: currentColor;
   border-radius: 50%;
-  top: 0.12em; /* Savršena bazna pozicija, tik iznad štapića slova */
-  left: 48.5%; /* Optički centar */
+  top: 0.14em; /* U ravnini s centrom miša na slici */
+  left: 65%; /* Pomaknuto udesno, točno na poziciju miša sa slike */
   animation: i-dot-light-bounce 3.5s cubic-bezier(0.42, 0, 0.58, 1) infinite;
   pointer-events: none;
   z-index: 100;
