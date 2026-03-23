@@ -7,8 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // Sprečava GSAP "glitch" trzavice na dnu kad se URL-traka mobitela pojavi/sakrije
     if (typeof ScrollTrigger !== "undefined") {
         ScrollTrigger.config({ ignoreMobileResize: true });
-        // "Nuklearna" opcija za iOS Safari: Potpuno zaobilazi nativno skrolanje kako bi ubio gumenaste trzavice na dnu!
-        ScrollTrigger.normalizeScroll(true);
     }
 
     /* =========================================================

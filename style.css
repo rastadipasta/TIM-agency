@@ -40,6 +40,10 @@
   padding: 0;
 }
 
+html, body {
+  overscroll-behavior-y: none; /* iOS Safari bounce glitch killer */
+}
+
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
