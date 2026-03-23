@@ -436,7 +436,7 @@ body.theme-light .subpage-hero-subtitle {
 }
 
 .hero-title {
-  font-size: clamp(4.5rem, 15vw, 13rem);
+  font-size: clamp(4.5rem, 9vw, 8rem);
   font-weight: 800;
   line-height: 0.95;
   letter-spacing: -0.05em;
@@ -1335,14 +1335,14 @@ body.theme-light footer {
 /* =======================================
    SHORT SCREEN (LANDSCAPE FIX)
    ======================================= */
-@media screen and (max-height: 700px) {
+@media screen and (max-height: 900px) {
   .hero {
     justify-content: flex-start !important;
-    padding-top: 140px !important;
+    padding-top: 160px !important;
     min-height: auto !important;
   }
   .hero-title {
-    font-size: clamp(2.5rem, 5vw, 4rem) !important;
+    font-size: clamp(2.5rem, 6vw, 4.5rem) !important;
   }
 }
 
