@@ -908,6 +908,10 @@ body.theme-light .subpage-description ul li {
   border-bottom-color: var(--gray-200);
 }
 
+body.theme-light .subpage-description ul li::before {
+  color: var(--accent) !important;
+}
+
 body.theme-light .process-step p,
 body.theme-light .process-step h4,
 body.theme-light .process-step .step-num {
