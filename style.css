@@ -45,6 +45,8 @@ html {
   overflow-x: hidden;
 }
 
+.mobile-break { display: none; }
+
 body {
   font-family: var(--font-main);
   background-color: var(--black);
@@ -1242,9 +1244,14 @@ body.theme-light footer {
   .mobile-only-link { display: block; }
   .mobile-menu-btn { display: block; }
 
+  .mobile-break { display: block; }
+
   .hero {
-    min-height: auto;
+    min-height: 85vh;
     padding: 140px var(--gap) 80px;
+    align-items: flex-start;
+    text-align: left;
+    justify-content: center;
   }
 
   .hero-title { font-size: clamp(2.8rem, 13vw, 4.5rem); }
