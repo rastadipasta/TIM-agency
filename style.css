@@ -1,5 +1,5 @@
-/* =======================================
-   TIM Agency — Award-Winning Editorial Redesign
+﻿/* =======================================
+   TIM Agency â€” Award-Winning Editorial Redesign
    Inspired by Studio Size aesthetic
    No glass effects. Bold typography. Pure black & white.
    ======================================= */
@@ -241,14 +241,14 @@ img {
   top: 0;
   width: 100%;
   z-index: 9999;
-  padding: 32px 0; /* Povećan padding */
+  padding: 32px 0; /* PoveÄ‡an padding */
   transition: all var(--transition-normal);
   background: transparent;
 }
 
 .navbar.scrolled {
   background: rgba(0, 0, 0, 0.95);
-  padding: 20px 0; /* Povećan scrolled padding */
+  padding: 20px 0; /* PoveÄ‡an scrolled padding */
 }
 
 .navbar.scrolled-always {
@@ -289,7 +289,7 @@ img {
 }
 
 .nav-logo {
-  font-size: 1.6rem; /* Veći logo font */
+  font-size: 1.6rem; /* VeÄ‡i logo font */
   font-weight: 800;
   letter-spacing: -0.02em;
   color: var(--white);
@@ -309,7 +309,7 @@ img {
 
 .nav-link {
   font-weight: 500;
-  font-size: 1.1rem; /* Veći font linkova */
+  font-size: 1.1rem; /* VeÄ‡i font linkova */
   color: var(--gray-400);
   position: relative;
   transition: color var(--transition-fast);
@@ -356,7 +356,7 @@ img {
 }
 
 /* =======================================
-   HERO — MASSIVE TYPOGRAPHY
+   HERO â€” MASSIVE TYPOGRAPHY
    ======================================= */
 .hero {
   min-height: 100svh;
@@ -385,7 +385,7 @@ img {
   overflow: hidden;
   position: relative;
   display: flex;
-  padding: 40px 0; /* Dodano prostora da kvačice ne budu odrezane */
+  padding: 40px 0; /* Dodano prostora da kvaÄice ne budu odrezane */
 }
 
 .marquee-track {
@@ -457,8 +457,8 @@ body.theme-light .subpage-hero-subtitle {
   height: 0.15em;
   background: currentColor;
   border-radius: 50%;
-  top: 0.14em; /* U ravnini s centrom miša na slici */
-  left: 65%; /* Pomaknuto udesno, točno na poziciju miša sa slike */
+  top: 0.14em; /* U ravnini s centrom miÅ¡a na slici */
+  left: 65%; /* Pomaknuto udesno, toÄno na poziciju miÅ¡a sa slike */
   animation: i-dot-light-bounce 3.5s cubic-bezier(0.42, 0, 0.58, 1) infinite;
   pointer-events: none;
   z-index: 100;
@@ -553,7 +553,7 @@ body.theme-light .subpage-hero-subtitle {
 }
 
 .section-header {
-  margin-bottom: 110px; /* Povećano da se H2 spusti niže */
+  margin-bottom: 110px; /* PoveÄ‡ano da se H2 spusti niÅ¾e */
 }
 
 .section-header h2 {
@@ -574,7 +574,7 @@ body.theme-light .subpage-hero-subtitle {
 }
 
 /* =======================================
-   SERVICES — ACCORDION STRIPS
+   SERVICES â€” ACCORDION STRIPS
    ======================================= */
 .services-accordion {
   max-width: var(--container);
@@ -660,19 +660,17 @@ body.theme-light .step-icon {
   transition: all var(--transition-normal);
 }
 
-/* PORTFOLIO — TEASER (Homepage) */
+/* PORTFOLIO â€” TEASER (Homepage) */
 .portfolio-grid {
   display: flex;
-  flex-direction: column; /* �iroki prikaz (jedan ispod drugog) */
-  align-items: center;
-  gap: 80px;
+  align-items: center; /* Centrirano vodoravno */
+  gap: 8vw;
   padding: 40px 0;
 }
 
 .portfolio-grid .portfolio-item {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 9; /* Prilagodeno DALL-E premium slikama */
+  flex: 1;
+  height: 550px; /* Jednaka visina za obje slike */
   border-radius: 60px;
   position: relative;
   overflow: hidden;
@@ -681,7 +679,7 @@ body.theme-light .step-icon {
   transition: transform 0.8s var(--ease-smooth);
 }
 
-/* PORTFOLIO — HORIZONTAL SCROLL (Gallery Page) */
+/* PORTFOLIO â€” HORIZONTAL SCROLL (Gallery Page) */
 .horizontal-gallery {
   position: relative;
   width: 100%;
@@ -786,7 +784,7 @@ body.theme-light .step-icon {
 }
 
 /* =======================================
-   SUBPAGE CONTENT — 2 COL LAYOUT
+   SUBPAGE CONTENT â€” 2 COL LAYOUT
    ======================================= */
 .subpage-2col {
   display: grid;
@@ -881,7 +879,7 @@ body.theme-light .process-step:hover p {
   color: var(--black);
 }
 
-/* Broad Light Theme Overrides — High Contrast Polish */
+/* Broad Light Theme Overrides â€” High Contrast Polish */
 body.theme-light {
   background-color: var(--white) !important;
   color: var(--black) !important;
@@ -968,7 +966,7 @@ body.theme-light .btn-arrow::after {
 }
 
 .subpage-description ul li::before {
-  content: '—';
+  content: 'â€”';
   color: var(--accent);
   font-weight: 700;
 }
@@ -1140,7 +1138,7 @@ body.theme-light footer {
 }
 
 /* =======================================
-   ANIMATIONS — SCROLL REVEAL
+   ANIMATIONS â€” SCROLL REVEAL
    ======================================= */
 .reveal {
   opacity: 0;
@@ -1194,7 +1192,7 @@ body.theme-light footer {
 .stagger-children.visible > *:nth-child(6) { transition-delay: 0.5s; opacity: 1; transform: none; }
 
 /* =======================================
-   RESPONSIVE — TABLET
+   RESPONSIVE â€” TABLET
    ======================================= */
 @media (max-width: 1024px) {
   .hero { padding-top: 180px; } /* Osigurava da masivni tekst pobjegne daleko ispod izbornika na svakom tabletu */
@@ -1207,7 +1205,7 @@ body.theme-light footer {
 }
 
 /* =======================================
-   RESPONSIVE — MOBILE
+   RESPONSIVE â€” MOBILE
    ======================================= */
 @media (max-width: 768px) {
   .section-full { padding-top: 20vh !important; }
@@ -1311,7 +1309,7 @@ body.theme-light footer {
     padding: 140px 0 60px 0;
   }
 
-  /* Na mobilnom se animacija isključuje ili usporava po potrebi */
+  /* Na mobilnom se animacija iskljuÄuje ili usporava po potrebi */
   .marquee-text {
     gap: 20px;
     padding-right: 20px;
@@ -1327,7 +1325,7 @@ body.theme-light footer {
     padding: 120px var(--gap) 30px; /* Optimiziran padding za horizontalni prikaz */
   }
 
-  .hero-title { font-size: clamp(2rem, 4vw, 3rem); } /* Značajno smanjen naslov za landscape */
+  .hero-title { font-size: clamp(2rem, 4vw, 3rem); } /* ZnaÄajno smanjen naslov za landscape */
   .hero-scroll-indicator { display: none; }
 
   .portfolio-grid { flex-direction: row; gap: 20px; }
