@@ -1226,6 +1226,11 @@ body.theme-light footer {
     transform: translateY(0);
   }
 
+  body.theme-light .nav-links {
+    background: var(--white);
+    border-bottom: 1px solid var(--gray-200);
+  }
+
   .nav-right .btn-pill { display: none; }
   .mobile-only-link { display: block; }
   .mobile-menu-btn { display: block; }
