@@ -369,7 +369,7 @@ img {
 }
 
 .subpage-hero {
-  min-height: 70vh; /* Reduced from 90vh to focus more on marquee and bring content closer */
+  min-height: 100vh; /* Osigurava da je ekran pun prije skrolanja */
   display: flex;
   align-items: center;
   justify-content: center;
