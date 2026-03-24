@@ -2,49 +2,105 @@
 <html lang="hr">
 <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"> <title>Galerija Radova i Projekata | TIM Agencija</title> <meta name="description" content="Pregledajte naše najnovije dizajn projekte i studije slučaja. Spoj estetike i funkcionalnosti u svakom pixelu."> <meta name="robots" content="index, follow"> <link rel="canonical" href="https://tim-agencija.hr/galerija.html"> <meta property="og:type" content="website"> <meta property="og:url" content="https://tim-agencija.hr/galerija.html"> <meta property="og:title" content="Galerija Radova i Projekata | TIM Agencija"> <meta property="og:description" content="Pregledajte naše najnovije dizajn projekte i studije slučaja."> <meta property="og:image" content="https://tim-agencija.hr/resources/Logo/Logo%20noBG.png"> <link rel="preconnect" href="https://fonts.googleapis.com"> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"> <link rel="stylesheet" href="style.css"> <link rel="icon" type="image/png" href="resources/Logo/Logo%20noBG.png">
 </head>
-<body> <nav class="navbar scrolled-always"> <div class="nav-container"> <a href="index.html" class="nav-logo">TIM<sup>®</sup></a> <ul class="nav-links"> <li><a href="usluga-web-dizajn.html" class="nav-link">Web Dizajn</a></li> <li><a href="usluga-graficki-dizajn.html" class="nav-link">Grafički Dizajn</a></li> <li><a href="usluga-digitalni-proizvodi.html" class="nav-link">Digitalni Proizvodi</a></li> <li><a href="galerija.html" class="nav-link active">Portfolio</a></li> </ul> <div class="nav-right"> <a href="kontakt.html" class="btn btn-pill">Kontakt</a> <div class="mobile-menu-btn" aria-label="Menu">
-  <span class="line line1"></span>
-  <span class="line line2"></span>
-  <span class="line line3"></span>
-</div> </div> </div> </nav>    <main>
-        <div class="horizontal-gallery">
-            <div class="gallery-track">
-                <div class="portfolio-item">
-                    <div class="portfolio-image placeholder-img-1"></div>
-                </div>
-                <div class="portfolio-item">
-                    <div class="portfolio-image placeholder-img-2"></div>
-                </div>
-                <div class="portfolio-item">
-                    <div class="portfolio-image placeholder-img-3"></div>
-                </div>
-                <!-- Extra items for depth -->
-                <div class="portfolio-item">
-                    <div class="portfolio-image placeholder-img-4"></div>
-                </div>
-                <div class="portfolio-item">
-                    <div class="portfolio-image placeholder-img-2"></div>
-                </div>
-                <div class="portfolio-item">
-                    <div class="portfolio-image placeholder-img-3"></div>
-                </div>
-            </div>
+<body class="portfolio-page"> 
+  <nav class="navbar scrolled-always"> 
+    <div class="nav-container"> 
+      <a href="index.html" class="nav-logo">TIM<sup>®</sup></a> 
+      <ul class="nav-links"> 
+        <li><a href="usluga-web-dizajn.html" class="nav-link">Web Dizajn</a></li> 
+        <li><a href="usluga-graficki-dizajn.html" class="nav-link">Grafički Dizajn</a></li> 
+        <li><a href="usluga-digitalni-proizvodi.html" class="nav-link">Digitalni Proizvodi</a></li> 
+        <li><a href="galerija.html" class="nav-link active">Portfolio</a></li> 
+      </ul> 
+      <div class="nav-right"> 
+        <a href="kontakt.html" class="btn btn-pill">Kontakt</a> 
+        <div class="mobile-menu-btn" aria-label="Menu">
+          <span class="line line1"></span>
+          <span class="line line2"></span>
+          <span class="line line3"></span>
+        </div> 
+      </div> 
+    </div> 
+  </nav>
+
+  <main>
+    <div class="bento-portfolio-grid">
+      <!-- Item 1: Wide Image (Reykjavik style) -->
+      <div class="portfolio-card image-card card-wide reveal">
+        <div class="placeholder-image" style="width: 100%; height: 100%;"></div>
+        <!-- <img src="URL_TO_IMAGE" alt="Portfolio Image"> -->
+        <div class="card-content">
+          <h3>Naslov Projekta</h3>
+          <p>Kratki opis lokacije ili klijenta. Premium dizajn rješenje.</p>
         </div>
- <div style="text-align: center; padding: 120px 0;"> 
-    <h2 style="margin-bottom: 40px;">Želite projekt o kojem će se pričati?</h2>
-    <a href="kontakt.html" class="btn btn-arrow">Započnimo suradnju</a> 
- </div> </main>
-  <div class="geometric-separator">
-    <svg viewBox="0 0 1200 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <line x1="0" y1="50" x2="1200" y2="50" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" />
-      <rect x="520" y="35" width="80" height="30" stroke="currentColor" stroke-width="1" fill="none" vector-effect="non-scaling-stroke" />
-      <rect x="560" y="30" width="100" height="40" stroke="currentColor" stroke-width="1" fill="none" vector-effect="non-scaling-stroke" />
-      <rect x="610" y="20" width="140" height="60" stroke="currentColor" stroke-width="1" fill="none" vector-effect="non-scaling-stroke" />
-      <rect x="670" y="30" width="160" height="40" stroke="currentColor" stroke-width="1" fill="none" vector-effect="non-scaling-stroke" />
-    </svg>
-  </div>
-<footer>
-  <p>&copy; 2026 TIM Agencija za digitalni dizajn. Sva prava pridržana.</p>
-</footer> <!-- GSAP / ScrollTrigger --> <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script> <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script> <script src="script.js"></script>
+      </div>
+
+      <!-- Item 2: Small Text (Explore style) -->
+      <div class="portfolio-card text-card reveal">
+        <div class="card-content">
+          <h4 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 10px;">Istraživanje</h4>
+          <p>Opis procesa istraživanja i dubinske analize prije samog dizajna.</p>
+        </div>
+      </div>
+
+      <!-- Item 3: Tall Image (Bird style) -->
+      <div class="portfolio-card image-card card-tall reveal">
+        <div class="placeholder-image" style="width: 100%; height: 100%;"></div>
+        <div class="card-content">
+          <h3>Vizual</h3>
+        </div>
+      </div>
+
+      <!-- Item 4: Medium Tall Text (Unleash style) -->
+      <div class="portfolio-card text-card card-medium-tall reveal">
+        <div class="card-content">
+          <h3 style="font-size: 2rem;">Oslobodite kreativnost</h3>
+          <p style="margin-top: 20px;">Kroz inovativne pristupe i hrabre vizualne odluke, pretvaramo vašu viziju u digitalno remek-djelo koje ostavlja bez daha.</p>
+        </div>
+      </div>
+
+      <!-- Item 5: Central Square Image -->
+      <div class="portfolio-card image-card card-square reveal">
+        <div class="placeholder-image" style="width: 100%; height: 100%;"></div>
+      </div>
+
+      <!-- Item 6: Tall Center Image (House style) -->
+      <div class="portfolio-card image-card card-tall reveal">
+        <div class="placeholder-image" style="width: 100%; height: 100%;"></div>
+        <div class="card-content">
+          <h4 style="font-weight: 700;">Arhitektura</h4>
+        </div>
+      </div>
+
+      <!-- Item 7: Bottom Small text (Stay style) -->
+      <div class="portfolio-card text-card reveal">
+        <div class="card-content">
+          <h4 style="font-weight: 700;">Dizajn Sistem</h4>
+          <p>Konzistentnost i skalabilnost u svakom elementu.</p>
+        </div>
+      </div>
+
+      <!-- Item 8: Square Image/Text (Cuisine style) -->
+      <div class="portfolio-card image-card card-tall reveal">
+         <div class="placeholder-image" style="width: 100%; height: 100%;"></div>
+         <div class="card-content">
+           <h4 style="font-size: 1.5rem; font-weight: 700;">Finalni Proizvod</h4>
+           <p>Isporuka rješenja koje nadilazi očekivanja.</p>
+         </div>
+      </div>
+    </div>
+
+    <!-- Portfolio Nav bar at the bottom -->
+    <div class="portfolio-footer-nav reveal">
+      <a href="kontakt.html" class="nav-item accent">Surađujmo</a>
+      <a href="#" class="nav-item">Prethodno</a>
+      <a href="#" class="nav-item">Sljedeće</a>
+    </div>
+  </main>
+
+  <!-- GSAP / ScrollTrigger --> 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script> 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script> 
+  <script src="script.js"></script>
 </body>
 </html>
