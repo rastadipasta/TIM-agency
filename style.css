@@ -1503,7 +1503,7 @@ body.theme-light footer {
   }
 
   .mobile-menu-btn {
-    display: block;
+    display: flex;
   }
 
   .mobile-break {
