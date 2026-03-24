@@ -17,8 +17,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (mobileMenuBtn && navLinks) {
         mobileMenuBtn.addEventListener('click', () => {
-            const isOpen = navLinks.classList.toggle('active');
-            mobileMenuBtn.textContent = isOpen ? '✕' : '☰';
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.classList.toggle('active');
         });
     }
 
