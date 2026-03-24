@@ -1777,15 +1777,15 @@ body.theme-light .subpage-description ul li::before {
 }
 
 .portfolio-card {
-  background: var(--gray-900);
-  border-radius: 0; /* Sharp corners */
-  overflow: hidden;
   position: relative;
+  overflow: hidden; /* Ensure images follow rounded corners */
+  background: var(--gray-900);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   padding: 30px;
   border: 1px solid var(--gray-700);
+  border-radius: 60px; /* Rounded corners as on index */
   transition: transform var(--transition-normal), border-color var(--transition-fast);
 }
 
@@ -1867,15 +1867,28 @@ body.theme-light .subpage-description ul li::before {
 /* Mobile Adjustments for One Page */
 @media (max-width: 900px) {
   .portfolio-page {
+    overflow-y: auto;
     height: auto;
-    overflow: auto;
   }
   .bento-portfolio-grid {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: auto;
     height: auto;
+    padding-top: 120px;
   }
-  .card-wide, .card-tall, .card-medium-tall {
-    grid-column: span 2;
+  .portfolio-card {
+    border-radius: 40px; /* Tablet radius */
+    grid-area: auto !important;
+    height: 400px;
+  }
+}
+
+@media (max-width: 600px) {
+  .bento-portfolio-grid {
+    grid-template-columns: 1fr;
+  }
+  .portfolio-card {
+    border-radius: 30px; /* Mobile radius */
+    height: 350px;
   }
 }
