@@ -1315,8 +1315,8 @@ body.theme-light .btn-arrow::after {
   align-items: center;
   overflow: visible;
   margin-top: 80px;
-  color: var(--white);
-  padding: 0 var(--gap);
+  color: var(--gray-700);
+  padding: 0;
 }
 
 .geometric-separator svg {
