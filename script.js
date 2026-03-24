@@ -1,4 +1,4 @@
-/**
+﻿/**
  * script.js - TIM Agency — Award-Winning Redesign
  * Word Rotator, Scroll Reveals, Mobile Menu, Service Accordion
  */

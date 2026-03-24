@@ -34,7 +34,9 @@
 /* =======================================
    RESET & BASE
    ======================================= */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -45,7 +47,9 @@ html {
   overflow-x: hidden;
 }
 
-.mobile-break { display: none; }
+.mobile-break {
+  display: none;
+}
 
 body {
   font-family: var(--font-main);
@@ -65,74 +69,97 @@ body.theme-light {
   background-color: var(--white);
   color: var(--black);
 }
+
 body.theme-light .navbar.scrolled,
 body.theme-light .navbar.scrolled-always {
   background: rgba(255, 255, 255, 0.95);
   border-bottom: 1px solid var(--gray-100);
 }
+
 body.theme-light .nav-logo {
   color: var(--black) !important;
 }
+
 body.theme-light .nav-link {
   color: var(--black) !important;
 }
+
 body.theme-light .nav-link:hover,
 body.theme-light .nav-link.active {
   color: var(--black) !important;
 }
+
 body.theme-light .nav-link::after {
   background-color: var(--black) !important;
 }
+
 body.theme-light .navbar .btn-pill {
   color: var(--black) !important;
   border-color: var(--black) !important;
   background: transparent;
 }
+
 body.theme-light .navbar .btn-pill:hover {
   background: var(--black) !important;
   color: var(--white) !important;
 }
+
 body.theme-light .mobile-menu-btn {
   color: var(--black) !important;
 }
+
 body.theme-light .btn-arrow {
   color: var(--black);
 }
+
 body.theme-light .manifesto-text p {
   color: var(--black);
 }
+
 body.theme-light .section-header p {
   color: var(--black);
 }
+
 body.theme-light .section-divider,
 body.theme-light .services-accordion,
 body.theme-light .service-strip,
 body.theme-light footer {
   border-color: var(--gray-100);
 }
+
 body.theme-light .service-strip {
   color: var(--black);
 }
+
 body.theme-light .service-strip:hover {
   background: var(--gray-100);
 }
+
 body.theme-light .strip-title {
   color: var(--black);
 }
+
 body.theme-light footer {
   color: var(--gray-700);
 }
+
 body.theme-light .btn-pill {
   border-color: var(--gray-700);
   color: var(--black);
 }
+
 body.theme-light .btn-pill:hover {
   background: var(--black);
   color: var(--white);
   border-color: var(--black);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-display);
   font-weight: 700;
   letter-spacing: -0.03em;
@@ -158,8 +185,14 @@ img {
 /* =======================================
    UTILITY
    ======================================= */
-.highlight { color: var(--accent); }
-.text-muted { color: var(--gray-500); }
+.highlight {
+  color: var(--accent);
+}
+
+.text-muted {
+  color: var(--gray-500);
+}
+
 .container {
   max-width: var(--container);
   margin: 0 auto;
@@ -241,14 +274,16 @@ img {
   top: 0;
   width: 100%;
   z-index: 9999;
-  padding: 32px 0; /* PoveÄ‡an padding */
+  padding: 32px 0;
+  /* PoveÄ‡an padding */
   transition: all var(--transition-normal);
   background: transparent;
 }
 
 .navbar.scrolled {
   background: rgba(0, 0, 0, 0.95);
-  padding: 20px 0; /* PoveÄ‡an scrolled padding */
+  padding: 20px 0;
+  /* PoveÄ‡an scrolled padding */
 }
 
 .navbar.scrolled-always {
@@ -269,7 +304,8 @@ img {
 .navbar.scrolled-always .btn-pill {
   background: transparent;
   color: var(--white);
-  border-color: var(--white); /* Brighter white border for dark theme */
+  border-color: var(--white);
+  /* Brighter white border for dark theme */
 }
 
 .navbar.scrolled-always .btn-pill:hover {
@@ -289,7 +325,8 @@ img {
 }
 
 .nav-logo {
-  font-size: 1.6rem; /* VeÄ‡i logo font */
+  font-size: 1.6rem;
+  /* VeÄ‡i logo font */
   font-weight: 800;
   letter-spacing: -0.02em;
   color: var(--white);
@@ -309,7 +346,8 @@ img {
 
 .nav-link {
   font-weight: 500;
-  font-size: 1.1rem; /* VeÄ‡i font linkova */
+  font-size: 1.1rem;
+  /* VeÄ‡i font linkova */
   color: var(--gray-400);
   position: relative;
   transition: color var(--transition-fast);
@@ -347,7 +385,10 @@ img {
   gap: 16px;
 }
 
-.mobile-only-link { display: none; }
+.mobile-only-link {
+  display: none;
+}
+
 .mobile-menu-btn {
   display: none;
   cursor: pointer;
@@ -371,7 +412,8 @@ img {
 }
 
 .subpage-hero {
-  min-height: 100svh; /* Osigurava da je ekran pun prije skrolanja */
+  min-height: 100svh;
+  /* Osigurava da je ekran pun prije skrolanja */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -385,7 +427,8 @@ img {
   overflow: hidden;
   position: relative;
   display: flex;
-  padding: 40px 0; /* Dodano prostora da kvaÄice ne budu odrezane */
+  padding: 40px 0;
+  /* Dodano prostora da kvaÄice ne budu odrezane */
 }
 
 .marquee-track {
@@ -397,7 +440,7 @@ img {
 .marquee-text {
   font-size: clamp(5rem, 16vw, 15rem);
   font-weight: 800;
-  line-height: 1.1; 
+  line-height: 1.1;
   letter-spacing: -0.04em;
   text-transform: uppercase;
   display: flex;
@@ -416,8 +459,13 @@ img {
 }
 
 @keyframes scrollMarquee {
-  0% { transform: translateX(-15%); }
-  100% { transform: translateX(-65%); } 
+  0% {
+    transform: translateX(-15%);
+  }
+
+  100% {
+    transform: translateX(-65%);
+  }
 }
 
 .subpage-hero-subtitle {
@@ -457,8 +505,10 @@ body.theme-light .subpage-hero-subtitle {
   height: 0.15em;
   background: currentColor;
   border-radius: 50%;
-  top: 0.14em; /* U ravnini s centrom miÅ¡a na slici */
-  left: 65%; /* Pomaknuto udesno, toÄno na poziciju miÅ¡a sa slike */
+  top: 0.14em;
+  /* U ravnini s centrom miÅ¡a na slici */
+  left: 65%;
+  /* Pomaknuto udesno, toÄno na poziciju miÅ¡a sa slike */
   animation: i-dot-light-bounce 3.5s cubic-bezier(0.42, 0, 0.58, 1) infinite;
   pointer-events: none;
   z-index: 100;
@@ -466,8 +516,18 @@ body.theme-light .subpage-hero-subtitle {
 }
 
 @keyframes i-dot-light-bounce {
-  0%, 100% { transform: translate(-50%, 0); } /* Baza (bez padanja na slovo) */
-  50% { transform: translate(-50%, -0.07em); } /* Vrlo blagi i kratki skok gore */
+
+  0%,
+  100% {
+    transform: translate(-50%, 0);
+  }
+
+  /* Baza (bez padanja na slovo) */
+  50% {
+    transform: translate(-50%, -0.07em);
+  }
+
+  /* Vrlo blagi i kratki skok gore */
 }
 
 /* Ensure the dotless i doesn't have its own dot or weird spacing */
@@ -478,11 +538,15 @@ body.theme-light .subpage-hero-subtitle {
 .hero-title .word-rotator {
   display: inline-block;
   position: relative;
-  color: #f3b242; /* Restored orange/gold color specifically for hero text */
+  color: #f3b242;
+  /* Restored orange/gold color specifically for hero text */
   overflow: hidden;
-  padding-bottom: 0.2em; /* Prevents descender clipping */
-  margin-bottom: -0.2em; /* Visually aligns with the rest of the text */
-  padding-right: 0.1em; /* Prevents horizontal clipping of 'b' or overhangs */
+  padding-bottom: 0.2em;
+  /* Prevents descender clipping */
+  margin-bottom: -0.2em;
+  /* Visually aligns with the rest of the text */
+  padding-right: 0.1em;
+  /* Prevents horizontal clipping of 'b' or overhangs */
   margin-right: -0.1em;
   vertical-align: bottom;
 }
@@ -534,9 +598,17 @@ body.theme-light .subpage-hero-subtitle {
 }
 
 @keyframes scrollLine {
-  0% { top: -100%; }
-  50% { top: 100%; }
-  100% { top: 100%; }
+  0% {
+    top: -100%;
+  }
+
+  50% {
+    top: 100%;
+  }
+
+  100% {
+    top: 100%;
+  }
 }
 
 /* =======================================
@@ -553,7 +625,8 @@ body.theme-light .subpage-hero-subtitle {
 }
 
 .section-header {
-  margin-bottom: 110px; /* PoveÄ‡ano da se H2 spusti niÅ¾e */
+  margin-bottom: 110px;
+  /* PoveÄ‡ano da se H2 spusti niÅ¾e */
 }
 
 .section-header h2 {
@@ -596,11 +669,13 @@ body.theme-light .subpage-hero-subtitle {
 
 .service-strip:hover {
   background: var(--gray-900);
-  padding-left: calc(var(--gap) + 40px); /* Masivni pomak čitavog bloka udesno */
+  padding-left: calc(var(--gap) + 40px);
+  /* Masivni pomak čitavog bloka udesno */
 }
 
 .service-strip:hover .strip-arrow {
-  transform: translateX(20px); /* Veliki pomak strijelice */
+  transform: translateX(20px);
+  /* Veliki pomak strijelice */
   color: var(--accent);
 }
 
@@ -610,7 +685,8 @@ body.theme-light .subpage-hero-subtitle {
 
 .service-strip:hover .strip-title {
   color: var(--accent);
-  transform: translateX(10px); /* Dodatni pomak samog teksta \+ paljenje narančaste boje */
+  transform: translateX(10px);
+  /* Dodatni pomak samog teksta \+ paljenje narančaste boje */
 }
 
 .strip-icon-svg {
@@ -626,12 +702,14 @@ body.theme-light .subpage-hero-subtitle {
 
 .service-strip:hover .strip-title {
   color: var(--accent);
-  transform: translateX(10px); /* Dodatni pomak samog teksta \+ paljenje narančaste boje */
+  transform: translateX(10px);
+  /* Dodatni pomak samog teksta \+ paljenje narančaste boje */
 }
 
 .strip-icon-svg {
   color: var(--accent);
-  transform: scale(1.5) rotate(10deg); /* Skok i rotacija ikone */
+  transform: scale(1.5) rotate(10deg);
+  /* Skok i rotacija ikone */
 }
 
 body.theme-light .strip-title {
@@ -640,7 +718,8 @@ body.theme-light .strip-title {
 
 .service-strip:hover .strip-title {
   color: var(--accent);
-  transform: translateX(10px); /* Dodatni pomak samog teksta \+ paljenje narančaste boje */
+  transform: translateX(10px);
+  /* Dodatni pomak samog teksta \+ paljenje narančaste boje */
 }
 
 .strip-icon-svg {
@@ -653,7 +732,8 @@ body.theme-light .service-strip:hover .strip-title {
 
 .service-strip:hover .strip-title {
   color: var(--accent);
-  transform: translateX(10px); /* Dodatni pomak samog teksta \+ paljenje narančaste boje */
+  transform: translateX(10px);
+  /* Dodatni pomak samog teksta \+ paljenje narančaste boje */
 }
 
 .strip-icon-svg {
@@ -666,11 +746,13 @@ body.theme-light .service-strip:hover .strip-title {
   margin-bottom: 20px;
   object-fit: contain;
   transition: filter 0.5s ease;
-  filter: brightness(0) invert(1); /* Bijelo po defaultu (crna pozadina) */
+  filter: brightness(0) invert(1);
+  /* Bijelo po defaultu (crna pozadina) */
 }
 
 body.theme-light .step-icon {
-  filter: brightness(0); /* Crno kad je aktivna svijetla tema */
+  filter: brightness(0);
+  /* Crno kad je aktivna svijetla tema */
 }
 
 .service-strip:hover .strip-num {
@@ -699,14 +781,16 @@ body.theme-light .step-icon {
 /* PORTFOLIO — TEASER (Homepage) */
 .portfolio-grid {
   display: flex;
-  align-items: center; /* Centrirano vodoravno */
+  align-items: center;
+  /* Centrirano vodoravno */
   gap: 8vw;
   padding: 40px 0;
 }
 
 .portfolio-grid .portfolio-item {
   flex: 1;
-  height: 550px; /* Jednaka visina za obje slike */
+  height: 550px;
+  /* Jednaka visina za obje slike */
   border-radius: 60px;
   position: relative;
   overflow: hidden;
@@ -722,7 +806,8 @@ body.theme-light .step-icon {
   height: 100svh;
   overflow: hidden;
   background: var(--black);
-  padding-top: 100px; /* Space for navbar */
+  padding-top: 100px;
+  /* Space for navbar */
 }
 
 .gallery-track {
@@ -787,10 +872,25 @@ body.theme-light .step-icon {
 }
 
 /* Placeholder backgrounds */
-.placeholder-img-1 { background: url('resources/Portfolio/premium_macbook_web.png') no-repeat center center; background-size: cover; }
-.placeholder-img-2 { background: url('resources/Portfolio/premium_brand_identity.png') no-repeat center center; background-size: cover; }
-.placeholder-img-3 { background: url('resources/Portfolio/premium_iphone_ui.png') no-repeat center center; background-size: cover; }
-.placeholder-img-4 { background: url('resources/Portfolio/img4.png') no-repeat center center; background-size: cover; }
+.placeholder-img-1 {
+  background: url('resources/Portfolio/premium_macbook_web.png') no-repeat center center;
+  background-size: cover;
+}
+
+.placeholder-img-2 {
+  background: url('resources/Portfolio/premium_brand_identity.png') no-repeat center center;
+  background-size: cover;
+}
+
+.placeholder-img-3 {
+  background: url('resources/Portfolio/premium_iphone_ui.png') no-repeat center center;
+  background-size: cover;
+}
+
+.placeholder-img-4 {
+  background: url('resources/Portfolio/img4.png') no-repeat center center;
+  background-size: cover;
+}
 
 /* =======================================
    MANIFESTO / PHILOSOPHY
@@ -980,7 +1080,7 @@ body.theme-light .subpage-hero-subtitle {
 }
 
 body.theme-light .section-header h2 {
-    color: var(--black);
+  color: var(--black);
 }
 
 body.theme-light .btn-arrow {
@@ -989,7 +1089,8 @@ body.theme-light .btn-arrow {
 }
 
 body.theme-light .btn-arrow:hover {
-  color: var(--gray-500); /* Slightly fade on hover instead of turning white */
+  color: var(--gray-500);
+  /* Slightly fade on hover instead of turning white */
 }
 
 body.theme-light .btn-arrow::after {
@@ -1068,7 +1169,7 @@ body.theme-light .btn-arrow::after {
   margin-bottom: 20px;
 }
 
-.contact-info > p {
+.contact-info>p {
   color: var(--gray-500);
   margin-bottom: 40px;
   font-size: 1.05rem;
@@ -1208,9 +1309,17 @@ body.theme-light footer {
   transform: translateY(0);
 }
 
-.reveal-delay-1 { transition-delay: 0.1s; }
-.reveal-delay-2 { transition-delay: 0.2s; }
-.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-1 {
+  transition-delay: 0.1s;
+}
+
+.reveal-delay-2 {
+  transition-delay: 0.2s;
+}
+
+.reveal-delay-3 {
+  transition-delay: 0.3s;
+}
 
 /* =======================================
    GSAP CUSTOM UTILITIES
@@ -1219,14 +1328,17 @@ body.theme-light footer {
   overflow: hidden;
   display: inline-block;
 }
+
 .gsap-mask span {
   display: inline-block;
   transform: translateY(110%);
 }
+
 .gsap-img-wrapper {
   overflow: hidden;
   height: 500px;
 }
+
 .gsap-img-parallax {
   height: 120%;
   width: 100%;
@@ -1235,37 +1347,93 @@ body.theme-light footer {
 }
 
 /* Staggered children */
-.stagger-children > * {
+.stagger-children>* {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.6s var(--ease-smooth), transform 0.6s var(--ease-smooth);
 }
 
-.stagger-children.visible > *:nth-child(1) { transition-delay: 0s; opacity: 1; transform: none; }
-.stagger-children.visible > *:nth-child(2) { transition-delay: 0.1s; opacity: 1; transform: none; }
-.stagger-children.visible > *:nth-child(3) { transition-delay: 0.2s; opacity: 1; transform: none; }
-.stagger-children.visible > *:nth-child(4) { transition-delay: 0.3s; opacity: 1; transform: none; }
-.stagger-children.visible > *:nth-child(5) { transition-delay: 0.4s; opacity: 1; transform: none; }
-.stagger-children.visible > *:nth-child(6) { transition-delay: 0.5s; opacity: 1; transform: none; }
+.stagger-children.visible>*:nth-child(1) {
+  transition-delay: 0s;
+  opacity: 1;
+  transform: none;
+}
+
+.stagger-children.visible>*:nth-child(2) {
+  transition-delay: 0.1s;
+  opacity: 1;
+  transform: none;
+}
+
+.stagger-children.visible>*:nth-child(3) {
+  transition-delay: 0.2s;
+  opacity: 1;
+  transform: none;
+}
+
+.stagger-children.visible>*:nth-child(4) {
+  transition-delay: 0.3s;
+  opacity: 1;
+  transform: none;
+}
+
+.stagger-children.visible>*:nth-child(5) {
+  transition-delay: 0.4s;
+  opacity: 1;
+  transform: none;
+}
+
+.stagger-children.visible>*:nth-child(6) {
+  transition-delay: 0.5s;
+  opacity: 1;
+  transform: none;
+}
 
 /* =======================================
    RESPONSIVE — TABLET
    ======================================= */
 @media (max-width: 1024px) {
-  .hero { padding-top: 180px; } /* Osigurava da masivni tekst pobjegne daleko ispod izbornika na svakom tabletu */
-  .hero-title { font-size: clamp(2.5rem, 7vw, 5rem); }
-  .manifesto { grid-template-columns: 1fr; gap: 40px; }
-  .subpage-2col { grid-template-columns: 1fr; gap: 40px; }
-  .portfolio-grid { gap: 40px; }
-  .portfolio-grid .portfolio-item { height: 450px; border-radius: 40px; }
-  .portfolio-image { height: 100%; }
+  .hero {
+    padding-top: 180px;
+  }
+
+  /* Osigurava da masivni tekst pobjegne daleko ispod izbornika na svakom tabletu */
+  .hero-title {
+    font-size: clamp(2.5rem, 7vw, 5rem);
+  }
+
+  .manifesto {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .subpage-2col {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .portfolio-grid {
+    gap: 40px;
+  }
+
+  .portfolio-grid .portfolio-item {
+    height: 450px;
+    border-radius: 40px;
+  }
+
+  .portfolio-image {
+    height: 100%;
+  }
 }
 
 /* =======================================
    RESPONSIVE — MOBILE
    ======================================= */
 @media (max-width: 768px) {
-  .section-full { padding-top: 20vh !important; }
+  .section-full {
+    padding-top: 20vh !important;
+  }
+
   .nav-container {
     display: flex;
     justify-content: space-between;
@@ -1299,29 +1467,47 @@ body.theme-light footer {
     border-bottom: 1px solid var(--gray-200);
   }
 
-  .nav-right .btn-pill { display: none; }
-  .mobile-only-link { display: block; }
-  .mobile-menu-btn { display: block; }
+  .nav-right .btn-pill {
+    display: none;
+  }
 
-  .mobile-break { display: block; }
+  .mobile-only-link {
+    display: block;
+  }
+
+  .mobile-menu-btn {
+    display: block;
+  }
+
+  .mobile-break {
+    display: block;
+  }
 
   .hero {
-    min-height: 100svh; min-height: 100svh;
+    min-height: 100svh;
+    min-height: 100svh;
     padding: 100px var(--gap) 40px;
     align-items: flex-start;
     text-align: left;
     justify-content: center;
   }
 
-  .hero-title { font-size: clamp(2.2rem, 12vw, 4.2rem); }
-  .hero-scroll-indicator { display: none; }
+  .hero-title {
+    font-size: clamp(2.2rem, 12vw, 4.2rem);
+  }
+
+  .hero-scroll-indicator {
+    display: none;
+  }
 
   .service-strip {
     grid-template-columns: 50px 1fr auto;
     padding: 24px var(--gap);
   }
 
-  .strip-title { font-size: 1.3rem; }
+  .strip-title {
+    font-size: 1.3rem;
+  }
 
   .portfolio-grid,
   .portfolio-grid.gallery-grid {
@@ -1337,7 +1523,9 @@ body.theme-light footer {
     border-radius: 30px;
   }
 
-  .portfolio-image { height: 100%; }
+  .portfolio-image {
+    height: 100%;
+  }
 
   .portfolio-info {
     opacity: 1;
@@ -1349,9 +1537,16 @@ body.theme-light footer {
     gap: 40px;
   }
 
-  .contact-info h2 { font-size: 2rem; }
+  .contact-info h2 {
+    font-size: 2rem;
+  }
 
-  .manifesto { min-height: auto; padding: 120px var(--gap) 80px; } /* Neutralizira "100vh" glitch na mobitelu */
+  .manifesto {
+    min-height: auto;
+    padding: 120px var(--gap) 80px;
+  }
+
+  /* Neutralizira "100vh" glitch na mobitelu */
 
   .cta-strip {
     flex-direction: column;
@@ -1359,8 +1554,13 @@ body.theme-light footer {
     text-align: center;
   }
 
-  .section { padding: 80px var(--gap); }
-  .section-header { margin-bottom: 48px; }
+  .section {
+    padding: 80px var(--gap);
+  }
+
+  .section-header {
+    margin-bottom: 48px;
+  }
 
   .subpage-hero {
     padding: 140px 0 60px 0;
@@ -1379,15 +1579,31 @@ body.theme-light footer {
 @media screen and (max-width: 1024px) and (orientation: landscape) {
   .hero {
     min-height: auto;
-    padding: 120px var(--gap) 30px; /* Optimiziran padding za horizontalni prikaz */
+    padding: 120px var(--gap) 30px;
+    /* Optimiziran padding za horizontalni prikaz */
   }
 
-  .hero-title { font-size: clamp(2rem, 4vw, 3rem); } /* ZnaÄajno smanjen naslov za landscape */
-  .hero-scroll-indicator { display: none; }
+  .hero-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+  }
 
-  .portfolio-grid { flex-direction: row; gap: 20px; }
-  .portfolio-grid .portfolio-item { height: 250px; }
-  .portfolio-image { height: 100%; }
+  /* ZnaÄajno smanjen naslov za landscape */
+  .hero-scroll-indicator {
+    display: none;
+  }
+
+  .portfolio-grid {
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  .portfolio-grid .portfolio-item {
+    height: 250px;
+  }
+
+  .portfolio-image {
+    height: 100%;
+  }
 }
 
 /* =======================================
@@ -1399,6 +1615,7 @@ body.theme-light footer {
     padding-top: 160px !important;
     min-height: auto !important;
   }
+
   .hero-title {
     font-size: clamp(4rem, 12vw, 10.5rem) !important;
   }
@@ -1406,8 +1623,13 @@ body.theme-light footer {
 
 
 @keyframes scrollMarqueeCenter {
-  0% { transform: translateX(50vw); }
-  100% { transform: translateX(-100%); }
+  0% {
+    transform: translateX(50vw);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
 }
 
 
