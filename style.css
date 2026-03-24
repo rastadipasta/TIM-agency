@@ -1736,7 +1736,7 @@ body.theme-light .subpage-description ul li::before {
 @media (max-width: 768px) {
   .back-to-top { 
     display: block; 
-    bottom: 240px;
+    bottom: 200px;
   }
   body.theme-light .back-to-top { 
     background-color: var(--black); 
