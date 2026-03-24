@@ -1760,6 +1760,26 @@ body.theme-light .subpage-description ul li::before {
   overflow: hidden;
 }
 
+.portfolio-page .navbar {
+  position: relative !important;
+  background: var(--black) !important;
+}
+
+.bento-portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  height: calc(100vh - 110px); /* Fill the space of the removed button */
+  gap: 15px;
+  padding: 0 var(--gap) 40px var(--gap);
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.portfolio-card {
+  position: relative;
+  overflow: hidden; /* Ensure images follow rounded corners */
+  background: var(--gray-900);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
