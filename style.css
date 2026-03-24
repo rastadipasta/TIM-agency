@@ -1866,37 +1866,34 @@ body.theme-light .subpage-description ul li::before {
 
 /* Bottom Nav bar */
 .portfolio-footer-nav {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  gap: 15px;
-  padding: 0 var(--gap) 20px var(--gap);
-  height: 80px;
+  display: flex;
+  justify-content: center;
+  padding: 0 var(--gap) 40px var(--gap);
+  height: auto;
 }
 
 .nav-item {
-  background: var(--gray-900);
-  border: 1px solid var(--gray-700);
-  border-radius: 0; /* Sharp corners */
+  background: #2a2420; /* Darker bronze from image */
+  border: 1px solid #3d342f;
+  border-radius: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 700;
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
+  font-size: 0.8rem;
+  padding: 25px 80px;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--white);
   text-decoration: none;
   transition: all var(--transition-fast);
+  width: auto;
+  min-width: 300px;
 }
 
 .nav-item:hover {
-  background: var(--white);
-  color: var(--black);
-}
-
-.nav-item.accent {
-  background: linear-gradient(135deg, #4d3d33 0%, #8c7662 100%);
-  border: none;
+  background: #3d342f;
+  border-color: var(--white);
 }
 
 /* Mobile Adjustments for One Page */
