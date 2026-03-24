@@ -1684,3 +1684,11 @@ footer {
     color: var(--white); 
   }
 }
+@keyframes bounceArrow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+.back-to-top span {
+  display: inline-block;
+  animation: bounceArrow 1.5s infinite ease-in-out;
+}
