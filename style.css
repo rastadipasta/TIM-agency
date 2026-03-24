@@ -1746,20 +1746,6 @@ body.theme-light .subpage-description ul li::before {
 @keyframes bounceArrow {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-5px); }
-}
-.back-to-top span {
-  display: inline-block;
-  animation: bounceArrow 1.5s infinite ease-in-out;
-}
-/* =======================================
-   BENTO PORTFOLIO GRID
-   ======================================= */
-}
-
-.portfolio-card.text-card {
-  background: #1c1c1a;
-  justify-content: flex-start;
-}
 
 .portfolio-card.image-card {
   padding: 0;
