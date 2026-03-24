@@ -58,35 +58,19 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     /* =========================================================
-       3. WORD ROTATOR (Hero)
+       3. INDEX MARQUEE INTRO & LOOP
        ========================================================= */
-    const rotator = document.getElementById('wordRotator');
-    if (rotator) {
-        const words = ['web', 'dizajn', 'brand', 'identitet', 'strategiju'];
-        let currentIndex = 0;
-
-        setInterval(() => {
-            currentIndex = (currentIndex + 1) % words.length;
-            const wordEl = rotator.querySelector('.word');
-            
-            // Animate out
-            wordEl.style.transform = 'translateY(-100%)';
-            wordEl.style.opacity = '0';
-            
-            setTimeout(() => {
-                wordEl.textContent = words[currentIndex];
-                wordEl.style.transform = 'translateY(100%)';
-                
-                // Force reflow
-                wordEl.offsetHeight;
-                
-                // Animate in
-                requestAnimationFrame(() => {
-                    wordEl.style.transform = 'translateY(0)';
-                    wordEl.style.opacity = '1';
-                });
-            }, 400);
-        }, 2500);
+    const indexMarquee = document.getElementById('index-marquee');
+    if (indexMarquee) {
+        gsap.fromTo(indexMarquee, 
+            { x: '50vw' }, 
+            { x: '-15%', duration: 12, ease: "none", onComplete: () => {
+                gsap.fromTo(indexMarquee, 
+                    { x: '-15%' }, 
+                    { x: '-65%', duration: 15, ease: "none", repeat: -1 }
+                );
+            } }
+        );
     }
 
     /* =========================================================
