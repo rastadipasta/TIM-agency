@@ -1738,20 +1738,6 @@ body.theme-light .subpage-description ul li::before {
     display: block; 
     bottom: 200px;
   }
-  body.theme-light .back-to-top { 
-    background-color: var(--black); 
-    color: var(--white); 
-  }
-}
-@keyframes bounceArrow {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-5px); }
-
-.portfolio-card.image-card {
-  padding: 0;
-}
-
-.portfolio-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
