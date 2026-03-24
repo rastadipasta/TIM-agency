@@ -1656,8 +1656,8 @@ footer {
 
 .back-to-top {
   display: none;
-  position: fixed;
-  bottom: 120px; /* Lebdi malo iznad pocetka footera */
+  position: absolute; /* Usidreno na dno dokumenta, ne lebdi na ekranu */
+  bottom: 160px; /* Podignuto tik iznad footera */ /* Lebdi malo iznad pocetka footera */
   right: 30px;   /* Odmaknuto tijelo gumba od samog desnog ruba ekrana */
   width: 50px;
   height: 50px;
