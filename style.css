@@ -1,4 +1,4 @@
-﻿/* =======================================
+/* =======================================
    TIM Agency — Award-Winning Editorial Redesign
    Inspired by Studio Size aesthetic
    No glass effects. Bold typography. Pure black & white.
@@ -1306,12 +1306,49 @@ body.theme-light .btn-arrow::after {
 }
 
 /* =======================================
+   HALFTONE DOTS SEPARATOR
+   ======================================= */
+.halftone-separator {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  overflow: visible;
+  padding: 10px 0;
+}
+
+.dot-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 0;
+  overflow: visible;
+  align-items: center;
+}
+
+.dot-row .dot {
+  border-radius: 50%;
+  background: var(--white);
+  flex-shrink: 0;
+  animation: pulseDot 2.5s ease-in-out infinite;
+}
+
+body.theme-light .dot-row .dot {
+  background: var(--black);
+}
+
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.35); }
+}
+
+/* =======================================
    FOOTER
    ======================================= */
 footer {
   text-align: center;
   padding: 60px var(--gap);
-  border-top: 1px solid var(--gray-900);
   color: var(--gray-500);
   font-size: 0.85rem;
   transition: all 0.3s ease;

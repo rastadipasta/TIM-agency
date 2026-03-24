@@ -224,4 +224,47 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    /* =========================================================
+       8. HALFTONE DOTS SEPARATOR (Footer)
+       ========================================================= */
+    const halftoneContainer = document.getElementById('halftone');
+    if (halftoneContainer) {
+        const totalDots = 80;
+
+        function createDotRow(direction) {
+            const row = document.createElement('div');
+            row.className = 'dot-row';
+
+            for (let i = 0; i < totalDots; i++) {
+                const dot = document.createElement('span');
+                dot.className = 'dot';
+
+                let t;
+                if (direction === 'ltr') {
+                    t = 1 - (i / (totalDots - 1));
+                } else {
+                    t = i / (totalDots - 1);
+                }
+
+                const minSize = 2;
+                const maxSize = 14;
+                const size = minSize + t * (maxSize - minSize);
+
+                dot.style.width = size + 'px';
+                dot.style.height = size + 'px';
+                dot.style.minWidth = size + 'px';
+
+                const delay = (i / totalDots) * 1.6;
+                dot.style.animationDelay = delay.toFixed(2) + 's';
+
+                row.appendChild(dot);
+            }
+
+            return row;
+        }
+
+        halftoneContainer.appendChild(createDotRow('ltr'));
+        halftoneContainer.appendChild(createDotRow('rtl'));
+    }
+
 });
