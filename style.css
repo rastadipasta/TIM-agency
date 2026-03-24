@@ -1639,3 +1639,47 @@ footer {
 @media (max-width: 768px) {
   .gallery-track .portfolio-item { width: 90vw; border-radius: 20px; }
 }
+
+/* =======================================
+   MOBILE ONLY & UTILITIES
+   ======================================= */
+.mobile-only { 
+  display: none; 
+}
+
+@media (max-width: 950px) { 
+  .mobile-only { 
+    display: block; 
+    margin-top: 20px; 
+  } 
+}
+
+.back-to-top {
+  display: none;
+  position: fixed;
+  bottom: 120px; /* Lebdi malo iznad pocetka footera */
+  right: 30px;   /* Odmaknuto tijelo gumba od samog desnog ruba ekrana */
+  width: 50px;
+  height: 50px;
+  background-color: var(--white);
+  color: var(--black);
+  border-radius: 50%;
+  text-align: center;
+  line-height: 50px;
+  text-decoration: none;
+  z-index: 999;
+  font-weight: bold;
+  font-size: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  padding-top: 6px;
+}
+
+@media (max-width: 768px) {
+  .back-to-top { 
+    display: block; 
+  }
+  body.theme-light .back-to-top { 
+    background-color: var(--black); 
+    color: var(--white); 
+  }
+}
