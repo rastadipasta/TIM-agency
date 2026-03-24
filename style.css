@@ -1738,6 +1738,53 @@ body.theme-light .subpage-description ul li::before {
     display: block; 
     bottom: 200px;
   }
+  body.theme-light .back-to-top { 
+    background-color: var(--black); 
+    color: var(--white); 
+  }
+}
+@keyframes bounceArrow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+.back-to-top span {
+  display: inline-block;
+  animation: bounceArrow 1.5s infinite ease-in-out;
+}
+/* =======================================
+   BENTO PORTFOLIO GRID
+   ======================================= */
+.portfolio-page {
+  background: var(--black);
+  height: 100vh;
+  overflow: hidden;
+}
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 30px;
+  border: 1px solid var(--gray-700);
+  border-radius: 60px; /* Rounded corners as on index */
+  transition: transform var(--transition-normal), border-color var(--transition-fast);
+}
+
+.portfolio-card:hover {
+  transform: scale(1.02);
+  border-color: var(--white);
+  z-index: 10;
+}
+
+.portfolio-card.text-card {
+  background: #1c1c1a;
+  justify-content: flex-start;
+}
+
+.portfolio-card.image-card {
+  padding: 0;
+}
+
+.portfolio-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
