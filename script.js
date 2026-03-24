@@ -224,5 +224,21 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    /* =========================================================
+       8. GEOMETRIC SEPARATOR ANIMATION
+       ========================================================= */
+    const geoRects = document.querySelectorAll('.geometric-separator svg rect');
+    if (geoRects.length > 0 && typeof gsap !== 'undefined') {
+        geoRects.forEach((rect, i) => {
+            gsap.to(rect, {
+                x: i % 2 === 0 ? "+=20" : "-=20",
+                duration: 3 + i * 0.5,
+                repeat: -1,
+                yoyo: true,
+                ease: "sine.inOut",
+                delay: i * 0.2
+            });
+        });
+    }
 
 });
