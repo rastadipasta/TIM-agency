@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (indexMarquee) {
         gsap.fromTo(indexMarquee, 
             { x: '50vw' }, 
-            { x: '-15%', duration: 12, ease: "none", onComplete: () => {
+            { x: '-15%', duration: (window.innerWidth/2 + 0.15 * indexMarquee.scrollWidth) / (indexMarquee.scrollWidth/2 / 15), ease: "none", onComplete: () => {
                 gsap.fromTo(indexMarquee, 
                     { x: '-15%' }, 
                     { x: '-65%', duration: 15, ease: "none", repeat: -1 }

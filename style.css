@@ -823,8 +823,8 @@ body.theme-light .step-icon {
 .gallery-track .portfolio-item {
   position: relative;
   flex-shrink: 0;
-  width: 85vw; /* Znatno šire za landscape format slike */
-  max-width: 1200px;
+  width: 50vw; /* Smanjeno za optimalan Desktop prikaz */
+  max-width: 900px;
   height: auto !important;
   aspect-ratio: 16 / 9;
   border-radius: 40px;
