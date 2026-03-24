@@ -823,26 +823,20 @@ body.theme-light .step-icon {
 .gallery-track .portfolio-item {
   position: relative;
   flex-shrink: 0;
-  width: 35vw;
-  height: 65vh;
-  border-radius: 60px;
+  width: 85vw; /* Znatno šire za landscape format slike */
+  max-width: 1200px;
+  height: auto !important;
+  aspect-ratio: 16 / 9;
+  border-radius: 40px;
   overflow: hidden;
   cursor: pointer;
   background: var(--gray-900);
   transition: transform 0.8s var(--ease-smooth);
 }
 
-.gallery-track .portfolio-item:nth-child(even) {
-  height: 50vh;
-  align-self: flex-end;
-  margin-bottom: 5vh;
-}
+/* uklonjeno variranje visine even */
 
-.gallery-track .portfolio-item:nth-child(3n) {
-  height: 75vh;
-  align-self: flex-start;
-  margin-top: 5vh;
-}
+/* uklonjeno variranje visine 3n */
 
 .portfolio-image {
   width: 100%;
@@ -1641,4 +1635,7 @@ footer {
   text-align: center;
   padding: 40px var(--gap);
   border-top: 1px solid var(--gray-700);
+}
+@media (max-width: 768px) {
+  .gallery-track .portfolio-item { width: 90vw; border-radius: 20px; }
 }
