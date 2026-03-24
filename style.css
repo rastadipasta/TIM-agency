@@ -1306,46 +1306,34 @@ body.theme-light .btn-arrow::after {
 }
 
 /* =======================================
-   HALFTONE DOTS SEPARATOR
+   GEOMETRIC LINE SEPARATOR
    ======================================= */
-.halftone-separator {
+.geometric-separator {
   width: 100%;
+  height: 100px;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 3px;
-  overflow: visible;
-  padding: 10px 0;
+  overflow: hidden;
+  margin-top: 40px;
+  color: var(--white);
+  padding: 0 var(--gap);
 }
 
-.dot-row {
-  display: flex;
-  justify-content: space-between;
+.geometric-separator svg {
   width: 100%;
-  gap: 0;
-  overflow: visible;
-  align-items: center;
+  height: 100%;
 }
 
-.dot-row .dot {
-  border-radius: 50%;
-  background: var(--white);
-  flex-shrink: 0;
-  animation: pulseDot 2.5s ease-in-out infinite;
+body.theme-light .geometric-separator {
+  color: var(--black);
 }
 
-body.theme-light .dot-row .dot {
-  background: var(--black);
+@media (max-width: 768px) {
+  .geometric-separator {
+    height: 60px;
+    margin-top: 20px;
+  }
 }
-
-@keyframes pulseDot {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.35); }
-}
-
-/* =======================================
-   FOOTER
-   ======================================= */
 footer {
   text-align: center;
   padding: 60px var(--gap);
