@@ -85,9 +85,13 @@ document.addEventListener("DOMContentLoaded", () => {
     root.classList.toggle("motion-enabled", !reduced.matches);
     root.classList.toggle("motion-paused", paused || reduced.matches);
     motionButton.hidden = reduced.matches;
-    motionButton.textContent = paused
-      ? "Pokreni animacije"
-      : "Pauziraj animacije";
+    motionButton.innerHTML = paused
+      ? '<span aria-hidden="true">▶</span><span class="sr-only">Pokreni animacije</span>'
+      : '<span aria-hidden="true">⏸</span><span class="sr-only">Pauziraj animacije</span>';
+    motionButton.setAttribute(
+      "aria-label",
+      paused ? "Pokreni animacije" : "Pauziraj animacije",
+    );
     motionButton.setAttribute("aria-pressed", String(paused));
     tweens.forEach((tween) => tween.paused(paused || reduced.matches));
     if (reduced.matches)
