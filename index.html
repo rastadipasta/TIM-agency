@@ -1,153 +1,335 @@
-<!DOCTYPE html>
+<!doctype html>
+
 <html lang="hr">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>TIM | Agencija za Web Dizajn, Graficki Dizajn i Digitalne Proizvode</title>
-  <meta name="description"
-    content="TIM je premium agencija specijalizirana za UI/UX dizajn, web razvoj, vizualni identitet i digitalne proizvode. Pomažemo vizionarskim BRANDovima ostvariti opipljive rezultate.">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://tim-agencija.hr/"> <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://tim-agencija.hr/">
-  <meta property="og:title" content="TIM | Agencija za Web Dizajn, Graficki Dizajn i Digitalne Proizvode">
-  <meta property="og:description"
-    content="TIM je premium agencija specijalizirana za UI/UX dizajn, web razvoj, vizualni identitet i digitalne proizvode.">
-  <meta property="og:image" content="https://tim-agencija.hr/resources/Logo/Logo%20noBG.png">
-  <meta property="og:locale" content="hr_HR"> <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="TIM | Agencija za Web Dizajn, Graficki Dizajn i Digitalne Proizvode">
-  <meta name="twitter:description"
-    content="TIM je premium agencija specijalizirana za UI/UX dizajn, web razvoj, vizualni identitet i digitalne proizvode.">
-  <meta name="twitter:image" content="https://tim-agencija.hr/resources/Logo/Logo%20noBG.png">
-  <!-- JSON-LD Structured Data -->
-  <script
-    type="application/ld+json"> {"@context":"https://schema.org","@type":"ProfessionalService","name":"TIM Agencija za digitalni dizajn","description":"Premium agencija specijalizirana za UI/UX dizajn, web razvoj, vizualni identitet i digitalne proizvode.","url":"https://tim-agencija.hr","logo":"https://tim-agencija.hr/resources/Logo/Logo%20noBG.png","sameAs": [],"serviceType": ["Web dizajn","Graficki dizajn","UI/UX dizajn","Digitalni proizvodi"],"areaServed": {"@type":"Country","name":"Hrvatska" } } </script>
-  <!-- Google Fonts: Inter Tight -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/png" href="resources/Logo/Logo%20noBG.png">
-</head>
-
-<body> <!-- NAVBAR -->
-  <nav class="navbar">
-    <div class="nav-container"> <a href="index.html" class="nav-logo">TIM<sup>®</sup></a>
-      <ul class="nav-links">
-        <li><a href="usluga-web-dizajn.html" class="nav-link">Web Dizajn</a></li>
-        <li><a href="usluga-graficki-dizajn.html" class="nav-link">Grafički Dizajn</a></li>
-        <li><a href="usluga-digitalni-proizvodi.html" class="nav-link">Digitalni Proizvodi</a></li>
-        <li><a href="galerija.html" class="nav-link">Portfolio</a></li>
-        <li><a href="kontakt.html" class="nav-link mobile-only">Kontakt</a></li>
-      </ul>
-      <div class="nav-right"> <a href="kontakt.html" class="btn btn-pill">Kontakt</a>
-        <div class="mobile-menu-btn" aria-label="Menu">
-          <span class="line line1"></span>
-          <span class="line line2"></span>
-          <span class="line line3"></span>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+      name="viewport"
+    />
+    <title>
+      TIMDSGN | Agencija za Web Dizajn, Graficki Dizajn i Digitalne Proizvode
+    </title>
+    <meta
+      content="TIMDSGN je premium agencija specijalizirana za UI/UX dizajn, web razvoj, vizualni identitet i digitalne proizvode. Pomažemo vizionarskim BRANDovima ostvariti opipljive rezultate."
+      name="description"
+    />
+    <meta content="index, follow" name="robots" />
+    <link href="https://tim-agencija.hr/" rel="canonical" />
+    <!-- Open Graph / Facebook -->
+    <meta content="website" property="og:type" />
+    <meta content="https://tim-agencija.hr/" property="og:url" />
+    <meta
+      content="TIMDSGN | Agencija za Web Dizajn, Graficki Dizajn i Digitalne Proizvode"
+      property="og:title"
+    />
+    <meta
+      content="TIMDSGN je premium agencija specijalizirana za UI/UX dizajn, web razvoj, vizualni identitet i digitalne proizvode."
+      property="og:description"
+    />
+    <meta
+      content="https://tim-agencija.hr/resources/Logo/LOGOwhite.png"
+      property="og:image"
+    />
+    <meta content="hr_HR" property="og:locale" />
+    <!-- Twitter -->
+    <meta content="summary_large_image" name="twitter:card" />
+    <meta
+      content="TIMDSGN | Agencija za Web Dizajn, Graficki Dizajn i Digitalne Proizvode"
+      name="twitter:title"
+    />
+    <meta
+      content="TIMDSGN je premium agencija specijalizirana za UI/UX dizajn, web razvoj, vizualni identitet i digitalne proizvode."
+      name="twitter:description"
+    />
+    <meta
+      content="https://tim-agencija.hr/resources/Logo/LOGOwhite.png"
+      name="twitter:image"
+    />
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "TIMDSGN Agencija za digitalni dizajn",
+        "description": "Premium agencija specijalizirana za UI/UX dizajn, web razvoj, vizualni identitet i digitalne proizvode.",
+        "url": "https://tim-agencija.hr",
+        "logo": "https://tim-agencija.hr/resources/Logo/LOGOwhite.png",
+        "sameAs": [],
+        "serviceType": [
+          "Web dizajn",
+          "Graficki dizajn",
+          "UI/UX dizajn",
+          "Digitalni proizvodi"
+        ],
+        "areaServed": { "@type": "Country", "name": "Hrvatska" }
+      }
+    </script>
+    <!-- Google Fonts: Inter Tight -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800;900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link href="style.css?v=20260906-ux" rel="stylesheet" />
+    <link href="resources/Logo/LOGOwhite.png" rel="icon" type="image/png" />
+  </head>
+  <body>
+    <a class="skip-link" href="#sadrzaj">Preskoči na sadržaj</a>
+    <!-- NAVBAR -->
+    <nav aria-label="Glavna navigacija" class="navbar">
+      <div class="nav-container">
+        <a aria-label="TIMDSGN — početna" class="nav-logo" href="index.html"
+          >TIMDSGN<sup>®</sup></a
+        >
+        <ul class="nav-links" id="navigation">
+          <li>
+            <a class="nav-link" href="usluga-web-dizajn.html">Web Dizajn</a>
+          </li>
+          <li>
+            <a class="nav-link" href="usluga-graficki-dizajn.html"
+              >Grafički Dizajn</a
+            >
+          </li>
+          <li>
+            <a class="nav-link" href="usluga-digitalni-proizvodi.html"
+              >Digitalni Proizvodi</a
+            >
+          </li>
+          <li><a class="nav-link" href="galerija.html">Portfolio</a></li>
+          <li><a class="nav-link" href="proces.html">Proces</a></li>
+          <li>
+            <a class="nav-link mobile-only" href="kontakt.html">Kontakt</a>
+          </li>
+        </ul>
+        <div class="nav-right">
+          <a class="btn btn-pill" href="kontakt.html">Kontakt</a
+          ><button
+            aria-controls="navigation"
+            aria-expanded="false"
+            aria-label="Otvori izbornik"
+            class="mobile-menu-btn"
+            type="button"
+          >
+            <span class="line line1"></span><span class="line line2"></span
+            ><span class="line line3"></span>
+          </button>
         </div>
       </div>
-    </div>
-  </nav> <!-- HERO -->
-  <header class="hero">
-    <h1 class="hero-title reveal" style="margin-bottom: 10px;">
-      Grad<span class="i-wrapper">&#305;<span class="i-dot"></span></span>mo za <br class="mobile-break"> Vas
-    </h1>
-    <div class="marquee-container reveal" style="padding: 10px 0 50px 0; background: transparent;">
-      <div class="marquee-track" id="index-marquee" style="animation: none;">
-        <div class="marquee-text">
-          <span class="outline-text">IDENTITET</span>
-          <span>PLAN</span>
-          <span class="outline-text">STRATEGIJU</span>
-          <span>DIZAJN</span>
-          <span class="outline-text">BRAND</span>
-          <span>WEB</span>
+    </nav>
+    <main id="sadrzaj" tabindex="-1">
+      <!-- HERO -->
+      <header class="hero">
+        <h1 class="hero-title reveal">
+          Grad<span class="i-wrapper">ı<span class="i-dot"></span></span>mo za
+          <br class="mobile-break" />
+          Vas
+        </h1>
+        <div
+          aria-hidden="true"
+          class="marquee-container reveal"
+          style="padding: 10px 0 50px 0; background: transparent"
+        >
+          <div class="marquee-track" id="index-marquee">
+            <div class="marquee-text">
+              <span class="outline-text">IDENTITET</span>
+              <span>PLAN</span>
+              <span class="outline-text">STRATEGIJU</span>
+              <span>DIZAJN</span>
+              <span class="outline-text">BRAND</span>
+              <span>WEB</span>
+            </div>
+            <div class="marquee-text">
+              <span class="outline-text">IDENTITET</span>
+              <span>PLAN</span>
+              <span class="outline-text">STRATEGIJU</span>
+              <span>DIZAJN</span>
+              <span class="outline-text">BRAND</span>
+              <span>WEB</span>
+            </div>
+          </div>
         </div>
-        <div class="marquee-text">
-          <span class="outline-text">IDENTITET</span>
-          <span>PLAN</span>
-          <span class="outline-text">STRATEGIJU</span>
-          <span>DIZAJN</span>
-          <span class="outline-text">BRAND</span>
-          <span>WEB</span>
+        <div aria-hidden="true" class="static-marquee">
+          IDENTITET · PLAN · STRATEGIJU · DIZAJN · BRAND · WEB
         </div>
-      </div>
+        <p class="hero-subtitle reveal reveal-delay-1">
+          KREATIVA &amp; KOD — TIMDSGN dizajn <br />
+          Zagreb, Hrvatska
+        </p>
+        <a class="btn btn-arrow reveal reveal-delay-2" href="kontakt.html"
+          >Započnimo projekt</a
+        >
+      </header>
+      <!-- SERVICES — ACCORDION STRIPS -->
+      <section class="section-full">
+        <div class="section-header container">
+          <h2>Naše Usluge</h2>
+          <p class="reveal">Od vizije do savršene digitalne stvarnosti.</p>
+        </div>
+        <div class="services-accordion stagger-children">
+          <a class="service-strip" href="usluga-web-dizajn.html">
+            <svg
+              class="strip-icon-svg"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              viewbox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect height="14" rx="2" ry="2" width="20" x="2" y="3"></rect>
+              <line x1="8" x2="16" y1="21" y2="21"></line>
+              <line x1="12" x2="12" y1="17" y2="21"></line>
+            </svg>
+            <span class="strip-title">Web Dizajn</span>
+            <span class="strip-arrow"></span>
+          </a>
+          <a class="service-strip" href="usluga-graficki-dizajn.html">
+            <svg
+              class="strip-icon-svg"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              viewbox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+              <polyline points="2 12 12 17 22 12"></polyline>
+              <polyline points="2 17 12 22 22 17"></polyline>
+            </svg>
+            <span class="strip-title">Grafički Dizajn</span>
+            <span class="strip-arrow"></span>
+          </a>
+          <a class="service-strip" href="usluga-digitalni-proizvodi.html">
+            <svg
+              class="strip-icon-svg"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              viewbox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect height="20" rx="2" ry="2" width="14" x="5" y="2"></rect>
+              <path d="M12 18h.01"></path>
+            </svg>
+            <span class="strip-title">Digitalni Proizvodi</span>
+            <span class="strip-arrow"></span>
+          </a>
+        </div>
+      </section>
+      <!-- PORTFOLIO TEASER -->
+      <section class="section">
+        <div class="section-header">
+          <h2>Odabrani Radovi</h2>
+          <p class="reveal">Najbolji primjeri iz naše prakse.</p>
+        </div>
+        <div class="portfolio-grid">
+          <div class="portfolio-item reveal">
+            <div
+              aria-label="Prikaz web dizajna"
+              class="portfolio-image placeholder-img-1"
+              role="img"
+            ></div>
+          </div>
+          <div class="portfolio-item reveal">
+            <div
+              aria-label="Prikaz vizualnog identiteta"
+              class="portfolio-image placeholder-img-2"
+              role="img"
+            ></div>
+          </div>
+        </div>
+        <div class="reveal" style="text-align: center; margin-top: 60px">
+          <a class="btn btn-arrow" href="galerija.html">Pogledaj sve radove</a>
+        </div>
+      </section>
+      <!-- MANIFESTO -->
+      <section class="manifesto theme-trigger">
+        <div class="manifesto-text">
+          <h2>Kada se Umjetnost i Funkcija Spoje, Dizajn Postaje Vječan.</h2>
+          <p class="reveal">
+            Naša kreativna sloboda omogućuje nam da se fokusiramo na manje
+            projekata i umjetničke aspekte poslovanja, stvarajući duboke ideje i
+            ljepotu u životu.
+          </p>
+          <a class="btn btn-arrow" href="kontakt.html">Kontaktirajte nas</a>
+        </div>
+        <div></div>
+      </section>
+      <!-- FOOTER -->
+    </main>
+    <div aria-hidden="true" class="geometric-separator">
+      <svg
+        preserveaspectratio="none"
+        viewbox="0 0 1200 100"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <line
+          stroke="currentColor"
+          stroke-width="1"
+          vector-effect="non-scaling-stroke"
+          x1="0"
+          x2="1200"
+          y1="50"
+          y2="50"
+        ></line>
+        <rect
+          fill="none"
+          height="30"
+          stroke="currentColor"
+          stroke-width="1"
+          vector-effect="non-scaling-stroke"
+          width="80"
+          x="520"
+          y="35"
+        ></rect>
+        <rect
+          fill="none"
+          height="40"
+          stroke="currentColor"
+          stroke-width="1"
+          vector-effect="non-scaling-stroke"
+          width="100"
+          x="560"
+          y="30"
+        ></rect>
+        <rect
+          fill="none"
+          height="60"
+          stroke="currentColor"
+          stroke-width="1"
+          vector-effect="non-scaling-stroke"
+          width="140"
+          x="610"
+          y="20"
+        ></rect>
+        <rect
+          fill="none"
+          height="40"
+          stroke="currentColor"
+          stroke-width="1"
+          vector-effect="non-scaling-stroke"
+          width="160"
+          x="670"
+          y="30"
+        ></rect>
+      </svg>
     </div>
-    <p class="hero-subtitle reveal reveal-delay-1">KREATIVA & KOD — TIM dizajn <br> Zagreb, Hrvatska</p> <a
-      href="kontakt.html" class="btn btn-arrow reveal reveal-delay-2">Započnimo projekt</a>
-  </header>
-  <!-- SERVICES — ACCORDION STRIPS -->
-  <section class="section-full" style="padding-top: 10vh;">
-    <div class="section-header container">
-      <h2>Naše Usluge</h2>
-      <p class="reveal">Od vizije do savršene digitalne stvarnosti.</p>
-    </div>
-    <div class="services-accordion stagger-children"> <a href="usluga-web-dizajn.html" class="service-strip"> <svg
-          xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-          stroke-linecap="round" stroke-linejoin="round" class="strip-icon-svg">
-          <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-          <line x1="8" y1="21" x2="16" y2="21"></line>
-          <line x1="12" y1="17" x2="12" y2="21"></line>
-        </svg> <span class="strip-title">Web Dizajn</span> <span class="strip-arrow"></span> </a> <a
-        href="usluga-graficki-dizajn.html" class="service-strip"> <svg xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-          stroke-linejoin="round" class="strip-icon-svg">
-          <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-          <polyline points="2 12 12 17 22 12"></polyline>
-          <polyline points="2 17 12 22 22 17"></polyline>
-        </svg> <span class="strip-title">Grafički Dizajn</span> <span class="strip-arrow"></span> </a> <a
-        href="usluga-digitalni-proizvodi.html" class="service-strip"> <svg xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-          stroke-linejoin="round" class="strip-icon-svg">
-          <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
-          <path d="M12 18h.01"></path>
-        </svg> <span class="strip-title">Digitalni Proizvodi</span> <span class="strip-arrow"></span> </a> </div>
-  </section> <!-- PORTFOLIO TEASER -->
-  <section class="section">
-    <div class="section-header">
-      <h2>Odabrani Radovi</h2>
-      <p class="reveal">Najbolji primjeri iz naše prakse.</p>
-    </div>
-    <div class="portfolio-grid">
-      <div class="portfolio-item reveal">
-        <div class="portfolio-image placeholder-img-1"></div>
-      </div>
-      <div class="portfolio-item reveal">
-        <div class="portfolio-image placeholder-img-2"></div>
-      </div>
-    </div>
-    <div style="text-align: center; margin-top: 60px;" class="reveal"> <a href="galerija.html"
-        class="btn btn-arrow">Pogledaj sve radove</a> </div>
-  </section> <!-- MANIFESTO -->
-  <section class="manifesto theme-trigger">
-    <div class="manifesto-text">
-      <h2>Kada se Umjetnost i Funkcija Spoje, Dizajn Postaje Vječan.</h2>
-      <p class="reveal">Naša kreativna sloboda omogućuje nam da se fokusiramo na manje projekata i umjetničke aspekte
-        poslovanja, stvarajući duboke ideje i ljepotu u životu.</p> <a href="kontakt.html"
-        class="btn btn-arrow">Kontaktirajte nas</a>
-    </div>
-    <div></div>
-  </section> <!-- FOOTER -->
-  <div class="geometric-separator">
-    <svg viewBox="0 0 1200 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <line x1="0" y1="50" x2="1200" y2="50" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" />
-      <rect x="520" y="35" width="80" height="30" stroke="currentColor" stroke-width="1" fill="none" vector-effect="non-scaling-stroke" />
-      <rect x="560" y="30" width="100" height="40" stroke="currentColor" stroke-width="1" fill="none" vector-effect="non-scaling-stroke" />
-      <rect x="610" y="20" width="140" height="60" stroke="currentColor" stroke-width="1" fill="none" vector-effect="non-scaling-stroke" />
-      <rect x="670" y="30" width="160" height="40" stroke="currentColor" stroke-width="1" fill="none" vector-effect="non-scaling-stroke" />
-    </svg>
-  </div>
-  <footer>
-    <p>&copy; 2026 TIM Agencija za digitalni dizajn. Sva prava pridržana.</p>
-  </footer> <!-- GSAP / ScrollTrigger -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-  <script src="script.js"></script>
-
-  <a href="#" class="back-to-top" aria-label="Povratak na vrh"><span>↑</span></a>
-</body>
-
+    <footer>
+      <p>© 2026 TIMDSGN Agencija za digitalni dizajn. Sva prava pridržana.</p>
+    </footer>
+    <!-- GSAP / ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script defer="" src="script.js?v=20260906-ux"></script>
+    <a aria-label="Povratak na vrh" class="back-to-top" href="#sadrzaj"
+      ><span>↑</span></a
+    >
+  </body>
 </html>

@@ -1,244 +1,287 @@
-/**
- * script.js - TIM Agency — Award-Winning Redesign
- * Word Rotator, Scroll Reveals, Mobile Menu, Service Accordion
- */
-
+/* TIMDSGN: accessible interactions, existing motion and monochrome themes. */
 document.addEventListener("DOMContentLoaded", () => {
-    // Sprečava GSAP "glitch" trzavice na dnu kad se URL-traka mobitela pojavi/sakrije
-    if (typeof ScrollTrigger !== "undefined") {
-        ScrollTrigger.config({ ignoreMobileResize: true });
-    }
-
-    /* =========================================================
-       0. MOBILE MENU
-       ========================================================= */
-    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-    const navLinks = document.querySelector('.nav-links');
-
-    if (mobileMenuBtn && navLinks) {
-        mobileMenuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            mobileMenuBtn.classList.toggle('active');
-        });
-    }
-
-    /* =========================================================
-       1. NAVBAR SCROLL STATE
-       ========================================================= */
-    const navbar = document.querySelector('.navbar');
-
-    if (navbar && !navbar.classList.contains('scrolled-always')) {
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-    }
-
-    /* =========================================================
-       2. SCROLL REVEAL (IntersectionObserver)
-       ========================================================= */
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                revealObserver.unobserve(entry.target);
-            }
-        });
-    }, {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.15
+  const root = document.documentElement;
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+  const precise = matchMedia("(hover: hover) and (pointer: fine)");
+  const menuButton = document.querySelector(".mobile-menu-btn");
+  const navigation = document.querySelector(".nav-links");
+  const navbar = document.querySelector(".navbar");
+  if (menuButton && navigation) {
+    root.classList.add("menu-enhanced");
+    const closeMenu = (focus = false) => {
+      navigation.classList.remove("active");
+      menuButton.classList.remove("active");
+      menuButton.setAttribute("aria-expanded", "false");
+      menuButton.setAttribute("aria-label", "Otvori izbornik");
+      if (focus) menuButton.focus();
+    };
+    menuButton.addEventListener("click", () => {
+      const open = menuButton.getAttribute("aria-expanded") !== "true";
+      navigation.classList.toggle("active", open);
+      menuButton.classList.toggle("active", open);
+      menuButton.setAttribute("aria-expanded", String(open));
+      menuButton.setAttribute(
+        "aria-label",
+        open ? "Zatvori izbornik" : "Otvori izbornik",
+      );
     });
-
-    document.querySelectorAll('.reveal, .stagger-children').forEach(el => {
-        revealObserver.observe(el);
+    document.addEventListener("keydown", (e) => {
+      if (
+        e.key === "Escape" &&
+        menuButton.getAttribute("aria-expanded") === "true"
+      )
+        closeMenu(true);
     });
+    document.addEventListener("click", (e) => {
+      if (!navbar.contains(e.target)) closeMenu();
+    });
+    navbar.addEventListener("focusout", (e) => {
+      if (!navbar.contains(e.relatedTarget)) closeMenu();
+    });
+    navigation.addEventListener("click", (e) => {
+      if (e.target.closest("a")) closeMenu();
+    });
+    matchMedia("(min-width: 901px)").addEventListener("change", () =>
+      closeMenu(),
+    );
+  }
 
-    /* =========================================================
-       3. INDEX MARQUEE INTRO & LOOP
-       ========================================================= */
-    const indexMarquee = document.getElementById('index-marquee');
-    if (indexMarquee) {
-        gsap.fromTo(indexMarquee, 
-            { x: '50vw' }, 
-            { x: '-15%', duration: (window.innerWidth/2 + 0.15 * indexMarquee.scrollWidth) / (indexMarquee.scrollWidth/2 / 15), ease: "none", onComplete: () => {
-                gsap.fromTo(indexMarquee, 
-                    { x: '-15%' }, 
-                    { x: '-65%', duration: 15, ease: "none", repeat: -1 }
-                );
-            } }
+  // One deterministic viewport probe governs light/dark state in both directions.
+  const themeSections = [...document.querySelectorAll(".theme-trigger")];
+  let scheduled = false;
+  function updateScrollState() {
+    scheduled = false;
+    navbar?.classList.toggle("scrolled", scrollY > 50);
+    const probe = innerHeight * 0.4;
+    const light = themeSections.some((section) => {
+      const rect = section.getBoundingClientRect();
+      return rect.top <= probe && rect.bottom > probe;
+    });
+    document.body.classList.toggle("theme-light", light);
+  }
+  function scheduleScroll() {
+    if (!scheduled) {
+      scheduled = true;
+      requestAnimationFrame(updateScrollState);
+    }
+  }
+  addEventListener("scroll", scheduleScroll, { passive: true });
+  addEventListener("resize", scheduleScroll);
+  addEventListener("load", scheduleScroll);
+  updateScrollState();
+
+  const motionButton = document.createElement("button");
+  motionButton.type = "button";
+  motionButton.className = "motion-toggle no-magnetic";
+  motionButton.setAttribute("aria-pressed", "false");
+  const motionHost =
+    document.querySelector(".subpage-hero, .hero") ||
+    document.querySelector("footer");
+  motionHost?.append(motionButton);
+  let paused = false;
+  const tweens = [];
+  function updateMotion() {
+    root.classList.toggle("no-motion", reduced.matches);
+    root.classList.toggle("motion-enabled", !reduced.matches);
+    root.classList.toggle("motion-paused", paused || reduced.matches);
+    motionButton.hidden = reduced.matches;
+    motionButton.textContent = paused
+      ? "Pokreni animacije"
+      : "Pauziraj animacije";
+    motionButton.setAttribute("aria-pressed", String(paused));
+    tweens.forEach((tween) => tween.paused(paused || reduced.matches));
+    if (reduced.matches)
+      document
+        .querySelectorAll(".reveal-ready")
+        .forEach((el) => el.classList.add("visible"));
+  }
+  motionButton.addEventListener("click", () => {
+    paused = !paused;
+    updateMotion();
+  });
+  reduced.addEventListener("change", updateMotion);
+  if (typeof gsap !== "undefined") {
+    document
+      .querySelectorAll(".geometric-separator svg rect")
+      .forEach((rect, i) => {
+        tweens.push(
+          gsap.to(rect, {
+            x: i % 2 === 0 ? 20 : -20,
+            duration: 3 + i * 0.5,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut",
+            delay: i * 0.2,
+          }),
         );
-    }
-
-    /* =========================================================
-       4. TOUCH SCROLL EFFECTS (Mobile)
-       ========================================================= */
-    const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
-
-    if (isTouchDevice) {
-        const touchObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('touch-active');
-                } else {
-                    entry.target.classList.remove('touch-active');
-                }
-            });
-        }, { threshold: 0.5 });
-
-        document.querySelectorAll('.service-strip, .portfolio-item').forEach(el => {
-            touchObserver.observe(el);
+      });
+  }
+  updateMotion();
+  if ("IntersectionObserver" in window && !reduced.matches) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
         });
-    }
-
-    /* =========================================================
-       5. MAGNETIC BUTTON EFFECT & i-DOT
-       ========================================================= */
-    const magneticBtns = document.querySelectorAll('.btn:not(.no-magnetic)');
-    magneticBtns.forEach(btn => {
-        btn.addEventListener('mousemove', (e) => {
-            const rect = btn.getBoundingClientRect();
-            const x = (e.clientX - rect.left) - rect.width / 2;
-            const y = (e.clientY - rect.top) - rect.height / 2;
-            btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
-        });
-        
-        btn.addEventListener('mouseleave', () => {
-            btn.style.transform = `translate(0px, 0px)`;
-        });
+      },
+      { threshold: 0.08 },
+    );
+    document.querySelectorAll(".reveal").forEach((el) => {
+      // Never hide text already in view, nor depend on an external animation library.
+      if (el.getBoundingClientRect().top > innerHeight) {
+        el.classList.add("reveal-ready");
+        observer.observe(el);
+      } else el.classList.add("visible");
     });
+  }
+  document.querySelectorAll(".btn:not(.no-magnetic)").forEach((button) => {
+    button.addEventListener("mousemove", (event) => {
+      if (!precise.matches || reduced.matches || paused) return;
+      const rect = button.getBoundingClientRect();
+      button.style.transform = `translate(${(event.clientX - rect.left - rect.width / 2) * 0.1}px, ${(event.clientY - rect.top - rect.height / 2) * 0.1}px)`;
+    });
+    button.addEventListener("mouseleave", () => {
+      button.style.transform = "";
+    });
+  });
 
-    /* Parallax effect removed per user request for static subpages */
-
-    /* =========================================================
-       7. GSAP & SCROLLTRIGGER
-       ========================================================= */
-    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-        gsap.registerPlugin(ScrollTrigger);
-
-        // Subpage Hero Entry Animation
-        if (document.querySelector('.subpage-hero')) {
-            gsap.from(".subpage-hero .marquee-track", {
-                y: 150,
-                opacity: 0,
-                duration: 2,
-                ease: "expo.out",
-                delay: 0.2
-            });
-            gsap.from(".subpage-hero-subtitle", {
-                y: 30,
-                opacity: 0,
-                duration: 1.5,
-                ease: "power3.out",
-                delay: 0.8
-            });
-        }
-
-        // A. Staggered Text Mask Reveal
-        const revealTexts = document.querySelectorAll('.gsap-reveal-text');
-        revealTexts.forEach(text => {
-            // Split text superficially by words for staggering
-            const words = text.innerText.split(' ');
-            text.innerHTML = '';
-            words.forEach(word => {
-                const mask = document.createElement('span');
-                mask.className = 'gsap-mask';
-                mask.style.marginRight = '0.25em';
-                const span = document.createElement('span');
-                span.innerText = word;
-                mask.appendChild(span);
-                text.appendChild(mask);
-            });
-
-            gsap.to(text.querySelectorAll('.gsap-mask span'), {
-                scrollTrigger: {
-                    trigger: text,
-                    start: 'top 85%',
-                },
-                y: 0,
-                duration: 0.8,
-                stagger: 0.1,
-                ease: "power3.out"
-            });
-        });
-
-        // B. Image Parallax Effects
-        const parallaxImages = document.querySelectorAll('.gsap-img-parallax');
-        parallaxImages.forEach(img => {
-            gsap.fromTo(img, 
-                { y: '-10%' },
-                {
-                    y: '10%',
-                    ease: "none",
-                    scrollTrigger: {
-                        trigger: img.parentElement,
-                        start: 'top bottom',
-                        end: 'bottom top',
-                        scrub: true
-                    }
-                }
-            );
-        });
-
-        // C. Theme Color Inversion (Light/Dark Toggle)
-        const themeTriggers = document.querySelectorAll('.theme-trigger');
-        themeTriggers.forEach(trigger => {
-            // Trigger za kretanje prema dolje (LATER: Top 40% umjesto 60%)
-            ScrollTrigger.create({
-                trigger: trigger,
-                start: 'top 40%',
-                end: 'bottom top',
-                onEnter: () => document.body.classList.add('theme-light'),
-                onLeave: () => document.body.classList.remove('theme-light')
-            });
-            // Trigger za kretanje prema gore (LATER: Top 80% umjesto 60%)
-            ScrollTrigger.create({
-                trigger: trigger,
-                start: 'top 80%',
-                end: 'bottom -20%',
-                onEnterBack: () => document.body.classList.add('theme-light'),
-                onLeaveBack: () => document.body.classList.remove('theme-light')
-            });
-        });
-
-        // E. Horizontal Scroll (Portfolio Page)
-        const gallery = document.querySelector('.horizontal-gallery');
-        const track = document.querySelector('.gallery-track');
-        
-        if (gallery && track) {
-            gsap.to(track, {
-                x: () => -(track.scrollWidth - window.innerWidth),
-                ease: "none",
-                scrollTrigger: {
-                    trigger: gallery,
-                    start: "top top",
-                    end: () => `+=${track.scrollWidth}`,
-                    pin: true,
-                    scrub: 1,
-                    invalidateOnRefresh: true,
-                }
-            });
-        }
+  const form = document.querySelector(".contact-form");
+  if (!form) return;
+  const service = form.elements.service;
+  const groups = [...form.querySelectorAll(".service-brief")];
+  const status = form.querySelector(".form-status");
+  const fallback = form.querySelector(".form-fallback");
+  const submit = form.querySelector('[type="submit"]');
+  let sending = false;
+  const preselection = new URLSearchParams(location.search).get("usluga");
+  if ([...service.options].some((option) => option.value === preselection))
+    service.value = preselection;
+  function updateService() {
+    groups.forEach((group) => {
+      group.hidden = group.dataset.service !== service.value;
+      group.disabled = group.hidden;
+    });
+    scheduleScroll();
+  }
+  service.addEventListener("change", updateService);
+  updateService();
+  form.noValidate = true;
+  function clearErrors() {
+    form.querySelectorAll("[aria-invalid]").forEach((el) => {
+      el.removeAttribute("aria-invalid");
+      el.removeAttribute("aria-describedby");
+    });
+    form.querySelectorAll(".field-error").forEach((el) => {
+      el.textContent = "";
+    });
+  }
+  function fieldError(field, message) {
+    const error = document.getElementById(`${field.id}-error`);
+    if (error) {
+      error.textContent = message;
+      field.setAttribute("aria-describedby", error.id);
     }
-
-    /* =========================================================
-       8. GEOMETRIC SEPARATOR ANIMATION
-       ========================================================= */
-    const geoRects = document.querySelectorAll('.geometric-separator svg rect');
-    if (geoRects.length > 0 && typeof gsap !== 'undefined') {
-        geoRects.forEach((rect, i) => {
-            gsap.to(rect, {
-                x: i % 2 === 0 ? "+=20" : "-=20",
-                duration: 3 + i * 0.5,
-                repeat: -1,
-                yoyo: true,
-                ease: "sine.inOut",
-                delay: i * 0.2
-            });
-        });
+    field.setAttribute("aria-invalid", "true");
+  }
+  form.addEventListener("input", (event) => {
+    const el = event.target;
+    el.removeAttribute("aria-invalid");
+    el.removeAttribute("aria-describedby");
+    const error = document.getElementById(`${el.id}-error`);
+    if (error) error.textContent = "";
+  });
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (sending) return;
+    clearErrors();
+    status.textContent = "";
+    fallback.hidden = true;
+    let invalid = null;
+    for (const field of form.querySelectorAll("input,select,textarea")) {
+      if (
+        field.disabled ||
+        field.closest("fieldset[disabled]") ||
+        !field.willValidate
+      )
+        continue;
+      if ((field.required && !field.value.trim()) || !field.validity.valid) {
+        fieldError(
+          field,
+          field.validity.typeMismatch
+            ? field.type === "url"
+              ? "Unesite adresu koja počinje s https:// ili http://."
+              : "Unesite valjanu e-mail adresu."
+            : "Ispunite ovo polje.",
+        );
+        if (!invalid) invalid = field;
+      }
     }
-
+    if (invalid) {
+      invalid.closest("details")?.setAttribute("open", "");
+      invalid.focus();
+      return;
+    }
+    const data = Object.fromEntries(new FormData(form));
+    const enabledControls = [...form.elements].filter(
+      (el) =>
+        ["INPUT", "SELECT", "TEXTAREA"].includes(el.tagName) &&
+        !el.disabled &&
+        !el.closest("fieldset[disabled]"),
+    );
+    sending = true;
+    submit.disabled = true;
+    enabledControls.forEach((el) => {
+      el.disabled = true;
+    });
+    form.setAttribute("aria-busy", "true");
+    submit.textContent = "Slanje upita…";
+    status.textContent = "Šaljemo vaš upit…";
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 20000);
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(data),
+        signal: controller.signal,
+      });
+      const result = await response.json().catch(() => null);
+      if (!response.ok || result?.ok !== true) {
+        if (result?.errors)
+          for (const [name, message] of Object.entries(result.errors)) {
+            const field = form.elements.namedItem(name);
+            if (field) fieldError(field, message);
+          }
+        throw new Error(
+          result?.message ||
+            "Upit nije poslan. Pokušajte ponovno ili nam se javite izravno.",
+        );
+      }
+      form.reset();
+      status.textContent = "Vaš je upit poslan. Hvala što ste nam se javili.";
+    } catch (error) {
+      status.textContent =
+        error.name === "AbortError"
+          ? "Nismo mogli potvrditi slanje. Provjerite prije ponovnog pokušaja ili nam se javite izravno."
+          : error.message;
+      fallback.hidden = false;
+    } finally {
+      clearTimeout(timeout);
+      sending = false;
+      enabledControls.forEach((el) => {
+        el.disabled = false;
+      });
+      submit.disabled = false;
+      submit.innerHTML = 'Pošalji Upit <span aria-hidden="true">→</span>';
+      form.removeAttribute("aria-busy");
+      updateService();
+      status.focus();
+    }
+  });
 });
