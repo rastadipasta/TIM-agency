@@ -1700,6 +1700,334 @@ body.theme-light .subpage-description ul li::before {
   background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
 }
 
+/* Portfolio: paired project screenshots, with their original proportions. */
+.portfolio-intro {
+  padding-top: 64px;
+  padding-bottom: 64px;
+}
+.portfolio-eyebrow {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #aaa;
+  margin-bottom: 32px;
+}
+.portfolio-intro h1 {
+  font-size: clamp(3.5rem, 8.6vw, 8rem);
+  letter-spacing: -0.055em;
+  font-weight: 800;
+  line-height: 1.08;
+}
+.portfolio-intro h1 .outline-text {
+  margin-left: 0.1em;
+  -webkit-text-stroke: 1.5px #bbb;
+}
+.portfolio-intro-bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  align-items: flex-end;
+  margin-top: 32px;
+}
+.portfolio-intro-bottom > p {
+  color: #aaa;
+  font-size: 1.05rem;
+  max-width: 460px;
+}
+.project-index {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 22px;
+}
+.project-index a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  border-bottom: 1px solid #444;
+  font-size: 0.85rem;
+}
+.project-index a > span:first-child {
+  font-size: 0.65rem;
+  color: #aaa;
+}
+.project-index a:hover {
+  border-color: white;
+}
+.project-story {
+  padding: 40px 0 64px;
+  border-top: 1px solid #333;
+  scroll-margin-top: 120px;
+}
+.project-story-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 32px;
+  margin-bottom: 28px;
+}
+.project-identity {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+}
+.project-number {
+  color: #aaa;
+  font-size: 0.8rem;
+  padding-top: 2px;
+}
+.project-category {
+  color: #aaa;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.project-story h2 {
+  font-size: clamp(2rem, 3.6vw, 3.4rem);
+  font-weight: 600;
+}
+.project-description {
+  max-width: 380px;
+  color: #aaa;
+  font-size: 0.95rem;
+}
+.project-shots {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+.project-shot {
+  min-width: 0;
+}
+.project-preview {
+  display: block;
+  position: relative;
+  border: 1px solid #333;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #111;
+}
+.project-preview img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.preview-expand {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  color: white;
+  background: #000d;
+  border: 1px solid #777;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+.project-preview:hover .preview-expand,
+.project-preview:focus-visible .preview-expand {
+  color: black;
+  background: white;
+}
+.project-shot figcaption {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 14px;
+  font-size: 0.8rem;
+  color: #aaa;
+}
+.project-shot figcaption > span:first-child {
+  color: #eee;
+}
+.portfolio-next {
+  padding-top: 32px;
+  padding-bottom: 64px;
+}
+.portfolio-next > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 32px;
+  align-items: center;
+}
+.portfolio-next h2 {
+  font-size: clamp(2rem, 4vw, 3.7rem);
+}
+.portfolio-next .btn {
+  flex-shrink: 0;
+  min-height: 48px;
+  gap: 20px;
+  border-color: #888;
+}
+.portfolio-lightbox {
+  margin: auto;
+  padding: 24px;
+  width: min(96vw, 1680px);
+  height: min(94dvh, 1100px);
+  max-width: 96vw;
+  max-height: 94dvh;
+  color: white;
+  background: #080808;
+  border: 1px solid #555;
+  border-radius: 20px;
+}
+.portfolio-lightbox[open] {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: 20px;
+}
+.portfolio-lightbox::backdrop {
+  background: #000e;
+}
+.lightbox-open,
+.lightbox-open body {
+  overflow: hidden;
+}
+.lightbox-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.lightbox-toolbar h2 {
+  font-size: 1.3rem;
+}
+.lightbox-toolbar p {
+  color: #aaa;
+  font-size: 0.85rem;
+  margin-top: 6px;
+}
+.portfolio-lightbox button {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border: 1px solid #777;
+  border-radius: 50%;
+  font: inherit;
+  font-size: 1.2rem;
+  color: white;
+  background: transparent;
+  cursor: pointer;
+}
+.portfolio-lightbox button:hover {
+  background: white;
+  color: black;
+}
+.lightbox-stage {
+  min-height: 0;
+  min-width: 0;
+}
+.lightbox-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.lightbox-navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+}
+.lightbox-counter {
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+  color: #bbb;
+}
+@media (max-width: 900px) {
+  .portfolio-intro {
+    padding-top: 40px;
+    padding-bottom: 48px;
+  }
+  .portfolio-intro-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+  .project-story-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .project-description {
+    max-width: 600px;
+  }
+  .project-shots {
+    gap: 18px;
+  }
+  .project-identity {
+    gap: 16px;
+  }
+  .project-preview {
+    border-radius: 14px;
+  }
+  .project-shot figcaption > span:last-child {
+    display: none;
+  }
+}
+@media (max-width: 600px) {
+  .portfolio-intro h1 {
+    font-size: clamp(3rem, 12vw, 4.5rem);
+  }
+  .portfolio-eyebrow {
+    font-size: 0.65rem;
+    letter-spacing: 0.07em;
+    margin-bottom: 24px;
+  }
+  .portfolio-intro-bottom > p {
+    font-size: 1rem;
+  }
+  .project-index {
+    gap: 6px 16px;
+  }
+  .project-story {
+    padding-top: 28px;
+    padding-bottom: 40px;
+  }
+  .project-story-heading {
+    margin-bottom: 22px;
+  }
+  .project-shots {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+  .project-shot figcaption {
+    padding-top: 10px;
+  }
+  .project-shot figcaption > span:last-child {
+    display: inline;
+  }
+  .preview-expand {
+    width: 32px;
+    height: 32px;
+    bottom: 8px;
+    right: 8px;
+  }
+  .portfolio-next {
+    padding-top: 20px;
+    padding-bottom: 40px;
+  }
+  .portfolio-next > div {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .portfolio-lightbox {
+    padding: 16px;
+    border-radius: 14px;
+  }
+}
+
 /* Shared component corrections — existing monochrome identity retained. */
 :root {
   --radius-card: 60px;

@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const motionHost =
     document.querySelector(".subpage-hero, .hero") ||
     document.querySelector("footer");
-  motionHost?.append(motionButton);
+  if (!document.querySelector('.portfolio-showcase')) motionHost?.append(motionButton);
   let paused = false;
   const tweens = [];
   function updateMotion() {
@@ -151,6 +151,67 @@ document.addEventListener("DOMContentLoaded", () => {
       button.style.transform = "";
     });
   });
+
+  const lightbox = document.querySelector(".portfolio-lightbox");
+  const previews = [...document.querySelectorAll(".project-preview")];
+  if (lightbox && typeof lightbox.showModal === "function") {
+    const image = lightbox.querySelector(".lightbox-image");
+    const title = lightbox.querySelector("#lightbox-title");
+    const caption = lightbox.querySelector("#lightbox-caption");
+    const counter = lightbox.querySelector(".lightbox-counter");
+    let active = 0;
+    let opener = null;
+    function showPreview(index) {
+      active = (index + previews.length) % previews.length;
+      const preview = previews[active];
+      image.src = preview.href;
+      image.alt = preview.querySelector("img").alt;
+      title.textContent = preview.dataset.project;
+      caption.textContent = preview.dataset.caption;
+      counter.textContent = `${active + 1} / ${previews.length}`;
+    }
+    previews.forEach((preview, index) => {
+      preview.addEventListener("click", (event) => {
+        if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey)
+          return;
+        event.preventDefault();
+        opener = preview;
+        showPreview(index);
+        lightbox.showModal();
+        root.classList.add("lightbox-open");
+      });
+    });
+    lightbox
+      .querySelector(".lightbox-close")
+      .addEventListener("click", () => lightbox.close());
+    lightbox
+      .querySelector(".lightbox-previous")
+      .addEventListener("click", () => showPreview(active - 1));
+    lightbox
+      .querySelector(".lightbox-next")
+      .addEventListener("click", () => showPreview(active + 1));
+    lightbox.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
+        event.preventDefault();
+        showPreview(active + (event.key === "ArrowRight" ? 1 : -1));
+      }
+    });
+    lightbox.addEventListener("click", (event) => {
+      if (event.target !== lightbox) return;
+      const bounds = lightbox.getBoundingClientRect();
+      if (
+        event.clientX < bounds.left ||
+        event.clientX > bounds.right ||
+        event.clientY < bounds.top ||
+        event.clientY > bounds.bottom
+      )
+        lightbox.close();
+    });
+    lightbox.addEventListener("close", () => {
+      root.classList.remove("lightbox-open");
+      opener?.focus({ preventScroll: true });
+    });
+  }
 
   const copyEmail = document.querySelector(".copy-email");
   if (copyEmail) {
