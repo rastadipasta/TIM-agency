@@ -827,6 +827,23 @@ body.theme-light .step-icon {
   padding: 40px 0;
 }
 
+.home-projects .home-project {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+}
+.home-project img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-card);
+  border: 1px solid #333;
+}
+.home-project .portfolio-info h3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .portfolio-grid .portfolio-item {
   flex: 1;
   height: 550px;
