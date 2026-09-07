@@ -7,30 +7,59 @@
       content="width=device-width, initial-scale=1.0, viewport-fit=cover"
       name="viewport"
     />
-    <title>Web Dizajn i UI/UX | TIMDSGN Agencija</title>
+    <title>Kontakt | TIMDSGN</title>
     <meta
-      content="Profesionalni web dizajn i UI/UX usluge. Kreiramo responzivne, SEO optimizirane web stranice koje pretvaraju posjetitelje u klijente."
+      content="Javite se TIMDSGN-u za web dizajn, grafički dizajn i digitalne proizvode: studio@timdsgn.com ili +385 98 9479 542."
       name="description"
     />
     <meta content="index, follow" name="robots" />
-    <link
-      href="https://tim-agencija.hr/usluga-web-dizajn.html"
-      rel="canonical"
-    />
+    <link href="https://timdsgn.com/kontakt.html" rel="canonical" />
+    <!-- Open Graph / Facebook -->
     <meta content="website" property="og:type" />
+    <meta content="https://timdsgn.com/kontakt.html" property="og:url" />
+    <meta content="Kontakt | TIMDSGN" property="og:title" />
     <meta
-      content="https://tim-agencija.hr/usluga-web-dizajn.html"
-      property="og:url"
-    />
-    <meta content="Web Dizajn i UI/UX | TIMDSGN Agencija" property="og:title" />
-    <meta
-      content="Profesionalni web dizajn i UI/UX usluge. Kreiramo responzivne, SEO optimizirane web stranice."
+      content="TIMDSGN je premium agencija specijalizirana za UI/UX dizajn, web razvoj, vizualni identitet i digitalne proizvode."
       property="og:description"
     />
     <meta
-      content="https://tim-agencija.hr/resources/Logo/LOGOwhite.png"
+      content="https://timdsgn.com/resources/Logo/LOGOwhite.png"
       property="og:image"
     />
+    <meta content="hr_HR" property="og:locale" />
+    <!-- Twitter -->
+    <meta content="summary_large_image" name="twitter:card" />
+    <meta content="Kontakt | TIMDSGN" name="twitter:title" />
+    <meta
+      content="TIMDSGN je premium agencija specijalizirana za UI/UX dizajn, web razvoj, vizualni identitet i digitalne proizvode."
+      name="twitter:description"
+    />
+    <meta
+      content="https://timdsgn.com/resources/Logo/LOGOwhite.png"
+      name="twitter:image"
+    />
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "TIMDSGN Agencija za digitalni dizajn",
+        "description": "Premium agencija specijalizirana za UI/UX dizajn, web razvoj, vizualni identitet i digitalne proizvode.",
+        "url": "https://timdsgn.com",
+        "email": "studio@timdsgn.com",
+        "telephone": "+385989479542",
+        "logo": "https://timdsgn.com/resources/Logo/LOGOwhite.png",
+        "sameAs": [],
+        "serviceType": [
+          "Web dizajn",
+          "Graficki dizajn",
+          "UI/UX dizajn",
+          "Digitalni proizvodi"
+        ],
+        "areaServed": { "@type": "Country", "name": "Hrvatska" }
+      }
+    </script>
+    <!-- Google Fonts: Inter Tight -->
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
     <link
@@ -40,7 +69,7 @@
     <link href="style.css?v=20260907-contact" rel="stylesheet" />
     <link href="resources/Logo/LOGOwhite.png" rel="icon" type="image/png" />
   </head>
-  <body>
+  <body class="contact-page">
     <a class="skip-link" href="#sadrzaj">Preskoči na sadržaj</a>
     <!-- NAVBAR -->
     <nav aria-label="Glavna navigacija" class="navbar scrolled-always">
@@ -50,12 +79,7 @@
         >
         <ul class="nav-links" id="navigation">
           <li>
-            <a
-              aria-current="page"
-              class="nav-link active"
-              href="usluga-web-dizajn.html"
-              >Web Dizajn</a
-            >
+            <a class="nav-link" href="usluga-web-dizajn.html">Web Dizajn</a>
           </li>
           <li>
             <a class="nav-link" href="usluga-graficki-dizajn.html"
@@ -69,11 +93,17 @@
           </li>
           <li><a class="nav-link" href="galerija.html">Portfolio</a></li>
           <li>
-            <a class="nav-link mobile-only" href="kontakt.html">Kontakt</a>
+            <a
+              aria-current="page"
+              class="nav-link mobile-only"
+              href="kontakt.html"
+              >Kontakt</a
+            >
           </li>
         </ul>
         <div class="nav-right">
-          <a class="btn btn-pill" href="kontakt.html">Kontakt</a
+          <a aria-current="page" class="btn btn-pill" href="kontakt.html"
+            >Kontakt</a
           ><button
             aria-controls="navigation"
             aria-expanded="false"
@@ -88,89 +118,29 @@
       </div>
     </nav>
     <main id="sadrzaj" tabindex="-1">
-      <div class="subpage-hero">
-        <h1 class="sr-only">Web Dizajn</h1>
-        <div aria-hidden="true" class="marquee-container">
-          <div
-            class="marquee-track"
-            data-cursor-img="resources/Portfolio/img1.png"
+      <section
+        class="contact-panel container"
+        id="kontakt"
+        aria-labelledby="contact-heading"
+        tabindex="-1"
+      >
+        <h1 id="contact-heading">Kontakt</h1>
+        <p>Imate ideju za projekt? Javite nam se e-mailom ili telefonom.</p>
+        <div class="contact-panel-details">
+          <a class="contact-email" href="mailto:studio@timdsgn.com"
+            >studio@timdsgn.com</a
           >
-            <div class="marquee-text">
-              <span>WEB DIZAJN</span>
-              <span class="outline-text">WEB DIZAJN</span>
-              <span>WEB DIZAJN</span>
-              <span class="outline-text">WEB DIZAJN</span>
-            </div>
-            <div class="marquee-text">
-              <span>WEB DIZAJN</span>
-              <span class="outline-text">WEB DIZAJN</span>
-              <span>WEB DIZAJN</span>
-              <span class="outline-text">WEB DIZAJN</span>
-            </div>
-          </div>
+          <a class="contact-phone" href="tel:+385989479542">+385 98 9479 542</a>
         </div>
-        <div aria-hidden="true" class="static-marquee">WEB DIZAJN</div>
-        <div class="container subpage-intro">
-          <p class="subpage-hero-subtitle">
-            Premium digitalna prisutnost koja spaja futurističku estetiku s
-            besprijekornom funkcionalnošću.
-          </p>
-        </div>
-      </div>
-      <div class="subpage-2col theme-trigger">
-        <div class="process-steps">
-          <div class="process-step">
-            <span class="step-num">01</span>
-            <div>
-              <h2>UX Analiza</h2>
-              <p>
-                Dubinsko istraživanje tržišta i potreba korisnika prije samog
-                dizajna.
-              </p>
-            </div>
-          </div>
-          <div class="process-step">
-            <span class="step-num">02</span>
-            <div>
-              <h2>UI Dizajn</h2>
-              <p>
-                Stvaranje vizualno impresivnog i unikatnog sučelja koje odražava
-                vaš brend.
-              </p>
-            </div>
-          </div>
-          <div class="process-step">
-            <span class="step-num">03</span>
-            <div>
-              <h2>Razvoj</h2>
-              <p>
-                Precizno kodiranje s fokusom na brzinu, performanse i SEO
-                optimizaciju.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="subpage-description">
-          <p>
-            Dizajniramo web stranice koje nisu samo lijepe, već i funkcionalne.
-            Svaki pixel i linija koda su optimizirani za postizanje vaših
-            ciljeva.
-          </p>
-          <ul>
-            <li>Desktop &amp; Mobile-first razvoj</li>
-            <li>Interaktivni animirani elementi</li>
-            <li>SEO optimizirana struktura</li>
-            <li>Clean-code arhitektura</li>
-            <li>CMS integracije (WordPress / Headless)</li>
-            <li>Analitika i tracking postavljanje</li>
-          </ul>
-        </div>
-      </div>
-      <!-- CTA STRIP -->
-      <div class="cta-strip theme-trigger">
-        <h3>Imate ideju za projekt?</h3>
-        <a class="btn btn-arrow" href="kontakt.html">Započnimo</a>
-      </div>
+        <button
+          class="btn btn-pill no-magnetic copy-email"
+          type="button"
+          hidden
+        >
+          Kopiraj e-mail
+        </button>
+        <p class="copy-status" role="status" aria-live="polite"></p>
+      </section>
     </main>
     <div aria-hidden="true" class="geometric-separator">
       <svg
@@ -236,5 +206,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script defer="" src="script.js?v=20260907-contact"></script>
+    <a aria-label="Povratak na vrh" class="back-to-top" href="#sadrzaj"
+      ><span>↑</span></a
+    >
   </body>
 </html>

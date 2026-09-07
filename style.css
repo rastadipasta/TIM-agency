@@ -2106,6 +2106,50 @@ footer {
 .motion-toggle > span[aria-hidden="true"] {
   line-height: 1;
 }
+.contact-panel {
+  padding-block: 64px;
+  border-top: 1px solid var(--gray-500);
+  scroll-margin-top: 120px;
+}
+.contact-panel h1 {
+  font-size: clamp(3rem, 8vw, 7rem);
+  margin-bottom: 32px;
+}
+.contact-page .contact-panel {
+  padding-top: 160px;
+  padding-bottom: 64px;
+  border-top: 0;
+  min-height: 70svh;
+}
+.contact-panel > p {
+  max-width: 560px;
+}
+.contact-panel-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 28px 0;
+}
+.contact-panel-details a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  overflow-wrap: anywhere;
+  max-width: 100%;
+}
+.contact-email {
+  font-size: clamp(1.25rem, 4vw, 2.5rem);
+}
+.contact-panel-details a:hover {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+.contact-panel .copy-status {
+  min-height: 1.6em;
+  margin-top: 16px;
+}
+
 .static-marquee {
   display: none;
   font-weight: 800;

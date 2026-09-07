@@ -152,6 +152,26 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  const copyEmail = document.querySelector(".copy-email");
+  if (copyEmail) {
+    copyEmail.hidden = false;
+    copyEmail.addEventListener("click", async () => {
+      const status = document.querySelector(".copy-status");
+      try {
+        await navigator.clipboard.writeText("studio@timdsgn.com");
+        status.textContent = "E-mail adresa je kopirana.";
+      } catch {
+        const range = document.createRange();
+        range.selectNodeContents(document.querySelector(".contact-email"));
+        const selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        status.textContent =
+          "Adresa je označena. Kopirajte je pomoću Ctrl+C ili opcije Kopiraj.";
+      }
+    });
+  }
+
   const form = document.querySelector(".contact-form");
   if (!form) return;
   const service = form.elements.service;
