@@ -2234,7 +2234,9 @@ footer {
     margin-left: auto;
   }
   .nav-right > .btn {
-    display: none;
+    display: inline-flex;
+    padding-inline: 16px;
+    font-size: 0.875rem;
   }
   .mobile-menu-btn {
     display: flex;
