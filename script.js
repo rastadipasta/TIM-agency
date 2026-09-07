@@ -1,6 +1,169 @@
 /* TIMDSGN: accessible interactions, existing motion and monochrome themes. */
+
+(() => {
+  const storageKey = "timdsgn:page-transition";
+  const duration = 500;
+  const stripSize = 120;
+  const stagger = 45;
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+  let leaving = false;
+
+  function createCurtain(covered = false) {
+    const curtain = document.createElement("div");
+    curtain.className = "page-transition-curtain";
+    curtain.setAttribute("aria-hidden", "true");
+
+    const stripCount = Math.ceil(innerHeight / stripSize) + 1;
+    for (let index = 0; index < stripCount; index += 1) {
+      const strip = document.createElement("span");
+      strip.className = "page-transition-strip";
+      strip.style.setProperty("--strip-index", index);
+      strip.style.top = `${index * stripSize}px`;
+      strip.style.height = `${stripSize + 1}px`;
+      strip.style.transform = covered
+        ? "translate3d(0, 0, 0)"
+        : "translate3d(101%, 0, 0)";
+      curtain.append(strip);
+    }
+
+    document.body.append(curtain);
+    return [...curtain.children];
+  }
+
+  function animateStrips(strips, from, to) {
+    return Promise.all(
+      strips.map((strip, index) =>
+        strip
+          .animate(
+            [
+              { transform: `translate3d(${from}, 0, 0)` },
+              { transform: `translate3d(${to}, 0, 0)` },
+            ],
+            {
+              duration,
+              delay: index * stagger,
+              easing: "cubic-bezier(0.76, 0, 0.24, 1)",
+              fill: "forwards",
+            },
+          )
+          .finished.catch(() => undefined),
+      ),
+    );
+  }
+
+  let arriving = false;
+  try {
+    arriving = sessionStorage.getItem(storageKey) === "1";
+    sessionStorage.removeItem(storageKey);
+  } catch {
+    // Storage can be unavailable in privacy-restricted browsing contexts.
+  }
+
+  if (arriving && !reduced.matches) {
+    const strips = createCurtain(true);
+    document.documentElement.classList.add("page-transition-active");
+    requestAnimationFrame(() =>
+      requestAnimationFrame(async () => {
+        await animateStrips(strips, "0", "-101%");
+        document.querySelector(".page-transition-curtain")?.remove();
+        document.documentElement.classList.remove("page-transition-active");
+      }),
+    );
+  }
+
+  document.addEventListener("click", async (event) => {
+    const link = event.target.closest("a[href]");
+    if (
+      !link ||
+      event.defaultPrevented ||
+      event.button !== 0 ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.shiftKey ||
+      event.altKey ||
+      link.target ||
+      link.hasAttribute("download") ||
+      link.classList.contains("project-preview") ||
+      reduced.matches ||
+      document.documentElement.classList.contains("motion-paused") ||
+      leaving
+    )
+      return;
+
+    const destination = new URL(link.href, location.href);
+    const isPage =
+      destination.origin === location.origin &&
+      (destination.pathname.endsWith(".html") ||
+        destination.pathname.endsWith("/"));
+    const isSameDocument =
+      destination.pathname === location.pathname &&
+      destination.search === location.search;
+
+    if (!isPage || isSameDocument) return;
+
+    event.preventDefault();
+    leaving = true;
+    document.documentElement.classList.add("page-transition-active");
+    const strips = createCurtain();
+
+    try {
+      sessionStorage.setItem(storageKey, "1");
+    } catch {
+      // The outgoing transition still works without the arrival animation.
+    }
+
+    await animateStrips(strips, "101%", "0");
+    location.assign(destination.href);
+  });
+})();
+
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.documentElement;
+  const language = root.lang.toLowerCase().startsWith("en") ? "en" : "hr";
+  const messages = {
+    hr: {
+      menuOpen: "Otvori izbornik",
+      menuClose: "Zatvori izbornik",
+      motionPlay: "Pokreni animacije",
+      motionPause: "Pauziraj animacije",
+      emailCopied: "E-mail adresa je kopirana.",
+      emailSelected:
+        "Adresa je označena. Kopirajte je pomoću Ctrl+C ili opcije Kopiraj.",
+      urlInvalid: "Unesite adresu koja počinje s https:// ili http://.",
+      emailInvalid: "Unesite valjanu e-mail adresu.",
+      required: "Ispunite ovo polje.",
+      serverFieldInvalid: "Provjerite ovo polje.",
+      sendingButton: "Slanje upita…",
+      sendingStatus: "Šaljemo vaš upit…",
+      sendFailed:
+        "Upit nije poslan. Pokušajte ponovno ili nam se javite izravno.",
+      sent: "Vaš je upit poslan. Hvala što ste nam se javili.",
+      timeout:
+        "Nismo mogli potvrditi slanje. Provjerite prije ponovnog pokušaja ili nam se javite izravno.",
+      submit: 'Pošalji Upit <span aria-hidden="true">→</span>',
+    },
+    en: {
+      menuOpen: "Open menu",
+      menuClose: "Close menu",
+      motionPlay: "Play animations",
+      motionPause: "Pause animations",
+      emailCopied: "Email address copied.",
+      emailSelected:
+        "The address is selected. Copy it with Ctrl+C or the Copy command.",
+      urlInvalid: "Enter an address beginning with https:// or http://.",
+      emailInvalid: "Enter a valid email address.",
+      required: "Complete this field.",
+      serverFieldInvalid: "Check this field.",
+      sendingButton: "Sending enquiry…",
+      sendingStatus: "We are sending your enquiry…",
+      sendFailed:
+        "Your enquiry could not be sent. Please try again or contact us directly.",
+      sent: "Your enquiry has been sent. Thank you for getting in touch.",
+      timeout:
+        "We could not confirm delivery. Check before trying again or contact us directly.",
+      submit: 'Send Enquiry <span aria-hidden="true">→</span>',
+    },
+  }[language];
   const reduced = matchMedia("(prefers-reduced-motion: reduce)");
   const precise = matchMedia("(hover: hover) and (pointer: fine)");
   const menuButton = document.querySelector(".mobile-menu-btn");
@@ -12,7 +175,7 @@ document.addEventListener("DOMContentLoaded", () => {
       navigation.classList.remove("active");
       menuButton.classList.remove("active");
       menuButton.setAttribute("aria-expanded", "false");
-      menuButton.setAttribute("aria-label", "Otvori izbornik");
+      menuButton.setAttribute("aria-label", messages.menuOpen);
       if (focus) menuButton.focus();
     };
     menuButton.addEventListener("click", () => {
@@ -22,7 +185,7 @@ document.addEventListener("DOMContentLoaded", () => {
       menuButton.setAttribute("aria-expanded", String(open));
       menuButton.setAttribute(
         "aria-label",
-        open ? "Zatvori izbornik" : "Otvori izbornik",
+        open ? messages.menuClose : messages.menuOpen,
       );
     });
     document.addEventListener("keydown", (e) => {
@@ -45,6 +208,16 @@ document.addEventListener("DOMContentLoaded", () => {
       closeMenu(),
     );
   }
+
+  document.querySelectorAll("[data-language]").forEach((link) => {
+    link.addEventListener("click", () => {
+      try {
+        localStorage.setItem("timdsgn:language", link.dataset.language);
+      } catch {
+        // Navigation still works when storage is unavailable.
+      }
+    });
+  });
 
   // One deterministic viewport probe governs light/dark state in both directions.
   const themeSections = [...document.querySelectorAll(".theme-trigger")];
@@ -86,11 +259,11 @@ document.addEventListener("DOMContentLoaded", () => {
     root.classList.toggle("motion-paused", paused || reduced.matches);
     motionButton.hidden = reduced.matches;
     motionButton.innerHTML = paused
-      ? '<span aria-hidden="true">▶</span><span class="sr-only">Pokreni animacije</span>'
-      : '<span aria-hidden="true">⏸</span><span class="sr-only">Pauziraj animacije</span>';
+      ? `<span aria-hidden="true">▶</span><span class="sr-only">${messages.motionPlay}</span>`
+      : `<span aria-hidden="true">⏸</span><span class="sr-only">${messages.motionPause}</span>`;
     motionButton.setAttribute(
       "aria-label",
-      paused ? "Pokreni animacije" : "Pauziraj animacije",
+      paused ? messages.motionPlay : messages.motionPause,
     );
     motionButton.setAttribute("aria-pressed", String(paused));
     tweens.forEach((tween) => tween.paused(paused || reduced.matches));
@@ -220,15 +393,14 @@ document.addEventListener("DOMContentLoaded", () => {
       const status = document.querySelector(".copy-status");
       try {
         await navigator.clipboard.writeText("studio@timdsgn.com");
-        status.textContent = "E-mail adresa je kopirana.";
+        status.textContent = messages.emailCopied;
       } catch {
         const range = document.createRange();
         range.selectNodeContents(document.querySelector(".contact-email"));
         const selection = window.getSelection();
         selection.removeAllRanges();
         selection.addRange(range);
-        status.textContent =
-          "Adresa je označena. Kopirajte je pomoću Ctrl+C ili opcije Kopiraj.";
+        status.textContent = messages.emailSelected;
       }
     });
   }
@@ -241,7 +413,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const fallback = form.querySelector(".form-fallback");
   const submit = form.querySelector('[type="submit"]');
   let sending = false;
-  const preselection = new URLSearchParams(location.search).get("usluga");
+  const params = new URLSearchParams(location.search);
+  const preselection = params.get("service") || params.get("usluga");
   if ([...service.options].some((option) => option.value === preselection))
     service.value = preselection;
   function updateService() {
@@ -297,9 +470,9 @@ document.addEventListener("DOMContentLoaded", () => {
           field,
           field.validity.typeMismatch
             ? field.type === "url"
-              ? "Unesite adresu koja počinje s https:// ili http://."
-              : "Unesite valjanu e-mail adresu."
-            : "Ispunite ovo polje.",
+              ? messages.urlInvalid
+              : messages.emailInvalid
+            : messages.required,
         );
         if (!invalid) invalid = field;
       }
@@ -322,8 +495,8 @@ document.addEventListener("DOMContentLoaded", () => {
       el.disabled = true;
     });
     form.setAttribute("aria-busy", "true");
-    submit.textContent = "Slanje upita…";
-    status.textContent = "Šaljemo vaš upit…";
+    submit.textContent = messages.sendingButton;
+    status.textContent = messages.sendingStatus;
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 20000);
     try {
@@ -341,20 +514,26 @@ document.addEventListener("DOMContentLoaded", () => {
         if (result?.errors)
           for (const [name, message] of Object.entries(result.errors)) {
             const field = form.elements.namedItem(name);
-            if (field) fieldError(field, message);
+            if (field)
+              fieldError(
+                field,
+                language === "en" ? messages.serverFieldInvalid : message,
+              );
           }
         throw new Error(
-          result?.message ||
-            "Upit nije poslan. Pokušajte ponovno ili nam se javite izravno.",
+          (language === "hr" && result?.message) ||
+            messages.sendFailed,
         );
       }
       form.reset();
-      status.textContent = "Vaš je upit poslan. Hvala što ste nam se javili.";
+      status.textContent = messages.sent;
     } catch (error) {
       status.textContent =
         error.name === "AbortError"
-          ? "Nismo mogli potvrditi slanje. Provjerite prije ponovnog pokušaja ili nam se javite izravno."
-          : error.message;
+          ? messages.timeout
+          : language === "hr" && error.message !== "Failed to fetch"
+            ? error.message
+            : messages.sendFailed;
       fallback.hidden = false;
     } finally {
       clearTimeout(timeout);
@@ -363,7 +542,7 @@ document.addEventListener("DOMContentLoaded", () => {
         el.disabled = false;
       });
       submit.disabled = false;
-      submit.innerHTML = 'Pošalji Upit <span aria-hidden="true">→</span>';
+      submit.innerHTML = messages.submit;
       form.removeAttribute("aria-busy");
       updateService();
       status.focus();
