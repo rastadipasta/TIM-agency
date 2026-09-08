@@ -1,7 +1,10 @@
 # Environment & secrets
 .env
+.env.local
+.env.*.local
 credentials.json
 token.json
+.vercel/
 
 # Temporary / intermediate files
 .tmp/
