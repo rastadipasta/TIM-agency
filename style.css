@@ -2861,7 +2861,6 @@ footer {
   width: calc(100% + 2px);
   display: block;
   background: #f2f2ee;
-  border-top: 1px solid rgba(0, 0, 0, 0.12);
   will-change: transform;
   backface-visibility: hidden;
 }
