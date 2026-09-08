@@ -138,6 +138,10 @@ document.addEventListener("DOMContentLoaded", () => {
       sendFailed:
         "Upit nije poslan. Pokušajte ponovno ili nam se javite izravno.",
       sent: "Vaš je upit poslan. Hvala što ste nam se javili.",
+      successTitle: "Upit je uspješno poslan!",
+      successBody:
+        "Hvala što ste nam se javili. Odgovorit ćemo vam u najkraćem mogućem roku.",
+      successClose: "U redu",
       timeout:
         "Nismo mogli potvrditi slanje. Provjerite prije ponovnog pokušaja ili nam se javite izravno.",
       submit: 'Pošalji Upit <span aria-hidden="true">→</span>',
@@ -159,6 +163,10 @@ document.addEventListener("DOMContentLoaded", () => {
       sendFailed:
         "Your enquiry could not be sent. Please try again or contact us directly.",
       sent: "Your enquiry has been sent. Thank you for getting in touch.",
+      successTitle: "Enquiry sent successfully!",
+      successBody:
+        "Thank you for getting in touch. We will reply as soon as possible.",
+      successClose: "Done",
       timeout:
         "We could not confirm delivery. Check before trying again or contact us directly.",
       submit: 'Send Enquiry <span aria-hidden="true">→</span>',
@@ -413,6 +421,120 @@ document.addEventListener("DOMContentLoaded", () => {
   const fallback = form.querySelector(".form-fallback");
   const submit = form.querySelector('[type="submit"]');
   let sending = false;
+
+  function burstConfetti(dialog) {
+    if (reduced.matches) return;
+
+    const canvas = document.createElement("canvas");
+    canvas.className = "success-confetti";
+    canvas.setAttribute("aria-hidden", "true");
+    dialog.appendChild(canvas);
+
+    const context = canvas.getContext("2d");
+    const ratio = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = Math.round(innerWidth * ratio);
+    canvas.height = Math.round(innerHeight * ratio);
+    context.scale(ratio, ratio);
+
+    const dialogRect = dialog.getBoundingClientRect();
+    const origin = {
+      x: dialogRect.left + dialogRect.width / 2,
+      y: dialogRect.top + Math.min(dialogRect.height * 0.38, 150),
+    };
+    const colors = ["#ffffff", "#b6ff47", "#ff4f9a", "#61a8ff", "#ffd84a"];
+    const particles = Array.from({ length: 42 }, (_, index) => {
+      const angle = (-160 + Math.random() * 140) * (Math.PI / 180);
+      const speed = 8 + Math.random() * 9;
+      return {
+        x: origin.x,
+        y: origin.y,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed,
+        gravity: 0.18 + Math.random() * 0.08,
+        drag: 0.985 + Math.random() * 0.008,
+        rotation: Math.random() * Math.PI,
+        rotationSpeed: (Math.random() - 0.5) * 0.35,
+        width: 5 + Math.random() * 6,
+        height: 3 + Math.random() * 5,
+        color: colors[index % colors.length],
+        circle: index % 5 === 0,
+      };
+    });
+
+    const started = performance.now();
+    let previous = started;
+    function draw(now) {
+      const elapsed = now - started;
+      const frame = Math.min((now - previous) / 16.67, 2);
+      previous = now;
+      context.clearRect(0, 0, innerWidth, innerHeight);
+      context.globalAlpha = Math.max(0, Math.min(1, (1650 - elapsed) / 450));
+
+      particles.forEach((particle) => {
+        particle.vx *= particle.drag ** frame;
+        particle.vy = particle.vy * particle.drag ** frame + particle.gravity * frame;
+        particle.x += particle.vx * frame;
+        particle.y += particle.vy * frame;
+        particle.rotation += particle.rotationSpeed * frame;
+
+        context.save();
+        context.translate(particle.x, particle.y);
+        context.rotate(particle.rotation);
+        context.fillStyle = particle.color;
+        if (particle.circle) {
+          context.beginPath();
+          context.arc(0, 0, particle.width / 2, 0, Math.PI * 2);
+          context.fill();
+        } else {
+          context.fillRect(
+            -particle.width / 2,
+            -particle.height / 2,
+            particle.width,
+            particle.height,
+          );
+        }
+        context.restore();
+      });
+
+      if (elapsed < 1650) requestAnimationFrame(draw);
+      else canvas.remove();
+    }
+    requestAnimationFrame(draw);
+  }
+
+  function showSuccess() {
+    let dialog = document.querySelector(".success-dialog");
+    if (!dialog) {
+      dialog = document.createElement("dialog");
+      dialog.className = "success-dialog";
+      dialog.setAttribute("aria-labelledby", "success-dialog-title");
+      dialog.setAttribute("aria-describedby", "success-dialog-message");
+      dialog.innerHTML = `
+        <div class="success-card">
+          <div class="success-check" aria-hidden="true">
+            <svg viewBox="0 0 64 64">
+              <circle cx="32" cy="32" r="29"></circle>
+              <path d="m19 33 9 9 18-21"></path>
+            </svg>
+          </div>
+          <p class="success-eyebrow">TIMDSGN</p>
+          <h2 id="success-dialog-title">${messages.successTitle}</h2>
+          <p id="success-dialog-message">${messages.successBody}</p>
+          <button class="btn btn-pill-filled no-magnetic success-close" type="button">${messages.successClose}</button>
+        </div>`;
+      document.body.appendChild(dialog);
+      dialog.querySelector(".success-close").addEventListener("click", () =>
+        dialog.close(),
+      );
+      dialog.addEventListener("click", (event) => {
+        if (event.target === dialog) dialog.close();
+      });
+    }
+
+    dialog.showModal();
+    setTimeout(() => burstConfetti(dialog), 120);
+  }
+
   const params = new URLSearchParams(location.search);
   const preselection = params.get("service") || params.get("usluga");
   if ([...service.options].some((option) => option.value === preselection))
@@ -527,6 +649,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       form.reset();
       status.textContent = messages.sent;
+      showSuccess();
     } catch (error) {
       status.textContent =
         error.name === "AbortError"
