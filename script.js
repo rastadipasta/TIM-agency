@@ -62,6 +62,7 @@
   if (arriving && !reduced.matches) {
     const strips = createCurtain(true);
     document.documentElement.classList.add("page-transition-active");
+    document.documentElement.classList.remove("page-transition-pending");
     requestAnimationFrame(() =>
       requestAnimationFrame(async () => {
         await animateStrips(strips, "0", "-101%");
@@ -69,7 +70,19 @@
         document.documentElement.classList.remove("page-transition-active");
       }),
     );
+  } else {
+    document.documentElement.classList.remove("page-transition-pending");
   }
+
+  addEventListener("pageshow", (event) => {
+    if (!event.persisted) return;
+    document.querySelector(".page-transition-curtain")?.remove();
+    document.documentElement.classList.remove(
+      "page-transition-active",
+      "page-transition-pending",
+    );
+    leaving = false;
+  });
 
   document.addEventListener("click", async (event) => {
     const link = event.target.closest("a[href]");

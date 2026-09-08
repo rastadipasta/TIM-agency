@@ -2966,6 +2966,14 @@ footer {
 }
 
 /* Page transition: 0.50s, 120px strips, LEFT, NORMAL. */
+.page-transition-pending::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 4999;
+  background: #f2f2ee;
+  pointer-events: all;
+}
 .page-transition-active,
 .page-transition-active body {
   overflow: hidden;
@@ -2988,6 +2996,7 @@ footer {
   backface-visibility: hidden;
 }
 @media (prefers-reduced-motion: reduce) {
+  .page-transition-pending::before,
   .page-transition-curtain {
     display: none;
   }
