@@ -2965,13 +2965,19 @@ footer {
   }
 }
 
-/* Page transition: 0.50s, 120px strips, LEFT, NORMAL. */
+/* Page transition: four CMYK bands moving from left to left. */
 .page-transition-pending::before {
   content: "";
   position: fixed;
   inset: 0;
   z-index: 4999;
-  background: #f2f2ee;
+  background: linear-gradient(
+    to bottom,
+    #00aeef 0 25%,
+    #ec008c 25% 50%,
+    #fff200 50% 75%,
+    #000000 75% 100%
+  );
   pointer-events: all;
 }
 .page-transition-active,
@@ -2991,9 +2997,20 @@ footer {
   left: -1px;
   width: calc(100% + 2px);
   display: block;
-  background: #f2f2ee;
   will-change: transform;
   backface-visibility: hidden;
+}
+.page-transition-strip:nth-child(1) {
+  background: #00aeef;
+}
+.page-transition-strip:nth-child(2) {
+  background: #ec008c;
+}
+.page-transition-strip:nth-child(3) {
+  background: #fff200;
+}
+.page-transition-strip:nth-child(4) {
+  background: #000000;
 }
 @media (prefers-reduced-motion: reduce) {
   .page-transition-pending::before,

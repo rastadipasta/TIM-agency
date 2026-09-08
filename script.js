@@ -2,9 +2,9 @@
 
 (() => {
   const storageKey = "timdsgn:page-transition";
-  const duration = 500;
-  const stripSize = 120;
-  const stagger = 45;
+  const duration = 520;
+  const stripCount = 4;
+  const stagger = 70;
   const reduced = matchMedia("(prefers-reduced-motion: reduce)");
   let leaving = false;
 
@@ -13,13 +13,12 @@
     curtain.className = "page-transition-curtain";
     curtain.setAttribute("aria-hidden", "true");
 
-    const stripCount = Math.ceil(innerHeight / stripSize) + 1;
     for (let index = 0; index < stripCount; index += 1) {
       const strip = document.createElement("span");
       strip.className = "page-transition-strip";
       strip.style.setProperty("--strip-index", index);
-      strip.style.top = `${index * stripSize}px`;
-      strip.style.height = `${stripSize + 1}px`;
+      strip.style.top = `${index * 25}%`;
+      strip.style.height = "calc(25% + 1px)";
       strip.style.transform = covered
         ? "translate3d(0, 0, 0)"
         : "translate3d(101%, 0, 0)";
