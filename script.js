@@ -1,6 +1,96 @@
 /* TIMDSGN: accessible interactions, existing motion and monochrome themes. */
 
 (() => {
+  const storageKey = "timdsgn:intro-seen-v1";
+  const root = document.documentElement;
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+  const shouldShow = root.classList.contains("intro-pending");
+
+  if (!shouldShow) return;
+
+  try {
+    sessionStorage.setItem(storageKey, "1");
+  } catch {
+    // If session storage is blocked, the early head check leaves the intro off.
+  }
+
+  if (reduced.matches) {
+    root.classList.remove("intro-pending");
+    return;
+  }
+
+  const scriptUrl = document.currentScript?.src || location.href;
+  const videoUrl = new URL(
+    "resources/TIMDSGN%20%E2%80%94%20Kinetic%20Typography%20Intro.mp4",
+    scriptUrl,
+  );
+  const language = root.lang.toLowerCase().startsWith("en") ? "en" : "hr";
+  const intro = document.createElement("div");
+  const video = document.createElement("video");
+  const skip = document.createElement("button");
+  const pageChildren = [...document.body.children].map((element) => ({
+    element,
+    wasInert: element.inert,
+  }));
+  let finished = false;
+
+  intro.className = "site-intro";
+  intro.setAttribute("role", "dialog");
+  intro.setAttribute("aria-modal", "true");
+  intro.setAttribute("aria-label", language === "en" ? "Website intro" : "Uvod u stranicu");
+
+  video.className = "site-intro__video";
+  video.src = videoUrl.href;
+  video.autoplay = true;
+  video.muted = true;
+  video.defaultMuted = true;
+  video.playsInline = true;
+  video.preload = "auto";
+  video.setAttribute("aria-hidden", "true");
+
+  skip.className = "site-intro__skip";
+  skip.type = "button";
+  skip.textContent = language === "en" ? "Skip" : "Preskoči";
+
+  pageChildren.forEach(({ element }) => {
+    element.inert = true;
+  });
+  intro.append(video, skip);
+  document.body.prepend(intro);
+  root.classList.remove("intro-pending");
+  root.classList.add("intro-active");
+
+  const safetyTimer = setTimeout(() => finish(), 12000);
+
+  function finish() {
+    if (finished) return;
+    finished = true;
+    clearTimeout(safetyTimer);
+    document.removeEventListener("keydown", handleKeydown);
+    video.pause();
+    intro.classList.add("site-intro--closing");
+    setTimeout(() => {
+      intro.remove();
+      pageChildren.forEach(({ element, wasInert }) => {
+        element.inert = wasInert;
+      });
+      root.classList.remove("intro-active");
+    }, 550);
+  }
+
+  function handleKeydown(event) {
+    if (event.key === "Escape") finish();
+  }
+
+  video.addEventListener("ended", finish, { once: true });
+  video.addEventListener("error", finish, { once: true });
+  skip.addEventListener("click", finish);
+  document.addEventListener("keydown", handleKeydown);
+
+  video.play().catch(finish);
+})();
+
+(() => {
   const storageKey = "timdsgn:page-transition";
   const duration = 520;
   const stripCount = 4;
