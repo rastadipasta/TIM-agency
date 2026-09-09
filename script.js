@@ -33,6 +33,66 @@
     wasInert: element.inert,
   }));
   let finished = false;
+  let warmupStarted = false;
+
+  function warmUpPage() {
+    if (warmupStarted) return;
+    warmupStarted = true;
+
+    // The intro is useful loading time: request lazy images now and decode any
+    // that arrive before the overlay closes. Keep their priority below video.
+    document.querySelectorAll("img[src], img[srcset]").forEach((image) => {
+      image.loading = "eager";
+      image.fetchPriority = "low";
+      image.decode?.().catch(() => undefined);
+    });
+
+    // Warm the HTTP cache for internal pages without delaying or extending the
+    // intro. Skip speculative traffic for data-saver and very slow connections.
+    const connection = navigator.connection;
+    const constrainedConnection =
+      connection?.saveData || /(^|-)2g$/.test(connection?.effectiveType || "");
+    if (constrainedConnection) return;
+
+    const destinations = new Set();
+    document.querySelectorAll("a[href]").forEach((link) => {
+      const destination = new URL(link.href, location.href);
+      const isInternalPage =
+        destination.origin === location.origin &&
+        (destination.pathname.endsWith(".html") ||
+          destination.pathname.endsWith("/"));
+
+      if (isInternalPage && destination.pathname !== location.pathname) {
+        destination.hash = "";
+        destinations.add(destination.href);
+      }
+    });
+
+    const prefetchNext = () => {
+      const href = destinations.values().next().value;
+      if (!href) return;
+      destinations.delete(href);
+
+      const hint = document.createElement("link");
+      hint.rel = "prefetch";
+      hint.as = "document";
+      hint.href = href;
+      hint.fetchPriority = "low";
+      document.head.append(hint);
+
+      if ("requestIdleCallback" in window) {
+        requestIdleCallback(prefetchNext, { timeout: 1000 });
+      } else {
+        setTimeout(prefetchNext, 150);
+      }
+    };
+
+    if ("requestIdleCallback" in window) {
+      requestIdleCallback(prefetchNext, { timeout: 800 });
+    } else {
+      setTimeout(prefetchNext, 100);
+    }
+  }
 
   intro.className = "site-intro";
   intro.setAttribute("role", "dialog");
@@ -41,6 +101,7 @@
 
   video.className = "site-intro__video";
   video.src = videoUrl.href;
+  video.fetchPriority = "high";
   video.autoplay = true;
   video.muted = true;
   video.defaultMuted = true;
@@ -84,6 +145,7 @@
 
   video.addEventListener("ended", finish, { once: true });
   video.addEventListener("error", finish, { once: true });
+  video.addEventListener("playing", warmUpPage, { once: true });
   skip.addEventListener("click", finish);
   document.addEventListener("keydown", handleKeydown);
 
