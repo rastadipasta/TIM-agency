@@ -1,5 +1,13 @@
 const RECIPIENT = process.env.CONTACT_TO_EMAIL || "studio@timdsgn.com";
 const RESEND_ENDPOINT = "https://api.resend.com/emails";
+const MAX_BODY_BYTES = 24 * 1024;
+const RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000;
+const RATE_LIMIT_MAX_REQUESTS = 8;
+const RATE_LIMIT_MAX_CLIENTS = 5000;
+const RATE_LIMIT_STORE = Symbol.for("timdsgn.contact-rate-limits");
+
+const rateLimits = globalThis[RATE_LIMIT_STORE] || new Map();
+globalThis[RATE_LIMIT_STORE] = rateLimits;
 
 const FIELD_LABELS = {
   name: "Ime i prezime",
@@ -52,6 +60,68 @@ const SERVICES = {
 
 function text(value) {
   return typeof value === "string" ? value.trim() : "";
+}
+
+function header(request, name) {
+  const headers = request.headers;
+  const value =
+    typeof headers?.get === "function"
+      ? headers.get(name)
+      : headers?.[name.toLowerCase()];
+  const first = Array.isArray(value) ? value[0] : value;
+  return typeof first === "string" ? first.split(",")[0].trim() : "";
+}
+
+function isSameOrigin(request) {
+  const host = header(request, "x-forwarded-host") || header(request, "host");
+  const source = header(request, "origin") || header(request, "referer");
+  const protocol = header(request, "x-forwarded-proto") || "https";
+  if (!host || !source) return false;
+
+  try {
+    const sourceUrl = new URL(source);
+    return (
+      sourceUrl.host.toLowerCase() === host.toLowerCase() &&
+      sourceUrl.protocol === `${protocol.toLowerCase()}:`
+    );
+  } catch {
+    return false;
+  }
+}
+
+function clientIp(request) {
+  return (
+    header(request, "x-vercel-forwarded-for") ||
+    header(request, "x-forwarded-for") ||
+    header(request, "x-real-ip") ||
+    request.socket?.remoteAddress ||
+    "unknown"
+  );
+}
+
+function consumeRateLimit(request) {
+  const now = Date.now();
+  const cutoff = now - RATE_LIMIT_WINDOW_MS;
+  const ip = clientIp(request);
+  const attempts = (rateLimits.get(ip) || []).filter((time) => time > cutoff);
+
+  if (attempts.length >= RATE_LIMIT_MAX_REQUESTS) {
+    return Math.max(1, Math.ceil((attempts[0] + RATE_LIMIT_WINDOW_MS - now) / 1000));
+  }
+
+  attempts.push(now);
+  rateLimits.set(ip, attempts);
+
+  if (rateLimits.size > RATE_LIMIT_MAX_CLIENTS) {
+    for (const [key, times] of rateLimits) {
+      if (!times.some((time) => time > cutoff)) rateLimits.delete(key);
+    }
+    while (rateLimits.size > RATE_LIMIT_MAX_CLIENTS) {
+      rateLimits.delete(rateLimits.keys().next().value);
+    }
+  }
+
+  return 0;
 }
 
 function escapeHtml(value) {
@@ -110,19 +180,55 @@ function makeEmail(data) {
     .join("");
 
   return {
-    subject: `Novi upit: ${SERVICES[data.service]} — ${data.name}`,
+    subject: `Novi upit: ${SERVICES[data.service]} — ${data.name.replace(/[\r\n]+/g, " ")}`,
     html: `<h1>Novi upit s timdsgn.com</h1><table style="border-collapse:collapse">${htmlRows}</table>`,
     text: ["Novi upit s timdsgn.com", "", ...rows.map(({ label, value }) => `${label}: ${value}`)].join("\n"),
   };
 }
 
 module.exports = async function handler(request, response) {
+  response.setHeader("Cache-Control", "no-store");
+  response.setHeader("X-Content-Type-Options", "nosniff");
+
   if (request.method !== "POST") {
     response.setHeader("Allow", "POST");
     return response.status(405).json({ ok: false, message: "Method not allowed." });
   }
 
-  const body = request.body && typeof request.body === "object" ? request.body : {};
+  if (!isSameOrigin(request)) {
+    return response.status(403).json({ ok: false, message: "Forbidden." });
+  }
+
+  const contentType = header(request, "content-type")
+    .split(";")[0]
+    .trim()
+    .toLowerCase();
+  if (
+    contentType !== "application/json" &&
+    contentType !== "application/x-www-form-urlencoded"
+  ) {
+    return response.status(415).json({
+      ok: false,
+      message: "Unsupported media type.",
+    });
+  }
+
+  const body =
+    request.body && typeof request.body === "object" && !Array.isArray(request.body)
+      ? request.body
+      : {};
+  if (Buffer.byteLength(JSON.stringify(body), "utf8") > MAX_BODY_BYTES) {
+    return response.status(413).json({ ok: false, message: "Request too large." });
+  }
+
+  const retryAfter = consumeRateLimit(request);
+  if (retryAfter) {
+    response.setHeader("Retry-After", String(retryAfter));
+    return response.status(429).json({
+      ok: false,
+      message: "Previše pokušaja. Pričekajte prije ponovnog slanja.",
+    });
+  }
 
   // Bots commonly fill hidden fields. Return success without sending mail so they do not retry.
   if (text(body.fax)) return response.status(200).json({ ok: true });

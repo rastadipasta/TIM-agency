@@ -6,6 +6,15 @@ credentials.json
 token.json
 .vercel/
 
+# Local project material that must not be published as static site content
+/CLAUDE.md
+/GEMINI.md
+/agents.txt
+/WEB.code-workspace
+/content/
+/directives/
+/execution/
+
 # Temporary / intermediate files
 .tmp/
 
