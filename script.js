@@ -154,70 +154,68 @@
 
 (() => {
   const storageKey = "timdsgn:page-transition";
+  const originKey = `${storageKey}:origin`;
   const duration = 520;
-  const stripCount = 4;
-  const stagger = 70;
   const reduced = matchMedia("(prefers-reduced-motion: reduce)");
   let leaving = false;
 
-  function createCurtain(covered = false) {
+  function createCurtain(origin, covered = false) {
     const curtain = document.createElement("div");
     curtain.className = "page-transition-curtain";
     curtain.setAttribute("aria-hidden", "true");
-
-    for (let index = 0; index < stripCount; index += 1) {
-      const strip = document.createElement("span");
-      strip.className = "page-transition-strip";
-      strip.style.setProperty("--strip-index", index);
-      strip.style.top = `${index * 25}%`;
-      strip.style.height = "calc(25% + 1px)";
-      strip.style.transform = covered
-        ? "translate3d(0, 0, 0)"
-        : "translate3d(101%, 0, 0)";
-      curtain.append(strip);
-    }
-
+    const iris = document.createElement("span");
+    iris.className = "page-transition-iris";
+    const x = origin.x * innerWidth;
+    const y = origin.y * innerHeight;
+    // Reach the farthest corner, including clicks near the viewport edges.
+    const radius = Math.hypot(
+      Math.max(x, innerWidth - x),
+      Math.max(y, innerHeight - y),
+    ) + 2;
+    const closed = `circle(0px at ${origin.x * 100}% ${origin.y * 100}%)`;
+    const open = `circle(${radius}px at ${origin.x * 100}% ${origin.y * 100}%)`;
+    iris.style.clipPath = covered ? open : closed;
+    curtain.append(iris);
     document.body.append(curtain);
-    return [...curtain.children];
+    return { curtain, iris, closed, open };
   }
 
-  function animateStrips(strips, from, to) {
-    return Promise.all(
-      strips.map((strip, index) =>
-        strip
-          .animate(
-            [
-              { transform: `translate3d(${from}, 0, 0)` },
-              { transform: `translate3d(${to}, 0, 0)` },
-            ],
-            {
-              duration,
-              delay: index * stagger,
-              easing: "cubic-bezier(0.76, 0, 0.24, 1)",
-              fill: "forwards",
-            },
-          )
-          .finished.catch(() => undefined),
-      ),
-    );
+  function animateIris({ iris, closed, open }, arriving = false) {
+    return iris.animate(
+      [{ clipPath: arriving ? open : closed }, { clipPath: arriving ? closed : open }],
+      { duration, easing: "cubic-bezier(0.76, 0, 0.24, 1)", fill: "forwards" },
+    ).finished.catch(() => undefined);
   }
 
   let arriving = false;
+  let origin = { x: 0.5, y: 0.5 };
   try {
     arriving = sessionStorage.getItem(storageKey) === "1";
+    const saved = JSON.parse(sessionStorage.getItem(originKey) || "null");
+    if (saved && Number.isFinite(saved.x) && Number.isFinite(saved.y)) {
+      origin = {
+        x: Math.max(0, Math.min(1, saved.x)),
+        y: Math.max(0, Math.min(1, saved.y)),
+      };
+    }
+  } catch {
+    // Use the viewport center if storage or saved coordinates are unavailable.
+  }
+  try {
     sessionStorage.removeItem(storageKey);
+    sessionStorage.removeItem(originKey);
   } catch {
     // Storage can be unavailable in privacy-restricted browsing contexts.
   }
 
   if (arriving && !reduced.matches) {
-    const strips = createCurtain(true);
+    const transition = createCurtain(origin, true);
     document.documentElement.classList.add("page-transition-active");
     document.documentElement.classList.remove("page-transition-pending");
     requestAnimationFrame(() =>
       requestAnimationFrame(async () => {
-        await animateStrips(strips, "0", "-101%");
-        document.querySelector(".page-transition-curtain")?.remove();
+        await animateIris(transition, true);
+        transition.curtain.remove();
         document.documentElement.classList.remove("page-transition-active");
       }),
     );
@@ -249,8 +247,7 @@
       link.hasAttribute("download") ||
       link.classList.contains("project-preview") ||
       reduced.matches ||
-      document.documentElement.classList.contains("motion-paused") ||
-      leaving
+      document.documentElement.classList.contains("motion-paused")
     )
       return;
 
@@ -266,17 +263,26 @@
     if (!isPage || isSameDocument) return;
 
     event.preventDefault();
+    if (leaving) return;
     leaving = true;
+    const bounds = link.getBoundingClientRect();
+    // Keyboard activation starts at the focused link rather than at (0, 0).
+    const x = event.detail === 0 ? bounds.left + bounds.width / 2 : event.clientX;
+    const y = event.detail === 0 ? bounds.top + bounds.height / 2 : event.clientY;
+    origin = {
+      x: Math.max(0, Math.min(1, x / innerWidth)),
+      y: Math.max(0, Math.min(1, y / innerHeight)),
+    };
     document.documentElement.classList.add("page-transition-active");
-    const strips = createCurtain();
+    const transition = createCurtain(origin);
+    await animateIris(transition);
 
     try {
+      sessionStorage.setItem(originKey, JSON.stringify(origin));
       sessionStorage.setItem(storageKey, "1");
     } catch {
       // The outgoing transition still works without the arrival animation.
     }
-
-    await animateStrips(strips, "101%", "0");
     location.assign(destination.href);
   });
 })();
