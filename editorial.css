@@ -126,27 +126,6 @@ a.hero-stage:hover .stage-title { text-decoration: underline; text-underline-off
   flex: 0 0 17px;
   color: var(--muted);
 }
-.editorial-site .portfolio-info .project-link-arrow::before {
-  content: '';
-  position: absolute;
-  left: 2px;
-  bottom: 3px;
-  width: 16px;
-  height: 1px;
-  background: currentColor;
-  transform: rotate(-45deg);
-  transform-origin: left center;
-}
-.editorial-site .portfolio-info .project-link-arrow::after {
-  content: '';
-  position: absolute;
-  top: 1px;
-  right: 1px;
-  width: 8px;
-  height: 8px;
-  border-top: 1px solid currentColor;
-  border-right: 1px solid currentColor;
-}
 .editorial-site .btn { border-radius: 999px; color: var(--ink); border-color: var(--ink); font-weight: 450; }
 .editorial-site .btn:hover { background: var(--ink); color: var(--paper); }
 .editorial-site .manifesto { background: #e4e1d9; color: var(--ink); padding: var(--section-space) var(--gap); display: grid; grid-template-columns: 1fr; }
@@ -327,3 +306,18 @@ a.hero-stage:hover .stage-title { text-decoration: underline; text-underline-off
 @media (prefers-reduced-motion: reduce) {
   .editorial-site *, .editorial-site *::before, .editorial-site *::after { scroll-behavior: auto; transition-duration: 0s; animation: none; }
 }
+
+/* Vector arrows keep the same shape on iOS, Android and desktop. */
+.icon-arrow {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  vertical-align: -0.125em;
+  overflow: visible;
+  pointer-events: none;
+}
+.editorial-button > span { display: inline-flex; align-items: center; }
+.project-link-arrow .icon-arrow { display: block; width: 100%; height: 100%; }
+.strip-arrow .icon-arrow { display: block; }
+.preview-expand .icon-arrow { width: 20px; height: 20px; }

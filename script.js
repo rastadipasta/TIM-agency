@@ -314,7 +314,7 @@ document.addEventListener("DOMContentLoaded", () => {
       successClose: "U redu",
       timeout:
         "Nismo mogli potvrditi slanje. Provjerite prije ponovnog pokušaja ili nam se javite izravno.",
-      submit: 'Pošalji Upit <span aria-hidden="true">→</span>',
+      submit: 'Pošalji Upit <span aria-hidden="true"><svg class="icon-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span>',
     },
     en: {
       menuOpen: "Open menu",
@@ -339,7 +339,7 @@ document.addEventListener("DOMContentLoaded", () => {
       successClose: "Done",
       timeout:
         "We could not confirm delivery. Check before trying again or contact us directly.",
-      submit: 'Send Enquiry <span aria-hidden="true">→</span>',
+      submit: 'Send Enquiry <span aria-hidden="true"><svg class="icon-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span>',
     },
   }[language];
   const reduced = matchMedia("(prefers-reduced-motion: reduce)");

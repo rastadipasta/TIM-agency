@@ -257,13 +257,12 @@ img {
   gap: 12px;
 }
 
-.btn-arrow::after {
-  content: "\2192";
+.btn-arrow .icon-arrow {
   display: inline-block;
   transition: transform var(--transition-normal);
 }
 
-.btn-arrow:hover::after {
+.btn-arrow:hover .icon-arrow {
   transform: translateX(6px);
 }
 
@@ -1147,9 +1146,6 @@ body.theme-light .btn-arrow:hover {
   /* Slightly fade on hover instead of turning white */
 }
 
-body.theme-light .btn-arrow::after {
-  background: transparent;
-}
 
 .subpage-description {
   padding-top: 28px;
