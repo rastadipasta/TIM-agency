@@ -1,0 +1,55 @@
+{
+  "camera": {
+    "focal": 5000.0,
+    "distance": 5000.0,
+    "elevation_deg": 13.0,
+    "cx": 627.0,
+    "cy": 760.0
+  },
+  "radius": 350.0,
+  "posters": {
+    "design": {
+      "parameters": [
+        2.422787693818303,
+        200.86712632097837,
+        500.69028674243907,
+        646.4604193476846,
+        0.5199999999999999
+      ],
+      "initial_quad_rms_px": 15.113551592472362,
+      "source_fit_angle_deg": 161.4111597033665,
+      "safe_initial_angle_deg": 138.8155095120227
+    },
+    "ideas": {
+      "parameters": [
+        3.8712997104806246,
+        112.8804420378756,
+        378.91944784769913,
+        603.5286696210312,
+        -0.5199999999999999
+      ],
+      "initial_quad_rms_px": 8.977472348790178,
+      "source_fit_angle_deg": 199.21348501748602,
+      "safe_initial_angle_deg": 221.8091346407573
+    },
+    "digital": {
+      "parameters": [
+        5.250674936967557,
+        104.30940991255582,
+        244.18832179524392,
+        490.1222887051952,
+        -0.5199999999999999
+      ],
+      "initial_quad_rms_px": 3.720784726573477,
+      "source_fit_angle_deg": 300.8415145897843,
+      "safe_initial_angle_deg": 300.8415134833606
+    }
+  },
+  "fps": 24,
+  "frames": 192,
+  "duration_seconds": 8,
+  "direction": "clockwise viewed from above; front travels screen-left",
+  "orientation": "upright camera-facing with restrained constant oblique offset (at most 30 degrees)",
+  "minimum_plane_clearance_world_units": 23.999999999999943,
+  "reconstruction": "visible home.png pixels; hidden ridge from related source/graphic.png; fixed deterministic fills"
+}

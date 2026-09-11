@@ -1,0 +1,125 @@
+{
+  "geometry": {
+    "turns": {
+      "design": {
+        "total_degrees": 360.00000000000006,
+        "step_degrees_min": 1.8749999999999598,
+        "step_degrees_max": 1.8750000000000615,
+        "constant_world_speed_units_per_second": 274.8893571891069
+      },
+      "ideas": {
+        "total_degrees": 360.0,
+        "step_degrees_min": 1.8749999999999598,
+        "step_degrees_max": 1.8750000000000615,
+        "constant_world_speed_units_per_second": 274.8893571891069
+      },
+      "digital": {
+        "total_degrees": 359.99999999999994,
+        "step_degrees_min": 1.8749999999999598,
+        "step_degrees_max": 1.8750000000000615,
+        "constant_world_speed_units_per_second": 274.8893571891069
+      }
+    },
+    "max_radius_error": 5.684341886080802e-14,
+    "max_rigid_edge_length_error": 1.1368683772161603e-13,
+    "max_planarity_error": 4.603721113515635e-14,
+    "minimum_panel_clearance": 23.999999999999545,
+    "projected_source_bounds": [
+      [
+        36.993100716801564,
+        182.3682931152846
+      ],
+      [
+        1206.2332261280062,
+        1068.0538129340523
+      ]
+    ],
+    "camera_fixed": true,
+    "background_fixed": true,
+    "mountain_fixed": true,
+    "stone_rectangle_fixed": true
+  },
+  "fixed_pixel_samples_540px": [
+    {
+      "xy": [
+        15,
+        15
+      ],
+      "max_channel_variation": 0
+    },
+    {
+      "xy": [
+        530,
+        15
+      ],
+      "max_channel_variation": 0
+    },
+    {
+      "xy": [
+        15,
+        530
+      ],
+      "max_channel_variation": 0
+    },
+    {
+      "xy": [
+        530,
+        530
+      ],
+      "max_channel_variation": 0
+    },
+    {
+      "xy": [
+        270,
+        464
+      ],
+      "max_channel_variation": 0
+    },
+    {
+      "xy": [
+        220,
+        463
+      ],
+      "max_channel_variation": 0
+    },
+    {
+      "xy": [
+        325,
+        463
+      ],
+      "max_channel_variation": 0
+    }
+  ],
+  "full_orbit_540px_validation": {
+    "all_192_frames_distinct": true,
+    "min_adjacent_frame_difference": 2.392882944673068,
+    "max_adjacent_frame_difference": 6.512024462734339,
+    "last_to_first_difference": 4.3807064471879285
+  },
+  "uncompressed_loop": {
+    "endpoint_at_t8_matches_t0_pixel_exactly": true,
+    "duplicate_terminal_frame": false,
+    "last_to_first_mean_absolute_pixel_difference": 4.234230109739369,
+    "first_to_second_difference": 4.217258230452675,
+    "penultimate_to_last_difference": 4.280123456790124,
+    "boundary_difference_relative_to_neighbors": 0.9965964259546584
+  },
+  "fixed_layer_sha256": "e7fd7bbddbe34edde9bc46110743a1d576f6ac25927b4f9b58282aee9f728b1f",
+  "encoded_video": {
+    "codec": "h264",
+    "width": 1080,
+    "height": 1080,
+    "pixel_format": "yuv420p",
+    "fps": "24",
+    "declared_frames": 192,
+    "decoded_frames": 192,
+    "duration_seconds": 8.0,
+    "container_duration_seconds": 8.0,
+    "audio_streams": 0,
+    "first_frame_timestamp": 0.0,
+    "last_frame_timestamp": 7.958333333333333,
+    "constant_timestamp_step": true
+  },
+  "output_sha256": "3bdc37bdae6f0aa46608119acbf5ce0e85d3bcb1be9a0340fe7b8e79e115f657",
+  "output_size_bytes": 1620571
+}

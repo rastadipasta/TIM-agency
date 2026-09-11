@@ -842,3 +842,26 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+// Keep the decorative footer still when reduced motion is requested.
+document.addEventListener("DOMContentLoaded", () => {
+  const video = document.querySelector(".footer-video");
+  if (!video) return;
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  let inView = false;
+  const syncPlayback = () => {
+    if (reducedMotion.matches || !inView || document.hidden) {
+      video.pause();
+      if (reducedMotion.matches) video.currentTime = 0;
+    } else {
+      video.play().catch(() => {});
+    }
+  };
+  video.muted = true;
+  new IntersectionObserver(([entry]) => {
+    inView = entry.isIntersecting;
+    syncPlayback();
+  }).observe(video);
+  reducedMotion.addEventListener("change", syncPlayback);
+  document.addEventListener("visibilitychange", syncPlayback);
+  syncPlayback();
+});
