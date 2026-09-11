@@ -10,13 +10,14 @@
   background: var(--paper);
   color: var(--ink);
   font-weight: 400;
+  overflow-x: clip;
 }
 .editorial-site.theme-light { background: var(--paper); color: var(--ink); }
 .editorial-site a { color: inherit; }
 .editorial-site main { padding-top: 0; }
 .editorial-site :focus-visible { outline: 2px solid #65645e; outline-offset: 6px; }
 .editorial-site .navbar {
-  position: relative; inset: auto; padding: 0 var(--gap); background: var(--paper);
+  position: sticky; inset: 0 auto auto; padding: 0 var(--gap); background: var(--paper);
   border: 0; backdrop-filter: none; color: var(--ink);
 }
 .editorial-site .nav-container { min-height: 78px; max-width: 1800px; padding: 0; border-bottom: 1px solid var(--rule); gap: 30px; }
