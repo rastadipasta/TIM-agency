@@ -1,5 +1,158 @@
 /* TIMDSGN: accessible interactions, existing motion and monochrome themes. */
 
+// Consent is available before other page interactions or future integrations run.
+(() => {
+  const key = "timdsgn:consent";
+  const lifetime = 180 * 24 * 60 * 60 * 1000;
+  const defaults = () => ({ necessary: true, preferences: false, analytics: false, marketing: false });
+  const valid = (value) => value?.version === 1 &&
+    Number.isFinite(value.savedAt) && value.savedAt <= Date.now() &&
+    value.expiresAt === value.savedAt + lifetime && value.expiresAt > Date.now() &&
+    value.categories?.necessary === true &&
+    ["preferences", "analytics", "marketing"].every((name) => typeof value.categories[name] === "boolean");
+  const read = () => {
+    try {
+      const value = JSON.parse(localStorage.getItem(key));
+      return valid(value) ? value : null;
+    } catch { return null; }
+  };
+  let consent = read();
+  function syncLanguage() {
+    try {
+      if (!consent?.categories.preferences) localStorage.removeItem("timdsgn:language");
+      else localStorage.setItem("timdsgn:language", document.documentElement.lang.startsWith("en") ? "en" : "hr");
+    } catch { /* Consent still works in memory when storage is unavailable. */ }
+  }
+  const get = () => ({
+    version: 1,
+    savedAt: consent?.savedAt ?? null,
+    expiresAt: consent?.expiresAt ?? null,
+    categories: { ...(consent?.categories ?? defaults()) },
+  });
+  window.TIMDSGNConsent = Object.freeze({ get });
+  syncLanguage();
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const en = document.documentElement.lang.startsWith("en");
+    const copy = en ? {
+      title: "Your privacy, your choice.",
+      description: "We use essential browser storage to keep the site working. Choose whether we may remember your language. Analytics and marketing services are currently inactive.",
+      customize: "Customize", reject: "Reject All", accept: "Accept All", save: "Save preferences",
+      settings: "Cookie settings", close: "Close settings", always: "Always active",
+      categories: [
+        ["necessary", "Necessary", "Stores your consent and manages the intro animation and page transitions. Always active."],
+        ["preferences", "Preferences", "Remembers your language choice between visits."],
+        ["analytics", "Analytics", "No active services. This category is reserved for future audience measurement."],
+        ["marketing", "Marketing", "No active services. This category is reserved for future marketing integrations."],
+      ],
+    } : {
+      title: "Vaša privatnost, vaš izbor.",
+      description: "Koristimo nužnu pohranu preglednika za rad stranice. Odaberite smijemo li pamtiti vaš jezik. Analitički i marketinški servisi trenutačno nisu aktivni.",
+      customize: "Prilagodi", reject: "Odbij sve", accept: "Prihvati sve", save: "Spremi postavke",
+      settings: "Postavke kolačića", close: "Zatvori postavke", always: "Uvijek aktivno",
+      categories: [
+        ["necessary", "Nužno", "Sprema vaš izbor privole te upravlja uvodnom animacijom i prijelazima stranica. Uvijek aktivno."],
+        ["preferences", "Postavke", "Pamti odabrani jezik između posjeta."],
+        ["analytics", "Analitika", "Nema aktivnih servisa. Kategorija je pripremljena za buduće mjerenje posjećenosti."],
+        ["marketing", "Marketing", "Nema aktivnih servisa. Kategorija je pripremljena za buduće marketinške integracije."],
+      ],
+    };
+    const button = (action, label, outline = false) => `<button type="button" class="cookie-button${outline ? " cookie-button--outline" : ""}" data-consent-action="${action}">${label}</button>`;
+    const banner = document.createElement("section");
+    banner.className = "cookie-banner";
+    banner.hidden = true;
+    banner.setAttribute("aria-labelledby", "cookie-title");
+    banner.innerHTML = `<div class="cookie-banner__inner"><div class="cookie-banner__copy"><h2 id="cookie-title">${copy.title}</h2><p>${copy.description}</p></div><div class="cookie-actions">${button("customize", copy.customize, true)}${button("reject", copy.reject)}${button("accept", copy.accept)}</div></div>`;
+    const spacer = document.createElement("div");
+    spacer.className = "cookie-spacer";
+    spacer.setAttribute("aria-hidden", "true");
+    const dialog = document.createElement("dialog");
+    dialog.className = "cookie-dialog";
+    dialog.setAttribute("aria-labelledby", "cookie-settings-title");
+    dialog.innerHTML = `<div class="cookie-dialog__header"><h2 id="cookie-settings-title">${copy.settings}</h2><button type="button" class="cookie-close" aria-label="${copy.close}" data-consent-action="close" autofocus>×</button></div><p class="cookie-dialog__intro">${copy.description}</p><div class="cookie-categories">${copy.categories.map(([name, title, description]) => `<div class="cookie-category"><div><label for="cookie-${name}">${title}</label><p id="cookie-${name}-description">${description}</p></div><input type="checkbox" role="switch" id="cookie-${name}" data-category="${name}" aria-describedby="cookie-${name}-description" ${name === "necessary" ? `checked disabled title="${copy.always}"` : ""}></div>`).join("")}</div><div class="cookie-actions cookie-dialog__actions">${button("save", copy.save, true)}${button("reject", copy.reject)}${button("accept", copy.accept)}</div>`;
+    document.body.append(spacer, banner, dialog);
+    const footerButton = document.createElement("button");
+    footerButton.type = "button";
+    footerButton.className = "cookie-settings-link";
+    footerButton.textContent = copy.settings;
+    document.querySelector(".footer-bottom")?.append(footerButton);
+    let opener = null;
+    const updateSpace = () => {
+      const height = banner.hidden ? 0 : Math.ceil(banner.getBoundingClientRect().height);
+      spacer.style.height = `${height}px`;
+      document.documentElement.style.setProperty("--cookie-banner-height", `${height}px`);
+    };
+    const refresh = () => {
+      const intro = document.documentElement.matches(".intro-pending, .intro-active");
+      banner.hidden = Boolean(consent) || intro;
+      updateSpace();
+    };
+    const observer = new MutationObserver(refresh);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+    new ResizeObserver(updateSpace).observe(banner);
+    function openSettings() {
+      if (dialog.open) return;
+      opener = document.activeElement;
+      dialog.querySelectorAll("[data-category]").forEach((input) => {
+        input.checked = get().categories[input.dataset.category];
+      });
+      dialog.showModal();
+      document.documentElement.classList.add("cookie-modal-open");
+    }
+    function closeSettings() {
+      if (dialog.open) dialog.close();
+    }
+    dialog.addEventListener("close", () => {
+      document.documentElement.classList.remove("cookie-modal-open");
+      const target = opener?.isConnected && !opener.closest("[hidden]") ? opener : footerButton;
+      target.focus({ preventScroll: true });
+    });
+    dialog.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") event.stopPropagation();
+      if (event.key !== "Tab") return;
+      const items = [...dialog.querySelectorAll("button, input:not(:disabled)")];
+      const first = items[0], last = items[items.length - 1];
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+    });
+    function save(categories) {
+      const savedAt = Date.now();
+      consent = { version: 1, savedAt, expiresAt: savedAt + lifetime, categories: { ...categories, necessary: true } };
+      try { localStorage.setItem(key, JSON.stringify(consent)); } catch { /* Use in-memory choice. */ }
+      syncLanguage();
+      refresh();
+      closeSettings();
+      window.dispatchEvent(new CustomEvent("timdsgn:consent-change", { detail: get() }));
+    }
+    function handleAction(event) {
+      const action = event.target.closest("[data-consent-action]")?.dataset.consentAction;
+      if (action === "customize") openSettings();
+      if (action === "close") closeSettings();
+      if (action === "accept" || action === "reject") {
+        const enabled = action === "accept";
+        save({ necessary: true, preferences: enabled, analytics: enabled, marketing: enabled });
+      }
+      if (action === "save") {
+        const categories = defaults();
+        dialog.querySelectorAll("[data-category]").forEach((input) => { categories[input.dataset.category] = input.checked; });
+        save(categories);
+      }
+    }
+    banner.addEventListener("click", handleAction);
+    dialog.addEventListener("click", handleAction);
+    footerButton.addEventListener("click", openSettings);
+    window.addEventListener("storage", (event) => {
+      if (event.key !== key && event.key !== null) return;
+      consent = read();
+      syncLanguage();
+      refresh();
+      closeSettings();
+      window.dispatchEvent(new CustomEvent("timdsgn:consent-change", { detail: get() }));
+    });
+    refresh();
+  });
+})();
+
 (() => {
   const storageKey = "timdsgn:intro-seen-v1";
   const root = document.documentElement;
@@ -390,7 +543,9 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll("[data-language]").forEach((link) => {
     link.addEventListener("click", () => {
       try {
-        localStorage.setItem("timdsgn:language", link.dataset.language);
+        if (window.TIMDSGNConsent?.get().categories.preferences) {
+          localStorage.setItem("timdsgn:language", link.dataset.language);
+        }
       } catch {
         // Navigation still works when storage is unavailable.
       }
