@@ -156,6 +156,13 @@ a.hero-stage:hover .stage-title { text-decoration: underline; text-underline-off
 .editorial-site .portfolio-eyebrow, .editorial-site .portfolio-intro-bottom > p, .editorial-site .project-category, .editorial-site .project-description, .editorial-site .project-number, .editorial-site .project-shot figcaption, .editorial-site .project-index a > span:first-child { color: var(--muted); }
 .editorial-site .project-index a, .editorial-site .project-story { border-color: var(--rule); }
 .editorial-site .project-story { padding-block: 45px 90px; }
+.editorial-site .project-case-study { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px 64px; margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--rule); }
+.editorial-site .project-case-study h3 { margin: 0 0 12px; color: var(--ink); font-size: 22px; font-weight: 500; letter-spacing: -.02em; }
+.editorial-site .project-case-study p { max-width: 60ch; margin: 0; color: var(--muted); font-size: 16px; line-height: 1.7; }
+.editorial-site .project-case-study .text-link { display: inline-block; margin-top: 16px; }
+@media (max-width: 600px) {
+  .editorial-site .project-case-study { grid-template-columns: 1fr; gap: 28px; margin-top: 32px; padding-top: 28px; }
+}
 .editorial-site .project-story h2 { font-size: clamp(32px, 4vw, 60px); font-weight: 500; letter-spacing: -.04em; }
 .editorial-site .project-shots { display: grid; grid-template-columns: 1.3fr 1fr; align-items: start; gap: 35px; }
 .editorial-site .project-shot:nth-child(2) { margin-top: 100px; }
