@@ -950,15 +950,23 @@
             <div class="brief-two">
               <div class="form-group">
                 <label for="budget">Okvirni budžet</label
-                ><select id="budget" name="budget" data-label="Okvirni budžet">
-                  <option value="">Odaberite</option>
+                ><input
+                  id="budget"
+                  name="budget"
+                  data-label="Okvirni budžet"
+                  type="text"
+                  maxlength="120"
+                  list="budget-suggestions"
+                  placeholder="Upišite iznos u EUR ili odaberite prijedlog"
+                />
+                <datalist id="budget-suggestions">
                   <option>Do 1.000 EUR</option>
                   <option>1.000–3.000 EUR</option>
                   <option>3.000–5.000 EUR</option>
                   <option>5.000–10.000 EUR</option>
                   <option>10.000+ EUR</option>
                   <option>Trebam procjenu</option>
-                </select>
+                </datalist>
               </div>
               <div class="form-group">
                 <label for="deadline">Željeni rok</label
