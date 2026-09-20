@@ -1,0 +1,1097 @@
+<!doctype html>
+
+<html lang="hr">
+  <head>
+    <script>
+      try {
+        if (sessionStorage.getItem("timdsgn:intro-seen-v1") !== "1")
+          document.documentElement.classList.add("intro-pending");
+        if (sessionStorage.getItem("timdsgn:page-transition") === "1")
+          document.documentElement.classList.add("page-transition-pending");
+      } catch {}
+    </script>
+    <meta charset="utf-8" />
+    <meta
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+      name="viewport"
+    />
+    <title>Projektni brief | TIMDSGN</title>
+    <meta
+      content="Odaberite usluge i opišite svoj projekt. Brief za web dizajn, grafički dizajn i digitalne proizvode."
+      name="description"
+    />
+    <meta content="index, follow" name="robots" />
+    <link href="https://timdsgn.com/brief.html" rel="canonical" />
+    <link href="https://timdsgn.com/brief.html" hreflang="hr" rel="alternate" />
+    <link
+      href="https://timdsgn.com/en/brief.html"
+      hreflang="en"
+      rel="alternate"
+    />
+    <link
+      href="https://timdsgn.com/en/brief.html"
+      hreflang="x-default"
+      rel="alternate"
+    />
+    <meta content="website" property="og:type" />
+    <meta content="https://timdsgn.com/brief.html" property="og:url" />
+    <meta content="Projektni brief | TIMDSGN" property="og:title" />
+    <meta
+      content="Odaberite usluge i opišite svoj projekt. Brief za web dizajn, grafički dizajn i digitalne proizvode."
+      property="og:description"
+    />
+    <meta
+      content="https://timdsgn.com/resources/Logo/LOGOwhite.png"
+      property="og:image"
+    />
+    <meta content="hr_HR" property="og:locale" />
+    <meta content="en_US" property="og:locale:alternate" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800;900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link href="style.css?v=20260911-arrows" rel="stylesheet" />
+    <link href="resources/Logo/favicon.png" rel="icon" type="image/png" />
+    <link href="editorial.css?v=20260913-contact-split" rel="stylesheet" />
+    <link href="brief.css?v=20260920" rel="stylesheet" />
+  </head>
+  <body class="editorial-site brief-page">
+    <a class="skip-link" href="#sadrzaj">Preskoči na sadržaj</a>
+    <nav aria-label="Glavna navigacija" class="navbar editorial-nav">
+      <div class="nav-container">
+        <a aria-label="TIMDSGN — Početna" class="nav-logo" href="index.html"
+          >TIMDSGN</a
+        >
+        <ul class="nav-links" id="navigation">
+          <li>
+            <a class="nav-link" href="usluga-web-dizajn.html">Web dizajn</a>
+          </li>
+          <li>
+            <a class="nav-link" href="usluga-graficki-dizajn.html"
+              >Grafički dizajn</a
+            >
+          </li>
+          <li>
+            <a class="nav-link" href="usluga-digitalni-proizvodi.html"
+              >Digitalni proizvodi</a
+            >
+          </li>
+          <li><a class="nav-link" href="galerija.html">Portfolio</a></li>
+          <li><a class="nav-link" href="kontakt.html">Kontakt</a></li>
+        </ul>
+        <div class="nav-right">
+          <div aria-label="Odabir jezika" class="language-selector">
+            <a
+              aria-current="true"
+              class="language-link"
+              data-language="hr"
+              href="brief.html"
+              lang="hr"
+              >HR</a
+            ><span aria-hidden="true">/</span
+            ><a
+              class="language-link"
+              data-language="en"
+              href="en/brief.html"
+              lang="en"
+              >EN</a
+            >
+          </div>
+          <button
+            aria-controls="navigation"
+            aria-expanded="false"
+            aria-label="Otvori izbornik"
+            class="mobile-menu-btn"
+            type="button"
+          >
+            <span class="line line1"></span><span class="line line2"></span
+            ><span class="line line3"></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+    <main id="sadrzaj" tabindex="-1">
+      <header class="brief-hero">
+        <p class="eyebrow">Projektni brief</p>
+        <h1>Vaša ideja.<br />Naš sljedeći projekt.</h1>
+        <div class="brief-hero-bottom">
+          <p>
+            Dajte nam kontekst. Recite što trebate, gdje želite stići i što već
+            imate. Zajedno ćemo definirati sljedeći korak.
+          </p>
+          <span>Oko 5–10 minuta / obavezna polja *</span>
+        </div>
+      </header>
+      <div class="brief-layout">
+        <aside class="brief-sidebar">
+          <p class="eyebrow">Vaš projekt / 01—05</p>
+          <nav aria-label="Cjeline briefa">
+            <a href="#usluge"><span>01</span>Usluge</a
+            ><a href="#projekt"><span>02</span>O projektu</a
+            ><a href="#detalji"><span>03</span>Detalji izrade</a
+            ><a href="#materijali"><span>04</span>Sadržaj i materijali</a
+            ><a href="#dogovor"><span>05</span>Rok i budžet</a>
+          </nav>
+          <div class="brief-selection">
+            <p>Odabrane usluge</p>
+            <ul id="brief-selected" aria-live="polite">
+              <li>Još ništa nije odabrano.</li>
+            </ul>
+          </div>
+          <p class="brief-sidebar-note">
+            Dobar brief je početak dobrog projekta. Za sve ostalo, tu smo.
+          </p>
+        </aside>
+        <form id="project-brief" action="/api/contact" method="post">
+          <section
+            class="brief-section"
+            id="usluge"
+            aria-labelledby="usluge-title"
+          >
+            <div class="brief-section-heading">
+              <span class="brief-number">01</span>
+              <div>
+                <h2 id="usluge-title">Što stvaramo zajedno?</h2>
+                <p>
+                  Odaberite sve što vam treba. Možete kombinirati više usluga. *
+                </p>
+              </div>
+            </div>
+            <fieldset class="brief-service-options">
+              <legend class="brief-sr-only">
+                Odaberite barem jednu uslugu
+              </legend>
+              <label class="brief-service"
+                ><input
+                  type="checkbox"
+                  name="services"
+                  value="web"
+                  data-title="Web dizajn"
+                  aria-describedby="services-error" /><span
+                  class="brief-service-copy"
+                  ><span class="brief-service-index">01</span
+                  ><strong>Web dizajn</strong
+                  ><span
+                    >Nova stranica, redizajn, web trgovina i razvoj.</span
+                  ></span
+                ><span
+                  class="brief-service-mark"
+                  aria-hidden="true"
+                ></span></label
+              ><label class="brief-service"
+                ><input
+                  type="checkbox"
+                  name="services"
+                  value="graphic"
+                  data-title="Grafički dizajn"
+                  aria-describedby="services-error" /><span
+                  class="brief-service-copy"
+                  ><span class="brief-service-index">02</span
+                  ><strong>Grafički dizajn</strong
+                  ><span
+                    >Identitet, logotip, ambalaža i komunikacija brenda.</span
+                  ></span
+                ><span
+                  class="brief-service-mark"
+                  aria-hidden="true"
+                ></span></label
+              ><label class="brief-service"
+                ><input
+                  type="checkbox"
+                  name="services"
+                  value="digital"
+                  data-title="Digitalni proizvodi"
+                  aria-describedby="services-error" /><span
+                  class="brief-service-copy"
+                  ><span class="brief-service-index">03</span
+                  ><strong>Digitalni proizvodi</strong
+                  ><span
+                    >Aplikacije, platforme i alati koje je lako koristiti.</span
+                  ></span
+                ><span
+                  class="brief-service-mark"
+                  aria-hidden="true"
+                ></span></label
+              ><label class="brief-service"
+                ><input
+                  type="checkbox"
+                  name="services"
+                  value="guidance"
+                  data-title="Trebam preporuku"
+                  aria-describedby="services-error" /><span
+                  class="brief-service-copy"
+                  ><span class="brief-service-index">04</span
+                  ><strong>Trebam preporuku</strong
+                  ><span
+                    >Imate cilj, a smjer ćemo definirati zajedno.</span
+                  ></span
+                ><span class="brief-service-mark" aria-hidden="true"></span
+              ></label>
+            </fieldset>
+            <p id="services-error" class="brief-error" role="alert"></p>
+          </section>
+          <section
+            class="brief-section"
+            id="projekt"
+            aria-labelledby="projekt-title"
+          >
+            <div class="brief-section-heading">
+              <span class="brief-number">02</span>
+              <div>
+                <h2 id="projekt-title">Upoznajmo vaš projekt.</h2>
+                <p>Kratko opišite ideju. Ne morate već imati sve odgovore.</p>
+              </div>
+            </div>
+            <div class="brief-two">
+              <div class="form-group">
+                <label for="name">Ime i prezime *</label
+                ><input
+                  id="name"
+                  name="name"
+                  data-label="Ime i prezime"
+                  maxlength="120"
+                  required
+                  autocomplete="name"
+                  type="text"
+                  placeholder="Kako se zovete?"
+                />
+              </div>
+              <div class="form-group">
+                <label for="email">E-mail adresa *</label
+                ><input
+                  id="email"
+                  name="email"
+                  data-label="E-mail adresa"
+                  maxlength="254"
+                  required
+                  autocomplete="email"
+                  type="email"
+                  placeholder="vas@email.com"
+                />
+              </div>
+              <div class="form-group">
+                <label for="company">Tvrtka / naziv brenda</label
+                ><input
+                  id="company"
+                  name="company"
+                  data-label="Tvrtka / naziv brenda"
+                  maxlength="160"
+                  autocomplete="organization"
+                  type="text"
+                  placeholder=""
+                />
+              </div>
+              <div class="form-group">
+                <label for="phone">Telefon</label
+                ><input
+                  id="phone"
+                  name="phone"
+                  data-label="Telefon"
+                  maxlength="40"
+                  autocomplete="tel"
+                  type="tel"
+                  placeholder=""
+                />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="website">Postojeća web stranica</label
+              ><input
+                id="website"
+                name="website"
+                data-label="Postojeća web stranica"
+                maxlength="500"
+                autocomplete="url"
+                type="url"
+                placeholder="https://"
+              />
+            </div>
+            <div class="form-group">
+              <label for="message">O projektu i ciljevima *</label
+              ><textarea
+                id="message"
+                name="message"
+                data-label="O projektu i ciljevima"
+                maxlength="2000"
+                required
+                rows="3"
+                placeholder="Čime se bavite, što želite izraditi i koji problem trebamo riješiti?"
+              ></textarea>
+            </div>
+            <div class="form-group">
+              <label for="audience">Kome se obraćamo?</label
+              ><textarea
+                id="audience"
+                name="audience"
+                data-label="Kome se obraćamo?"
+                maxlength="600"
+                rows="3"
+                placeholder="Vaši kupci ili korisnici, tržište i jezici komunikacije."
+              ></textarea>
+            </div>
+            <div class="form-group">
+              <label for="success">Kako izgleda uspjeh projekta?</label
+              ><input
+                id="success"
+                name="success"
+                data-label="Kako izgleda uspjeh projekta?"
+                maxlength="600"
+                type="text"
+                placeholder="Npr. više upita, online prodaja, jasniji identitet ili jednostavniji rad."
+              />
+            </div>
+          </section>
+          <section
+            class="brief-section"
+            id="detalji"
+            aria-labelledby="detalji-title"
+          >
+            <div class="brief-section-heading">
+              <span class="brief-number">03</span>
+              <div>
+                <h2 id="detalji-title">Od ideje do detalja.</h2>
+                <p>
+                  Označite željeni opseg. Sve detalje možemo razraditi zajedno.
+                </p>
+              </div>
+            </div>
+            <p id="brief-detail-hint" class="brief-note">
+              Odaberite usluge u prvom koraku za pitanja prilagođena vašem
+              projektu.
+            </p>
+            <fieldset class="brief-detail" data-category="web" hidden disabled>
+              <legend>Web dizajn</legend>
+              <div class="form-group">
+                <label for="webType">Vrsta web projekta</label
+                ><select
+                  id="webType"
+                  name="webType"
+                  data-label="Vrsta web projekta"
+                >
+                  <option value="">Odaberite</option>
+                  <option>Nova web stranica</option>
+                  <option>Redizajn postojeće stranice</option>
+                  <option>Landing stranica</option>
+                  <option>Web trgovina</option>
+                  <option>Nadogradnja postojećeg weba</option>
+                </select>
+              </div>
+              <fieldset class="brief-choices">
+                <legend>Potrebne stranice i sadržaj</legend>
+                <div class="brief-tags">
+                  <label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="webPages"
+                      data-label="Potrebne stranice i sadržaj"
+                      value="Naslovnica"
+                    /><span>Naslovnica</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="webPages"
+                      data-label="Potrebne stranice i sadržaj"
+                      value="O nama"
+                    /><span>O nama</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="webPages"
+                      data-label="Potrebne stranice i sadržaj"
+                      value="Usluge"
+                    /><span>Usluge</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="webPages"
+                      data-label="Potrebne stranice i sadržaj"
+                      value="Portfolio / projekti"
+                    /><span>Portfolio / projekti</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="webPages"
+                      data-label="Potrebne stranice i sadržaj"
+                      value="Blog / novosti"
+                    /><span>Blog / novosti</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="webPages"
+                      data-label="Potrebne stranice i sadržaj"
+                      value="Kontakt"
+                    /><span>Kontakt</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="webPages"
+                      data-label="Potrebne stranice i sadržaj"
+                      value="Proizvodi / kategorije"
+                    /><span>Proizvodi / kategorije</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="webPages"
+                      data-label="Potrebne stranice i sadržaj"
+                      value="FAQ"
+                    /><span>FAQ</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="webPages"
+                      data-label="Potrebne stranice i sadržaj"
+                      value="Karijere"
+                    /><span>Karijere</span></label
+                  >
+                </div>
+              </fieldset>
+              <fieldset class="brief-choices">
+                <legend>Funkcionalnosti i izvedba</legend>
+                <div class="brief-tags">
+                  <label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="webFeatures"
+                      data-label="Funkcionalnosti i izvedba"
+                      value="UI/UX dizajn"
+                    /><span>UI/UX dizajn</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="webFeatures"
+                      data-label="Funkcionalnosti i izvedba"
+                      value="Razvoj stranice"
+                    /><span>Razvoj stranice</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="webFeatures"
+                      data-label="Funkcionalnosti i izvedba"
+                      value="CMS / uređivanje sadržaja"
+                    /><span>CMS / uređivanje sadržaja</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="webFeatures"
+                      data-label="Funkcionalnosti i izvedba"
+                      value="Web trgovina / plaćanje"
+                    /><span>Web trgovina / plaćanje</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="webFeatures"
+                      data-label="Funkcionalnosti i izvedba"
+                      value="Rezervacije / termini"
+                    /><span>Rezervacije / termini</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="webFeatures"
+                      data-label="Funkcionalnosti i izvedba"
+                      value="Više jezika"
+                    /><span>Više jezika</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="webFeatures"
+                      data-label="Funkcionalnosti i izvedba"
+                      value="Obrasci / newsletter"
+                    /><span>Obrasci / newsletter</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="webFeatures"
+                      data-label="Funkcionalnosti i izvedba"
+                      value="SEO struktura"
+                    /><span>SEO struktura</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="webFeatures"
+                      data-label="Funkcionalnosti i izvedba"
+                      value="Analitika"
+                    /><span>Analitika</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="webFeatures"
+                      data-label="Funkcionalnosti i izvedba"
+                      value="Animacije"
+                    /><span>Animacije</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="webFeatures"
+                      data-label="Funkcionalnosti i izvedba"
+                      value="Integracije"
+                    /><span>Integracije</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="webFeatures"
+                      data-label="Funkcionalnosti i izvedba"
+                      value="Održavanje"
+                    /><span>Održavanje</span></label
+                  >
+                </div>
+              </fieldset>
+              <div class="form-group">
+                <label for="webScope">Opseg, jezici i tehnički detalji</label
+                ><textarea
+                  id="webScope"
+                  name="webScope"
+                  data-label="Opseg, jezici i tehnički detalji"
+                  maxlength="1000"
+                  rows="3"
+                  placeholder="Približan broj stranica ili proizvoda, jezici, CMS, integracije te imate li domenu i hosting."
+                ></textarea>
+              </div>
+            </fieldset>
+            <fieldset
+              class="brief-detail"
+              data-category="graphic"
+              hidden
+              disabled
+            >
+              <legend>Grafički dizajn</legend>
+              <fieldset class="brief-choices">
+                <legend>Potrebni dizajnerski materijali</legend>
+                <div class="brief-tags">
+                  <label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="graphicItems"
+                      data-label="Potrebni dizajnerski materijali"
+                      value="Logotip i varijacije"
+                    /><span>Logotip i varijacije</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="graphicItems"
+                      data-label="Potrebni dizajnerski materijali"
+                      value="Vizualni identitet"
+                    /><span>Vizualni identitet</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="graphicItems"
+                      data-label="Potrebni dizajnerski materijali"
+                      value="Brand book / smjernice"
+                    /><span>Brand book / smjernice</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="graphicItems"
+                      data-label="Potrebni dizajnerski materijali"
+                      value="Posjetnice / memorandum"
+                    /><span>Posjetnice / memorandum</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="graphicItems"
+                      data-label="Potrebni dizajnerski materijali"
+                      value="Brošure / katalozi"
+                    /><span>Brošure / katalozi</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="graphicItems"
+                      data-label="Potrebni dizajnerski materijali"
+                      value="Plakati / letci"
+                    /><span>Plakati / letci</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="graphicItems"
+                      data-label="Potrebni dizajnerski materijali"
+                      value="Ambalaža / etikete"
+                    /><span>Ambalaža / etikete</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="graphicItems"
+                      data-label="Potrebni dizajnerski materijali"
+                      value="Vizuali za društvene mreže"
+                    /><span>Vizuali za društvene mreže</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="graphicItems"
+                      data-label="Potrebni dizajnerski materijali"
+                      value="Oglasni vizuali"
+                    /><span>Oglasni vizuali</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="graphicItems"
+                      data-label="Potrebni dizajnerski materijali"
+                      value="Prezentacije"
+                    /><span>Prezentacije</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="graphicItems"
+                      data-label="Potrebni dizajnerski materijali"
+                      value="Ilustracije / grafike"
+                    /><span>Ilustracije / grafike</span></label
+                  >
+                </div>
+              </fieldset>
+              <div class="form-group">
+                <label for="identity">Postojeći vizualni identitet</label
+                ><select
+                  id="identity"
+                  name="identity"
+                  data-label="Postojeći vizualni identitet"
+                >
+                  <option value="">Odaberite</option>
+                  <option>Krećemo od početka</option>
+                  <option>Imamo logotip, trebamo sustav</option>
+                  <option>Imamo smjernice koje treba pratiti</option>
+                  <option>Želimo rebranding</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="graphicScope">Formati, količine i primjena</label
+                ><textarea
+                  id="graphicScope"
+                  name="graphicScope"
+                  data-label="Formati, količine i primjena"
+                  maxlength="1000"
+                  rows="3"
+                  placeholder="Dimenzije, broj vizuala ili stranica, kanali, priprema za tisak i specifikacije tiskare."
+                ></textarea>
+              </div>
+            </fieldset>
+            <fieldset
+              class="brief-detail"
+              data-category="digital"
+              hidden
+              disabled
+            >
+              <legend>Digitalni proizvodi</legend>
+              <fieldset class="brief-choices">
+                <legend>Vrsta proizvoda i podrška</legend>
+                <div class="brief-tags">
+                  <label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="digitalItems"
+                      data-label="Vrsta proizvoda i podrška"
+                      value="Mobilna aplikacija"
+                    /><span>Mobilna aplikacija</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="digitalItems"
+                      data-label="Vrsta proizvoda i podrška"
+                      value="Web aplikacija"
+                    /><span>Web aplikacija</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="digitalItems"
+                      data-label="Vrsta proizvoda i podrška"
+                      value="SaaS platforma"
+                    /><span>SaaS platforma</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="digitalItems"
+                      data-label="Vrsta proizvoda i podrška"
+                      value="Dashboard / admin sučelje"
+                    /><span>Dashboard / admin sučelje</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="digitalItems"
+                      data-label="Vrsta proizvoda i podrška"
+                      value="Interni alat"
+                    /><span>Interni alat</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="digitalItems"
+                      data-label="Vrsta proizvoda i podrška"
+                      value="E-commerce sustav"
+                    /><span>E-commerce sustav</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="digitalItems"
+                      data-label="Vrsta proizvoda i podrška"
+                      value="UX istraživanje"
+                    /><span>UX istraživanje</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="digitalItems"
+                      data-label="Vrsta proizvoda i podrška"
+                      value="Wireframe / prototip"
+                    /><span>Wireframe / prototip</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="digitalItems"
+                      data-label="Vrsta proizvoda i podrška"
+                      value="UI dizajn / design sustav"
+                    /><span>UI dizajn / design sustav</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="digitalItems"
+                      data-label="Vrsta proizvoda i podrška"
+                      value="Razvoj proizvoda"
+                    /><span>Razvoj proizvoda</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="digitalItems"
+                      data-label="Vrsta proizvoda i podrška"
+                      value="API / integracije"
+                    /><span>API / integracije</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="digitalItems"
+                      data-label="Vrsta proizvoda i podrška"
+                      value="Održavanje i skaliranje"
+                    /><span>Održavanje i skaliranje</span></label
+                  >
+                </div>
+              </fieldset>
+              <div class="brief-two">
+                <div class="form-group">
+                  <label for="platform">Platforma</label
+                  ><select id="platform" name="platform" data-label="Platforma">
+                    <option value="">Odaberite</option>
+                    <option>Web</option>
+                    <option>iOS</option>
+                    <option>Android</option>
+                    <option>Više platformi</option>
+                    <option>Trebam preporuku</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="stage">Faza projekta</label
+                  ><select id="stage" name="stage" data-label="Faza projekta">
+                    <option value="">Odaberite</option>
+                    <option>Ideja</option>
+                    <option>Specifikacija / istraživanje</option>
+                    <option>Postojeći prototip</option>
+                    <option>Postojeći proizvod</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="tasks"
+                  >Korisnici, ključne funkcije i integracije</label
+                ><textarea
+                  id="tasks"
+                  name="tasks"
+                  data-label="Korisnici, ključne funkcije i integracije"
+                  maxlength="1000"
+                  rows="3"
+                  placeholder="Tko koristi proizvod i što mora moći napraviti? Navedite korisničke uloge, prioritetne funkcije i sustave za povezivanje."
+                ></textarea>
+              </div>
+            </fieldset>
+            <div class="form-group">
+              <label for="direction">Vizualni smjer i reference</label
+              ><textarea
+                id="direction"
+                name="direction"
+                data-label="Vizualni smjer i reference"
+                maxlength="1000"
+                rows="3"
+                placeholder="Poveznice na primjere i konkurenciju. Što vam se sviđa, što želite izbjeći i kako bi brend trebao djelovati?"
+              ></textarea>
+            </div>
+          </section>
+          <section
+            class="brief-section"
+            id="materijali"
+            aria-labelledby="materijali-title"
+          >
+            <div class="brief-section-heading">
+              <span class="brief-number">04</span>
+              <div>
+                <h2 id="materijali-title">Sadržaj daje oblik.</h2>
+                <p>
+                  Za svaku vrstu materijala odaberite što već imate i gdje
+                  trebate našu pomoć.
+                </p>
+              </div>
+            </div>
+            <div class="brief-readiness">
+              <div class="form-group">
+                <label for="ready_brand">Logotip i smjernice brenda</label
+                ><select
+                  id="ready_brand"
+                  name="ready_brand"
+                  data-label="Logotip i smjernice brenda"
+                >
+                  <option value="">Odaberite</option>
+                  <option>Imamo spremno</option>
+                  <option>Djelomično spremno</option>
+                  <option>Pripremit ćemo sami</option>
+                  <option>Trebamo pomoć s izradom</option>
+                  <option>Nije potrebno</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="ready_copy">Tekstovi i prijevodi</label
+                ><select
+                  id="ready_copy"
+                  name="ready_copy"
+                  data-label="Tekstovi i prijevodi"
+                >
+                  <option value="">Odaberite</option>
+                  <option>Imamo spremno</option>
+                  <option>Djelomično spremno</option>
+                  <option>Pripremit ćemo sami</option>
+                  <option>Trebamo pomoć s izradom</option>
+                  <option>Nije potrebno</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="ready_photos"
+                  >Fotografije, video i ilustracije</label
+                ><select
+                  id="ready_photos"
+                  name="ready_photos"
+                  data-label="Fotografije, video i ilustracije"
+                >
+                  <option value="">Odaberite</option>
+                  <option>Imamo spremno</option>
+                  <option>Djelomično spremno</option>
+                  <option>Pripremit ćemo sami</option>
+                  <option>Trebamo pomoć s izradom</option>
+                  <option>Nije potrebno</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="ready_catalog"
+                  >Podaci o uslugama / proizvodima</label
+                ><select
+                  id="ready_catalog"
+                  name="ready_catalog"
+                  data-label="Podaci o uslugama / proizvodima"
+                >
+                  <option value="">Odaberite</option>
+                  <option>Imamo spremno</option>
+                  <option>Djelomično spremno</option>
+                  <option>Pripremit ćemo sami</option>
+                  <option>Trebamo pomoć s izradom</option>
+                  <option>Nije potrebno</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="ready_technical">Tehnička dokumentacija</label
+                ><select
+                  id="ready_technical"
+                  name="ready_technical"
+                  data-label="Tehnička dokumentacija"
+                >
+                  <option value="">Odaberite</option>
+                  <option>Imamo spremno</option>
+                  <option>Djelomično spremno</option>
+                  <option>Pripremit ćemo sami</option>
+                  <option>Trebamo pomoć s izradom</option>
+                  <option>Nije potrebno</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="assetLink">Poveznica na materijale</label
+              ><input
+                id="assetLink"
+                name="assetLink"
+                data-label="Poveznica na materijale"
+                maxlength="500"
+                type="url"
+                placeholder="https://"
+              />
+            </div>
+            <p class="brief-note">
+              Podijelite mapu putem Google Drivea, Dropboxa ili sličnog servisa
+              i omogućite pristup adresi studio@timdsgn.com. Pristupne podatke i
+              lozinke dogovorit ćemo zasebno.
+            </p>
+            <div class="form-group">
+              <label for="contentNotes">Što još treba pripremiti?</label
+              ><textarea
+                id="contentNotes"
+                name="contentNotes"
+                data-label="Što još treba pripremiti?"
+                maxlength="600"
+                rows="3"
+                placeholder="Navedite nedostajuće materijale, tko ih priprema i kada ih možemo očekivati."
+              ></textarea>
+            </div>
+          </section>
+          <section
+            class="brief-section"
+            id="dogovor"
+            aria-labelledby="dogovor-title"
+          >
+            <div class="brief-section-heading">
+              <span class="brief-number">05</span>
+              <div>
+                <h2 id="dogovor-title">Dogovorimo sljedeći korak.</h2>
+                <p>
+                  Podijelite očekivanja kako bismo mogli predložiti realan opseg
+                  i plan.
+                </p>
+              </div>
+            </div>
+            <div class="brief-two">
+              <div class="form-group">
+                <label for="budget">Okvirni budžet</label
+                ><select id="budget" name="budget" data-label="Okvirni budžet">
+                  <option value="">Odaberite</option>
+                  <option>Do 1.000 EUR</option>
+                  <option>1.000–3.000 EUR</option>
+                  <option>3.000–5.000 EUR</option>
+                  <option>5.000–10.000 EUR</option>
+                  <option>10.000+ EUR</option>
+                  <option>Trebam procjenu</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="deadline">Željeni rok</label
+                ><input
+                  id="deadline"
+                  name="deadline"
+                  data-label="Željeni rok"
+                  maxlength="160"
+                  type="text"
+                  placeholder="Datum ili okvirni period"
+                />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="notes">Prioriteti i dodatne napomene</label
+              ><textarea
+                id="notes"
+                name="notes"
+                data-label="Prioriteti i dodatne napomene"
+                maxlength="1000"
+                rows="3"
+                placeholder="Što je nužno za prvu verziju? Je li rok vezan uz događaj i tko odobrava projekt?"
+              ></textarea>
+            </div>
+            <details class="brief-review">
+              <summary>Pregledajte svoj brief</summary>
+              <pre id="brief-preview"></pre>
+            </details>
+            <div class="honeypot" aria-hidden="true">
+              <label for="fax">Fax</label
+              ><input id="fax" name="fax" tabindex="-1" autocomplete="off" />
+            </div>
+            <p class="brief-note">
+              Podatke koristimo kako bismo vam odgovorili o projektu. Slanje
+              briefa nije narudžba niti obveza suradnje.
+            </p>
+            <div class="brief-actions">
+              <button
+                class="editorial-button no-magnetic"
+                type="submit"
+                disabled
+              >
+                Pošalji brief<svg
+                  class="icon-arrow"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  aria-hidden="true"
+                >
+                  <path d="M4 12h16m-6-6 6 6-6 6" />
+                </svg></button
+              ><button class="brief-download" type="button" disabled>
+                Preuzmi kopiju (.txt)
+              </button>
+            </div>
+            <p
+              class="brief-status"
+              role="status"
+              aria-live="polite"
+              tabindex="-1"
+            ></p>
+            <p class="brief-fallback" hidden>
+              Možete preuzeti brief i poslati ga na
+              <a href="mailto:studio@timdsgn.com">studio@timdsgn.com</a>.
+            </p>
+            <noscript
+              ><p>
+                Za ispunjavanje briefa uključite JavaScript ili nam se javite na
+                studio@timdsgn.com.
+              </p></noscript
+            >
+          </section>
+        </form>
+      </div>
+    </main>
+    <footer class="editorial-footer">
+      <video
+        class="footer-video"
+        autoplay=""
+        muted=""
+        loop=""
+        playsinline=""
+        preload="metadata"
+        poster="resources/Editorial/footer-poster.jpg"
+        aria-hidden="true"
+        tabindex="-1"
+      >
+        <source
+          src="resources/Kinetic%20Typography%20%E2%80%94%20Website%20Footer%20Loop.mp4"
+          type="video/mp4"
+        />
+      </video>
+      <div class="footer-bottom">
+        <span>© 2026 TIMDSGN. Sva prava pridržana.</span
+        ><span>Zagreb, Hrvatska</span
+        ><a href="#sadrzaj"
+          >Na vrh
+          <svg
+            class="icon-arrow"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="M12 20V4m-6 6 6-6 6 6" /></svg
+        ></a>
+      </div>
+    </footer>
+    <!-- GSAP / ScrollTrigger -->
+    <script
+      crossorigin="anonymous"
+      integrity="sha384-d+vyQ0dYcymoP8ndq2hW7FGC50nqGdXUEgoOUGxbbkAJwZqL7h+jKN0GGgn9hFDS"
+      referrerpolicy="no-referrer"
+      src="resources/vendor/gsap/3.12.2/gsap.min.js"
+    ></script>
+    <script
+      crossorigin="anonymous"
+      integrity="sha384-poC0r6usQOX2Ayt/VGA+t81H6V3iN9L+Irz9iO8o+s0X20tLpzc9DOOtnKxhaQSE"
+      referrerpolicy="no-referrer"
+      src="resources/vendor/gsap/3.12.2/ScrollTrigger.min.js"
+    ></script>
+    <script defer="" src="script.js?v=20260912-consent"></script>
+    <script defer src="brief.js?v=20260920"></script>
+  </body>
+</html>

@@ -60,4 +60,6 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
+  <url><loc>https://timdsgn.com/brief.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://timdsgn.com/en/brief.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
 </urlset>

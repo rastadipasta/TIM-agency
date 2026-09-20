@@ -1,0 +1,1114 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <script>
+      try {
+        if (sessionStorage.getItem("timdsgn:intro-seen-v1") !== "1")
+          document.documentElement.classList.add("intro-pending");
+        if (sessionStorage.getItem("timdsgn:page-transition") === "1")
+          document.documentElement.classList.add("page-transition-pending");
+      } catch {}
+    </script>
+    <meta charset="utf-8" />
+    <meta
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+      name="viewport"
+    />
+    <title>Project brief | TIMDSGN</title>
+    <meta
+      content="Select services and tell us about your project. A brief for web design, graphic design and digital products."
+      name="description"
+    />
+    <meta content="index, follow" name="robots" />
+    <link href="https://timdsgn.com/en/brief.html" rel="canonical" />
+    <link href="https://timdsgn.com/brief.html" hreflang="hr" rel="alternate" />
+    <link
+      href="https://timdsgn.com/en/brief.html"
+      hreflang="en"
+      rel="alternate"
+    />
+    <link
+      href="https://timdsgn.com/en/brief.html"
+      hreflang="x-default"
+      rel="alternate"
+    />
+    <meta content="website" property="og:type" />
+    <meta content="https://timdsgn.com/en/brief.html" property="og:url" />
+    <meta content="Project brief | TIMDSGN" property="og:title" />
+    <meta
+      content="Select services and tell us about your project. A brief for web design, graphic design and digital products."
+      property="og:description"
+    />
+    <meta
+      content="https://timdsgn.com/resources/Logo/LOGOwhite.png"
+      property="og:image"
+    />
+    <meta content="en_US" property="og:locale" />
+    <meta content="hr_HR" property="og:locale:alternate" />
+    <meta content="summary_large_image" name="twitter:card" />
+    <meta content="Project brief | TIMDSGN" name="twitter:title" />
+    <meta
+      content="Select services and tell us about your project. A brief for web design, graphic design and digital products."
+      name="twitter:description"
+    />
+    <meta
+      content="https://timdsgn.com/resources/Logo/LOGOwhite.png"
+      name="twitter:image"
+    />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800;900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link href="../style.css?v=20260911-arrows" rel="stylesheet" />
+    <link href="../resources/Logo/favicon.png" rel="icon" type="image/png" />
+    <link href="../editorial.css?v=20260913-contact-split" rel="stylesheet" />
+    <link href="../brief.css?v=20260920" rel="stylesheet" />
+  </head>
+  <body class="editorial-site brief-page">
+    <a class="skip-link" href="#sadrzaj">Skip to content</a>
+    <nav aria-label="Main navigation" class="navbar editorial-nav">
+      <div class="nav-container">
+        <a aria-label="TIMDSGN — Home" class="nav-logo" href="../en/index.html"
+          >TIMDSGN</a
+        >
+        <ul class="nav-links" id="navigation">
+          <li>
+            <a class="nav-link" href="../en/web-design.html">Web Design</a>
+          </li>
+          <li>
+            <a class="nav-link" href="../en/graphic-design.html"
+              >Graphic Design</a
+            >
+          </li>
+          <li>
+            <a class="nav-link" href="../en/digital-products.html"
+              >Digital Products</a
+            >
+          </li>
+          <li><a class="nav-link" href="../en/portfolio.html">Portfolio</a></li>
+          <li><a class="nav-link" href="../en/contact.html">Contact</a></li>
+        </ul>
+        <div class="nav-right">
+          <div aria-label="Select language" class="language-selector">
+            <a
+              class="language-link"
+              data-language="hr"
+              href="../brief.html"
+              lang="hr"
+              >HR</a
+            ><span aria-hidden="true">/</span
+            ><a
+              aria-current="true"
+              class="language-link"
+              data-language="en"
+              href="../en/brief.html"
+              lang="en"
+              >EN</a
+            >
+          </div>
+          <button
+            aria-controls="navigation"
+            aria-expanded="false"
+            aria-label="Open menu"
+            class="mobile-menu-btn"
+            type="button"
+          >
+            <span class="line line1"></span><span class="line line2"></span
+            ><span class="line line3"></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+    <main id="sadrzaj" tabindex="-1">
+      <header class="brief-hero">
+        <p class="eyebrow">Project brief</p>
+        <h1>Your idea.<br />Our next project.</h1>
+        <div class="brief-hero-bottom">
+          <p>
+            Give us the context. Tell us what you need, where you want to go and
+            what you already have. We’ll define the next step together.
+          </p>
+          <span>About 5–10 minutes / required fields *</span>
+        </div>
+      </header>
+      <div class="brief-layout">
+        <aside class="brief-sidebar">
+          <p class="eyebrow">Your project / 01—05</p>
+          <nav aria-label="Brief sections">
+            <a href="#usluge"><span>01</span>Services</a
+            ><a href="#projekt"><span>02</span>About the project</a
+            ><a href="#detalji"><span>03</span>Project details</a
+            ><a href="#materijali"><span>04</span>Content and assets</a
+            ><a href="#dogovor"><span>05</span>Timeline and budget</a>
+          </nav>
+          <div class="brief-selection">
+            <p>Selected services</p>
+            <ul id="brief-selected" aria-live="polite">
+              <li>Nothing selected yet.</li>
+            </ul>
+          </div>
+          <p class="brief-sidebar-note">
+            A good brief is the start of a good project. We’ll help with the
+            rest.
+          </p>
+        </aside>
+        <form id="project-brief" action="/api/contact" method="post">
+          <section
+            class="brief-section"
+            id="usluge"
+            aria-labelledby="usluge-title"
+          >
+            <div class="brief-section-heading">
+              <span class="brief-number">01</span>
+              <div>
+                <h2 id="usluge-title">What are we creating?</h2>
+                <p>
+                  Select everything you need. You can combine multiple services.
+                  *
+                </p>
+              </div>
+            </div>
+            <fieldset class="brief-service-options">
+              <legend class="brief-sr-only">Choose at least one service</legend>
+              <label class="brief-service"
+                ><input
+                  type="checkbox"
+                  name="services"
+                  value="web"
+                  data-title="Web design"
+                  aria-describedby="services-error" /><span
+                  class="brief-service-copy"
+                  ><span class="brief-service-index">01</span
+                  ><strong>Web design</strong
+                  ><span
+                    >New websites, redesigns, online stores and
+                    development.</span
+                  ></span
+                ><span
+                  class="brief-service-mark"
+                  aria-hidden="true"
+                ></span></label
+              ><label class="brief-service"
+                ><input
+                  type="checkbox"
+                  name="services"
+                  value="graphic"
+                  data-title="Graphic design"
+                  aria-describedby="services-error" /><span
+                  class="brief-service-copy"
+                  ><span class="brief-service-index">02</span
+                  ><strong>Graphic design</strong
+                  ><span
+                    >Identity, logos, packaging and brand communication.</span
+                  ></span
+                ><span
+                  class="brief-service-mark"
+                  aria-hidden="true"
+                ></span></label
+              ><label class="brief-service"
+                ><input
+                  type="checkbox"
+                  name="services"
+                  value="digital"
+                  data-title="Digital products"
+                  aria-describedby="services-error" /><span
+                  class="brief-service-copy"
+                  ><span class="brief-service-index">03</span
+                  ><strong>Digital products</strong
+                  ><span
+                    >Apps, platforms and tools that are easy to use.</span
+                  ></span
+                ><span
+                  class="brief-service-mark"
+                  aria-hidden="true"
+                ></span></label
+              ><label class="brief-service"
+                ><input
+                  type="checkbox"
+                  name="services"
+                  value="guidance"
+                  data-title="I need guidance"
+                  aria-describedby="services-error" /><span
+                  class="brief-service-copy"
+                  ><span class="brief-service-index">04</span
+                  ><strong>I need guidance</strong
+                  ><span
+                    >You have a goal. We can work out the direction
+                    together.</span
+                  ></span
+                ><span class="brief-service-mark" aria-hidden="true"></span
+              ></label>
+            </fieldset>
+            <p id="services-error" class="brief-error" role="alert"></p>
+          </section>
+          <section
+            class="brief-section"
+            id="projekt"
+            aria-labelledby="projekt-title"
+          >
+            <div class="brief-section-heading">
+              <span class="brief-number">02</span>
+              <div>
+                <h2 id="projekt-title">Tell us about your project.</h2>
+                <p>
+                  A short introduction is enough. You do not need all the
+                  answers yet.
+                </p>
+              </div>
+            </div>
+            <div class="brief-two">
+              <div class="form-group">
+                <label for="name">Full name *</label
+                ><input
+                  id="name"
+                  name="name"
+                  data-label="Full name"
+                  maxlength="120"
+                  required
+                  autocomplete="name"
+                  type="text"
+                  placeholder="Your name"
+                />
+              </div>
+              <div class="form-group">
+                <label for="email">Email address *</label
+                ><input
+                  id="email"
+                  name="email"
+                  data-label="Email address"
+                  maxlength="254"
+                  required
+                  autocomplete="email"
+                  type="email"
+                  placeholder="you@email.com"
+                />
+              </div>
+              <div class="form-group">
+                <label for="company">Company / brand name</label
+                ><input
+                  id="company"
+                  name="company"
+                  data-label="Company / brand name"
+                  maxlength="160"
+                  autocomplete="organization"
+                  type="text"
+                  placeholder=""
+                />
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone</label
+                ><input
+                  id="phone"
+                  name="phone"
+                  data-label="Phone"
+                  maxlength="40"
+                  autocomplete="tel"
+                  type="tel"
+                  placeholder=""
+                />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="website">Existing website</label
+              ><input
+                id="website"
+                name="website"
+                data-label="Existing website"
+                maxlength="500"
+                autocomplete="url"
+                type="url"
+                placeholder="https://"
+              />
+            </div>
+            <div class="form-group">
+              <label for="message">Your project and goals *</label
+              ><textarea
+                id="message"
+                name="message"
+                data-label="Your project and goals"
+                maxlength="2000"
+                required
+                rows="3"
+                placeholder="What do you do, what would you like to create and which problem should we solve?"
+              ></textarea>
+            </div>
+            <div class="form-group">
+              <label for="audience">Who is your audience?</label
+              ><textarea
+                id="audience"
+                name="audience"
+                data-label="Who is your audience?"
+                maxlength="600"
+                rows="3"
+                placeholder="Your customers or users, markets and communication languages."
+              ></textarea>
+            </div>
+            <div class="form-group">
+              <label for="success">What does success look like?</label
+              ><input
+                id="success"
+                name="success"
+                data-label="What does success look like?"
+                maxlength="600"
+                type="text"
+                placeholder="For example: more enquiries, online sales, a clearer identity or simpler workflows."
+              />
+            </div>
+          </section>
+          <section
+            class="brief-section"
+            id="detalji"
+            aria-labelledby="detalji-title"
+          >
+            <div class="brief-section-heading">
+              <span class="brief-number">03</span>
+              <div>
+                <h2 id="detalji-title">From idea to detail.</h2>
+                <p>
+                  Choose your scope. We can work through the details together.
+                </p>
+              </div>
+            </div>
+            <p id="brief-detail-hint" class="brief-note">
+              Select services in the first section to see the relevant project
+              questions.
+            </p>
+            <fieldset class="brief-detail" data-category="web" hidden disabled>
+              <legend>Web design</legend>
+              <div class="form-group">
+                <label for="webType">Website project type</label
+                ><select
+                  id="webType"
+                  name="webType"
+                  data-label="Website project type"
+                >
+                  <option value="">Select</option>
+                  <option>New website</option>
+                  <option>Website redesign</option>
+                  <option>Landing page</option>
+                  <option>Online store</option>
+                  <option>Existing website improvements</option>
+                </select>
+              </div>
+              <fieldset class="brief-choices">
+                <legend>Pages and content</legend>
+                <div class="brief-tags">
+                  <label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="webPages"
+                      data-label="Pages and content"
+                      value="Home"
+                    /><span>Home</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="webPages"
+                      data-label="Pages and content"
+                      value="About"
+                    /><span>About</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="webPages"
+                      data-label="Pages and content"
+                      value="Services"
+                    /><span>Services</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="webPages"
+                      data-label="Pages and content"
+                      value="Portfolio / projects"
+                    /><span>Portfolio / projects</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="webPages"
+                      data-label="Pages and content"
+                      value="Blog / news"
+                    /><span>Blog / news</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="webPages"
+                      data-label="Pages and content"
+                      value="Contact"
+                    /><span>Contact</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="webPages"
+                      data-label="Pages and content"
+                      value="Products / categories"
+                    /><span>Products / categories</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="webPages"
+                      data-label="Pages and content"
+                      value="FAQ"
+                    /><span>FAQ</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="webPages"
+                      data-label="Pages and content"
+                      value="Careers"
+                    /><span>Careers</span></label
+                  >
+                </div>
+              </fieldset>
+              <fieldset class="brief-choices">
+                <legend>Features and delivery</legend>
+                <div class="brief-tags">
+                  <label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="webFeatures"
+                      data-label="Features and delivery"
+                      value="UI/UX design"
+                    /><span>UI/UX design</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="webFeatures"
+                      data-label="Features and delivery"
+                      value="Website development"
+                    /><span>Website development</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="webFeatures"
+                      data-label="Features and delivery"
+                      value="CMS / content editing"
+                    /><span>CMS / content editing</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="webFeatures"
+                      data-label="Features and delivery"
+                      value="E-commerce / payments"
+                    /><span>E-commerce / payments</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="webFeatures"
+                      data-label="Features and delivery"
+                      value="Bookings / appointments"
+                    /><span>Bookings / appointments</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="webFeatures"
+                      data-label="Features and delivery"
+                      value="Multiple languages"
+                    /><span>Multiple languages</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="webFeatures"
+                      data-label="Features and delivery"
+                      value="Forms / newsletter"
+                    /><span>Forms / newsletter</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="webFeatures"
+                      data-label="Features and delivery"
+                      value="SEO structure"
+                    /><span>SEO structure</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="webFeatures"
+                      data-label="Features and delivery"
+                      value="Analytics"
+                    /><span>Analytics</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="webFeatures"
+                      data-label="Features and delivery"
+                      value="Animation"
+                    /><span>Animation</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="webFeatures"
+                      data-label="Features and delivery"
+                      value="Integrations"
+                    /><span>Integrations</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="webFeatures"
+                      data-label="Features and delivery"
+                      value="Maintenance"
+                    /><span>Maintenance</span></label
+                  >
+                </div>
+              </fieldset>
+              <div class="form-group">
+                <label for="webScope"
+                  >Scope, languages and technical details</label
+                ><textarea
+                  id="webScope"
+                  name="webScope"
+                  data-label="Scope, languages and technical details"
+                  maxlength="1000"
+                  rows="3"
+                  placeholder="Approximate page or product count, languages, CMS, integrations, and whether you have a domain and hosting."
+                ></textarea>
+              </div>
+            </fieldset>
+            <fieldset
+              class="brief-detail"
+              data-category="graphic"
+              hidden
+              disabled
+            >
+              <legend>Graphic design</legend>
+              <fieldset class="brief-choices">
+                <legend>Design deliverables</legend>
+                <div class="brief-tags">
+                  <label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="graphicItems"
+                      data-label="Design deliverables"
+                      value="Logo and variations"
+                    /><span>Logo and variations</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="graphicItems"
+                      data-label="Design deliverables"
+                      value="Visual identity"
+                    /><span>Visual identity</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="graphicItems"
+                      data-label="Design deliverables"
+                      value="Brand book / guidelines"
+                    /><span>Brand book / guidelines</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="graphicItems"
+                      data-label="Design deliverables"
+                      value="Business cards / stationery"
+                    /><span>Business cards / stationery</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="graphicItems"
+                      data-label="Design deliverables"
+                      value="Brochures / catalogues"
+                    /><span>Brochures / catalogues</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="graphicItems"
+                      data-label="Design deliverables"
+                      value="Posters / flyers"
+                    /><span>Posters / flyers</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="graphicItems"
+                      data-label="Design deliverables"
+                      value="Packaging / labels"
+                    /><span>Packaging / labels</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="graphicItems"
+                      data-label="Design deliverables"
+                      value="Social media visuals"
+                    /><span>Social media visuals</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="graphicItems"
+                      data-label="Design deliverables"
+                      value="Advertising visuals"
+                    /><span>Advertising visuals</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="graphicItems"
+                      data-label="Design deliverables"
+                      value="Presentations"
+                    /><span>Presentations</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="graphicItems"
+                      data-label="Design deliverables"
+                      value="Illustrations / graphics"
+                    /><span>Illustrations / graphics</span></label
+                  >
+                </div>
+              </fieldset>
+              <div class="form-group">
+                <label for="identity">Existing visual identity</label
+                ><select
+                  id="identity"
+                  name="identity"
+                  data-label="Existing visual identity"
+                >
+                  <option value="">Select</option>
+                  <option>Starting from scratch</option>
+                  <option>We have a logo and need a system</option>
+                  <option>We have guidelines to follow</option>
+                  <option>We need a rebrand</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="graphicScope">Formats, quantities and use</label
+                ><textarea
+                  id="graphicScope"
+                  name="graphicScope"
+                  data-label="Formats, quantities and use"
+                  maxlength="1000"
+                  rows="3"
+                  placeholder="Dimensions, number of visuals or pages, channels, print preparation and printer specifications."
+                ></textarea>
+              </div>
+            </fieldset>
+            <fieldset
+              class="brief-detail"
+              data-category="digital"
+              hidden
+              disabled
+            >
+              <legend>Digital products</legend>
+              <fieldset class="brief-choices">
+                <legend>Product type and support</legend>
+                <div class="brief-tags">
+                  <label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="digitalItems"
+                      data-label="Product type and support"
+                      value="Mobile app"
+                    /><span>Mobile app</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="digitalItems"
+                      data-label="Product type and support"
+                      value="Web app"
+                    /><span>Web app</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="digitalItems"
+                      data-label="Product type and support"
+                      value="SaaS platform"
+                    /><span>SaaS platform</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="digitalItems"
+                      data-label="Product type and support"
+                      value="Dashboard / admin interface"
+                    /><span>Dashboard / admin interface</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="digitalItems"
+                      data-label="Product type and support"
+                      value="Internal tool"
+                    /><span>Internal tool</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="digitalItems"
+                      data-label="Product type and support"
+                      value="E-commerce system"
+                    /><span>E-commerce system</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="digitalItems"
+                      data-label="Product type and support"
+                      value="UX research"
+                    /><span>UX research</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="digitalItems"
+                      data-label="Product type and support"
+                      value="Wireframes / prototype"
+                    /><span>Wireframes / prototype</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="digitalItems"
+                      data-label="Product type and support"
+                      value="UI design / design system"
+                    /><span>UI design / design system</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="digitalItems"
+                      data-label="Product type and support"
+                      value="Product development"
+                    /><span>Product development</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="digitalItems"
+                      data-label="Product type and support"
+                      value="API / integrations"
+                    /><span>API / integrations</span></label
+                  ><label class="brief-chip"
+                    ><input
+                      type="checkbox"
+                      name="digitalItems"
+                      data-label="Product type and support"
+                      value="Maintenance and scaling"
+                    /><span>Maintenance and scaling</span></label
+                  >
+                </div>
+              </fieldset>
+              <div class="brief-two">
+                <div class="form-group">
+                  <label for="platform">Platform</label
+                  ><select id="platform" name="platform" data-label="Platform">
+                    <option value="">Select</option>
+                    <option>Web</option>
+                    <option>iOS</option>
+                    <option>Android</option>
+                    <option>Multiple platforms</option>
+                    <option>I need guidance</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="stage">Project stage</label
+                  ><select id="stage" name="stage" data-label="Project stage">
+                    <option value="">Select</option>
+                    <option>Idea</option>
+                    <option>Specification / research</option>
+                    <option>Existing prototype</option>
+                    <option>Existing product</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="tasks">Users, key features and integrations</label
+                ><textarea
+                  id="tasks"
+                  name="tasks"
+                  data-label="Users, key features and integrations"
+                  maxlength="1000"
+                  rows="3"
+                  placeholder="Who uses the product and what must they be able to do? Include user roles, priority features and systems to connect."
+                ></textarea>
+              </div>
+            </fieldset>
+            <div class="form-group">
+              <label for="direction">Visual direction and references</label
+              ><textarea
+                id="direction"
+                name="direction"
+                data-label="Visual direction and references"
+                maxlength="1000"
+                rows="3"
+                placeholder="Links to examples and competitors. What do you like, what should we avoid and how should the brand feel?"
+              ></textarea>
+            </div>
+          </section>
+          <section
+            class="brief-section"
+            id="materijali"
+            aria-labelledby="materijali-title"
+          >
+            <div class="brief-section-heading">
+              <span class="brief-number">04</span>
+              <div>
+                <h2 id="materijali-title">Content gives it shape.</h2>
+                <p>
+                  Tell us which materials you have and where you need our help.
+                </p>
+              </div>
+            </div>
+            <div class="brief-readiness">
+              <div class="form-group">
+                <label for="ready_brand">Logo and brand guidelines</label
+                ><select
+                  id="ready_brand"
+                  name="ready_brand"
+                  data-label="Logo and brand guidelines"
+                >
+                  <option value="">Select</option>
+                  <option>Ready to use</option>
+                  <option>Partly ready</option>
+                  <option>We will prepare it</option>
+                  <option>We need help creating it</option>
+                  <option>Not needed</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="ready_copy">Copy and translations</label
+                ><select
+                  id="ready_copy"
+                  name="ready_copy"
+                  data-label="Copy and translations"
+                >
+                  <option value="">Select</option>
+                  <option>Ready to use</option>
+                  <option>Partly ready</option>
+                  <option>We will prepare it</option>
+                  <option>We need help creating it</option>
+                  <option>Not needed</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="ready_photos"
+                  >Photography, video and illustrations</label
+                ><select
+                  id="ready_photos"
+                  name="ready_photos"
+                  data-label="Photography, video and illustrations"
+                >
+                  <option value="">Select</option>
+                  <option>Ready to use</option>
+                  <option>Partly ready</option>
+                  <option>We will prepare it</option>
+                  <option>We need help creating it</option>
+                  <option>Not needed</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="ready_catalog">Service / product information</label
+                ><select
+                  id="ready_catalog"
+                  name="ready_catalog"
+                  data-label="Service / product information"
+                >
+                  <option value="">Select</option>
+                  <option>Ready to use</option>
+                  <option>Partly ready</option>
+                  <option>We will prepare it</option>
+                  <option>We need help creating it</option>
+                  <option>Not needed</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="ready_technical">Technical documentation</label
+                ><select
+                  id="ready_technical"
+                  name="ready_technical"
+                  data-label="Technical documentation"
+                >
+                  <option value="">Select</option>
+                  <option>Ready to use</option>
+                  <option>Partly ready</option>
+                  <option>We will prepare it</option>
+                  <option>We need help creating it</option>
+                  <option>Not needed</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="assetLink">Link to your materials</label
+              ><input
+                id="assetLink"
+                name="assetLink"
+                data-label="Link to your materials"
+                maxlength="500"
+                type="url"
+                placeholder="https://"
+              />
+            </div>
+            <p class="brief-note">
+              Share a folder using Google Drive, Dropbox or a similar service
+              and grant access to studio@timdsgn.com. We will arrange account
+              access and passwords separately.
+            </p>
+            <div class="form-group">
+              <label for="contentNotes">What else needs preparing?</label
+              ><textarea
+                id="contentNotes"
+                name="contentNotes"
+                data-label="What else needs preparing?"
+                maxlength="600"
+                rows="3"
+                placeholder="List any missing materials, who will prepare them and when they will be ready."
+              ></textarea>
+            </div>
+          </section>
+          <section
+            class="brief-section"
+            id="dogovor"
+            aria-labelledby="dogovor-title"
+          >
+            <div class="brief-section-heading">
+              <span class="brief-number">05</span>
+              <div>
+                <h2 id="dogovor-title">Let’s agree on the next step.</h2>
+                <p>
+                  Share your expectations so we can suggest a realistic scope
+                  and plan.
+                </p>
+              </div>
+            </div>
+            <div class="brief-two">
+              <div class="form-group">
+                <label for="budget">Estimated budget</label
+                ><select
+                  id="budget"
+                  name="budget"
+                  data-label="Estimated budget"
+                >
+                  <option value="">Select</option>
+                  <option>Under EUR 1,000</option>
+                  <option>EUR 1,000–3,000</option>
+                  <option>EUR 3,000–5,000</option>
+                  <option>EUR 5,000–10,000</option>
+                  <option>EUR 10,000+</option>
+                  <option>I need an estimate</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="deadline">Preferred timeline</label
+                ><input
+                  id="deadline"
+                  name="deadline"
+                  data-label="Preferred timeline"
+                  maxlength="160"
+                  type="text"
+                  placeholder="Date or approximate period"
+                />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="notes">Priorities and additional notes</label
+              ><textarea
+                id="notes"
+                name="notes"
+                data-label="Priorities and additional notes"
+                maxlength="1000"
+                rows="3"
+                placeholder="What is essential for the first release? Is the deadline tied to an event and who approves the project?"
+              ></textarea>
+            </div>
+            <details class="brief-review">
+              <summary>Review your brief</summary>
+              <pre id="brief-preview"></pre>
+            </details>
+            <div class="honeypot" aria-hidden="true">
+              <label for="fax">Fax</label
+              ><input id="fax" name="fax" tabindex="-1" autocomplete="off" />
+            </div>
+            <p class="brief-note">
+              We use these details to reply about your project. Sending a brief
+              is not an order or a commitment.
+            </p>
+            <div class="brief-actions">
+              <button
+                class="editorial-button no-magnetic"
+                type="submit"
+                disabled
+              >
+                Send brief<svg
+                  class="icon-arrow"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  aria-hidden="true"
+                >
+                  <path d="M4 12h16m-6-6 6 6-6 6" />
+                </svg></button
+              ><button class="brief-download" type="button" disabled>
+                Download a copy (.txt)
+              </button>
+            </div>
+            <p
+              class="brief-status"
+              role="status"
+              aria-live="polite"
+              tabindex="-1"
+            ></p>
+            <p class="brief-fallback" hidden>
+              You can download your brief and email it to
+              <a href="mailto:studio@timdsgn.com">studio@timdsgn.com</a>.
+            </p>
+            <noscript
+              ><p>
+                Please enable JavaScript to complete the brief, or email
+                studio@timdsgn.com.
+              </p></noscript
+            >
+          </section>
+        </form>
+      </div>
+    </main>
+    <footer class="editorial-footer">
+      <video
+        class="footer-video"
+        autoplay=""
+        muted=""
+        loop=""
+        playsinline=""
+        preload="metadata"
+        poster="../resources/Editorial/footer-poster.jpg"
+        aria-hidden="true"
+        tabindex="-1"
+      >
+        <source
+          src="../resources/Kinetic%20Typography%20%E2%80%94%20Website%20Footer%20Loop.mp4"
+          type="video/mp4"
+        />
+      </video>
+      <div class="footer-bottom">
+        <span>© 2026 TIMDSGN. All rights reserved.</span
+        ><span>Zagreb, Croatia</span
+        ><a href="#sadrzaj"
+          >Back to top
+          <svg
+            class="icon-arrow"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="M12 20V4m-6 6 6-6 6 6" /></svg
+        ></a>
+      </div>
+    </footer>
+    <!-- GSAP / ScrollTrigger -->
+    <script
+      crossorigin="anonymous"
+      integrity="sha384-d+vyQ0dYcymoP8ndq2hW7FGC50nqGdXUEgoOUGxbbkAJwZqL7h+jKN0GGgn9hFDS"
+      referrerpolicy="no-referrer"
+      src="../resources/vendor/gsap/3.12.2/gsap.min.js"
+    ></script>
+    <script
+      crossorigin="anonymous"
+      integrity="sha384-poC0r6usQOX2Ayt/VGA+t81H6V3iN9L+Irz9iO8o+s0X20tLpzc9DOOtnKxhaQSE"
+      referrerpolicy="no-referrer"
+      src="../resources/vendor/gsap/3.12.2/ScrollTrigger.min.js"
+    ></script>
+    <script defer="" src="../script.js?v=20260912-consent"></script>
+    <script defer src="../brief.js?v=20260920"></script>
+  </body>
+</html>

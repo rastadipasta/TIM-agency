@@ -1,4 +1,7 @@
 /* Shared editorial system. Legacy interaction and intro styles stay in style.css. */
+.contact-brief-link a { text-decoration: underline; text-underline-offset: 5px; }
+.contact-brief-link > span { width: 24px; display: inline-flex; flex-shrink: 0; }
+.editorial-site .contact-brief-link svg { color: #000; }
 .editorial-site {
   --paper: #f0eee9;
   --ink: #101110;

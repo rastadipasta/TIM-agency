@@ -1,6 +1,6 @@
 const RECIPIENT = process.env.CONTACT_TO_EMAIL || "studio@timdsgn.com";
 const RESEND_ENDPOINT = "https://api.resend.com/emails";
-const MAX_BODY_BYTES = 24 * 1024;
+const MAX_BODY_BYTES = 96 * 1024;
 const RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000;
 const RATE_LIMIT_MAX_REQUESTS = 8;
 const RATE_LIMIT_MAX_CLIENTS = 5000;
@@ -28,6 +28,8 @@ const FIELD_LABELS = {
   platform: "Platforma",
   stage: "Faza projekta",
   tasks: "Ključni korisnički zadaci",
+  briefServices: "Odabrane usluge",
+  projectBrief: "Projektni brief",
 };
 
 const LIMITS = {
@@ -49,6 +51,8 @@ const LIMITS = {
   platform: 1000,
   stage: 1000,
   tasks: 1000,
+  briefServices: 300,
+  projectBrief: 16000,
 };
 
 const SERVICES = {
@@ -56,6 +60,7 @@ const SERVICES = {
   graphic: "Grafički dizajn",
   digital: "Digitalni proizvodi",
   general: "Opći upit / nije odabrano",
+  brief: "Projektni brief",
 };
 
 function text(value) {
@@ -144,6 +149,12 @@ function validate(body) {
 
   for (const field of ["name", "email", "service", "message"]) {
     if (!cleaned[field]) errors[field] = "Ispunite ovo polje.";
+  }
+
+  if (cleaned.service === "brief") {
+    for (const field of ["briefServices", "projectBrief"]) {
+      if (!cleaned[field]) errors[field] = "Ispunite ovo polje.";
+    }
   }
 
   if (
