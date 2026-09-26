@@ -25,8 +25,10 @@ blocked autoplay leaves a play button for an explicit retry.
 
 ## Screen geometry
 
-The SVG scene has a fixed `viewBox="0 0 1536 1024"`. Its HTML `foreignObject`
-contains an 800 × 450 video plane. A CSS `matrix3d` projects its four corners to:
+The scene uses a 1536 × 1024 reference image. The video and poster are ordinary
+HTML elements, outside SVG: WebKit can decode video inside a transformed
+`foreignObject` without painting it. An 800 × 450 HTML plane is projected by a
+CSS `matrix3d` to these reference corners:
 
 | Corner | Scene X | Scene Y |
 | --- | ---: | ---: |
@@ -37,12 +39,14 @@ contains an 800 × 450 video plane. A CSS `matrix3d` projects its four corners t
 
 A second instance of the same scene image is masked with a transparent screen
 opening and drawn above the video. It supplies the foreground bezel without a
-second image download. The shared SVG coordinate system keeps all layers aligned
-at every viewport; no resize script is required. `xMidYMid slice` fills the hero
-cell while cropping only the outer architecture when its proportions change.
+second image download. `fitScreen()` in `script.js` composes the reference
+homography with cover scaling and centering. A `ResizeObserver` keeps it aligned
+on viewport changes and rotation. The background uses `object-fit: cover`; the
+separate SVG bezel uses `xMidYMid slice` with the same reference dimensions.
 
 Replacing only the video needs no geometry changes. Replacing the laptop artwork
-requires recalibrating these four corners, the SVG aperture, and the CSS matrix.
+requires recalibrating these four corners, the SVG aperture, and the reference
+matrix in `fitScreen()`.
 
 ## Artwork provenance
 

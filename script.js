@@ -997,13 +997,35 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-// The home mockup is a real video projected inside a fixed SVG screen aperture.
+// Keep the video in HTML: WebKit does not reliably paint transformed SVG foreignObject media.
 // Playback never overrides a user's pause, reduced motion, or the intro overlay.
 (() => {
   const video = document.querySelector('.laptop-video');
   const screen = document.querySelector('.laptop-screen');
+  const scene = document.querySelector('.laptop-scene');
   const button = document.querySelector('.hero-video-toggle');
-  if (!video || !screen || !button) return;
+  if (!video || !screen || !scene || !button) return;
+  // Compose cover scaling and centering with the original 800 × 450 screen
+  // homography. One HTML transform keeps the video, poster and SVG bezel aligned.
+  function fitScreen() {
+    const width = scene.clientWidth;
+    const height = scene.clientHeight;
+    if (!width || !height) return;
+    const scale = Math.max(width / 1536, height / 1024);
+    const x = (width - 1536 * scale) / 2;
+    const y = (height - 1024 * scale) / 2;
+    const a = .764623864383, b = -.05139281633;
+    const c = -.0866696505379, d = .910325387983;
+    const g = -.000120878924664, h = -.0000488466067988;
+    screen.style.transform = `matrix3d(${[
+      scale * a + x * g, scale * b + y * g, 0, g,
+      scale * c + x * h, scale * d + y * h, 0, h,
+      0, 0, 1, 0, scale * 484 + x, scale * 229 + y, 0, 1,
+    ].join(',')})`;
+    scene.classList.add('is-fitted');
+  }
+  fitScreen();
+  new ResizeObserver(fitScreen).observe(scene);
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const en = document.documentElement.lang.startsWith('en');
   const labels = en ? { play: 'Play video', pause: 'Pause video' } : { play: 'Pokreni video', pause: 'Pauziraj video' };
@@ -1062,6 +1084,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }, { threshold: .05 }).observe(document.querySelector('.hero-visual--laptop'));
   } else inView = true;
   video.muted = true;
+  video.defaultMuted = true;
+  video.playsInline = true;
   sync();
 })();
 
