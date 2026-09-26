@@ -997,6 +997,74 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+// The home mockup is a real video projected inside a fixed SVG screen aperture.
+// Playback never overrides a user's pause, reduced motion, or the intro overlay.
+(() => {
+  const video = document.querySelector('.laptop-video');
+  const screen = document.querySelector('.laptop-screen');
+  const button = document.querySelector('.hero-video-toggle');
+  if (!video || !screen || !button) return;
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  const en = document.documentElement.lang.startsWith('en');
+  const labels = en ? { play: 'Play video', pause: 'Pause video' } : { play: 'Pokreni video', pause: 'Pauziraj video' };
+  let inView = false;
+  let userPaused = false;
+  let failed = false;
+  let pending = false;
+  let autoplayBlocked = false;
+  const introVisible = () => document.documentElement.matches('.intro-pending, .intro-active');
+
+  function render() {
+    const posterOnly = reduced.matches || failed || autoplayBlocked;
+    screen.classList.toggle('is-playing', !posterOnly && !video.paused);
+    screen.classList.toggle('is-paused', !posterOnly && video.paused && video.readyState >= 2);
+    const paused = video.paused || posterOnly;
+    const label = paused ? labels.play : labels.pause;
+    button.hidden = reduced.matches || failed;
+    button.dataset.paused = String(paused);
+    button.setAttribute('aria-label', label);
+    button.querySelector('span').textContent = label;
+  }
+
+  function sync() {
+    const shouldPlay = !reduced.matches && !failed && !userPaused && !autoplayBlocked && inView && !document.hidden && !introVisible();
+    if (!shouldPlay) video.pause();
+    else if (video.paused && !pending) {
+      pending = true;
+      video.play().catch((error) => {
+        if (error.name !== 'AbortError') autoplayBlocked = true;
+      }).finally(() => { pending = false; sync(); });
+    }
+    render();
+  }
+
+  button.addEventListener('click', () => {
+    userPaused = !video.paused;
+    autoplayBlocked = false;
+    sync();
+  });
+  function showPoster() {
+    failed = true;
+    sync();
+  }
+  video.addEventListener('error', showPoster);
+  video.querySelector('source')?.addEventListener('error', showPoster);
+  video.addEventListener('playing', render);
+  video.addEventListener('pause', render);
+  video.addEventListener('loadeddata', render);
+  reduced.addEventListener('change', sync);
+  document.addEventListener('visibilitychange', sync);
+  new MutationObserver(sync).observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(([entry]) => {
+      inView = entry.isIntersecting;
+      sync();
+    }, { threshold: .05 }).observe(document.querySelector('.hero-visual--laptop'));
+  } else inView = true;
+  video.muted = true;
+  sync();
+})();
+
 // Keep the decorative footer still when reduced motion is requested.
 document.addEventListener("DOMContentLoaded", () => {
   const video = document.querySelector(".footer-video");
