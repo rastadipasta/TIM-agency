@@ -63,6 +63,7 @@
     let stops = [];
     let routeLength = 0;
     let width = 0, height = 0;
+    let celebrated = false;
     const camera = { progress: 0 };
     const moveX = gsap.quickSetter(world, 'x', 'px');
     const moveY = gsap.quickSetter(world, 'y', 'px');
@@ -84,7 +85,11 @@
       route.style.strokeDashoffset = String(Math.max(0,routeLength-revealed));
       counter.textContent = `${String(t > .5 ? next+1 : index+1).padStart(2,'0')} / 08`;
       bar.style.transform = `scaleX(${camera.progress})`;
-      if(camera.progress<.83 && confettiFrame) clearConfetti();
+      if(camera.progress<.83) { celebrated=false; if(confettiFrame) clearConfetti(); }
+      if(camera.progress>=.875 && !celebrated) {
+        const bounds=viewport.getBoundingClientRect();
+        if(bounds.bottom>0 && bounds.top<innerHeight) { celebrated=true; celebrate(); }
+      }
     }
     function layout() {
       width = viewport.clientWidth; height = viewport.clientHeight;
