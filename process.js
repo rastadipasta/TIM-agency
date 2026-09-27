@@ -1,119 +1,65 @@
-/* Full-frame sequence. Only scroll advances the playhead; no autoplay. */
+/* A seek-optimized, all-keyframe video driven only by scroll. */
 (() => {
   const section = document.querySelector('.scroll-process');
   if (!section || !window.gsap || !window.ScrollTrigger) return;
-  const canvas = section.querySelector('canvas');
-  const context = canvas.getContext('2d', { alpha: false });
-  if (!context || !window.createImageBitmap) return;
-  gsap.registerPlugin(ScrollTrigger);
-  const base = section.dataset.frames;
-  const count = 451;
+  const video = section.querySelector('video');
   const progress = section.querySelector('.scroll-process__progress span');
-
+  gsap.registerPlugin(ScrollTrigger);
   gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
     const controller = new AbortController();
-    const blobs = new Map();
-    const decoded = new Map();
-    const fetching = new Set();
-    const decoding = new Set();
-    const failed = new Set();
-    const playhead = { frame: 0 };
+    const playhead = { progress: 0 };
     let active = true;
-    let nearby = false;
-    let target = 0;
-    let displayed = -1;
-    let paintRequest = 0;
-    let direction = 1;
+    let loading = false;
+    let objectURL;
+    let request = 0;
+    let failed = false;
 
-    // Prioritize the current frame, then look ahead in the scroll direction.
-    function neighborhood(radius) {
-      const frames = [target];
-      for (let offset = 1; offset <= radius; offset++) {
-        frames.push(target + offset * direction, target - offset * direction);
-      }
-      return frames.filter(frame => frame >= 0 && frame < count);
+    function seek() {
+      request = 0;
+      if (!active || failed || video.readyState < 2 || video.seeking) return;
+      const time = playhead.progress * Math.max(0, video.duration - 1 / 60);
+      // Never interrupt an in-flight seek: seeked picks up the latest scroll target.
+      if (Math.abs(video.currentTime - time) > 1 / 120) video.currentTime = time;
+      else section.classList.add('is-ready');
     }
-
-    function paint() {
-      paintRequest = 0;
-      if (!active || !decoded.size) return;
-      // Keep moving with the closest available frame while the exact one decodes.
-      const frame = [...decoded.keys()].reduce((best, value) =>
-        Math.abs(value - target) < Math.abs(best - target) ? value : best);
-      if (displayed === frame) return;
-      context.drawImage(decoded.get(frame), 0, 0, canvas.width, canvas.height);
-      displayed = frame;
+    function schedule() {
+      if (active && !request) request = requestAnimationFrame(seek);
+    }
+    function onSeeked() {
+      if (!active) return;
       section.classList.add('is-ready');
-      canvas.dataset.frame = String(frame);
+      schedule();
     }
-
-    function schedulePaint() {
-      if (!paintRequest && active) paintRequest = requestAnimationFrame(paint);
+    function onError() {
+      failed = true;
+      section.classList.remove('is-ready');
     }
+    video.addEventListener('loadeddata', schedule);
+    video.addEventListener('seeked', onSeeked);
+    video.addEventListener('error', onError);
 
-    async function decode(frame) {
-      decoding.add(frame);
+    async function load() {
+      if (loading) return;
+      loading = true;
       try {
-        const bitmap = await createImageBitmap(blobs.get(frame));
-        if (!active) { bitmap.close(); return; }
-        decoded.set(frame, bitmap);
-        // Bound decoded pixels to about 110 MB, instead of decoding the whole GIF.
-        while (decoded.size > 24) {
-          const farthest = [...decoded.keys()].sort((a, b) =>
-            Math.abs(b - target) - Math.abs(a - target))[0];
-          decoded.get(farthest).close();
-          decoded.delete(farthest);
-        }
-        schedulePaint();
-      } catch {
-        if (active) failed.add(frame);
-      } finally {
-        decoding.delete(frame);
-        if (active) prepare();
-      }
-    }
-
-    async function fetchFrame(frame) {
-      fetching.add(frame);
-      try {
-        const response = await fetch(`${base}/${String(frame).padStart(3, '0')}.webp?v=2`, {
-          signal: controller.signal,
-        });
-        if (!response.ok) throw new Error('Frame unavailable');
+        // One compressed download; subsequent seeks never wait on network ranges.
+        const response = await fetch(video.dataset.src, { signal: controller.signal });
+        if (!response.ok) throw new Error('Process video unavailable');
         const blob = await response.blob();
-        if (active) blobs.set(frame, blob);
+        if (!active) return;
+        objectURL = URL.createObjectURL(blob);
+        video.src = objectURL;
+        video.load();
       } catch {
-        if (active) failed.add(frame);
-      } finally {
-        fetching.delete(frame);
-        if (active) prepare();
+        if (active) onError();
       }
     }
-
-    function prepare() {
-      if (!active || !nearby) return;
-      for (const frame of neighborhood(10)) {
-        if (decoding.size >= 2) break;
-        if (blobs.has(frame) && !decoded.has(frame) && !decoding.has(frame) && !failed.has(frame)) decode(frame);
-      }
-      // Warm small compressed frames in the background, four requests at a time.
-      const fetchOrder = [...neighborhood(24), ...Array.from({ length: count }, (_, i) => i)];
-      for (const frame of fetchOrder) {
-        if (fetching.size >= 4) break;
-        if (!blobs.has(frame) && !fetching.has(frame) && !failed.has(frame)) fetchFrame(frame);
-      }
-    }
-
     const tween = gsap.to(playhead, {
-      frame: count - 1,
+      progress: 1,
       ease: 'none',
       onUpdate: () => {
-        const next = Math.round(playhead.frame);
-        if (next !== target) direction = next > target ? 1 : -1;
-        target = next;
-        progress.style.transform = `scaleX(${playhead.frame / (count - 1)})`;
-        schedulePaint();
-        prepare();
+        progress.style.transform = `scaleX(${playhead.progress})`;
+        schedule();
       },
       scrollTrigger: {
         trigger: section,
@@ -126,24 +72,25 @@
       },
     });
     const observer = new IntersectionObserver(([entry]) => {
-      nearby = entry.isIntersecting;
-      if (nearby) { prepare(); schedulePaint(); }
+      if (entry.isIntersecting) { load(); observer.disconnect(); }
     }, { rootMargin: '200% 0px' });
     observer.observe(section);
-    document.fonts.ready.then(() => { if (active) tween.scrollTrigger.refresh(); });
-
+    document.fonts.ready.then(() => { if (active) tween.scrollTrigger?.refresh(); });
     return () => {
       active = false;
       controller.abort();
       observer.disconnect();
-      cancelAnimationFrame(paintRequest);
+      cancelAnimationFrame(request);
       tween.scrollTrigger?.kill();
       tween.kill();
-      decoded.forEach(bitmap => bitmap.close());
-      decoded.clear();
-      blobs.clear();
+      video.removeEventListener('loadeddata', schedule);
+      video.removeEventListener('seeked', onSeeked);
+      video.removeEventListener('error', onError);
+      video.pause();
+      video.removeAttribute('src');
+      video.load();
+      if (objectURL) URL.revokeObjectURL(objectURL);
       section.classList.remove('is-ready');
-      delete canvas.dataset.frame;
     };
   });
 })();

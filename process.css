@@ -4,9 +4,9 @@
 .scroll-process__header h2 { font-size: clamp(24px, 3vw, 48px); font-weight: 500; letter-spacing: -.04em; }
 .scroll-process__header p { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; }
 .scroll-process__media { position: relative; flex: 1; min-height: 0; }
-.scroll-process__media img, .scroll-process__media canvas { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
-.scroll-process__media canvas { opacity: 0; }
-.scroll-process.is-ready canvas { opacity: 1; }
+.scroll-process__media img, .scroll-process__media video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+.scroll-process__media video { opacity: 0; pointer-events: none; }
+.scroll-process.is-ready video { opacity: 1; }
 .scroll-process.is-ready .scroll-process__media img { visibility: hidden; }
 .scroll-process__progress { height: 2px; background: #d5d4ce; }
 .scroll-process__progress span { display: block; height: 100%; background: #111; transform: scaleX(0); transform-origin: left; }
