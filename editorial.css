@@ -113,8 +113,11 @@ a.hero-stage:hover .stage-title { text-decoration: underline; text-underline-off
 .editorial-site .service-strip::before { content: '0' counter(service); font: 12px 'Courier New',monospace; align-self: flex-start; padding-top: 14px; }
 .editorial-site .strip-icon-svg { display: none; }
 .editorial-site .strip-title, .editorial-site .service-strip:hover .strip-title { color: var(--ink); font-size: clamp(35px, 5vw, 80px); font-weight: 450; letter-spacing: -.025em; -webkit-text-stroke: 0; transform: none; text-shadow: none; }
-.editorial-site .strip-arrow { color: var(--ink); }
-.editorial-site .service-strip:hover { padding-left: 18px; background: #e8e5de; }
+.editorial-site .strip-arrow { color: var(--ink); transition: transform 220ms ease; }
+.editorial-site .service-strip:hover,
+.editorial-site .service-strip:focus-visible { padding-left: 0; background: #e8e5de; }
+.editorial-site .service-strip:hover .strip-arrow,
+.editorial-site .service-strip:focus-visible .strip-arrow { color: var(--ink); transform: rotate(45deg); }
 .editorial-site .home-projects { display: grid; grid-template-columns: minmax(0, 1fr); gap: 70px; }
 .editorial-site .home-project { border-radius: 0; border: 0; background: transparent; overflow: hidden; }
 .editorial-site .home-project:nth-child(2) { margin-top: 0; }
