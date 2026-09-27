@@ -20,6 +20,50 @@
     const camera = { progress: 0 };
     const moveX = gsap.quickSetter(world, 'x', 'px');
     const moveY = gsap.quickSetter(world, 'y', 'px');
+    const confetti = document.createElement('canvas');
+    confetti.className = 'process-confetti';
+    confetti.setAttribute('aria-hidden','true');
+    viewport.append(confetti);
+    const ink = confetti.getContext('2d');
+    let confettiFrame = 0;
+    let celebrated = false;
+    function clearConfetti() {
+      cancelAnimationFrame(confettiFrame);
+      confettiFrame = 0;
+      ink?.clearRect(0,0,confetti.width,confetti.height);
+    }
+    function celebrate() {
+      if (!ink) return;
+      clearConfetti();
+      const dpr = Math.min(devicePixelRatio || 1,2);
+      confetti.width = Math.round(width*dpr);
+      confetti.height = Math.round(height*dpr);
+      ink.setTransform(dpr,0,0,dpr,0,0);
+      const pieces = Array.from({length:width<768?55:90},(_,i) => ({
+        x:width*(i%2?.78:.22), y:height*.58,
+        vx:(i%2?-1:1)*(40+Math.random()*210), vy:-240-Math.random()*260,
+        angle:Math.random()*Math.PI, spin:(Math.random()-.5)*12,
+        size:4+Math.random()*5,
+      }));
+      const started = performance.now();
+      function paint(now) {
+        const t = (now-started)/1000;
+        ink.clearRect(0,0,width,height);
+        if(t>=2.6) { confettiFrame=0; return; }
+        ink.fillStyle='#111';
+        ink.globalAlpha=Math.min(1,(2.6-t)/.5);
+        for(const p of pieces) {
+          ink.save();
+          ink.translate(p.x+p.vx*t,p.y+p.vy*t+220*t*t);
+          ink.rotate(p.angle+p.spin*t);
+          ink.scale(1,Math.cos(t*9+p.angle)*.7);
+          ink.fillRect(-p.size/2,-p.size/2,p.size,p.size*.55);
+          ink.restore();
+        }
+        confettiFrame=requestAnimationFrame(paint);
+      }
+      confettiFrame=requestAnimationFrame(paint);
+    }
     function draw() {
       if (!points.length) return;
       // Each stop has a reading pause; transitions alternate horizontal/vertical.
@@ -38,6 +82,11 @@
       route.style.strokeDashoffset = String(Math.max(0,routeLength-revealed));
       counter.textContent = `${String(t > .5 ? next+1 : index+1).padStart(2,'0')} / 08`;
       bar.style.transform = `scaleX(${camera.progress})`;
+      if(camera.progress<.83) { celebrated=false; if(confettiFrame) clearConfetti(); }
+      if(camera.progress>=.875 && !celebrated) {
+        const bounds=viewport.getBoundingClientRect();
+        if(bounds.bottom>0 && bounds.top<innerHeight) { celebrated=true; celebrate(); }
+      }
     }
     function layout() {
       width = viewport.clientWidth; height = viewport.clientHeight;
@@ -107,6 +156,7 @@
     document.fonts.ready.then(()=>{if(section.classList.contains('is-native')) layout();});
     return () => {
       resize.disconnect();tween.scrollTrigger?.kill();tween.kill();
+      clearConfetti();confetti.remove();
       viewport.removeEventListener('wheel',wheel);viewport.removeEventListener('keydown',keys);
       viewport.removeEventListener('touchstart',touchStart);viewport.removeEventListener('touchmove',touchMove);
       section.classList.remove('is-native');
