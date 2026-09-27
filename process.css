@@ -21,6 +21,14 @@
 @media (max-width: 767px) {
   .scroll-process.is-static .scroll-process__media { aspect-ratio: 9 / 16; }
 }
+@media (max-width: 767px) and (prefers-reduced-motion: no-preference) {
+  /* Follow Safari's visible viewport as its browser bars collapse. Override
+     ScrollTrigger's captured inline height so the pinned stage reaches the bottom. */
+  .scroll-process:not(.is-static) .scroll-process__stage {
+    height: 100vh !important;
+    height: 100dvh !important;
+  }
+}
 @media (max-width: 767px) and (prefers-reduced-motion: reduce) {
   .scroll-process .scroll-process__media { aspect-ratio: 9 / 16; }
 }
