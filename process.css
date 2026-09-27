@@ -12,7 +12,7 @@
 .scroll-process__progress span { display: block; height: 100%; background: #111; transform: scaleX(0); transform-origin: left; }
 @media (max-width: 600px) {
   .scroll-process__header { padding-top: 90px; align-items: flex-start; flex-direction: column; gap: 8px; }
-  .scroll-process__stage { height: 75svh; min-height: 380px; }
+  .scroll-process__stage { height: 100svh; min-height: 380px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .scroll-process__stage { height: auto; min-height: 0; }
