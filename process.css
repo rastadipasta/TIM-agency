@@ -10,6 +10,10 @@
 .scroll-process.is-ready .scroll-process__media img { visibility: hidden; }
 .scroll-process__progress { height: 2px; background: #d5d4ce; }
 .scroll-process__progress span { display: block; height: 100%; background: #111; transform: scaleX(0); transform-origin: left; }
+.scroll-process.is-static .scroll-process__stage { height: auto; min-height: 0; }
+.scroll-process.is-static .scroll-process__media { flex: none; aspect-ratio: 16 / 9; }
+.scroll-process.is-static .scroll-process__header p,
+.scroll-process.is-static .scroll-process__progress { display: none; }
 @media (max-width: 600px) {
   .scroll-process__header { padding-top: 90px; align-items: flex-start; flex-direction: column; gap: 8px; }
   .scroll-process__stage { height: 100svh; min-height: 380px; }

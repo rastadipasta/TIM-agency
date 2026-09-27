@@ -6,11 +6,9 @@
   const progress = section.querySelector('.scroll-process__progress span');
   gsap.registerPlugin(ScrollTrigger);
   gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
-    const controller = new AbortController();
     const playhead = { progress: 0 };
     let active = true;
     let loading = false;
-    let objectURL;
     let request = 0;
     let failed = false;
 
@@ -33,26 +31,23 @@
     function onError() {
       failed = true;
       section.classList.remove('is-ready');
+      section.classList.add('is-static');
+      tween.scrollTrigger?.kill();
+      tween.kill();
+      ScrollTrigger.refresh();
     }
     video.addEventListener('loadeddata', schedule);
     video.addEventListener('seeked', onSeeked);
     video.addEventListener('error', onError);
 
-    async function load() {
+    function load() {
       if (loading) return;
       loading = true;
-      try {
-        // One compressed download; subsequent seeks never wait on network ranges.
-        const response = await fetch(video.dataset.src, { signal: controller.signal });
-        if (!response.ok) throw new Error('Process video unavailable');
-        const blob = await response.blob();
-        if (!active) return;
-        objectURL = URL.createObjectURL(blob);
-        video.src = objectURL;
-        video.load();
-      } catch {
-        if (active) onError();
-      }
+      // Use the same-origin URL allowed by the production media-src policy.
+      // Browser buffering and HTTP range requests handle the seekable MP4.
+      video.preload = 'auto';
+      video.src = video.dataset.src;
+      video.load();
     }
     const tween = gsap.to(playhead, {
       progress: 1,
@@ -78,7 +73,6 @@
     document.fonts.ready.then(() => { if (active) tween.scrollTrigger?.refresh(); });
     return () => {
       active = false;
-      controller.abort();
       observer.disconnect();
       cancelAnimationFrame(request);
       tween.scrollTrigger?.kill();
@@ -89,8 +83,7 @@
       video.pause();
       video.removeAttribute('src');
       video.load();
-      if (objectURL) URL.revokeObjectURL(objectURL);
-      section.classList.remove('is-ready');
+      section.classList.remove('is-ready', 'is-static');
     };
   });
 })();
