@@ -53,6 +53,7 @@
 <link href="../style.css?v=20260911-arrows" rel="stylesheet"/>
 <link href="../resources/Logo/favicon.png" rel="icon" type="image/png"/>
 <link href="../editorial.css?v=20260926-mobile-video" rel="stylesheet"/><link rel="preload" as="image" href="../resources/Editorial/hero-laptop.webp"/>
+<link rel="stylesheet" href="../process.css?v=20260927-letter-spacing"/>
 </head>
 <body class="editorial-site">
 <a class="skip-link" href="#sadrzaj">Skip to content</a>
@@ -128,8 +129,31 @@
 </a>
 </div>
 </section>
+<!-- PROCESS — NATIVE TWO-AXIS SCROLL SCENE -->
+<section class="scroll-process" id="proces" aria-labelledby="process-title">
+<div class="scroll-process__stage">
+<div class="scroll-process__header"><h2 id="process-title">Our Process</h2><a href="#selected-work">Skip process ↓</a></div>
+<div class="process-viewport" tabindex="0" aria-label="Our process. Scroll or use the arrow keys to move through the steps.">
+<div class="process-world">
+<svg class="process-route" aria-hidden="true"><path/></svg>
+<ol class="process-nodes">
+<li class="process-node"><span class="process-node__index">01</span><p class="process-node__intro"></p><h3>PROJECT<br>STARTS</h3><p class="process-node__meta">01 / START</p></li>
+<li class="process-node"><span class="process-node__index">02</span><p class="process-node__intro">Brand. Goals. Audience. Requirements.</p><h3>UNDERSTAND<br>THE IDEA</h3><p class="process-node__meta">02 / BRIEF_RECEIVED</p></li>
+<li class="process-node"><span class="process-node__index">03</span><p class="process-node__intro">Turn ideas into</p><h3>DIRECTION</h3><p class="process-node__meta">03 / DIRECTION_01</p></li>
+<li class="process-node"><span class="process-node__index">04</span><p class="process-node__intro">Ideas become</p><h3>STRUCTURE.</h3><p class="process-node__meta">04 / WIREFRAME · UX_FLOW</p></li>
+<li class="process-node"><span class="process-node__index">05</span><p class="process-node__intro">Structure becomes</p><h3>IDENTITY.</h3><p class="process-node__meta">05 / VISUAL_DIRECTION</p></li>
+<li class="process-node"><span class="process-node__index">06</span><p class="process-node__intro">Design becomes</p><h3>INTERACTIVE.</h3><p class="process-node__meta">06 / BUILD · INTERACTION</p></li>
+<li class="process-node"><span class="process-node__index">07</span><p class="process-node__intro">Built around the</p><h3>EXPERIENCE.</h3><p class="process-node__meta">07 / TEST · REFINE</p></li>
+<li class="process-node"><span class="process-node__index">08</span><p class="process-node__intro">Ready to</p><h3>LAUNCH.</h3><p class="process-node__meta">08 / READY_TO_LAUNCH</p></li>
+</ol>
+</div>
+</div>
+<div class="process-caption" aria-hidden="true"><span>SCROLL TO EXPLORE ↕ ↔</span><span class="process-counter">01 / 08</span></div>
+<div class="scroll-process__progress" aria-hidden="true"><span></span></div>
+</div>
+</section>
 <!-- PORTFOLIO TEASER -->
-<section class="section">
+<section class="section" id="selected-work">
 <div class="section-header">
 <h2>Selected Work</h2>
 <p class="reveal">A selection of work shaped with purpose and precision.</p>
@@ -172,6 +196,7 @@
 <script crossorigin="anonymous" integrity="sha384-d+vyQ0dYcymoP8ndq2hW7FGC50nqGdXUEgoOUGxbbkAJwZqL7h+jKN0GGgn9hFDS" referrerpolicy="no-referrer" src="../resources/vendor/gsap/3.12.2/gsap.min.js"></script>
 <script crossorigin="anonymous" integrity="sha384-poC0r6usQOX2Ayt/VGA+t81H6V3iN9L+Irz9iO8o+s0X20tLpzc9DOOtnKxhaQSE" referrerpolicy="no-referrer" src="../resources/vendor/gsap/3.12.2/ScrollTrigger.min.js"></script>
 <script defer="" src="../script.js?v=20260926-mobile-video"></script>
+<script defer src="../process.js?v=20260927-native"></script>
 <a aria-label="Back to top" class="back-to-top" href="#sadrzaj"><span><svg class="icon-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 20V4m-6 6 6-6 6 6"/></svg></span></a>
 </body>
 </html>
