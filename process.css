@@ -9,7 +9,7 @@
 .process-node__index,.process-node__meta { font:10px/1.5 'Courier New',monospace; letter-spacing:.14em; }
 .process-node__index { display:block; margin-bottom:22px; }
 .process-node__intro { font-size:clamp(13px,1.7vw,24px); text-transform:uppercase; line-height:1.2; margin:0 0 12px; }
-.process-node h3 { font-size:clamp(36px,8vw,138px); font-weight:900; letter-spacing:-.055em; line-height:.9; margin:0 0 18px; }
+.process-node h3 { font-size:clamp(36px,8vw,138px); font-weight:900; letter-spacing:.025em; line-height:1; margin:0 0 18px; }
 .process-node__meta { margin:0; }
 .process-route,.process-caption,.scroll-process__progress { display:none; }
 .scroll-process.is-native .scroll-process__stage { height:100vh !important; height:100dvh !important; display:flex; flex-direction:column; overflow:hidden; }
