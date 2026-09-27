@@ -15,7 +15,8 @@
     function seek() {
       request = 0;
       if (!active || failed || video.readyState < 2 || video.seeking) return;
-      const time = playhead.progress * Math.max(0, video.duration - 1 / 60);
+      // Finish on LAUNCH before the pin releases, leaving a short reading pause.
+      const time = Math.min(playhead.progress / 0.92, 1) * Math.max(0, video.duration - 1 / 60);
       // Never interrupt an in-flight seek: seeked picks up the latest scroll target.
       if (Math.abs(video.currentTime - time) > 1 / 120) video.currentTime = time;
       else section.classList.add('is-ready');
