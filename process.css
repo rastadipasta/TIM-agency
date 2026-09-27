@@ -14,9 +14,15 @@
 .scroll-process.is-static .scroll-process__media { flex: none; aspect-ratio: 16 / 9; }
 .scroll-process.is-static .scroll-process__header p,
 .scroll-process.is-static .scroll-process__progress { display: none; }
-@media (max-width: 600px) {
+@media (max-width: 767px) {
   .scroll-process__header { padding-top: 90px; align-items: flex-start; flex-direction: column; gap: 8px; }
   .scroll-process__stage { height: 100svh; min-height: 380px; }
+}
+@media (max-width: 767px) {
+  .scroll-process.is-static .scroll-process__media { aspect-ratio: 9 / 16; }
+}
+@media (max-width: 767px) and (prefers-reduced-motion: reduce) {
+  .scroll-process .scroll-process__media { aspect-ratio: 9 / 16; }
 }
 @media (prefers-reduced-motion: reduce) {
   .scroll-process__stage { height: auto; min-height: 0; }

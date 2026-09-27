@@ -5,7 +5,13 @@
   const video = section.querySelector('video');
   const progress = section.querySelector('.scroll-process__progress span');
   gsap.registerPlugin(ScrollTrigger);
-  gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
+  gsap.matchMedia().add({
+    motion: '(prefers-reduced-motion: no-preference)',
+    mobile: '(max-width: 767px)',
+    desktop: '(min-width: 768px)',
+  }, (context) => {
+    if (!context.conditions.motion) return;
+    const mobile = context.conditions.mobile;
     const playhead = { progress: 0 };
     let active = true;
     let loading = false;
@@ -47,7 +53,7 @@
       // Use the same-origin URL allowed by the production media-src policy.
       // Browser buffering and HTTP range requests handle the seekable MP4.
       video.preload = 'auto';
-      video.src = video.dataset.src;
+      video.src = mobile ? video.dataset.mobileSrc : video.dataset.src;
       video.load();
     }
     const tween = gsap.to(playhead, {
