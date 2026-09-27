@@ -14,6 +14,8 @@
   gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
     section.classList.add('is-native');
     let points = [];
+    let stops = [];
+    let routeLength = 0;
     let width = 0, height = 0;
     const camera = { progress: 0 };
     const moveX = gsap.quickSetter(world, 'x', 'px');
@@ -29,6 +31,11 @@
       const x = points[index][0] + (points[next][0]-points[index][0])*t;
       const y = points[index][1] + (points[next][1]-points[index][1])*t;
       moveX(width/2-x); moveY(height/2-y);
+      // Reveal only the segment leading to the next step, using the same
+      // eased progress as the camera. Distance checkpoints handle the elbows.
+      const end = index === 7 ? routeLength : stops[next];
+      const revealed = stops[index] + (end-stops[index])*t;
+      route.style.strokeDashoffset = String(Math.max(0,routeLength-revealed));
       counter.textContent = `${String(t > .5 ? next+1 : index+1).padStart(2,'0')} / 08`;
       bar.style.transform = `scaleX(${camera.progress})`;
     }
@@ -41,18 +48,27 @@
         node.style.width = `${Math.min(width*.84,1050)}px`;
       });
       const offset = Math.min(height*.32,210);
+      let distance = width*.42;
+      stops = [distance];
       let d = `M ${points[0][0]-width*.42} ${points[0][1]+offset}`;
       points.forEach(([x,y],i) => {
         if (!i) { d += ` H ${x}`; return; }
         const [px,py] = points[i-1];
-        if (py===y) d += ` H ${x}`;
+        if (py===y) {
+          d += ` H ${x}`;
+          distance += Math.abs(x-px);
+        }
         else {
           const edge = px + (grid[i][0]===1 ? width*.49 : -width*.49);
           d += ` H ${edge} V ${y+offset} H ${x}`;
+          distance += Math.abs(edge-px)+Math.abs(y-py)+Math.abs(x-edge);
         }
+        stops.push(distance);
       });
       d += ` h ${width*.3}`;
       route.setAttribute('d',d);
+      routeLength = distance + width*.3;
+      route.style.strokeDasharray = `${routeLength} ${routeLength}`;
       draw();
     }
     layout();
@@ -95,6 +111,7 @@
       viewport.removeEventListener('touchstart',touchStart);viewport.removeEventListener('touchmove',touchMove);
       section.classList.remove('is-native');
       gsap.set(world,{clearProps:'transform'});
+      route.style.strokeDasharray='';route.style.strokeDashoffset='';
       nodes.forEach(node=>{node.style.left='';node.style.top='';node.style.width='';});
     };
   });
