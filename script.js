@@ -75,7 +75,8 @@
     footerButton.type = "button";
     footerButton.className = "cookie-settings-link";
     footerButton.textContent = copy.settings;
-    document.querySelector(".footer-bottom")?.append(footerButton);
+    const footer = document.querySelector(".footer-bottom");
+    if (footer) footer.insertBefore(footerButton, footer.querySelector('a[href="#sadrzaj"]'));
     let opener = null;
     const updateSpace = () => {
       const height = banner.hidden ? 0 : Math.ceil(banner.getBoundingClientRect().height);
