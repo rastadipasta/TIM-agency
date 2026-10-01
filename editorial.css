@@ -496,6 +496,10 @@ html[lang=hr] .hero-grid h1 {
 }
 
 /* Shared consent UI: paper, ink and the site's rounded controls. */
+.legal-links { display: flex; flex-wrap: wrap; gap: 12px 22px; width: 100%; font-size: 14px; }
+.legal-links a, .form-privacy a, .cookie-policy-links a { text-decoration: underline; text-underline-offset: 4px; }
+.legal-links a { display: inline-flex; align-items: center; min-height: 44px; }
+.cookie-banner p.cookie-policy-links, .cookie-dialog p.cookie-policy-links { margin-top: 12px; }
 html { scroll-padding-bottom: calc(var(--cookie-banner-height, 0px) + 20px); }
 html.cookie-modal-open { overflow: hidden; }
 .cookie-banner, .cookie-dialog { color: #101110; background: #f0eee9; font-family: var(--font-main); }

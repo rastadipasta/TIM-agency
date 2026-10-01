@@ -5,7 +5,7 @@
   const key = "timdsgn:consent";
   const lifetime = 180 * 24 * 60 * 60 * 1000;
   const defaults = () => ({ necessary: true, preferences: false, analytics: false, marketing: false });
-  const valid = (value) => value?.version === 1 &&
+  const valid = (value) => value?.version === 2 &&
     Number.isFinite(value.savedAt) && value.savedAt <= Date.now() &&
     value.expiresAt === value.savedAt + lifetime && value.expiresAt > Date.now() &&
     value.categories?.necessary === true &&
@@ -13,7 +13,9 @@
   const read = () => {
     try {
       const value = JSON.parse(localStorage.getItem(key));
-      return valid(value) ? value : null;
+      if (valid(value)) return value;
+      localStorage.removeItem(key);
+      return null;
     } catch { return null; }
   };
   let consent = read();
@@ -24,7 +26,7 @@
     } catch { /* Consent still works in memory when storage is unavailable. */ }
   }
   const get = () => ({
-    version: 1,
+    version: 2,
     savedAt: consent?.savedAt ?? null,
     expiresAt: consent?.expiresAt ?? null,
     categories: { ...(consent?.categories ?? defaults()) },
@@ -39,30 +41,32 @@
       description: "We use essential browser storage to keep the site working. Choose whether we may remember your language. Analytics and marketing services are currently inactive.",
       customize: "Customize", reject: "Reject All", accept: "Accept All", save: "Save preferences",
       settings: "Cookie settings", close: "Close settings", always: "Always active",
+      policy: "Cookie policy", policyHref: "cookies.html",
+      privacy: "Privacy policy", privacyHref: "privacy.html",
       categories: [
         ["necessary", "Necessary", "Stores your consent and manages the intro animation and page transitions. Always active."],
         ["preferences", "Preferences", "Remembers your language choice between visits."],
-        ["analytics", "Analytics", "No active services. This category is reserved for future audience measurement."],
-        ["marketing", "Marketing", "No active services. This category is reserved for future marketing integrations."],
       ],
     } : {
       title: "Vaša privatnost, vaš izbor.",
       description: "Koristimo nužnu pohranu preglednika za rad stranice. Odaberite smijemo li pamtiti vaš jezik. Analitički i marketinški servisi trenutačno nisu aktivni.",
       customize: "Prilagodi", reject: "Odbij sve", accept: "Prihvati sve", save: "Spremi postavke",
       settings: "Postavke kolačića", close: "Zatvori postavke", always: "Uvijek aktivno",
+      policy: "Politika kolačića", policyHref: "kolacici.html",
+      privacy: "Politika privatnosti", privacyHref: "privatnost.html",
       categories: [
         ["necessary", "Nužno", "Sprema vaš izbor privole te upravlja uvodnom animacijom i prijelazima stranica. Uvijek aktivno."],
         ["preferences", "Postavke", "Pamti odabrani jezik između posjeta."],
-        ["analytics", "Analitika", "Nema aktivnih servisa. Kategorija je pripremljena za buduće mjerenje posjećenosti."],
-        ["marketing", "Marketing", "Nema aktivnih servisa. Kategorija je pripremljena za buduće marketinške integracije."],
       ],
     };
     const button = (action, label, outline = false) => `<button type="button" class="cookie-button${outline ? " cookie-button--outline" : ""}" data-consent-action="${action}">${label}</button>`;
+    const policies = `<p class="cookie-policy-links"><a href="${copy.policyHref}">${copy.policy}</a> · <a href="${copy.privacyHref}">${copy.privacy}</a></p>`;
     const banner = document.createElement("section");
     banner.className = "cookie-banner";
     banner.hidden = true;
     banner.setAttribute("aria-labelledby", "cookie-title");
     banner.innerHTML = `<div class="cookie-banner__inner"><div class="cookie-banner__copy"><h2 id="cookie-title">${copy.title}</h2><p>${copy.description}</p></div><div class="cookie-actions">${button("customize", copy.customize, true)}${button("reject", copy.reject)}${button("accept", copy.accept)}</div></div>`;
+    banner.querySelector(".cookie-banner__copy").insertAdjacentHTML("beforeend", policies);
     const spacer = document.createElement("div");
     spacer.className = "cookie-spacer";
     spacer.setAttribute("aria-hidden", "true");
@@ -71,6 +75,7 @@
     dialog.setAttribute("aria-labelledby", "cookie-settings-title");
     dialog.innerHTML = `<div class="cookie-dialog__header"><h2 id="cookie-settings-title">${copy.settings}</h2><button type="button" class="cookie-close" aria-label="${copy.close}" data-consent-action="close" autofocus>×</button></div><p class="cookie-dialog__intro">${copy.description}</p><div class="cookie-categories">${copy.categories.map(([name, title, description]) => `<div class="cookie-category"><div><label for="cookie-${name}">${title}</label><p id="cookie-${name}-description">${description}</p></div><input type="checkbox" role="switch" id="cookie-${name}" data-category="${name}" aria-describedby="cookie-${name}-description" ${name === "necessary" ? `checked disabled title="${copy.always}"` : ""}></div>`).join("")}</div><div class="cookie-actions cookie-dialog__actions">${button("save", copy.save, true)}${button("reject", copy.reject)}${button("accept", copy.accept)}</div>`;
     document.body.append(spacer, banner, dialog);
+    dialog.querySelector(".cookie-dialog__intro").insertAdjacentHTML("afterend", policies);
     const footerButton = document.createElement("button");
     footerButton.type = "button";
     footerButton.className = "cookie-settings-link";
@@ -118,7 +123,7 @@
     });
     function save(categories) {
       const savedAt = Date.now();
-      consent = { version: 1, savedAt, expiresAt: savedAt + lifetime, categories: { ...categories, necessary: true } };
+      consent = { version: 2, savedAt, expiresAt: savedAt + lifetime, categories: { ...categories, necessary: true, analytics: false, marketing: false } };
       try { localStorage.setItem(key, JSON.stringify(consent)); } catch { /* Use in-memory choice. */ }
       syncLanguage();
       refresh();
@@ -131,7 +136,7 @@
       if (action === "close") closeSettings();
       if (action === "accept" || action === "reject") {
         const enabled = action === "accept";
-        save({ necessary: true, preferences: enabled, analytics: enabled, marketing: enabled });
+        save({ necessary: true, preferences: enabled, analytics: false, marketing: false });
       }
       if (action === "save") {
         const categories = defaults();
@@ -142,6 +147,9 @@
     banner.addEventListener("click", handleAction);
     dialog.addEventListener("click", handleAction);
     footerButton.addEventListener("click", openSettings);
+    document.querySelectorAll('.legal-content [data-consent-action="customize"]').forEach((button) => {
+      button.addEventListener("click", openSettings);
+    });
     window.addEventListener("storage", (event) => {
       if (event.key !== key && event.key !== null) return;
       consent = read();
