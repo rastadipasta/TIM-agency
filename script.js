@@ -34,11 +34,53 @@
   window.TIMDSGNConsent = Object.freeze({ get });
   syncLanguage();
 
+  // Basic consent mode: no Google requests until analytics is explicitly allowed.
+  const measurementId = "G-WDE10848CZ";
+  const disabledKey = `ga-disable-${measurementId}`;
+  let analyticsLoaded = false;
+  function syncAnalytics() {
+    const allowed = get().categories.analytics;
+    window[disabledKey] = !allowed;
+    if (!allowed) {
+      document.cookie.split(";").forEach((entry) => {
+        const name = entry.trim().split("=")[0];
+        if (name !== "_ga" && !name.startsWith("_ga_")) return;
+        const domains = location.hostname.split(".");
+        document.cookie = `${name}=; Max-Age=0; path=/`;
+        while (domains.length > 1) {
+          document.cookie = `${name}=; Max-Age=0; path=/; domain=${domains.join(".")}`;
+          domains.shift();
+        }
+      });
+      return;
+    }
+    if (analyticsLoaded) return;
+    analyticsLoaded = true;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag("consent", "default", {
+      analytics_storage: "granted", ad_storage: "denied",
+      ad_user_data: "denied", ad_personalization: "denied",
+    });
+    window.gtag("js", new Date());
+    window.gtag("config", measurementId, {
+      allow_google_signals: false, allow_ad_personalization_signals: false,
+      cookie_expires: 15552000,
+      page_location: location.origin + location.pathname,
+    });
+    const tag = document.createElement("script");
+    tag.async = true;
+    tag.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
+    document.head.append(tag);
+  }
+  window.addEventListener("timdsgn:consent-change", syncAnalytics);
+  syncAnalytics();
+
   document.addEventListener("DOMContentLoaded", () => {
     const en = document.documentElement.lang.startsWith("en");
     const copy = en ? {
       title: "Your privacy, your choice.",
-      description: "We use essential browser storage to keep the site working. Choose whether we may remember your language. Analytics and marketing services are currently inactive.",
+      description: "We use essential browser storage to keep the site working. Choose whether we may remember your language and use Google Analytics to measure visits.",
       customize: "Customize", reject: "Reject All", accept: "Accept All", save: "Save preferences",
       settings: "Cookie settings", close: "Close settings", always: "Always active",
       policy: "Cookie policy", policyHref: "cookies.html",
@@ -46,10 +88,11 @@
       categories: [
         ["necessary", "Necessary", "Stores your consent and manages the intro animation and page transitions. Always active."],
         ["preferences", "Preferences", "Remembers your language choice between visits."],
+        ["analytics", "Analytics", "Google Analytics measures visits and website usage. Loads only with your consent."],
       ],
     } : {
       title: "Vaša privatnost, vaš izbor.",
-      description: "Koristimo nužnu pohranu preglednika za rad stranice. Odaberite smijemo li pamtiti vaš jezik. Analitički i marketinški servisi trenutačno nisu aktivni.",
+      description: "Koristimo nužnu pohranu preglednika za rad stranice. Odaberite smijemo li pamtiti vaš jezik i koristiti Google Analytics za mjerenje posjeta.",
       customize: "Prilagodi", reject: "Odbij sve", accept: "Prihvati sve", save: "Spremi postavke",
       settings: "Postavke kolačića", close: "Zatvori postavke", always: "Uvijek aktivno",
       policy: "Politika kolačića", policyHref: "kolacici.html",
@@ -57,6 +100,7 @@
       categories: [
         ["necessary", "Nužno", "Sprema vaš izbor privole te upravlja uvodnom animacijom i prijelazima stranica. Uvijek aktivno."],
         ["preferences", "Postavke", "Pamti odabrani jezik između posjeta."],
+        ["analytics", "Analitika", "Google Analytics mjeri posjete i korištenje stranice. Učitava se samo uz vašu privolu."],
       ],
     };
     const button = (action, label, outline = false) => `<button type="button" class="cookie-button${outline ? " cookie-button--outline" : ""}" data-consent-action="${action}">${label}</button>`;
@@ -123,7 +167,7 @@
     });
     function save(categories) {
       const savedAt = Date.now();
-      consent = { version: 2, savedAt, expiresAt: savedAt + lifetime, categories: { ...categories, necessary: true, analytics: false, marketing: false } };
+      consent = { version: 2, savedAt, expiresAt: savedAt + lifetime, categories: { ...categories, necessary: true, marketing: false } };
       try { localStorage.setItem(key, JSON.stringify(consent)); } catch { /* Use in-memory choice. */ }
       syncLanguage();
       refresh();
@@ -136,7 +180,7 @@
       if (action === "close") closeSettings();
       if (action === "accept" || action === "reject") {
         const enabled = action === "accept";
-        save({ necessary: true, preferences: enabled, analytics: false, marketing: false });
+        save({ necessary: true, preferences: enabled, analytics: enabled, marketing: false });
       }
       if (action === "save") {
         const categories = defaults();
