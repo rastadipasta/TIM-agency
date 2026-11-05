@@ -160,6 +160,7 @@
     build(); resumeAll();
   });
   window.addEventListener('resize', finishEntrance, {passive:true});
+  window.addEventListener('timdsgn:dialogchange',()=>{finishEntrance();if(document.querySelector('dialog[open]'))sync();else resumeAll();});
   build();
   if (!paused && !reduce.matches && !root.classList.contains('has-active')) {
     entrances = tiles.map((panel,i) => panel.animate([

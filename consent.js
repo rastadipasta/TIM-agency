@@ -28,11 +28,11 @@
   (document.querySelector('.footer-line')||document.querySelector('.site-footer')||document.body).append(footerButton);
   let opener;
   function refresh(){banner.hidden=Boolean(consent);document.documentElement.style.setProperty('--cookie-banner-height',banner.hidden?'0px':Math.ceil(banner.getBoundingClientRect().height)+'px');}
-  function open(){opener=document.activeElement;dialog.querySelector('#cookie-analytics').checked=get().categories.analytics;dialog.showModal();document.body.classList.add('dialog-open');document.documentElement.classList.add('cookie-dialog-open');}
+  function open(){opener=document.activeElement;dialog.querySelector('#cookie-analytics').checked=get().categories.analytics;dialog.showModal();document.body.classList.add('dialog-open');document.documentElement.classList.add('cookie-dialog-open');window.dispatchEvent(new CustomEvent('timdsgn:dialogchange'));}
   function save(analytics){const savedAt=Date.now();consent={version:2,savedAt,expiresAt:savedAt+lifetime,categories:{...defaults(),analytics}};try{localStorage.setItem(key,JSON.stringify(consent));}catch{}syncAnalytics();refresh();if(dialog.open)dialog.close();window.dispatchEvent(new CustomEvent('timdsgn:consent-change',{detail:get()}));}
   function action(e){const a=e.target.closest('[data-consent-action]')?.dataset.consentAction;if(a==='customize')open();if(a==='reject')save(false);if(a==='accept')save(true);if(a==='save')save(dialog.querySelector('#cookie-analytics').checked);}
   banner.addEventListener('click',action);dialog.addEventListener('click',action);footerButton.addEventListener('click',open);dialog.querySelector('.cookie-close').addEventListener('click',()=>dialog.close());
-  dialog.addEventListener('close',()=>{document.body.classList.remove('dialog-open');document.documentElement.classList.remove('cookie-dialog-open');(opener?.isConnected?opener:footerButton).focus({preventScroll:true});});
+  dialog.addEventListener('close',()=>{document.body.classList.remove('dialog-open');document.documentElement.classList.remove('cookie-dialog-open');window.dispatchEvent(new CustomEvent('timdsgn:dialogchange'));(opener?.isConnected?opener:footerButton).focus({preventScroll:true});});
   dialog.addEventListener('keydown',e=>{if(e.key==='Escape')e.stopPropagation();});
   document.querySelectorAll('.legal-content [data-consent-action="customize"]').forEach(b=>b.addEventListener('click',open));
   new ResizeObserver(refresh).observe(banner);
