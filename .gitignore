@@ -21,3 +21,10 @@ token.json
 # Python
 __pycache__/
 *.pyc
+
+# Local migration artefacts and generated public build
+/outputs/
+/output/
+/work/
+/Agent/
+/public/

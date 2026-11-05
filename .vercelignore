@@ -1,8 +1,18 @@
-CLAUDE.md
-GEMINI.md
-agents.txt
-WEB.code-workspace
+# Build output is a strict public allowlist; keep local material off Vercel.
+.git/
+.env*
+outputs/
+output/
+work/
+Agent/
 content/
 directives/
 execution/
-resources/Redesign - reference/
+.tmp/
+tests/
+*.md
+agents.txt
+WEB.code-workspace
+en/
+resources/
+public/

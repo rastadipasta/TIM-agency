@@ -14,6 +14,7 @@ const FIELD_LABELS = {
   email: "E-mail",
   service: "Usluga",
   message: "Ideja za projekt",
+  serviceDetails: "Detalji odabrane usluge",
   company: "Tvrtka",
   phone: "Telefon",
   website: "Postojeći web",
@@ -37,6 +38,7 @@ const LIMITS = {
   email: 254,
   service: 30,
   message: 5000,
+  serviceDetails: 4000,
   company: 160,
   phone: 40,
   website: 500,
@@ -56,6 +58,16 @@ const LIMITS = {
 };
 
 const SERVICES = {
+  "branding": "Branding",
+  "brand-strategy": "Brand Strategy",
+  "naming": "Naming",
+  "web-design": "Web design",
+  "animation": "Animation",
+  "motion-graphics": "Motion graphics",
+  "packaging": "Packaging",
+  "graphic-design": "Graphic design",
+  "advertising": "Advertising",
+
   web: "Web dizajn",
   graphic: "Grafički dizajn",
   digital: "Digitalni proizvodi",

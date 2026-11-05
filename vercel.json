@@ -43,5 +43,114 @@
         }
       ]
     }
+  ],
+  "buildCommand": "node scripts/build-production.mjs",
+  "outputDirectory": "public",
+  "redirects": [
+    {
+      "source": "/en",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/en/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/en/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/usluga-web-dizajn.html",
+      "destination": "/#services/web-design",
+      "permanent": true
+    },
+    {
+      "source": "/en/web-design.html",
+      "destination": "/#services/web-design",
+      "permanent": true
+    },
+    {
+      "source": "/usluga-graficki-dizajn.html",
+      "destination": "/#services/graphic-design",
+      "permanent": true
+    },
+    {
+      "source": "/en/graphic-design.html",
+      "destination": "/#services/graphic-design",
+      "permanent": true
+    },
+    {
+      "source": "/usluga-digitalni-proizvodi.html",
+      "destination": "/#services",
+      "permanent": true
+    },
+    {
+      "source": "/en/digital-products.html",
+      "destination": "/#services",
+      "permanent": true
+    },
+    {
+      "source": "/galerija.html",
+      "destination": "/#work",
+      "permanent": true
+    },
+    {
+      "source": "/en/portfolio.html",
+      "destination": "/#work",
+      "permanent": true
+    },
+    {
+      "source": "/kontakt.html",
+      "destination": "/contact.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/contact.html",
+      "destination": "/contact.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/brief.html",
+      "destination": "/brief.html",
+      "permanent": true
+    },
+    {
+      "source": "/privatnost.html",
+      "destination": "/privacy.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/privacy.html",
+      "destination": "/privacy.html",
+      "permanent": true
+    },
+    {
+      "source": "/uvjeti-koristenja.html",
+      "destination": "/terms.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/terms.html",
+      "destination": "/terms.html",
+      "permanent": true
+    },
+    {
+      "source": "/kolacici.html",
+      "destination": "/cookies.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/cookies.html",
+      "destination": "/cookies.html",
+      "permanent": true
+    }
   ]
 }

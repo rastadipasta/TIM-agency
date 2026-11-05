@@ -1,0 +1,6 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';
+import {SERVICES} from '../services.mjs';import {parseServices,normalizeSelection,contactPayload} from '../forms-core.mjs';
+test('nine service slugs support context links and reject unknown input',()=>{assert.equal(SERVICES.length,9);assert.deepEqual(parseServices('branding,web-design,branding,unknown'),['branding','web-design']);});
+test('guidance is exclusive while switching between concrete services preserves selected values',()=>{assert.deepEqual(normalizeSelection(['branding','guidance'],'guidance'),['guidance']);assert.deepEqual(normalizeSelection(['guidance','packaging'],'packaging'),['packaging']);});
+test('contact payload keeps the API contract and includes only provided active service answers',()=>{const p=contactPayload({name:' QA ',email:'qa@example.com',service:'naming',message:' Example ',fax:'',unknown:'not sent'},[{label:'What are we naming?',value:' Sample brand '}]);assert.equal(p.name,'QA');assert.equal(p.serviceDetails,'What are we naming?: Sample brand');assert.equal(p.unknown,undefined);});
+test('every service has exactly two concise optional questions',()=>{for(const s of SERVICES){assert.equal(s.questions.length,2);assert.ok(s.questions.every(q=>q.length<120));}});
