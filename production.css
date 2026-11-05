@@ -10,3 +10,5 @@
 @media(max-width:1023px){.brief-hero{grid-template-columns:1fr}}
 @media(max-width:639px){.step-navigation button:nth-child(4)>span:nth-child(2):after{content:'Materials';font-size:9px}.step-navigation button:nth-child(5)>span:nth-child(2):after{content:'Review'}}
 @media(min-width:1024px) and (pointer:fine){.site-footer .cookie-settings-link{min-height:30px;height:30px;padding:4px}}
+.form-actions{display:flex;align-items:center;gap:12px;margin-top:24px;flex-wrap:wrap}
+@media(max-width:639px){.form-actions{flex-direction:column;align-items:stretch}}
